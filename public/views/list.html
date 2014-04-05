@@ -1,0 +1,22 @@
+    <div>
+        <h2>本例使用ng-repeat,$http演示如何展示列表</h2>
+        <h4>Users : {{users}}</h4>
+        <table>
+            <tr>
+                <th>No.</th>
+                <th>name</th>
+                <th>age</th>
+                <th>sex</th>
+                <th>height</th>
+                <th>weight</th>
+            </tr>
+            <tr ng-repeat="user in users">
+                <td>{{$index+1}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.age}}</td>
+                <td>{{user.sex}}</td>
+                <td>{{user.height}}</td>
+                <td>{{user.weight}}</td>
+            </tr>
+        </table>
+    </div>

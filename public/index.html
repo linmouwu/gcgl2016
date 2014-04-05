@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Angular JS Demo Application</title>
+    <script src="http://code.angularjs.org/1.2.9/angular.js"> </script>
+    <script src="http://code.angularjs.org/1.2.9/angular-route.js"></script>
+    <script src="https://cdn.firebase.com/js/client/1.0.6/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js"></script>
+    <script src="/javascripts/app.js"></script>
+    <script src="/javascripts/controllers.js"></script>
+</head>
+<body>
+<h1>Kepler</h1><h3> a demo application for Angular JS</h3>
+<ul ng-controller="HomeController">
+    <li ng-click="create()">Create a object</li>
+    <li ng-click="list()">Read objects</li>
+    <li ng-click="login()">Login Demo</li>
+</ul>
+<div ng-view></div>
+</body>
+</html>
