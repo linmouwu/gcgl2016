@@ -1,17 +1,12 @@
 var app=angular.module("myApp",['ngRoute','firebase']);
-app.config(function($httpProvider) {
-    //Enable cross domain calls
-    $httpProvider.defaults.useXDomain = true;
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];
-});
 app.config(['$routeProvider',function($routeProvider){
     $routeProvider
         .when('/',{
             template: ''
         })
-        .when('/create',{
-            controller: 'CreateController',
-            templateUrl: '/views/create.html'
+        .when('/process',{
+            controller: 'ProcessController',
+            templateUrl: '/views/process.html'
         })
         .when('/list',{
             controller: 'ListController',
@@ -25,9 +20,6 @@ app.config(['$routeProvider',function($routeProvider){
         .otherwise({redirectTo: '/'});
 }]);
 app.controller('HomeController',function($scope,$location){
-    $scope.create=function(){$location.path('/create')};
-    $scope.list=function(){$location.path('/list')};
-    $scope.login=function(){$location.path('/login')};
 });
 
 
