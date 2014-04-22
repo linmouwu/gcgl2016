@@ -94,3 +94,5 @@ body {
     display: inline-block;
     border-radius: 50%;
 }
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer;}
