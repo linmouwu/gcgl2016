@@ -8,9 +8,9 @@ app.config(['$routeProvider',function($routeProvider){
             controller: 'ProcessController',
             templateUrl: '/views/process.html'
         })
-        .when('/list',{
-            controller: 'ListController',
-            templateUrl:'/views/list.html'
+        .when('/product',{
+            controller: 'ProductController',
+            templateUrl:'/views/product.html'
         })
         .when('/login',{
             controller: 'LoginController',
