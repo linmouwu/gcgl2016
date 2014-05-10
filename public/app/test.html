@@ -1,9 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+<div>{{message}}
+<div class="row">
+    <select
+            ng-model="project.user" ng-options="key as value.name for (key,value) in peoples">
+    </select>
+    </div>
 
-</body>
-</html>
+    <div class="row">
+        Project is {{findUser(project.user)}}
+    </div>
+    <div class="row">
+        Peoples is {{peoples}}
+    </div>
+
+
+
+</div>

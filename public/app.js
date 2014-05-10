@@ -1,24 +1,19 @@
-var app=angular.module("myApp",['ngRoute','firebase','ui.bootstrap']);
-app.config(['$routeProvider',function($routeProvider){
-    $routeProvider
-        .when('/',{
-            template: ''
+var app=angular.module("myApp",['ui.router','firebase','ui.bootstrap']);
+app.config(function($stateProvider, $urlRouterProvider){
+    // For any unmatched url, redirect to /state1
+    $urlRouterProvider.otherwise("/dashboard");
+    // Now set up the states
+    $stateProvider
+        .state('dashboard', {
+            url: "/dashboard",
+            templateUrl: "app/dashboard/index.html"
         })
-        .when('/process',{
-            controller: 'ProcessController',
-            templateUrl: '/views/process.html'
-        })
-        .when('/product',{
-            controller: 'ProductController',
-            templateUrl:'/views/product.html'
-        })
-        .when('/login',{
-            controller: 'LoginController',
-            templateUrl:'/views/login.html'
-        })
-
-        .otherwise({redirectTo: '/'});
-}]);
+        .state('test', {
+            url: "/test",
+            templateUrl: "app/test.html",
+            controller: "ProjectCreateController"
+        });
+});
 app.controller('HomeController',function($scope,$location){
 });
 
@@ -67,4 +62,29 @@ app.directive('myDirective',function(){
         replace:true,
         template: '<a href="{{myUrl}}">'+'{{myLinkText}}</a>'
     }
+});
+
+app.controller('ProjectCreateController',function($scope,$firebase,$location){
+    $scope.message="hello worldss";
+    var projectsRef = new Firebase("https://incandescent-fire-923.firebaseio.com/project");
+    var usersRef = new Firebase("https://incandescent-fire-923.firebaseio.com/people");
+    $scope.projects = $firebase(projectsRef);
+    $scope.peoples = $firebase(usersRef);
+    $scope.project={user:"-JMR7djz8I-5Bsc-gtpA"};
+    $scope.findUser=function(id){
+        var i=0;
+        for(i=0;i<$scope.peoples.size();i++){
+            if($scope.peoples[i]==id){
+                return $scope.people[i];
+            }
+        }
+    }
+    $scope.projectCreate = function() {
+        // AngularFire $add method
+        $scope.projects.$add($scope.project);
+        $location.path("projectList");
+    };
+    $scope.projectReturn = function() {
+        $location.path("projectList")
+    };
 });
