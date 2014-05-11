@@ -40,13 +40,13 @@
         <ul class="nav navbar-nav side-nav">
             <li class="active"><a ui-sref="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li><a ui-sref="test">Test</a></li>
-            <li><a href="app/charts.html"><i class="fa fa-bar-chart-o"></i> Charts</a></li>
-            <li><a href="app/tables.html"><i class="fa fa-table"></i> Tables</a></li>
-            <li><a href="app/forms.html"><i class="fa fa-edit"></i> Forms</a></li>
-            <li><a href="app/typography.html"><i class="fa fa-font"></i> Typography</a></li>
-            <li><a href="app/bootstrap-elements.html"><i class="fa fa-desktop"></i> Bootstrap Elements</a></li>
-            <li><a href="app/bootstrap-grid.html"><i class="fa fa-wrench"></i> Bootstrap Grid</a></li>
-            <li><a href="app/blank-page.html"><i class="fa fa-file"></i> Blank Page</a></li>
+            <li><a ui-sref="charts"><i class="fa fa-bar-chart-o"></i> Charts</a></li>
+            <li><a ui-sref="tables"><i class="fa fa-table"></i> Tables</a></li>
+            <li><a ui-sref="forms"><i class="fa fa-edit"></i> Forms</a></li>
+            <li><a ui-sref="typography"><i class="fa fa-font"></i> Typography</a></li>
+            <li><a ui-sref="bootstrap-elements"><i class="fa fa-desktop"></i> Bootstrap Elements</a></li>
+            <li><a ui-sref="bootstrap-grid"><i class="fa fa-wrench"></i> Bootstrap Grid</a></li>
+            <li><a ui-sref="blank-page"><i class="fa fa-file"></i> Blank Page</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -120,7 +120,7 @@
     </div><!-- /.navbar-collapse -->
 </nav>
 <div id="page-wrapper" ui-view></div>
-
+</div>
 <!-- JavaScript -->
 <script src="vendor/jquery-1.10.2.js"></script>
 <script src="vendor/bootstrap/bootstrap.js"></script>
@@ -138,6 +138,23 @@
 <!-- AngularFire Library -->
 <script src="https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js"></script>
 <script src="vendor/angularjs/ui-bootstrap-tpls-0.11.0.js"></script>
+<script src="vendor/jquery-1.10.2.js"></script>
+<script src="vendor/bootstrap/bootstrap.js"></script>
+
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+<script src="vendor/morris/chart-data-morris.js"></script>
+<script src="vendor/tablesorter/jquery.tablesorter.js"></script>
+<script src="vendor/tablesorter/tables.js"></script>
+<script src="vendor/tablesorter/tables.js"></script>
+<script src="vendor/flot/jquery.flot.js"></script>
+<script src="vendor/flot/jquery.flot.tooltip.min.js"></script>
+<script src="vendor/flot/jquery.flot.resize.js"></script>
+<script src="vendor/flot/jquery.flot.pie.js"></script>
+<script src="vendor/flot/chart-data-flot.js"></script>
+<script src="common/d3/d3.js"></script>
+<script src="common/d3/directives.js"></script>
 <script src="app.js"></script>
 
 </body>

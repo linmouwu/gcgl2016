@@ -1,17 +1,5 @@
 <div>{{message}}
 <div class="row">
-    <select
-            ng-model="project.user" ng-options="key as value.name for (key,value) in peoples">
-    </select>
-    </div>
-
-    <div class="row">
-        Project is {{findUser(project.user)}}
-    </div>
-    <div class="row">
-        Peoples is {{peoples}}
-    </div>
-
-
-
+    <div d3-bars bar-height="20" bar-padding="5"></div>
 </div>
+    </div>

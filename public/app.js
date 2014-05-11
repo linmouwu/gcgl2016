@@ -1,4 +1,4 @@
-var app=angular.module("myApp",['ui.router','firebase','ui.bootstrap']);
+var app=angular.module("myApp",['ui.router','firebase','ui.bootstrap','d3']);
 app.config(function($stateProvider, $urlRouterProvider){
     // For any unmatched url, redirect to /state1
     $urlRouterProvider.otherwise("/dashboard");
@@ -7,6 +7,34 @@ app.config(function($stateProvider, $urlRouterProvider){
         .state('dashboard', {
             url: "/dashboard",
             templateUrl: "app/dashboard/index.html"
+        })
+        .state('charts', {
+            url: "/charts",
+            templateUrl: "app/charts/charts.html"
+        })
+        .state('tables', {
+            url: "/tables",
+            templateUrl: "app/tables/tables.html"
+        })
+        .state('forms', {
+            url: "/forms",
+            templateUrl: "app/forms/forms.html"
+        })
+        .state('typography', {
+            url: "/typography",
+            templateUrl: "app/typography/typography.html"
+        })
+        .state('bootstrap-elements', {
+            url: "/bootstrap-elements",
+            templateUrl: "app/bootstrap-elements/bootstrap-elements.html"
+        })
+        .state('bootstrap-grid', {
+            url: "/bootstrap-grid",
+            templateUrl: "app/bootstrap-grid/bootstrap-grid.html"
+        })
+        .state('blank-page', {
+            url: "/blank-page",
+            templateUrl: "app/blank-page/blank-page.html"
         })
         .state('test', {
             url: "/test",
