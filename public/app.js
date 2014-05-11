@@ -1,4 +1,4 @@
-var app=angular.module("myApp",['ui.router','firebase','ui.bootstrap','d3']);
+var app=angular.module("myApp",['ui.router','firebase','ui.bootstrap','myApp.directives']);
 app.config(function($stateProvider, $urlRouterProvider){
     // For any unmatched url, redirect to /state1
     $urlRouterProvider.otherwise("/dashboard");

@@ -4,9 +4,9 @@ angular.module('myApp.directives', ['d3'])
             return {
                 restrict: 'A',
                 scope: {
-                    data: '=',
-                    label: '@',
-                    onClick: '&'
+                    //data: '=',
+                    //label: '@',
+                    //onClick: '&'
                 },
                 link: function(scope, ele, attrs) {
                     d3Service.d3().then(function(d3) {
