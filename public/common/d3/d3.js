@@ -1,8 +1,9 @@
 angular.module('d3', [])
-    .factory('d3Service', function($document, $q, $rootScope){
+    .factory('d3Service', function($document, $q, $rootScope, $window){
         var d=$q.defer();
         function onScriptLoad(){
-            $rootScope.$apply(function(){d.resolve(window.d3);});
+        console.log("script load");
+            $rootScope.$apply(function(){d.resolve($window.d3);});
         }// Create a script tag with d3 as the source
         // and call our onScriptLoad callback when it
         // has been loaded
