@@ -8,9 +8,13 @@ app.config(function($stateProvider, $urlRouterProvider){
             url: "/dashboard",
             templateUrl: "app/dashboard/index.html"
         })
-        .state('charts', {
-            url: "/charts",
-            templateUrl: "app/charts/charts.html"
+        .state('flot', {
+            url: "/flot",
+            templateUrl: "app/charts/flot.html"
+        })
+        .state('morris', {
+            url: "/morris",
+            templateUrl: "app/charts/morris.html"
         })
         .state('tables', {
             url: "/tables",
@@ -20,21 +24,29 @@ app.config(function($stateProvider, $urlRouterProvider){
             url: "/forms",
             templateUrl: "app/forms/forms.html"
         })
+        .state('panels-wells', {
+            url: "/panels-wells",
+            templateUrl: "app/ui-elements/panels-wells.html"
+        })
+        .state('buttons', {
+            url: "/buttons",
+            templateUrl: "app/ui-elements/buttons.html"
+        })
+        .state('notifications', {
+            url: "/notifications",
+            templateUrl: "app/ui-elements/notifications.html"
+        })
         .state('typography', {
             url: "/typography",
-            templateUrl: "app/typography/typography.html"
+            templateUrl: "app/ui-elements/typography.html"
         })
-        .state('bootstrap-elements', {
-            url: "/bootstrap-elements",
-            templateUrl: "app/bootstrap-elements/bootstrap-elements.html"
+        .state('grid', {
+            url: "/grid",
+            templateUrl: "app/ui-elements/grid.html"
         })
-        .state('bootstrap-grid', {
-            url: "/bootstrap-grid",
-            templateUrl: "app/bootstrap-grid/bootstrap-grid.html"
-        })
-        .state('blank-page', {
-            url: "/blank-page",
-            templateUrl: "app/blank-page/blank-page.html"
+        .state('blank', {
+            url: "/blank",
+            templateUrl: "app/blank/blank.html"
         })
         .state('test', {
             url: "/test",
