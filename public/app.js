@@ -48,6 +48,11 @@ app.config(function($stateProvider, $urlRouterProvider){
             url: "/blank",
             templateUrl: "app/blank/blank.html"
         })
+        .state('d3-bar-chart', {
+            url: "/d3-bar-chart",
+            templateUrl: "app/charts/bar-chart.html",
+            controller: "BurnDownController"
+        })
         .state('test', {
             url: "/test",
             templateUrl: "app/test.html",
@@ -127,4 +132,7 @@ app.controller('ProjectCreateController',function($scope,$firebase,$location){
     $scope.projectReturn = function() {
         $location.path("projectList")
     };
+});
+app.controller('BurnDownController',function($scope){
+    $scope.burnData=[{0:{x:new Date(2013,1,1),y:1}},{1:{x:new Date(2013,1,2),y:2}},{2:{x:new Date(2013,1,3),y:3}},{3:{x:new Date(2013,1,4),y:4}}];
 });

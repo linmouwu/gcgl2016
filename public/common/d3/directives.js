@@ -1,5 +1,223 @@
-angular.module('myApp.directives', ['d3'])
-    .directive('d3Bars', ['$window', '$timeout', 'd3Service',
+var dir=angular.module('myApp.directives', ['d3']);
+dir.directive('burndown',function($window,$timeout,d3Service){
+        return {
+            restrict: 'A',
+            scope:{
+                data: '='
+            },
+            link: function(scope,ele,attrs){
+                d3Service.d3().then(function(d3) {
+                    var width=attrs.$$element.context.clientWidth;
+                    var height= width/4*3;
+
+                    scope.$watch(function() {
+                        return angular.element($window)[0].innerWidth;
+                    }, function() {
+                        scope.chart.setSeries(scope.data);
+                        scope.chart.render();
+                    });
+                    scope.$watch('data', function(newData) {
+                        scope.chart.setSeries(newData);
+                        scope.chart.render();
+                    }, true);
+                    scope.chart=barChart()
+                                    .x(d3.time.scale().domain([new Date(2013, 1, 1), new Date(2013, 1, 5)]))
+                                    .y(d3.scale.linear().domain([0, 5]))
+                                    .width(width)
+                                    .height(height)
+                                    .maxData(5);
+                    //begin of barChart()
+                    function barChart() {
+                        var _chart = {};
+
+                        var _width = 400, _height = 300,
+                                _margins = {top: 30, left: 30, right: 30, bottom: 30},
+                                _x, _y,
+                                _data = [],
+                                _maxData = 10,
+                                _colors = d3.scale.category10(),
+                                _svg,
+                                _bodyG;
+
+                        _chart.render = function () {
+                            if (!_svg) {
+                                _svg = d3.select(ele[0]).append("svg")
+                                        .attr("height", _height)
+                                        .attr("width", _width);
+
+                                renderAxes(_svg);
+
+                                defineBodyClip(_svg);
+                            }
+
+                            renderBody(_svg);
+                        };
+
+                        function renderAxes(svg) {
+                            var axesG = svg.append("g")
+                                    .attr("class", "axes");
+
+                            var xAxis = d3.svg.axis()
+                                    .scale(_x.range([0, quadrantWidth()]))
+                                    .ticks(_maxData)
+                                    .orient("bottom");
+
+                            var yAxis = d3.svg.axis()
+                                    .scale(_y.range([quadrantHeight(), 0]))
+                                    .orient("left");
+
+                            axesG.append("g")
+                                    .attr("class", "axis")
+                                    .attr("transform", function () {
+                                        return "translate(" + xStart() + "," + yStart() + ")";
+                                    })
+                                    .call(xAxis);
+
+                            axesG.append("g")
+                                    .attr("class", "axis")
+                                    .attr("transform", function () {
+                                        return "translate(" + xStart() + "," + yEnd() + ")";
+                                    })
+                                    .call(yAxis);
+                        }
+
+                        function defineBodyClip(svg) {
+                            var padding = 5;
+
+                            svg.append("defs")
+                                    .append("clipPath")
+                                    .attr("id", "body-clip")
+                                    .append("rect")
+                                    .attr("x", 0)
+                                    .attr("y", 0)
+                                    .attr("width", quadrantWidth() + 2 * padding)
+                                    .attr("height", quadrantHeight());
+                        }
+
+                        function renderBody(svg) {
+                            if (!_bodyG)
+                                _bodyG = svg.append("g")
+                                        .attr("class", "body")
+                                        .attr("transform", "translate(" 
+                                                + xStart() 
+                                                + "," 
+                                                + yEnd() + ")")
+                                        .attr("clip-path", "url(#body-clip)");
+
+                            renderBars();
+                        }
+                        
+                        function renderBars() {
+                            var padding = 2; // <-A
+                            
+                            _bodyG.selectAll("rect.bar")
+                                        .data(_data)
+                                    .enter()
+                                    .append("rect") // <-B
+                                    .attr("class", "bar");
+
+                            _bodyG.selectAll("rect.bar")
+                                        .data(_data)                    
+                                    .transition()
+                                    .attr("x", function (d) { 
+                                        return _x(d.x); // <-C
+                                    })
+                                    .attr("y", function (d) { 
+                                        return _y(d.y); // <-D 
+                                    })
+                                    .attr("height", function (d) { 
+                                        return yStart() - _y(d.y); 
+                                    })
+                                    .attr("width", function(d){
+                                        return Math.floor(quadrantWidth() / _maxData) - padding;
+                                    });
+                        }
+
+                        function xStart() {
+                            return _margins.left;
+                        }
+
+                        function yStart() {
+                            return _height - _margins.bottom;
+                        }
+
+                        function xEnd() {
+                            return _width - _margins.right;
+                        }
+
+                        function yEnd() {
+                            return _margins.top;
+                        }
+
+                        function quadrantWidth() {
+                            return _width - _margins.left - _margins.right;
+                        }
+
+                        function quadrantHeight() {
+                            return _height - _margins.top - _margins.bottom;
+                        }
+
+                        _chart.width = function (w) {
+                            if (!arguments.length) return _width;
+                            _width = w;
+                            return _chart;
+                        };
+
+                        _chart.height = function (h) {
+                            if (!arguments.length) return _height;
+                            _height = h;
+                            return _chart;
+                        };
+
+                        _chart.margins = function (m) {
+                            if (!arguments.length) return _margins;
+                            _margins = m;
+                            return _chart;
+                        };
+
+                        _chart.colors = function (c) {
+                            if (!arguments.length) return _colors;
+                            _colors = c;
+                            return _chart;
+                        };
+
+                        _chart.x = function (x) {
+                            if (!arguments.length) return _x;
+                            _x = x;
+                            return _chart;
+                        };
+
+                        _chart.y = function (y) {
+                            if (!arguments.length) return _y;
+                            _y = y;
+                            return _chart;
+                        };
+
+                        _chart.setSeries = function (series) {
+                            var array=[];
+                            series.forEach(function(row){
+                                for(at in row){
+                                    array.push(row[at]);
+                                }
+                            });
+                            _data = array;
+                            return _chart;
+                        };
+
+                        _chart.maxData = function (m) {
+                            if (!arguments.length) return _maxData;
+                            _maxData = m;
+                            return _chart;
+                        };
+
+                        return _chart;
+                    }
+                    //end of barChart()
+                })
+            }
+        }
+    });
+dir.directive('d3Bars', ['$window', '$timeout', 'd3Service',
         function($window, $timeout, d3Service) {
             return {
                 restrict: 'A',

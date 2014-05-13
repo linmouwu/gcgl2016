@@ -327,3 +327,13 @@ table.dataTable thead .sorting:after {
 .show-grid {
     margin: 15px 0;
 }
+/* D3 Styles */
+.axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+.bar{
+    stroke: none;
+    fill: steelblue;
+}
