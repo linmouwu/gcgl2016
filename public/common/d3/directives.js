@@ -195,6 +195,9 @@ dir.directive('burndown',function($window,$timeout,d3Service){
 
                         _chart.setSeries = function (series) {
                             var array=[];
+                            if(!series){
+                                return _data;
+                            }
                             series.forEach(function(row){
                                 for(at in row){
                                     array.push(row[at]);

@@ -139,7 +139,9 @@ body {
         width: 250px;
         margin-top: 51px;
     }
-
+    #projectName{
+        width:250px;
+    }
     .navbar-top-links .dropdown-messages,
     .navbar-top-links .dropdown-tasks,
     .navbar-top-links .dropdown-alerts {

@@ -1,4 +1,4 @@
-var app=angular.module("myApp",['ui.router','firebase','ui.bootstrap','myApp.directives']);
+var app=angular.module("myApp",['ui.router','firebase','ui.bootstrap','myApp.directives','myApp.directives.uiBreadcrumbs']);
 app.config(function($stateProvider, $urlRouterProvider){
     // For any unmatched url, redirect to /state1
     $urlRouterProvider.otherwise("/dashboard");
@@ -6,56 +6,133 @@ app.config(function($stateProvider, $urlRouterProvider){
     $stateProvider
         .state('dashboard', {
             url: "/dashboard",
-            templateUrl: "app/dashboard/index.html"
+            views:{
+                'main@':{
+                    templateUrl: "app/dashboard/index.html"
+                }
+            }
         })
         .state('flot', {
             url: "/flot",
-            templateUrl: "app/charts/flot.html"
+            views:{
+                'main@':{
+                    templateUrl: "app/charts/flot.html"
+                }
+            }
         })
         .state('morris', {
             url: "/morris",
-            templateUrl: "app/charts/morris.html"
+            views:{
+                'main@':{
+                    templateUrl: "app/charts/morris.html"
+                }
+            }
         })
         .state('tables', {
             url: "/tables",
-            templateUrl: "app/tables/tables.html"
+            views:{
+                'main@':{
+                    templateUrl: "app/tables/tables.html"
+                }
+            }
         })
         .state('forms', {
             url: "/forms",
-            templateUrl: "app/forms/forms.html"
+            views:{
+                'main@':{
+                    templateUrl: "app/forms/forms.html"
+                }
+            }
         })
         .state('panels-wells', {
             url: "/panels-wells",
-            templateUrl: "app/ui-elements/panels-wells.html"
+            views:{
+                'main@':{
+                    templateUrl: "app/ui-elements/panels-wells.html"
+                }
+            }
         })
         .state('buttons', {
             url: "/buttons",
-            templateUrl: "app/ui-elements/buttons.html"
+            views:{
+                'main@':{
+                    templateUrl: "app/ui-elements/buttons.html"
+                }
+            }
         })
         .state('notifications', {
             url: "/notifications",
-            templateUrl: "app/ui-elements/notifications.html"
+            views:{
+                'main@':{
+                    templateUrl: "app/ui-elements/notifications.html"
+                }
+            }
         })
         .state('typography', {
             url: "/typography",
-            templateUrl: "app/ui-elements/typography.html"
+            views:{
+                'main@':{
+                    templateUrl: "app/ui-elements/typography.html"
+                }
+            }
         })
         .state('grid', {
             url: "/grid",
-            templateUrl: "app/ui-elements/grid.html"
+            views:{
+                'main@':{
+                    templateUrl: "app/ui-elements/grid.html"
+                }
+            }
         })
         .state('blank', {
             url: "/blank",
-            templateUrl: "app/blank/blank.html"
+            views:{
+                'main@':{
+                    templateUrl: "app/blank/blank.html"
+                }
+            },
+            controller: "BlankController"
         })
         .state('d3-bar-chart', {
             url: "/d3-bar-chart",
-            templateUrl: "app/charts/bar-chart.html",
-            controller: "BurnDownController"
+            controller: "BurnDownController",
+            views:{
+                'main@':{
+                    templateUrl: "app/charts/bar-chart.html"
+                }
+            }
+        })
+        .state('process',{
+            url:"/process",
+            views:{
+                'main@':{
+                    templateUrl:"app/process/process.html"
+                }
+            },
+            controller:"ProcessController",
+            data: {
+                displayName: 'Process List'
+            }
+        })
+        .state('process.create',{
+            url:"/process/create",
+            views:{
+                'main@':{
+                    templateUrl:"app/process/createProcess.html"
+                }
+            },
+            controller:"CreateProcessController",
+            data: {
+                displayName: 'Create Process'
+            }
         })
         .state('test', {
             url: "/test",
-            templateUrl: "app/test.html",
+            views:{
+                'main@':{
+                    templateUrl: "app/test.html"
+                }
+            },
             controller: "ProjectCreateController"
         });
 });
@@ -135,4 +212,21 @@ app.controller('ProjectCreateController',function($scope,$firebase,$location){
 });
 app.controller('BurnDownController',function($scope){
     $scope.burnData=[{0:{x:new Date(2013,1,1),y:1}},{1:{x:new Date(2013,1,2),y:2}},{2:{x:new Date(2013,1,3),y:3}},{3:{x:new Date(2013,1,4),y:4}}];
+    console.log($scope.burnData);
+});
+app.controller('BlankController',function($scope,$firebase){
+    var userRef = new Firebase("https://sweltering-fire-3478.firebaseio.com/users");
+    $scope.users=$firebase(userRef);
+    var array=[];
+    array.push({a:1,b:2});
+    array.push({a:2,b:3});
+    array.push({a:3,b:4});
+    array.push({a:4,b:5});
+    $scope.users.$set(array);
+    $scope.array2=[];
+    console.log($scope.users);
+    var keys = $scope.users.$getIndex();
+    keys.forEach(function(key, i) {
+        $scope.array2.push({x:$scope.users[key].a,y:$scope.users[key].b}); // Prints items in order they appear in Firebase.
+    });
 });

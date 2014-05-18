@@ -1,4 +1,8 @@
-/**
- * Created by Administrator on 14-5-1.
- */
+var app=angular.module("myApp");
+app.controller("ProcessController",function($scope,$firebase){
+});
+app.controller("CreateProcessController",function($scope,$firebase){
+    $scope.create=function(){
 
+    }
+});
