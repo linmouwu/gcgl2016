@@ -198,12 +198,7 @@ dir.directive('burndown',function($window,$timeout,d3Service){
                             if(!series){
                                 return _data;
                             }
-                            series.forEach(function(row){
-                                for(at in row){
-                                    array.push(row[at]);
-                                }
-                            });
-                            _data = array;
+                            _data = series;
                             return _chart;
                         };
 

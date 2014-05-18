@@ -210,9 +210,29 @@ app.controller('ProjectCreateController',function($scope,$firebase,$location){
         $location.path("projectList")
     };
 });
-app.controller('BurnDownController',function($scope){
-    $scope.burnData=[{0:{x:new Date(2013,1,1),y:1}},{1:{x:new Date(2013,1,2),y:2}},{2:{x:new Date(2013,1,3),y:3}},{3:{x:new Date(2013,1,4),y:4}}];
-    console.log($scope.burnData);
+app.controller('BurnDownController',function($scope,$firebase){
+    var testRef = new Firebase("https://sweltering-fire-3478.firebaseio.com/test");
+    $scope.test=$firebase(testRef);
+    $scope.burnData=[];
+    var array=[];
+    array.push({x:new Date(2013,1,1),y:1});
+    array.push({x:new Date(2013,1,2),y:2});
+    array.push({x:new Date(2013,1,3),y:3});
+    array.push({x:new Date(2013,1,4),y:4});
+    $scope.test.$set(array);
+    $scope.test.$on("loaded",function(){
+        console.log("A remote change was applied locally!");
+        var keys =$scope.test.$getIndex();
+        $scope.burnData=[];
+        keys.forEach(function(key, i) {
+            //array.push({x:series[key].x,y:series[key].y}); // Prints items in order they appear in Firebase.
+            $scope.burnData.push({x:new Date($scope.test[key].x),y:$scope.test[key].y}); // Prints items in order they appear in Firebase.
+
+        });
+
+        console.log($scope.burnData);
+    });
+
 });
 app.controller('BlankController',function($scope,$firebase){
     var userRef = new Firebase("https://sweltering-fire-3478.firebaseio.com/users");
@@ -229,4 +249,5 @@ app.controller('BlankController',function($scope,$firebase){
     keys.forEach(function(key, i) {
         $scope.array2.push({x:$scope.users[key].a,y:$scope.users[key].b}); // Prints items in order they appear in Firebase.
     });
+    console.log($scope.array2);
 });
