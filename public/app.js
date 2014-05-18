@@ -88,17 +88,17 @@ app.config(function($stateProvider, $urlRouterProvider){
             url: "/blank",
             views:{
                 'main@':{
-                    templateUrl: "app/blank/blank.html"
+                    templateUrl: "app/blank/blank.html",
+                    controller: "BlankController"
                 }
-            },
-            controller: "BlankController"
+            }
         })
         .state('d3-bar-chart', {
             url: "/d3-bar-chart",
-            controller: "BurnDownController",
             views:{
                 'main@':{
-                    templateUrl: "app/charts/bar-chart.html"
+                    templateUrl: "app/charts/bar-chart.html",
+                    controller: "BurnDownController"
                 }
             }
         })
@@ -106,10 +106,10 @@ app.config(function($stateProvider, $urlRouterProvider){
             url:"/process",
             views:{
                 'main@':{
-                    templateUrl:"app/process/process.html"
+                    templateUrl:"app/process/process.html",
+                    controller:"ProcessController"
                 }
             },
-            controller:"ProcessController",
             data: {
                 displayName: 'Process List'
             }
@@ -118,10 +118,10 @@ app.config(function($stateProvider, $urlRouterProvider){
             url:"/process/create",
             views:{
                 'main@':{
-                    templateUrl:"app/process/createProcess.html"
+                    templateUrl:"app/process/createProcess.html",
+                    controller:"CreateProcessController"
                 }
             },
-            controller:"CreateProcessController",
             data: {
                 displayName: 'Create Process'
             }
@@ -130,10 +130,10 @@ app.config(function($stateProvider, $urlRouterProvider){
             url: "/test",
             views:{
                 'main@':{
-                    templateUrl: "app/test.html"
+                    templateUrl: "app/test.html",
+                    controller: "ProjectCreateController"
                 }
-            },
-            controller: "ProjectCreateController"
+            }
         });
 });
 app.controller('HomeController',function($scope,$location){
