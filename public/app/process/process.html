@@ -6,17 +6,18 @@
 </div>
 <div class="row">
     <div class="col-lg-2">
-        <div class="panel panel-default">
+        <div class="panel panel-success">
             <div class="panel-heading">
                 Operation
             </div>
             <div class="panel-body">
-                <button type="button" class="btn btn-primary" ui-sref="process.create">Create Process</button>
+                <p><button type="button" class="btn btn-primary btn-block" ui-sref="process.create">Create Process</button></p>
+                <p><button type="button" class="btn btn-primary btn-block" ui-sref="process.relation">Manage Relationship</button></p>
             </div>
         </div>
     </div>
     <div class="col-lg-10">
-        <div class="panel panel-default">
+        <div class="panel panel-success">
             <div class="panel-heading">
                 Process List
             </div>
@@ -26,7 +27,7 @@
                         <th>过程名</th>
                         <th>删除</th>
                     </tr>
-                    <tr ng-repeat="(key,pro) in processes">
+                    <tr ng-repeat="(key,pro) in processList">
                         <td>{{pro.name}}</td>
                         <td ng-click="remove(key)"><span class="glyphicon glyphicon-remove"></span></td>
                     </tr>

@@ -21,11 +21,8 @@ dir.directive('burndown',function($window,$timeout,d3Service){
                         scope.chart.render();
                     }, true);
                     scope.chart=barChart()
-                                    .x(d3.time.scale().domain([new Date(2013, 1, 1), new Date(2013, 1, 5)]))
-                                    .y(d3.scale.linear().domain([0, 5]))
                                     .width(width)
-                                    .height(height)
-                                    .maxData(5);
+                                    .height(height);
                     //begin of barChart()
                     function barChart() {
                         var _chart = {};
@@ -198,6 +195,23 @@ dir.directive('burndown',function($window,$timeout,d3Service){
                             if(!series){
                                 return _data;
                             }
+                            var minDate=series[0].x;
+                            var maxDate=series[series.length-1].x;
+                            console.log(minDate);
+                            console.log(maxDate);
+                            var maxValue=0;
+                            for(item in series){
+                                if(series[item].y>maxValue){
+                                    maxValue=series[item].y;
+                                }
+                            }
+                            console.log(maxDate.getTime());
+                            _chart.x(d3.time.scale().domain([minDate,maxDate]))
+                                .y(d3.scale.linear().domain([0, maxValue]))
+                                .maxData(Math.ceil(
+                                    (maxDate.getTime()-minDate.getTime())/24/1000/60/60
+                                ));
+                            console.log(series);
                             _data = series;
                             return _chart;
                         };

@@ -1,4 +1,4 @@
-var app=angular.module("myApp",['ui.router','firebase','ui.bootstrap','myApp.directives','myApp.directives.uiBreadcrumbs']);
+var app=angular.module("myApp",['ui.router','firebase','ui.bootstrap','myApp.directives','myApp.directives.uiBreadcrumbs','myApp.firebase']);
 app.config(function($stateProvider, $urlRouterProvider){
     // For any unmatched url, redirect to /state1
     $urlRouterProvider.otherwise("/dashboard");
@@ -100,30 +100,6 @@ app.config(function($stateProvider, $urlRouterProvider){
                     templateUrl: "app/charts/bar-chart.html",
                     controller: "BurnDownController"
                 }
-            }
-        })
-        .state('process',{
-            url:"/process",
-            views:{
-                'main@':{
-                    templateUrl:"app/process/process.html",
-                    controller:"ProcessController"
-                }
-            },
-            data: {
-                displayName: 'Process List'
-            }
-        })
-        .state('process.create',{
-            url:"/process/create",
-            views:{
-                'main@':{
-                    templateUrl:"app/process/createProcess.html",
-                    controller:"CreateProcessController"
-                }
-            },
-            data: {
-                displayName: 'Create Process'
             }
         })
         .state('test', {
@@ -229,7 +205,6 @@ app.controller('BurnDownController',function($scope,$firebase){
             $scope.burnData.push({x:new Date($scope.test[key].x),y:$scope.test[key].y}); // Prints items in order they appear in Firebase.
 
         });
-
         console.log($scope.burnData);
     });
 
