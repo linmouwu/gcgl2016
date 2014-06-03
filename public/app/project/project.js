@@ -26,6 +26,20 @@ app.config(function($stateProvider, $urlRouterProvider){
                     controller:"CreateProjectController"
                 }
             }
+        })
+        .state('project.edit', {
+            url: "/project/edit/:id",
+            views:{
+                'main@':{
+                    templateUrl: "app/project/editProject.html",
+                    controller:"EditProjectController",
+                    resolve:{
+                        project:function(ProjectService,$stateParams){
+                            return ProjectService.find($stateParams.id);
+                        }
+                    }
+                }
+            }
         });
 });
 app.factory('ProjectService', function(firebaseService,$q) {
@@ -46,6 +60,12 @@ app.factory('ProjectService', function(firebaseService,$q) {
         },
         remove: function(key){
             return projectRef.$remove(key);
+        },
+        find:function(key){
+            var promise=projectRefLoad.promise.then(function(){
+                return projectRef[key];
+            });
+            return promise;
         }
     };
     return projectService;
@@ -72,4 +92,7 @@ app.controller("CreateProjectController",function($scope,$state,ProjectService){
             console.log("CreateProjectController:Create Failed");
         })
     }
+});
+app.controller("EditProjectController",function($scope,$state,$stateParams,ProjectService,project){
+    $scope.project=project;
 });

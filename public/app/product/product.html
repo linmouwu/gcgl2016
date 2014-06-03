@@ -24,10 +24,12 @@
                 <table class="table">
                     <tr>
                         <th>产品</th>
+                        <th>修改</th>
                         <th>删除</th>
                     </tr>
                     <tr ng-repeat="(key,pro) in productList">
                         <td>{{pro.name}}</td>
+                        <td ui-sref="product.edit({id:key})"><span class="glyphicon glyphicon-pencil"></span></td>
                         <td ng-click="remove(key)"><span class="glyphicon glyphicon-remove"></span></td>
                     </tr>
                 </table>

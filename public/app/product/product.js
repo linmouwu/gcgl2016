@@ -26,6 +26,15 @@ app.config(function($stateProvider, $urlRouterProvider){
                     controller:"CreateProductController"
                 }
             }
+        })
+        .state('product.edit', {
+            url: "/product/edit/:id",
+            views:{
+                'main@':{
+                    templateUrl: "app/product/editProduct.html",
+                    controller:"EditProductController"
+                }
+            }
         });
 });
 app.factory('ProductService', function(firebaseService,$q) {
@@ -72,4 +81,7 @@ app.controller("CreateProductController",function($scope,$state,ProductService){
             console.log("CreateProductController:Create Failed");
         })
     }
+});
+app.controller("EditProductController",function($scope,$stateParams,ProductService){
+    console.log($stateParams);
 });
