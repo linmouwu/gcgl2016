@@ -21,7 +21,7 @@
                     <tr ng-repeat="(key,rel) in relationList">
                         <td>{{rel.pre.name}}</td>
                         <td>{{rel.post.name}}</td>
-                        <td ng-click="remove(key)"><span class="glyphicon glyphicon-remove"></span></td>
+                        <td ng-click="remove(rel.preId,rel.postId)"><span class="glyphicon glyphicon-remove"></span></td>
                     </tr>
                 </table>
             </div>

@@ -67,10 +67,20 @@ app.factory('ProcessService', function(firebaseService,$q) {
     });
 
     var constructRelation=function(){
-        _.each(processRelationRef.$getIndex(),function(index){
-            processRelationRef[index].pre=processRef.$child(processRelationRef[index].preId);
-            processRelationRef[index].post=processRef.$child(processRelationRef[index].postId);
+        var relationList=[];
+        _.each(processRef.$getIndex(),function(preId){
+            _.each(processRef.$child(preId).$child("follows"),function(postId){
+                if(_.contains(processRef.$getIndex(),postId)){
+                    relationList.push({
+                        preId:preId,
+                        postId:postId,
+                        pre:processRef.$child(preId),
+                        post:processRef.$child(postId)
+                    });
+                }
+            });
         });
+        return relationList;
     };
     //Public Method
     var processService = {
@@ -88,13 +98,26 @@ app.factory('ProcessService', function(firebaseService,$q) {
         },
         listRelation:function(){
             var promise=$q.all([processRefLoad.promise,processRelationRefLoad.promise]).then(function(){
-                constructRelation();
-                return processRelationRef;
+                return constructRelation();
             });
             return promise;
         },
-        removeRelation:function(key){
-            return processRelationRef.$remove(key);
+        removeRelation:function(preId,postId){
+            var promise;
+            var follows=processRef.$child(preId).$child("follows");
+
+            var indexs= follows.$getIndex();
+            _.each(indexs,function(index){
+                if(follows[index]==postId){
+                    promise=follows.$remove(index);
+                }
+            });
+            return promise;
+        },
+        addFollow:function(processKey,followKey){
+            //find the process by key
+            //push followKey to process.follows
+            return processRef.$child(processKey).$child("follows").$add(followKey);
         }
     };
     return processService;
@@ -125,31 +148,27 @@ app.controller("RelationProcessController",function($scope,$state,ProcessService
     $scope.preId={};
     $scope.postId={};
     $scope.relationList=relationList;
-    $scope.relationList.$on("change",function(){
+    $scope.processList.$on("change",function(){
         ProcessService.listRelation().then(function(data){
             $scope.relationList=data;
         });
     })
     $scope.add=function(){
-        if($scope.preId==$scope.postId){
-            console.log("fail: pre equals post");
-            return;
-        }
         if(_.isEmpty($scope.preId)|| _.isEmpty($scope.postId)){
             console.log("fail: cannot input null");
             return;
         }
-        ProcessService.addRelation($scope.preId,$scope.postId).then(function(){
+        ProcessService.addFollow($scope.preId,$scope.postId).then(function(){
             console.log("RelationProcessController:Add Success");
         },function(){
             console.log("RelationProcessController:Add Failed");
         });
         $scope.preId={};
         $scope.postId={};
-        console.log("add");
+        console.log("added");
     };
-    $scope.remove=function(key){
-        ProcessService.removeRelation(key).then(function(data){
+    $scope.remove=function(preId,postId){
+        ProcessService.removeRelation(preId,postId).then(function(){
             console.log("remove success");
         },function(){
             console.log("remove failed");
