@@ -22,7 +22,24 @@
                         <label>Project Description</label>
                         <textarea class="form-control" rows="3" ng-model="project.object"></textarea>
                     </div>
-                    <button class="btn" ng-click="create()">Create</button>
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            Select which processes to include.
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-lg-5">
+                                <div class="gridStyle" ng-grid="gridOptions"></div>
+                            </div>
+                            <div class="col-lg-2">
+                                <a class="btn btn-block btn-success" ng-click="select()"><< Select <<</a>
+                                <a class="btn btn-block btn-success" ng-click="unselect()">>> Unselect >></a>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="gridStyle" ng-grid="gridOptions2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn" ng-click="save()">Save</button>
                 </form>
             </div>
         </div>

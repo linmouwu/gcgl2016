@@ -36,6 +36,9 @@ app.config(function($stateProvider, $urlRouterProvider){
                     resolve:{
                         project:function(ProjectService,$stateParams){
                             return ProjectService.find($stateParams.id);
+                        },
+                        beforeSelect:function(ProjectService){
+                            return ProjectService.beforeSelect();
                         }
                     }
                 }
@@ -47,6 +50,11 @@ app.factory('ProjectService', function(firebaseService,$q) {
     var projectRefLoad=$q.defer();
     projectRef.$on("loaded",function(){
         projectRefLoad.resolve(projectRef);
+    });
+    var processRef = firebaseService.ref("/process");
+    var processRefLoad=$q.defer();
+    processRef.$on("loaded",function(){
+        processRefLoad.resolve(projectRef);
     });
 
 
@@ -64,6 +72,31 @@ app.factory('ProjectService', function(firebaseService,$q) {
         find:function(key){
             var promise=projectRefLoad.promise.then(function(){
                 return projectRef[key];
+            });
+            return promise;
+        },
+        beforeSelect:function(){
+            var promise=processRefLoad.promise.then(function(){
+                var list=processRef.$getIndex();
+                console.log(list);
+                //filter
+                //1.Is follow
+                var isFollow=function(id){
+                    _.each(processRef.$getIndex(),function(index){
+                        if(_.contains(processRef[index].follows),id){
+                            return false;
+                        }
+                    });
+                    return true;
+                }
+                //2.Project has already
+                //todo
+                var selectId= _.filter(list,isFollow);
+                console.log(selectId);
+                return _.map(selectId,function(id){
+                    return processRef[id];
+                })
+
             });
             return promise;
         }
@@ -93,6 +126,36 @@ app.controller("CreateProjectController",function($scope,$state,ProjectService){
         })
     }
 });
-app.controller("EditProjectController",function($scope,$state,$stateParams,ProjectService,project){
+app.controller("EditProjectController",function($scope,$state,$stateParams,ProjectService,project,beforeSelect){
     $scope.project=project;
+    $scope.myData2 =beforeSelect;
+
+
+
+    $scope.project.selected=[];
+    $scope.myData = $scope.project.selected;
+    $scope.leftItems=[];
+    $scope.rightItems=[];
+    $scope.gridOptions = {
+        data: 'myData',
+        selectedItems:$scope.leftItems,
+        columnDefs: [{ field: 'name', displayName: 'Process Name'}]
+    };
+    $scope.gridOptions2 = {
+        data: 'myData2',
+        selectedItems:$scope.rightItems,
+        columnDefs: [{ field: 'name', displayName: 'Process Name'}]
+    };
+    $scope.select=function(){
+        console.log($scope.rightItems)
+        $scope.myData2= _.difference($scope.myData2,$scope.rightItems)
+        $scope.myData=$scope.myData.concat($scope.rightItems);
+        $scope.gridOptions2.selectAll(false);
+    }
+    $scope.unselect=function(){
+        console.log($scope.leftItems)
+        $scope.myData= _.difference($scope.myData,$scope.leftItems)
+        $scope.myData2=$scope.myData2.concat($scope.leftItems);
+        $scope.gridOptions.selectAll(false);
+    }
 });
