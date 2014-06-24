@@ -34,11 +34,14 @@ app.config(function($stateProvider, $urlRouterProvider){
                     templateUrl: "app/project/editProject.html",
                     controller:"EditProjectController",
                     resolve:{
+                        refresh:function(ProjectService){
+                            ProjectService.refresh();
+                        },
+                        beforeSelect:function(ProjectService,$stateParams){
+                            return ProjectService.beforeSelect($stateParams.id);
+                        },
                         project:function(ProjectService,$stateParams){
                             return ProjectService.find($stateParams.id);
-                        },
-                        beforeSelect:function(ProjectService){
-                            return ProjectService.beforeSelect();
                         }
                     }
                 }
@@ -60,6 +63,10 @@ app.factory('ProjectService', function(firebaseService,$q) {
 
     //Public Method
     var projectService = {
+        refresh:function(){
+            projectRef=firebaseService.ref("/project");
+            processRef = firebaseService.ref("/process");
+        },
         create: function(project) {
             return projectRef.$add(project);
         },
@@ -69,34 +76,45 @@ app.factory('ProjectService', function(firebaseService,$q) {
         remove: function(key){
             return projectRef.$remove(key);
         },
-        find:function(key){
-            var promise=projectRefLoad.promise.then(function(){
-                return projectRef[key];
-            });
-            return promise;
+        update: function(key){
+            return projectRef.$save(key);
         },
-        beforeSelect:function(){
-            var promise=processRefLoad.promise.then(function(){
+        beforeSelect:function(key){
+            var promise=$q.all([processRefLoad.promise,projectRefLoad.promise]).then(function(){
                 var list=processRef.$getIndex();
-                console.log(list);
                 //filter
                 //1.Is follow
-                var isFollow=function(id){
-                    _.each(processRef.$getIndex(),function(index){
-                        if(_.contains(processRef[index].follows),id){
-                            return false;
-                        }
-                    });
-                    return true;
-                }
+//                var isFollow=function(id){
+//                    _.each(processRef.$getIndex(),function(index){
+//                        if(_.contains(processRef[index].follows),id){
+//                            return false;
+//                        }
+//                    });
+//                    return true;
+//                }
                 //2.Project has already
-                //todo
-                var selectId= _.filter(list,isFollow);
-                console.log(selectId);
-                return _.map(selectId,function(id){
-                    return processRef[id];
-                })
+                var has=function(id){
+                    if(_.contains(projectRef[key].selected,id)){
+                        return false;
+                    }
+                    return true;
+                };
 
+                var listAfterHas= _.filter(list,has);
+                //var selectId=_.filter(listAfterHas,isFollow);
+                return firebaseService.extend(listAfterHas,processRef);
+
+            });
+        return promise;
+        },
+        find:function(key){
+//            console.log("find");
+            var promise=$q.all([processRefLoad.promise,projectRefLoad.promise]).then(function(){
+                var ret=projectRef[key];
+                console.log(ret);
+                ret.selected=firebaseService.extend(ret.selected,processRef);
+                console.log(ret);
+                return ret;
             });
             return promise;
         }
@@ -126,13 +144,16 @@ app.controller("CreateProjectController",function($scope,$state,ProjectService){
         })
     }
 });
-app.controller("EditProjectController",function($scope,$state,$stateParams,ProjectService,project,beforeSelect){
+app.controller("EditProjectController",function($scope,$state,$stateParams,ProjectService,project,beforeSelect,$stateParams,firebaseService){
     $scope.project=project;
     $scope.myData2 =beforeSelect;
+//    console.log($scope.myData2);
+//    console.log($scope.project);
 
-
-
-    $scope.project.selected=[];
+    if(_.isUndefined($scope.project.selected)){
+//        console.log("undefine");
+        $scope.project.selected=[];
+    }
     $scope.myData = $scope.project.selected;
     $scope.leftItems=[];
     $scope.rightItems=[];
@@ -157,5 +178,9 @@ app.controller("EditProjectController",function($scope,$state,$stateParams,Proje
         $scope.myData= _.difference($scope.myData,$scope.leftItems)
         $scope.myData2=$scope.myData2.concat($scope.leftItems);
         $scope.gridOptions.selectAll(false);
+    }
+    $scope.save=function(){
+        $scope.project.selected=firebaseService.toIds($scope.myData);
+        ProjectService.update($stateParams.id);
     }
 });
