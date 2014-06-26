@@ -24,11 +24,17 @@
             <div class="panel-body">
                 <table class="table">
                     <tr>
-                        <th>过程名</th>
-                        <th>删除</th>
+                        <th>Process Name</th>
+                        <th>Input</th>
+                        <th>Output</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                     <tr ng-repeat="(key,pro) in processList">
                         <td>{{pro.name}}</td>
+                        <td>{{pro.input.name}}</td>
+                        <td>{{pro.output.name}}</td>
+                        <td ui-sref="process.edit({id:key})"><span class="glyphicon glyphicon-pencil"></span></td>
                         <td ng-click="remove(key)"><span class="glyphicon glyphicon-remove"></span></td>
                     </tr>
                 </table>

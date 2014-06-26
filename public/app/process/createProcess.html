@@ -20,19 +20,19 @@
                     </div>
                     <div class="form-group">
                         <label>Objective To</label>
-                        <textarea class="form-control" rows="3" ng-model="process.object"></textarea>
+                        <textarea class="form-control" rows="3" ng-model="process.description.object"></textarea>
                     </div>
                     <div class="form-group">
                         <label>In a way that</label>
-                        <textarea class="form-control" rows="10" ng-model="process.way"></textarea>
+                        <textarea class="form-control" rows="10" ng-model="process.description.way"></textarea>
                     </div>
                     <div class="form-group">
                         <label>So that</label>
-                        <textarea class="form-control" rows="10" ng-model="process.result"></textarea>
+                        <textarea class="form-control" rows="10" ng-model="process.description.result"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Overview</label>
-                        <textarea class="form-control" rows="20" ng-model="process.overview"></textarea>
+                        <textarea class="form-control" rows="20" ng-model="process.description.overview"></textarea>
                     </div>
                     <button class="btn" ng-click="create()">Create</button>
                 </form>

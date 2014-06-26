@@ -51,6 +51,44 @@ app.config(function($stateProvider, $urlRouterProvider){
                 displayName: 'Management Relationship'
             }
         })
+        .state('process.edit', {
+            url: "/process/edit/:id",
+            views:{
+                'main@':{
+                    templateUrl: "app/process/editProcess.html",
+                    controller:"EditProcessController",
+                    resolve:{
+                        process:function(ProcessService,$stateParams){
+                            return ProcessService.find($stateParams.id);
+                        },
+                        inputs:function(process,ProcessService,ProductService){
+                            if(process.inputType=="process"){
+                                return ProcessService.list();
+                            }
+                            else if(process.inputType=="product"){
+                                return ProductService.list();
+                            }
+                            else return [];
+                        },
+                        outputs:function(process,ProcessService,ProductService){
+                            if(process.outputType=="process"){
+                                return ProcessService.list();
+                            }
+                            else if(process.outputType=="product"){
+                                return ProductService.list();
+                            }
+                            else return [];
+                        },
+                        processes:function(ProcessService){
+                            return ProcessService.list();
+                        },
+                        products:function(ProductService){
+                            return ProductService.list();
+                        }
+                    }
+                }
+            }
+        });
 });
 app.factory('ProcessService', function(firebaseService,$q) {
 
@@ -114,10 +152,20 @@ app.factory('ProcessService', function(firebaseService,$q) {
             });
             return promise;
         },
+        find:function(key){
+            var promise=processRefLoad.promise.then(function(){
+                return processRef[key];
+            });
+            return promise;
+        },
         addFollow:function(processKey,followKey){
             //find the process by key
             //push followKey to process.follows
             return processRef.$child(processKey).$child("follows").$add(followKey);
+        },
+        types:function(){
+            var types=["product","process"];
+            return types;
         }
     };
     return processService;
@@ -135,6 +183,8 @@ app.controller("ProcessController",function($scope,ProcessService,processList){
 app.controller("CreateProcessController",function($scope,$state,ProcessService){
     $scope.process={};
     $scope.create=function(){
+        $scope.process.inputType=ProcessService.types()[0];
+        $scope.process.outputType=ProcessService.types()[0];
         ProcessService.create($scope.process).then(function(){
             console.log("CreateProcessController:Create Success");
             $state.go("^");
@@ -173,5 +223,43 @@ app.controller("RelationProcessController",function($scope,$state,ProcessService
         },function(){
             console.log("remove failed");
         });
+    };
+});
+
+app.controller("EditProcessController",function($scope,$stateParams,$state,ProcessService,process,inputs,outputs,processes,products){
+    $scope.types=ProcessService.types();
+    $scope.process=process;
+    $scope.inputs=inputs;
+    $scope.outputs=outputs;
+    $scope.processes=processes;
+    $scope.products=products;
+    console.log($scope.types);
+    console.log($scope.process);
+    console.log($scope.inputs);
+    console.log($scope.outputs);
+    $scope.save=function(){
+        ProcessService.save($stateParams.id);
+        console.log($scope.process);
+        $state.go("^");
+    };
+    $scope.prepareInput=function(){
+        if($scope.process.inputType=="process"){
+            $scope.inputs=$scope.processes;
+        }
+        else if($scope.process.inputType=="product"){
+            $scope.inputs=$scope.products;
+        }
+        $scope.process.input="";
+
+    };
+    $scope.prepareOutput=function(){
+        if($scope.process.outputType=="process"){
+            $scope.outputs=$scope.processes;
+        }
+        else if($scope.process.outputType=="product"){
+            $scope.outputs=$scope.products;
+        }
+        $scope.process.output="";
+
     };
 });
