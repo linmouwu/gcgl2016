@@ -9,11 +9,21 @@ app.config(function($stateProvider, $urlRouterProvider){
             views:{
                 'main@':{
                     templateUrl: "app/project/project.html",
-                    controller:"ProjectController",
                     resolve:{
                         projectList:function(ProjectService){
                             return ProjectService.list();
                         }
+                    },
+                    controller:function($scope,ProjectService,projectList){
+                        $scope.projectList=projectList;
+                        $scope.remove=function(key){
+                            ProjectService.remove(key).then(function(){
+                                console.log("ProjectController:Remove Successful");
+                            },function(){
+                                console.log("ProjectController:Remove failed");
+                            })
+                        }
+
                     }
                 }
             }
@@ -23,7 +33,17 @@ app.config(function($stateProvider, $urlRouterProvider){
             views:{
                 'main@':{
                     templateUrl: "app/project/createProject.html",
-                    controller:"CreateProjectController"
+                    controller:function($scope,$state,ProjectService){
+                        $scope.project={};
+                        $scope.create=function(){
+                            ProjectService.create($scope.project).then(function(){
+                                console.log("CreateProjectController:Create Success");
+                                $state.go("^");
+                            },function(){
+                                console.log("CreateProjectController:Create Failed");
+                            })
+                        }
+                    }
                 }
             }
         })
@@ -32,16 +52,61 @@ app.config(function($stateProvider, $urlRouterProvider){
             views:{
                 'main@':{
                     templateUrl: "app/project/editProject.html",
-                    controller:"EditProjectController",
                     resolve:{
-                        refresh:function(ProjectService){
-                            ProjectService.refresh();
-                        },
-                        beforeSelect:function(ProjectService,$stateParams){
-                            return ProjectService.beforeSelect($stateParams.id);
+                        beforeSelectIds:function(ProjectService,ProcessService,$stateParams,project){
+                            var processIds=ProcessService.list().$getIndex();
+                            var has=function(id){
+                                if(_.contains(project.selected,id)){
+                                    return false;
+                                }
+                                return true;
+                            };
+                            var listAfterHas= _.filter(processIds,has);
+                            //var selectId=_.filter(listAfterHas,isFollow);
+                            return listAfterHas;
                         },
                         project:function(ProjectService,$stateParams){
                             return ProjectService.find($stateParams.id);
+                        }
+                    },
+                    controller:function($scope,$state,$stateParams,ProjectService,project,beforeSelect,$stateParams,firebaseService){
+                        $scope.project=project;
+                        $scope.myData2 =beforeSelect;
+//    console.log($scope.myData2);
+//    console.log($scope.project);
+
+                        if(_.isUndefined($scope.project.selected)){
+//        console.log("undefine");
+                            $scope.project.selected=[];
+                        }
+                        $scope.myData = $scope.project.selected;
+                        $scope.leftItems=[];
+                        $scope.rightItems=[];
+                        $scope.gridOptions = {
+                            data: 'myData',
+                            selectedItems:$scope.leftItems,
+                            columnDefs: [{ field: 'name', displayName: 'Process Name'}]
+                        };
+                        $scope.gridOptions2 = {
+                            data: 'myData2',
+                            selectedItems:$scope.rightItems,
+                            columnDefs: [{ field: 'name', displayName: 'Process Name'}]
+                        };
+                        $scope.select=function(){
+                            console.log($scope.rightItems)
+                            $scope.myData2= _.difference($scope.myData2,$scope.rightItems)
+                            $scope.myData=$scope.myData.concat($scope.rightItems);
+                            $scope.gridOptions2.selectAll(false);
+                        }
+                        $scope.unselect=function(){
+                            console.log($scope.leftItems)
+                            $scope.myData= _.difference($scope.myData,$scope.leftItems)
+                            $scope.myData2=$scope.myData2.concat($scope.leftItems);
+                            $scope.gridOptions.selectAll(false);
+                        }
+                        $scope.save=function(){
+                            $scope.project.selected=firebaseService.toIds($scope.myData);
+                            ProjectService.update($stateParams.id);
                         }
                     }
                 }
@@ -63,10 +128,6 @@ app.factory('ProjectService', function(firebaseService,$q) {
 
     //Public Method
     var projectService = {
-        refresh:function(){
-            projectRef=firebaseService.ref("/project");
-            processRef = firebaseService.ref("/process");
-        },
         create: function(project) {
             return projectRef.$add(project);
         },
@@ -111,9 +172,9 @@ app.factory('ProjectService', function(firebaseService,$q) {
 //            console.log("find");
             var promise=$q.all([processRefLoad.promise,projectRefLoad.promise]).then(function(){
                 var ret=projectRef[key];
-                console.log(ret);
+//                console.log(ret);
                 ret.selected=firebaseService.extend(ret.selected,processRef);
-                console.log(ret);
+//                console.log(ret);
                 return ret;
             });
             return promise;
@@ -122,65 +183,5 @@ app.factory('ProjectService', function(firebaseService,$q) {
     return projectService;
 });
 
-app.controller("ProjectController",function($scope,ProjectService,projectList){
-    $scope.projectList=projectList;
-    $scope.remove=function(key){
-        ProjectService.remove(key).then(function(){
-            console.log("ProjectController:Remove Successful");
-        },function(){
-            console.log("ProjectController:Remove failed");
-        })
-    }
 
-});
-app.controller("CreateProjectController",function($scope,$state,ProjectService){
-    $scope.project={};
-    $scope.create=function(){
-        ProjectService.create($scope.project).then(function(){
-            console.log("CreateProjectController:Create Success");
-            $state.go("^");
-        },function(){
-            console.log("CreateProjectController:Create Failed");
-        })
-    }
-});
-app.controller("EditProjectController",function($scope,$state,$stateParams,ProjectService,project,beforeSelect,$stateParams,firebaseService){
-    $scope.project=project;
-    $scope.myData2 =beforeSelect;
-//    console.log($scope.myData2);
-//    console.log($scope.project);
 
-    if(_.isUndefined($scope.project.selected)){
-//        console.log("undefine");
-        $scope.project.selected=[];
-    }
-    $scope.myData = $scope.project.selected;
-    $scope.leftItems=[];
-    $scope.rightItems=[];
-    $scope.gridOptions = {
-        data: 'myData',
-        selectedItems:$scope.leftItems,
-        columnDefs: [{ field: 'name', displayName: 'Process Name'}]
-    };
-    $scope.gridOptions2 = {
-        data: 'myData2',
-        selectedItems:$scope.rightItems,
-        columnDefs: [{ field: 'name', displayName: 'Process Name'}]
-    };
-    $scope.select=function(){
-        console.log($scope.rightItems)
-        $scope.myData2= _.difference($scope.myData2,$scope.rightItems)
-        $scope.myData=$scope.myData.concat($scope.rightItems);
-        $scope.gridOptions2.selectAll(false);
-    }
-    $scope.unselect=function(){
-        console.log($scope.leftItems)
-        $scope.myData= _.difference($scope.myData,$scope.leftItems)
-        $scope.myData2=$scope.myData2.concat($scope.leftItems);
-        $scope.gridOptions.selectAll(false);
-    }
-    $scope.save=function(){
-        $scope.project.selected=firebaseService.toIds($scope.myData);
-        ProjectService.update($stateParams.id);
-    }
-});
