@@ -35,7 +35,13 @@ app.config(function($stateProvider, $urlRouterProvider){
             views:{
                 'main@':{
                     templateUrl: "app/product/createProduct.html",
-                    controller:function($scope,$state,ProductService){
+                    resolve:{
+                        types:function(ProductService){
+                            return ProductService.getTypes();
+                        }
+                    },
+                    controller:function($scope,$state,ProductService,types){
+                        $scope.types=types;
                         $scope.product={};
                         $scope.create=function(){
                             ProductService.create($scope.product).then(function(){
@@ -57,16 +63,32 @@ app.config(function($stateProvider, $urlRouterProvider){
                     resolve:{
                         product:function(ProductService,$stateParams){
                             return ProductService.find($stateParams.id);
+                        },
+                        types:function(ProductService){
+                            return ProductService.getTypes();
                         }
                     },
-                    controller:function($scope,$stateParams,$state,ProductService,product){
+                    controller:function($scope,$stateParams,$state,ProductService,product,types){
+                        $scope.types=types;
                         $scope.product=product;
+                        $scope.productCopy=angular.copy(product);
+                        if(_.isUndefined($scope.productCopy.fields)){
+                            $scope.productCopy.fields=[];
+                        }
+                        $scope.newField={};
                         $scope.save=function(){
-                            //ProductService.save($stateParams.id);
-                            ProductService.refresh();
-                            //$state.reload();
-                            $state.go("^",{},{reload:true});
+                           ProductService.save($stateParams.id,$scope.productCopy);
+                            $state.go("^");
 
+                        };
+                        $scope.remove=function(field){
+                            $scope.productCopy.fields= _.filter($scope.productCopy.fields,function(obj){
+                                return !(field==obj);
+                            });
+                        };
+                        $scope.addField=function(){
+                            $scope.productCopy.fields.push($scope.newField);
+                            $scope.newField={};
                         }
                     }
                 }
@@ -74,22 +96,13 @@ app.config(function($stateProvider, $urlRouterProvider){
         });
 });
 app.factory('ProductService', function(firebaseService,$q) {
-    var productRef;
-    var productRefLoad;
-    var refresh=function(){
-        console.log("refresh");
-        productRef=firebaseService.ref("/product");
-        productRefLoad=$q.defer();
-        productRef.$on("loaded",function(){
-            productRefLoad.resolve(productRef);
-        });
-    };
-    refresh();
+    var productRef=firebaseService.ref("/product")
+    var productRefLoad=$q.defer();
+    productRef.$on("loaded",function(){
+        productRefLoad.resolve(productRef);
+    });
     //Public Method
     var productService = {
-        refresh:function(){
-            refresh();
-        },
         create: function(product) {
             return productRef.$add(product);
         },
@@ -107,9 +120,14 @@ app.factory('ProductService', function(firebaseService,$q) {
             });
             return promise;
         },
-        save:function(key){
-            console.log(productRef[key]);
-            return productRef.$save(key);
+        save:function(key,value){
+            var obj={};
+            obj[key]=value;
+            return productRef.$update(obj);
+        },
+        getTypes:function(){
+            var types=["document"];
+            return types;
         }
     };
     return productService;

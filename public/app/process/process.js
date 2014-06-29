@@ -7,10 +7,19 @@ app.config(function($stateProvider, $urlRouterProvider){
             views:{
                 'main@':{
                     templateUrl:"app/process/process.html",
-                    controller:"ProcessController",
                     resolve:{
                         processList:function(ProcessService){
                             return ProcessService.list();
+                        }
+                    },
+                    controller:function($scope,ProcessService,processList){
+                        $scope.processList=processList;
+                        $scope.remove=function(key){
+                            ProcessService.remove(key).then(function(){
+                                console.log("ProcessController:Remove Successful");
+                            },function(){
+                                console.log("ProcessController:Remove failed");
+                            })
                         }
                     }
                 }
@@ -24,7 +33,19 @@ app.config(function($stateProvider, $urlRouterProvider){
             views:{
                 'main@':{
                     templateUrl:"app/process/createProcess.html",
-                    controller:"CreateProcessController"
+                    controller:function($scope,$state,ProcessService){
+                        $scope.process={};
+                        $scope.create=function(){
+                            $scope.process.inputType=ProcessService.types()[0];
+                            $scope.process.outputType=ProcessService.types()[0];
+                            ProcessService.create($scope.process).then(function(){
+                                console.log("CreateProcessController:Create Success");
+                                $state.go("^");
+                            },function(){
+                                console.log("CreateProcessController:Create Failed");
+                            })
+                        }
+                    }
                 }
             },
             data: {
@@ -85,6 +106,62 @@ app.config(function($stateProvider, $urlRouterProvider){
                         products:function(ProductService){
                             return ProductService.list();
                         }
+                    },
+                    controller:function($scope,$stateParams,$state,ProcessService,process,inputs,outputs,processes,products){
+                        $scope.types=ProcessService.types();
+                        $scope.process=process;
+                        $scope.processCopy=angular.copy(process);
+//                        $scope.processes=processes;
+//                        $scope.products=products;
+                        if($scope.processCopy.inputType=="process"){
+                            $scope.inputs=processes;
+                        }
+                        else if($scope.processCopy.inputType=="product"){
+                            $scope.inputs=products;
+                        }
+                        else{
+                            $scope.inputs=[];
+                        }
+
+                        if($scope.processCopy.outputType=="process"){
+                            $scope.outputs=processes
+                        }
+                        else if($scope.processCopy.outputType=="product"){
+                            $scope.outputs=products
+                        }
+                        else{
+                            $scope.outputs=[];
+                        }
+
+//                        console.log($scope.types);
+//                        console.log($scope.process);
+//                        console.log($scope.inputs);
+//                        console.log($scope.outputs);
+                        $scope.save=function(){
+                            ProcessService.save($stateParams.id,$scope.processCopy);
+//                            console.log($scope.process);
+                            $state.go("^");
+                        };
+                        $scope.prepareInput=function(){
+                            if($scope.processCopy.inputType=="process"){
+                                $scope.inputs=processes;
+                            }
+                            else if($scope.processCopy.inputType=="product"){
+                                $scope.inputs=products;
+                            }
+                            $scope.processCopy.input="";
+
+                        };
+                        $scope.prepareOutput=function(){
+                            if($scope.processCopy.outputType=="process"){
+                                $scope.outputs=processes;
+                            }
+                            else if($scope.processCopy.outputType=="product"){
+                                $scope.outputs=products;
+                            }
+                            $scope.processCopy.output="";
+
+                        };
                     }
                 }
             }
@@ -166,32 +243,14 @@ app.factory('ProcessService', function(firebaseService,$q) {
         types:function(){
             var types=["product","process"];
             return types;
+        },
+        save:function(key,value){
+            var obj={};
+            obj[key]=value;
+            return processRef.$update(obj);
         }
     };
     return processService;
-});
-app.controller("ProcessController",function($scope,ProcessService,processList){
-    $scope.processList=processList;
-    $scope.remove=function(key){
-        ProcessService.remove(key).then(function(){
-            console.log("ProcessController:Remove Successful");
-        },function(){
-            console.log("ProcessController:Remove failed");
-        })
-    }
-});
-app.controller("CreateProcessController",function($scope,$state,ProcessService){
-    $scope.process={};
-    $scope.create=function(){
-        $scope.process.inputType=ProcessService.types()[0];
-        $scope.process.outputType=ProcessService.types()[0];
-        ProcessService.create($scope.process).then(function(){
-            console.log("CreateProcessController:Create Success");
-            $state.go("^");
-        },function(){
-            console.log("CreateProcessController:Create Failed");
-        })
-    }
 });
 app.controller("RelationProcessController",function($scope,$state,ProcessService,relationList,processList){
     $scope.processList=processList;
@@ -223,43 +282,5 @@ app.controller("RelationProcessController",function($scope,$state,ProcessService
         },function(){
             console.log("remove failed");
         });
-    };
-});
-
-app.controller("EditProcessController",function($scope,$stateParams,$state,ProcessService,process,inputs,outputs,processes,products){
-    $scope.types=ProcessService.types();
-    $scope.process=process;
-    $scope.inputs=inputs;
-    $scope.outputs=outputs;
-    $scope.processes=processes;
-    $scope.products=products;
-    console.log($scope.types);
-    console.log($scope.process);
-    console.log($scope.inputs);
-    console.log($scope.outputs);
-    $scope.save=function(){
-        ProcessService.save($stateParams.id);
-        console.log($scope.process);
-        $state.go("^");
-    };
-    $scope.prepareInput=function(){
-        if($scope.process.inputType=="process"){
-            $scope.inputs=$scope.processes;
-        }
-        else if($scope.process.inputType=="product"){
-            $scope.inputs=$scope.products;
-        }
-        $scope.process.input="";
-
-    };
-    $scope.prepareOutput=function(){
-        if($scope.process.outputType=="process"){
-            $scope.outputs=$scope.processes;
-        }
-        else if($scope.process.outputType=="product"){
-            $scope.outputs=$scope.products;
-        }
-        $scope.process.output="";
-
     };
 });

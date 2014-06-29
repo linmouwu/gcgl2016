@@ -30,6 +30,7 @@
                     </tr>
                     <tr ng-repeat="(key,pro) in productList">
                         <td>{{pro.name}}</td>
+                        <td>{{pro.type}}</td>
                         <td ui-sref="product.edit({id:key})"><span class="glyphicon glyphicon-pencil"></span></td>
                         <td ng-click="remove(key)"><span class="glyphicon glyphicon-remove"></span></td>
                     </tr>
