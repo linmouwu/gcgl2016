@@ -8,14 +8,39 @@ app.config(function($stateProvider, $urlRouterProvider){
                 'main@':{
                     templateUrl:"app/process/process.html",
                     resolve:{
+                        productList:function(ProductService){
+                            return ProductService.list();
+                        },
                         processList:function(ProcessService){
                             return ProcessService.list();
+                        },
+                        processListWithProduct:function(ProcessService,processList,productList){
+                            var ret={};
+//                            console.log("processList");
+//                            console.log((processList));
+                            _.each(angular.copy(processList),function(process,id){
+//                                console.log("id");
+//                                console.log(id);
+//                                console.log("process");
+//                                console.log(process);
+                                ret[id]=ProcessService.withProduct(process,productList,processList);
+                            });
+//                            console.log("ret");
+//                            console.log(ret);
+                            return ret;
                         }
                     },
-                    controller:function($scope,ProcessService,processList){
-                        $scope.processList=processList;
+                    controller:function($scope,ProcessService,processListWithProduct,$state,$stateParams){
+//                        console.log("processListWithProduct");
+//                        console.log(processListWithProduct);
+                        $scope.processList=processListWithProduct;
                         $scope.remove=function(key){
                             ProcessService.remove(key).then(function(){
+                            $state.transitionTo($state.current, $stateParams, {
+                                reload: true,
+                                inherit: false,
+                                notify: true
+                            });
                                 console.log("ProcessController:Remove Successful");
                             },function(){
                                 console.log("ProcessController:Remove failed");
@@ -33,14 +58,14 @@ app.config(function($stateProvider, $urlRouterProvider){
             views:{
                 'main@':{
                     templateUrl:"app/process/createProcess.html",
-                    controller:function($scope,$state,ProcessService){
+                    controller:function($scope,$state,$stateParams,ProcessService){
                         $scope.process={};
                         $scope.create=function(){
                             $scope.process.inputType=ProcessService.types()[0];
                             $scope.process.outputType=ProcessService.types()[0];
                             ProcessService.create($scope.process).then(function(){
                                 console.log("CreateProcessController:Create Success");
-                                $state.go("^");
+                                $state.go("^",null,{reload:true});
                             },function(){
                                 console.log("CreateProcessController:Create Failed");
                             })
@@ -203,9 +228,13 @@ app.factory('ProcessService', function(firebaseService,$q) {
             return processRef.$add(process);
         },
         list: function(){
-            return processRefLoad.promise;
+            return processRefLoad.promise.then(function(data){
+                return firebaseService.copyList(data);
+            });
         },
         remove: function(key){
+//            console.log("key");
+//            console.log(key);
             return processRef.$remove(key);
         },
         addRelation: function(preId,postId){
@@ -231,7 +260,7 @@ app.factory('ProcessService', function(firebaseService,$q) {
         },
         find:function(key){
             var promise=processRefLoad.promise.then(function(){
-                return processRef[key];
+                return angular.copy(processRef[key]);
             });
             return promise;
         },
@@ -248,39 +277,25 @@ app.factory('ProcessService', function(firebaseService,$q) {
             var obj={};
             obj[key]=value;
             return processRef.$update(obj);
+        },
+        //process without key}}
+        withProduct:function(process,productList,processList){
+//            console.log(productList);
+//            console.log(processList);
+            if(process.inputType=="product"){
+                process.input=firebaseService.extendSingle(process.input,productList);
+            }
+            else{
+                process.input=firebaseService.extendSingle(process.input,processList);
+            }
+            if(process.outputType=="product"){
+                process.output=firebaseService.extendSingle(process.output,productList);
+            }
+            else{
+                process.output=firebaseService.extendSingle(process.output,processList);
+            }
+            return process;
         }
     };
     return processService;
-});
-app.controller("RelationProcessController",function($scope,$state,ProcessService,relationList,processList){
-    $scope.processList=processList;
-    $scope.preId={};
-    $scope.postId={};
-    $scope.relationList=relationList;
-    $scope.processList.$on("change",function(){
-        ProcessService.listRelation().then(function(data){
-            $scope.relationList=data;
-        });
-    })
-    $scope.add=function(){
-        if(_.isEmpty($scope.preId)|| _.isEmpty($scope.postId)){
-            console.log("fail: cannot input null");
-            return;
-        }
-        ProcessService.addFollow($scope.preId,$scope.postId).then(function(){
-            console.log("RelationProcessController:Add Success");
-        },function(){
-            console.log("RelationProcessController:Add Failed");
-        });
-        $scope.preId={};
-        $scope.postId={};
-        console.log("added");
-    };
-    $scope.remove=function(preId,postId){
-        ProcessService.removeRelation(preId,postId).then(function(){
-            console.log("remove success");
-        },function(){
-            console.log("remove failed");
-        });
-    };
 });

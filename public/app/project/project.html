@@ -23,12 +23,16 @@
             <div class="panel-body">
                 <table class="table">
                     <tr>
-                        <th>项目</th>
-                        <th>修改</th>
-                        <th>删除</th>
+                        <th>Project Name</th>
+                        <th>Project Status</th>
+                        <th>Start</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                     <tr ng-repeat="(key,pro) in projectList">
                         <td>{{pro.name}}</td>
+                        <td>{{pro.status}}</td>
+                        <td ng-show="pro.status=='New'" ui-sref="project.start({id:key})"><span class="glyphicon glyphicon-play"></span></td><td ng-hide="pro.status=='New'"></td>
                         <td ui-sref="project.edit({id:key})"><span class="glyphicon glyphicon-pencil"></span></td>
                         <td ng-click="remove(key)"><span class="glyphicon glyphicon-remove"></span></td>
                     </tr>

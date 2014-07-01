@@ -107,16 +107,16 @@ app.factory('ProductService', function(firebaseService,$q) {
             return productRef.$add(product);
         },
         list: function(){
-            console.log("product service list");
-            console.log(productRef);
-            return productRefLoad.promise;
+            return productRefLoad.promise.then(function(data){
+                return firebaseService.copyList(data);
+            });
         },
         remove: function(key){
             return productRef.$remove(key);
         },
         find:function(key){
             var promise=productRefLoad.promise.then(function(){
-                return productRef[key];
+                return angular.copy(productRef[key]);
             });
             return promise;
         },

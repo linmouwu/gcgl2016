@@ -28,10 +28,26 @@ firebase.factory("firebaseService",function($firebase){
             });
             return result;
         },
+        extendSingle:function(id,ref){
+            if(_.isUndefined(id)){
+                return {};
+            }
+            var result=angular.copy(ref[id]);
+            result.id=id;
+            return result;
+        },
         toIds:function(array){
             return _.map(array,function(item){
                 return item.id;
             });
+        },
+        //data is an firebase collection
+        copyList:function(data){
+            var list={};
+            _.each(data.$getIndex(),function(id){
+                list[id]=angular.copy(data[id]);
+            });
+            return list;
         }
     }
 });

@@ -29,13 +29,14 @@ app.config(function($stateProvider, $urlRouterProvider){
             }
         })
         .state('project.create', {
-            url: "/project/create",
+            url: "/create",
             views:{
                 'main@':{
                     templateUrl: "app/project/createProject.html",
                     controller:function($scope,$state,ProjectService){
                         $scope.project={};
                         $scope.create=function(){
+                            $scope.project.status="New";
                             ProjectService.create($scope.project).then(function(){
                                 console.log("CreateProjectController:Create Success");
                                 $state.go("^");
@@ -48,13 +49,21 @@ app.config(function($stateProvider, $urlRouterProvider){
             }
         })
         .state('project.edit', {
-            url: "/project/edit/:id",
+            url: "/edit/:id",
             views:{
                 'main@':{
                     templateUrl: "app/project/editProject.html",
                     resolve:{
-                        beforeSelectIds:function(ProjectService,ProcessService,$stateParams,project){
-                            var processIds=ProcessService.list().$getIndex();
+                        project:function(ProjectService,$stateParams){
+                            return ProjectService.find($stateParams.id);
+                        },
+                        processes:function(ProcessService){
+                            return ProcessService.list();
+                        },
+                        toSelectIds:function(ProjectService,ProcessService,project,processes){
+                            console.log("project");
+                            console.log(project);
+                            var processIds=processes.$getIndex();
                             var has=function(id){
                                 if(_.contains(project.selected,id)){
                                     return false;
@@ -63,23 +72,26 @@ app.config(function($stateProvider, $urlRouterProvider){
                             };
                             var listAfterHas= _.filter(processIds,has);
                             //var selectId=_.filter(listAfterHas,isFollow);
+                            console.log(listAfterHas);
                             return listAfterHas;
                         },
-                        project:function(ProjectService,$stateParams){
-                            return ProjectService.find($stateParams.id);
+                        selectIds:function(project){
+                            console.log("project.selected");
+                            console.log(project.selected);
+                            console.log(project);
+                            return angular.copy(project.selected);
                         }
                     },
-                    controller:function($scope,$state,$stateParams,ProjectService,project,beforeSelect,$stateParams,firebaseService){
-                        $scope.project=project;
-                        $scope.myData2 =beforeSelect;
-//    console.log($scope.myData2);
-//    console.log($scope.project);
+                    controller:function($scope,$state,$stateParams,ProjectService,project,selectIds,toSelectIds,processes,$stateParams,firebaseService){
+                        $scope.projectCopy=angular.copy(project);
+//                        console.log("0:new projectCopy");
+//                        console.log($scope.projectCopy);
+                        $scope.myData2 =angular.copy(firebaseService.extend(toSelectIds,processes));
+                        $scope.myData = angular.copy(firebaseService.extend(selectIds,processes));
 
-                        if(_.isUndefined($scope.project.selected)){
-//        console.log("undefine");
-                            $scope.project.selected=[];
-                        }
-                        $scope.myData = $scope.project.selected;
+//                        console.log($scope.myData2);
+//                        console.log($scope.myData);
+
                         $scope.leftItems=[];
                         $scope.rightItems=[];
                         $scope.gridOptions = {
@@ -97,17 +109,71 @@ app.config(function($stateProvider, $urlRouterProvider){
                             $scope.myData2= _.difference($scope.myData2,$scope.rightItems)
                             $scope.myData=$scope.myData.concat($scope.rightItems);
                             $scope.gridOptions2.selectAll(false);
-                        }
+                        };
                         $scope.unselect=function(){
                             console.log($scope.leftItems)
                             $scope.myData= _.difference($scope.myData,$scope.leftItems)
                             $scope.myData2=$scope.myData2.concat($scope.leftItems);
                             $scope.gridOptions.selectAll(false);
-                        }
+                        };
                         $scope.save=function(){
-                            $scope.project.selected=firebaseService.toIds($scope.myData);
-                            ProjectService.update($stateParams.id);
+//                            console.log("1:projectCopy");
+//                            console.log($scope.projectCopy);
+                            $scope.projectCopy.selected=firebaseService.toIds(angular.copy($scope.myData));
+//                            console.log("2:projectCopy with new selected");
+//                            console.log($scope.projectCopy);
+                            ProjectService.update($stateParams.id,$scope.projectCopy);
+                            $state.go("^");
+                        };
+                    }
+                }
+            }
+        })
+        .state('project.start', {
+            url: "/start/:id",
+            views:{
+                'main@':{
+                    templateUrl: "app/project/prepare.html",
+                    resolve:{
+                        project:function(ProjectService,$stateParams){
+                            return ProjectService.find($stateParams.id);
+                        },
+                        products:function(ProductService){
+                            return ProductService.list();
+                        },
+                        processes:function(ProcessService){
+                            return ProcessService.list();
+                        },
+                        subProcesses:function(ProcessService,firebaseService,project,processes,products){
+                            var withProcess=firebaseService.extend(project.selected,processes);
+                            console.log("withProcess");
+                            console.log(withProcess);
+                            var withProduct=_.map(withProcess,function(process){
+                                if(process.inputType=="product"){
+                                    console.log("is a product");
+                                    process.input=firebaseService.extendSingle(process.input,products);
+                                }
+                                else{
+                                    process.input=firebaseService.extendSingle(process.input,processes);
+                                }
+                                if(process.outputType=="product"){
+                                    console.log("is a product");
+                                    process.output=firebaseService.extendSingle(process.output,products);
+                                }
+                                else{
+                                    process.output=firebaseService.extendSingle(process.output,processes);
+                                }
+                                return process;
+                            });
+                            console.log("withProduct");
+                            console.log(withProduct);
+                            return withProduct;
+
                         }
+                    },
+                    controller:function($scope,$state,ProjectService,subProcesses){
+                        $scope.processes=subProcesses;
+                        console.log(subProcesses);
                     }
                 }
             }
@@ -137,45 +203,22 @@ app.factory('ProjectService', function(firebaseService,$q) {
         remove: function(key){
             return projectRef.$remove(key);
         },
-        update: function(key){
-            return projectRef.$save(key);
-        },
-        beforeSelect:function(key){
-            var promise=$q.all([processRefLoad.promise,projectRefLoad.promise]).then(function(){
-                var list=processRef.$getIndex();
-                //filter
-                //1.Is follow
-//                var isFollow=function(id){
-//                    _.each(processRef.$getIndex(),function(index){
-//                        if(_.contains(processRef[index].follows),id){
-//                            return false;
-//                        }
-//                    });
-//                    return true;
-//                }
-                //2.Project has already
-                var has=function(id){
-                    if(_.contains(projectRef[key].selected,id)){
-                        return false;
-                    }
-                    return true;
-                };
-
-                var listAfterHas= _.filter(list,has);
-                //var selectId=_.filter(listAfterHas,isFollow);
-                return firebaseService.extend(listAfterHas,processRef);
-
-            });
-        return promise;
+        update: function(key,value){
+            var obj={};
+            obj[key]=value;
+//            console.log("3:before update");
+//            console.log(obj);
+            return projectRef.$update(obj);
+//            console.log("4:project in db");
+//            console.log(projectRef[key]);
+//            console.log("selected");
+//            console.log(projectRef.$child(key));
+//            console.log(value);/
+           // return projectRef.$child(key).$update({selected:value.selected});
         },
         find:function(key){
-//            console.log("find");
-            var promise=$q.all([processRefLoad.promise,projectRefLoad.promise]).then(function(){
-                var ret=projectRef[key];
-//                console.log(ret);
-                ret.selected=firebaseService.extend(ret.selected,processRef);
-//                console.log(ret);
-                return ret;
+            var promise=projectRefLoad.promise.then(function(){
+                return angular.copy(projectRef[key]);
             });
             return promise;
         }
