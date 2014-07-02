@@ -14,12 +14,17 @@ app.config(function($stateProvider, $urlRouterProvider){
                             return ProductService.list();
                         }
                     },
-                    controller:function($scope,$state,ProductService,productList){
+                    controller:function($scope,$state,$stateParams,ProductService,productList){
                         $scope.productList=productList;
-                        console.log("$scope.productList");
-                        console.log(productList);
+//                        console.log("$scope.productList");
+//                        console.log(productList);
                         $scope.remove=function(key){
                             ProductService.remove(key).then(function(){
+                                $state.transitionTo($state.current, $stateParams, {
+                                    reload: true,
+                                    inherit: false,
+                                    notify: true
+                                });
                                 console.log("ProductController:Remove Successful");
                             },function(){
                                 console.log("ProductController:Remove failed");
@@ -46,7 +51,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                         $scope.create=function(){
                             ProductService.create($scope.product).then(function(){
                                 console.log("CreateProductController:Create Success");
-                                $state.go("^");
+                                $state.go("^",{},{reload:true});
                             },function(){
                                 console.log("CreateProductController:Create Failed");
                             })
@@ -71,23 +76,22 @@ app.config(function($stateProvider, $urlRouterProvider){
                     controller:function($scope,$stateParams,$state,ProductService,product,types){
                         $scope.types=types;
                         $scope.product=product;
-                        $scope.productCopy=angular.copy(product);
-                        if(_.isUndefined($scope.productCopy.fields)){
-                            $scope.productCopy.fields=[];
-                        }
                         $scope.newField={};
                         $scope.save=function(){
-                           ProductService.save($stateParams.id,$scope.productCopy);
-                            $state.go("^");
+                           ProductService.update($stateParams.id,$scope.product);
+                            $state.go("^",{},{reload:true});
 
                         };
                         $scope.remove=function(field){
-                            $scope.productCopy.fields= _.filter($scope.productCopy.fields,function(obj){
+                            $scope.product.fields= _.filter($scope.product.fields,function(obj){
                                 return !(field==obj);
                             });
                         };
                         $scope.addField=function(){
-                            $scope.productCopy.fields.push($scope.newField);
+                            if(_.isUndefined($scope.product.fields)){
+                                $scope.product.fields=[];
+                            }
+                            $scope.product.fields.push($scope.newField);
                             $scope.newField={};
                         }
                     }
@@ -106,24 +110,24 @@ app.factory('ProductService', function(firebaseService,$q) {
         create: function(product) {
             return productRef.$add(product);
         },
+        remove: function(key){
+            return productRef.$remove(key);
+        },
+        update:function(key,value){
+            var obj={};
+            obj[key]=value;
+            return productRef.$update(obj);
+        },
+        find:function(key){
+            var promise=productRefLoad.promise.then(function(){
+                return firebaseService.copy(productRef[key]);
+            });
+            return promise;
+        },
         list: function(){
             return productRefLoad.promise.then(function(data){
                 return firebaseService.copyList(data);
             });
-        },
-        remove: function(key){
-            return productRef.$remove(key);
-        },
-        find:function(key){
-            var promise=productRefLoad.promise.then(function(){
-                return angular.copy(productRef[key]);
-            });
-            return promise;
-        },
-        save:function(key,value){
-            var obj={};
-            obj[key]=value;
-            return productRef.$update(obj);
         },
         getTypes:function(){
             var types=["document"];

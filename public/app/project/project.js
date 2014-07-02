@@ -197,30 +197,24 @@ app.factory('ProjectService', function(firebaseService,$q) {
         create: function(project) {
             return projectRef.$add(project);
         },
-        list: function(){
-            return projectRefLoad.promise;
-        },
         remove: function(key){
             return projectRef.$remove(key);
         },
         update: function(key,value){
             var obj={};
             obj[key]=value;
-//            console.log("3:before update");
-//            console.log(obj);
             return projectRef.$update(obj);
-//            console.log("4:project in db");
-//            console.log(projectRef[key]);
-//            console.log("selected");
-//            console.log(projectRef.$child(key));
-//            console.log(value);/
-           // return projectRef.$child(key).$update({selected:value.selected});
         },
         find:function(key){
             var promise=projectRefLoad.promise.then(function(){
-                return angular.copy(projectRef[key]);
+                return firebaseService.copy(projectRef[key]);
             });
             return promise;
+        },
+        list: function(){
+            return projectRefLoad.promise.then(function(data){
+                return firebaseService.copyList(data);
+            });
         }
     };
     return projectService;

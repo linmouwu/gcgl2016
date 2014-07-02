@@ -41,6 +41,9 @@ firebase.factory("firebaseService",function($firebase){
                 return item.id;
             });
         },
+        copy:function(data){
+            return angular.copy(data);
+        },
         //data is an firebase collection
         copyList:function(data){
             var list={};

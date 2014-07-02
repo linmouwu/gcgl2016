@@ -15,17 +15,17 @@
             <div class="panel-body">
                     <div class="form-group">
                         <label>Product Name</label>
-                        <input type="text" class="form-control" ng-model="productCopy.name">
+                        <input type="text" class="form-control" ng-model="product.name">
                     </div>
                     <div class="form-group">
                         <label>Product Type</label>
-                        <select class="form-control" ng-model="productCopy.type" ng-options="type as type for type in types" disabled>
+                        <select class="form-control" ng-model="product.type" ng-options="type as type for type in types" disabled>
                             <option value="">-----</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Product Description</label>
-                        <textarea class="form-control" rows="3" ng-model="productCopy.object"></textarea>
+                        <textarea class="form-control" rows="3" ng-model="product.object"></textarea>
                     </div>
 
                     <div class="panel panel-success">
@@ -39,7 +39,7 @@
                                     <th>Field Description</th>
                                     <th>Delete</th>
                                 </tr>
-                                <tr ng-repeat="field in productCopy.fields">
+                                <tr ng-repeat="field in product.fields">
                                     <td>{{field.name}}</td>
                                     <td>{{field.description}}</td>
                                     <td ng-click="remove(field)"><span class="glyphicon glyphicon-remove"></span></td>
