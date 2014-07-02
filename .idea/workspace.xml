@@ -2,14 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="464aae23-0f1f-461f-9086-2b46606fad35" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/app/project/prepare.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/project/createProject.html" afterPath="$PROJECT_DIR$/public/app/project/createProject.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/project/editProject.html" afterPath="$PROJECT_DIR$/public/app/project/editProject.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/process/process.js" afterPath="$PROJECT_DIR$/public/app/process/process.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/product/product.js" afterPath="$PROJECT_DIR$/public/app/product/product.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/project/project.html" afterPath="$PROJECT_DIR$/public/app/project/project.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/project/project.js" afterPath="$PROJECT_DIR$/public/app/project/project.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/common/firebase/services.js" afterPath="$PROJECT_DIR$/public/common/firebase/services.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="gcgl2016.iws" />
@@ -619,13 +611,18 @@
       <created>1404060366946</created>
       <updated>1404060366946</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="before new refactor">
+      <created>1404221352726</created>
+      <updated>1404221352726</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="1" width="1918" height="1038" extended-state="0" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -640,7 +637,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -670,7 +666,8 @@
     <MESSAGE value="process updated. and product is updating.&#10;find an important problem about resolve and ui router&#10;" />
     <MESSAGE value="process refactored, product refactored: rearrange the controller and service to use firebase with angular copy." />
     <MESSAGE value="process refactored, product refactored: rearrange the controller and service to use firebase with angular copy.&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="process refactored, product refactored: rearrange the controller and service to use firebase with angular copy.&#10;" />
+    <MESSAGE value="before new refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="before new refactor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
