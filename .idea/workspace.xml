@@ -615,7 +615,11 @@
       <created>1404221352726</created>
       <updated>1404221352726</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="before new refactor&#10;">
+      <created>1404262828562</created>
+      <updated>1404262828562</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -667,7 +671,8 @@
     <MESSAGE value="process refactored, product refactored: rearrange the controller and service to use firebase with angular copy." />
     <MESSAGE value="process refactored, product refactored: rearrange the controller and service to use firebase with angular copy.&#10;" />
     <MESSAGE value="before new refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="before new refactor" />
+    <MESSAGE value="before new refactor&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="before new refactor&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
