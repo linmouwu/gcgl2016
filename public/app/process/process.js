@@ -186,7 +186,7 @@ app.factory('ProcessService', function(firebaseService,$q) {
             var types=["product","process"];
             return types;
         },
-        //process without key
+        //process without key, process modified no return
         withProduct:function(process,productList,processList){
 //            console.log(productList);
 //            console.log(processList);
@@ -202,7 +202,6 @@ app.factory('ProcessService', function(firebaseService,$q) {
             else{
                 process.output=firebaseService.extendSingle(process.output,processList);
             }
-            return process;
         }
     };
     return processService;

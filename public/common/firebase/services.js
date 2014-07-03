@@ -14,15 +14,15 @@ firebase.factory("firebaseService",function($firebase){
                 return [];
             }
             //base is an array of id
-            //ref is a firebase reference of entities
+            //ref is a reference of entities
             var entities= _.filter(ids,function(id){
-                if(_.contains(ref.$getIndex(),id)){
+                if(_.contains(Object.keys(ref),id)){
                     return true;
                 }
                 return false;
             });
             var result= _.map(entities,function(id){
-                var o=ref[id];
+                var o=angular.copy(ref[id]);
                 o.id=id;
                 return o;
             });

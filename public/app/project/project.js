@@ -14,10 +14,15 @@ app.config(function($stateProvider, $urlRouterProvider){
                             return ProjectService.list();
                         }
                     },
-                    controller:function($scope,ProjectService,projectList){
+                    controller:function($scope,$state,ProjectService,projectList){
                         $scope.projectList=projectList;
                         $scope.remove=function(key){
                             ProjectService.remove(key).then(function(){
+                                $state.transitionTo($state.current, $stateParams, {
+                                    reload: true,
+                                    inherit: false,
+                                    notify: true
+                                });
                                 console.log("ProjectController:Remove Successful");
                             },function(){
                                 console.log("ProjectController:Remove failed");
@@ -39,7 +44,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                             $scope.project.status="New";
                             ProjectService.create($scope.project).then(function(){
                                 console.log("CreateProjectController:Create Success");
-                                $state.go("^");
+                                $state.go("^",{},{reload:true});
                             },function(){
                                 console.log("CreateProjectController:Create Failed");
                             })
@@ -61,9 +66,9 @@ app.config(function($stateProvider, $urlRouterProvider){
                             return ProcessService.list();
                         },
                         toSelectIds:function(ProjectService,ProcessService,project,processes){
-                            console.log("project");
-                            console.log(project);
-                            var processIds=processes.$getIndex();
+//                            console.log("project");
+//                            console.log(project);
+                            var processIds=Object.keys(processes);
                             var has=function(id){
                                 if(_.contains(project.selected,id)){
                                     return false;
@@ -76,14 +81,14 @@ app.config(function($stateProvider, $urlRouterProvider){
                             return listAfterHas;
                         },
                         selectIds:function(project){
-                            console.log("project.selected");
-                            console.log(project.selected);
-                            console.log(project);
+//                            console.log("project.selected");
+//                            console.log(project.selected);
+//                            console.log(project);
                             return angular.copy(project.selected);
                         }
                     },
                     controller:function($scope,$state,$stateParams,ProjectService,project,selectIds,toSelectIds,processes,$stateParams,firebaseService){
-                        $scope.projectCopy=angular.copy(project);
+                        $scope.project=project;
 //                        console.log("0:new projectCopy");
 //                        console.log($scope.projectCopy);
                         $scope.myData2 =angular.copy(firebaseService.extend(toSelectIds,processes));
@@ -117,13 +122,16 @@ app.config(function($stateProvider, $urlRouterProvider){
                             $scope.gridOptions.selectAll(false);
                         };
                         $scope.save=function(){
+//                            console.log("demo whether has ids");
+//                            console.log(processes);
 //                            console.log("1:projectCopy");
 //                            console.log($scope.projectCopy);
-                            $scope.projectCopy.selected=firebaseService.toIds(angular.copy($scope.myData));
+                            $scope.project.selected=firebaseService.toIds($scope.myData);
 //                            console.log("2:projectCopy with new selected");
 //                            console.log($scope.projectCopy);
-                            ProjectService.update($stateParams.id,$scope.projectCopy);
-                            $state.go("^");
+                            console.log($scope.project);
+                            ProjectService.update($stateParams.id,$scope.project);
+                            $state.go("^",{},{reload:true});
                         };
                     }
                 }
@@ -144,30 +152,20 @@ app.config(function($stateProvider, $urlRouterProvider){
                         processes:function(ProcessService){
                             return ProcessService.list();
                         },
-                        subProcesses:function(ProcessService,firebaseService,project,processes,products){
-                            var withProcess=firebaseService.extend(project.selected,processes);
-                            console.log("withProcess");
-                            console.log(withProcess);
-                            var withProduct=_.map(withProcess,function(process){
-                                if(process.inputType=="product"){
-                                    console.log("is a product");
-                                    process.input=firebaseService.extendSingle(process.input,products);
-                                }
-                                else{
-                                    process.input=firebaseService.extendSingle(process.input,processes);
-                                }
-                                if(process.outputType=="product"){
-                                    console.log("is a product");
-                                    process.output=firebaseService.extendSingle(process.output,products);
-                                }
-                                else{
-                                    process.output=firebaseService.extendSingle(process.output,processes);
-                                }
-                                return process;
+                        subProcesses:function(ProcessService,firebaseService,ProjectService,project,processes,products){
+                            console.log(processes);
+                            console.log(project);
+                            ProjectService.withProcess(project,processes);
+//                            //var withProcess=firebaseService.extend(project.selected,processes);
+//                            console.log(project.selected);
+                            _.each(project.selected,function(process){
+                                ProcessService.withProduct(process,products,processes);
                             });
-                            console.log("withProduct");
-                            console.log(withProduct);
-                            return withProduct;
+//
+//                            console.log("full project");
+//                            console.log(project);
+
+                            return project.selected;
 
                         }
                     },
@@ -207,6 +205,8 @@ app.factory('ProjectService', function(firebaseService,$q) {
         },
         find:function(key){
             var promise=projectRefLoad.promise.then(function(){
+//                console.log("projectRef[key]");
+//                console.log(firebaseService.copy(projectRef[key]));
                 return firebaseService.copy(projectRef[key]);
             });
             return promise;
@@ -215,6 +215,12 @@ app.factory('ProjectService', function(firebaseService,$q) {
             return projectRefLoad.promise.then(function(data){
                 return firebaseService.copyList(data);
             });
+        },
+        //project without key, project modified , no return
+        withProcess:function(project,processList){
+//            console.log(productList);
+//            console.log(processList);
+            project.selected=firebaseService.extend(project.selected,processList);
         }
     };
     return projectService;

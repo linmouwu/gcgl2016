@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="464aae23-0f1f-461f-9086-2b46606fad35" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\process\relation.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/process/editProcess.html" afterPath="$PROJECT_DIR$/public/app/process/editProcess.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/product/editProduct.html" afterPath="$PROJECT_DIR$/public/app/product/editProduct.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/process/process.html" afterPath="$PROJECT_DIR$/public/app/process/process.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/project/editProject.html" afterPath="$PROJECT_DIR$/public/app/project/editProject.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/process/process.js" afterPath="$PROJECT_DIR$/public/app/process/process.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/product/product.js" afterPath="$PROJECT_DIR$/public/app/product/product.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/project/project.js" afterPath="$PROJECT_DIR$/public/app/project/project.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/common/firebase/services.js" afterPath="$PROJECT_DIR$/public/common/firebase/services.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -33,37 +29,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="project.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/app/project/project.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="214" column="62" selection-start="9780" selection-end="9780" vertical-scroll-proportion="0.48907563" vertical-offset="3775" max-vertical-offset="4484">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="process.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/process/process.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="25" selection-start="1347" selection-end="1592" vertical-scroll-proportion="0.0" vertical-offset="1254" max-vertical-offset="4085">
+            <state line="194" column="13" selection-start="8176" selection-end="8176" vertical-scroll-proportion="0.0" vertical-offset="3336" max-vertical-offset="4066">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="product.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="services.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/common/firebase/services.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="8" selection-start="1300" selection-end="1300" vertical-scroll-proportion="0.0" vertical-offset="583" max-vertical-offset="1178">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="product.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/product/product.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="59" selection-start="3562" selection-end="3562" vertical-scroll-proportion="0.45714286" vertical-offset="1267" max-vertical-offset="2736">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="editProduct.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/app/product/editProduct.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="56" selection-start="1756" selection-end="1756" vertical-scroll-proportion="-7.928571" vertical-offset="557" max-vertical-offset="1330">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="product.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/app/product/product.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="39" selection-start="954" selection-end="954" vertical-scroll-proportion="-8.357142" vertical-offset="298" max-vertical-offset="893">
+            <state line="112" column="28" selection-start="4687" selection-end="4690" vertical-scroll-proportion="-7.6" vertical-offset="1938" max-vertical-offset="2736">
               <folding />
             </state>
           </provider>
@@ -127,17 +123,17 @@
         <option value="$PROJECT_DIR$/public/app.js" />
         <option value="$PROJECT_DIR$/public/app/product/product.html" />
         <option value="$PROJECT_DIR$/public/app/product/createProduct.html" />
-        <option value="$PROJECT_DIR$/public/app/project/editProject.html" />
         <option value="$PROJECT_DIR$/public/app/project/createProject.html" />
         <option value="$PROJECT_DIR$/public/app/project/project.html" />
         <option value="$PROJECT_DIR$/public/app/project/prepare.html" />
-        <option value="$PROJECT_DIR$/public/common/firebase/services.js" />
-        <option value="$PROJECT_DIR$/public/app/project/project.js" />
         <option value="$PROJECT_DIR$/public/app/process/process.html" />
         <option value="$PROJECT_DIR$/public/app/process/editProcess.html" />
-        <option value="$PROJECT_DIR$/public/app/process/process.js" />
         <option value="$PROJECT_DIR$/public/app/product/editProduct.html" />
         <option value="$PROJECT_DIR$/public/app/product/product.js" />
+        <option value="$PROJECT_DIR$/public/app/project/editProject.html" />
+        <option value="$PROJECT_DIR$/public/common/firebase/services.js" />
+        <option value="$PROJECT_DIR$/public/app/process/process.js" />
+        <option value="$PROJECT_DIR$/public/app/project/project.js" />
       </list>
     </option>
   </component>
@@ -586,7 +582,11 @@
       <created>1404262838777</created>
       <updated>1404262838777</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="process refactored&#10;">
+      <created>1404266919623</created>
+      <updated>1404266919623</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -639,7 +639,8 @@
     <MESSAGE value="process refactored, product refactored: rearrange the controller and service to use firebase with angular copy.&#10;" />
     <MESSAGE value="before new refactor" />
     <MESSAGE value="before new refactor&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="before new refactor&#10;" />
+    <MESSAGE value="process refactored&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="process refactored&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -879,13 +880,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/project/editProject.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="50" selection-start="1626" selection-end="1711" vertical-scroll-proportion="1.2063493" vertical-offset="0" max-vertical-offset="988">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/app/project/project.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="33" column="47" selection-start="1177" selection-end="1177" vertical-scroll-proportion="0.680776" vertical-offset="241" max-vertical-offset="931">
@@ -896,20 +890,6 @@
     <entry file="file://$PROJECT_DIR$/public/app/project/prepare.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="49" selection-start="884" selection-end="884" vertical-scroll-proportion="0.8377425" vertical-offset="0" max-vertical-offset="703">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/project/project.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="215" column="54" selection-start="9964" selection-end="9964" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4370">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/common/firebase/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="8" selection-start="932" selection-end="932" vertical-scroll-proportion="0.33277312" vertical-offset="372" max-vertical-offset="1178">
           <folding />
         </state>
       </provider>
@@ -935,13 +915,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/process/process.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="25" selection-start="1347" selection-end="1592" vertical-scroll-proportion="0.0" vertical-offset="171" max-vertical-offset="4085">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/app/product/createProduct.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="81" selection-start="1129" selection-end="1136" vertical-scroll-proportion="0.54428047" vertical-offset="237" max-vertical-offset="779">
@@ -951,21 +924,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/product/product.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="39" selection-start="954" selection-end="954" vertical-scroll-proportion="-8.357142" vertical-offset="298" max-vertical-offset="893">
+        <state line="28" column="39" selection-start="954" selection-end="954" vertical-scroll-proportion="0.41269842" vertical-offset="298" max-vertical-offset="893">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/product/editProduct.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="56" selection-start="1756" selection-end="1756" vertical-scroll-proportion="-7.928571" vertical-offset="557" max-vertical-offset="1330">
+        <state line="41" column="56" selection-start="1756" selection-end="1756" vertical-scroll-proportion="0.3915344" vertical-offset="557" max-vertical-offset="1330">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/product/product.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="59" selection-start="3562" selection-end="3562" vertical-scroll-proportion="0.45714286" vertical-offset="1267" max-vertical-offset="2736">
+        <state line="112" column="28" selection-start="4687" selection-end="4690" vertical-scroll-proportion="-7.6" vertical-offset="1938" max-vertical-offset="2736">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/project/editProject.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="81" selection-start="794" selection-end="794" vertical-scroll-proportion="0.11111111" vertical-offset="355" max-vertical-offset="988">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/process/process.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="194" column="13" selection-start="8176" selection-end="8176" vertical-scroll-proportion="0.0" vertical-offset="3336" max-vertical-offset="4066">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/common/firebase/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="8" selection-start="1300" selection-end="1300" vertical-scroll-proportion="0.0" vertical-offset="583" max-vertical-offset="1178">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/project/project.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="214" column="62" selection-start="9780" selection-end="9780" vertical-scroll-proportion="0.48907563" vertical-offset="3775" max-vertical-offset="4484">
           <folding />
         </state>
       </provider>
