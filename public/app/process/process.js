@@ -17,13 +17,22 @@ app.config(function($stateProvider, $urlRouterProvider){
                         processListWithProduct:function(ProcessService,processList,productList){
                             var ret={};
                             _.each(processList,function(process,id){
-                                ret[id]=ProcessService.withProduct(process,productList,processList);
+//                                console.log("process");
+//                                console.log(process);
+//                                console.log("id");
+//                                console.log(id);
+                                ProcessService.withProduct(process,productList,processList);
+                                ret[id]=process;
                             });
+                            console.log("ret");
+                            console.log(ret);
                             return ret;
                         }
                     },
                     controller:function($scope,ProcessService,processListWithProduct,$state,$stateParams){
                         $scope.processList=processListWithProduct;
+                        console.log("$scope.processList");
+                        console.log($scope.processList);
                         $scope.remove=function(key){
                             ProcessService.remove(key).then(function(){
                                 $state.transitionTo($state.current, $stateParams, {

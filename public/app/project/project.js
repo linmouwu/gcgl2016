@@ -14,7 +14,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                             return ProjectService.list();
                         }
                     },
-                    controller:function($scope,$state,ProjectService,projectList){
+                    controller:function($scope,$state,$stateParams,ProjectService,projectList){
                         $scope.projectList=projectList;
                         $scope.remove=function(key){
                             ProjectService.remove(key).then(function(){
@@ -165,13 +165,36 @@ app.config(function($stateProvider, $urlRouterProvider){
 //                            console.log("full project");
 //                            console.log(project);
 
-                            return project.selected;
+                            return project;
 
                         }
                     },
-                    controller:function($scope,$state,ProjectService,subProcesses){
-                        $scope.processes=subProcesses;
-                        console.log(subProcesses);
+                    controller:function($scope,$state,$stateParams,ProjectService,ExeProjectService,subProcesses){
+                        $scope.processes=subProcesses.selected;
+                        $scope.start=function(){
+                            //1.update project's status to Active
+                            //2.copy project to exeProject
+                            //3.create processData field and paste all selected process to it
+                            ProjectService.find($stateParams.id).then(function(project){
+                                project.status="Active";
+                                console.log("project");
+                                console.log(project);
+                                ProjectService.update($stateParams.id,project).then(function(){
+                                    console.log(subProcesses);
+                                    ExeProjectService.create(subProcesses).then(function(ref){
+                                        var pId=ref.name();
+
+                                        _.each(subProcesses.selected,function(process){
+
+                                            ExeProjectService.addProcessData(pId,process);
+                                        });
+;                                    });
+                                    $state.go("^",{},{reload:true});
+                                })
+
+                            });
+                        }
+//                        console.log(subProcesses);
                     }
                 }
             }

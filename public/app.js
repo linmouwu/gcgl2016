@@ -89,7 +89,8 @@ app.config(function($stateProvider, $urlRouterProvider){
             views:{
                 'main@':{
                     templateUrl: "app/blank/blank.html",
-                    controller: "BlankController"
+                    controller: function($scope,firebaseService){
+                    }
                 }
             }
         })

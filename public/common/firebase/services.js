@@ -51,6 +51,17 @@ firebase.factory("firebaseService",function($firebase){
                 list[id]=angular.copy(data[id]);
             });
             return list;
+        },
+        //before {key:{field1:"",field2:""}}
+        //after {id:key,field1:"",field2:""}
+        embedIds:function(obj){
+            var keys=Object.keys(obj);
+            var ret=_.map(keys,function(id){
+                var o=angular.copy(obj[id]);
+                o.id=id;
+                return o;
+            });
+            return ret;
         }
     }
 });
