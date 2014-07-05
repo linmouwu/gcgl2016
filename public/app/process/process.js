@@ -14,7 +14,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                         processList:function(ProcessService){
                             return ProcessService.list();
                         },
-                        processListWithProduct:function(ProcessService,processList,productList){
+                        processListWithProduct:function(ProcessService,firebaseService,processList,productList){
                             var ret={};
                             _.each(processList,function(process,id){
 //                                console.log("process");
@@ -22,6 +22,12 @@ app.config(function($stateProvider, $urlRouterProvider){
 //                                console.log("id");
 //                                console.log(id);
                                 ProcessService.withProduct(process,productList,processList);
+                                console.log("process.input");
+                                console.log(process.input);
+                                process.input=firebaseService.embedId(process.input);
+                                process.output=firebaseService.embedId(process.output);
+                                console.log("process.input");
+                                console.log(process.input);
                                 ret[id]=process;
                             });
                             console.log("ret");

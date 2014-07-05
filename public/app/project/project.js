@@ -91,8 +91,8 @@ app.config(function($stateProvider, $urlRouterProvider){
                         $scope.project=project;
 //                        console.log("0:new projectCopy");
 //                        console.log($scope.projectCopy);
-                        $scope.myData2 =angular.copy(firebaseService.extend(toSelectIds,processes));
-                        $scope.myData = angular.copy(firebaseService.extend(selectIds,processes));
+                        $scope.myData2 =firebaseService.embedIdsArray(firebaseService.extend(toSelectIds,processes));
+                        $scope.myData = firebaseService.embedIdsArray(firebaseService.extend(selectIds,processes));
 
 //                        console.log($scope.myData2);
 //                        console.log($scope.myData);
@@ -156,38 +156,44 @@ app.config(function($stateProvider, $urlRouterProvider){
                             console.log(processes);
                             console.log(project);
                             ProjectService.withProcess(project,processes);
+                            var subProcesses=firebaseService.embedIdsArray(project.selected);
 //                            //var withProcess=firebaseService.extend(project.selected,processes);
 //                            console.log(project.selected);
-                            _.each(project.selected,function(process){
+                            console.log("subProcesses");
+                            console.log(angular.copy(subProcesses));
+                            _.each(subProcesses,function(process){
                                 ProcessService.withProduct(process,products,processes);
+                                process.input=firebaseService.embedId(process.input);
+                                process.output=firebaseService.embedId(process.output);
                             });
 //
 //                            console.log("full project");
 //                            console.log(project);
 
-                            return project;
+                            console.log("subProcesses");
+                            console.log(subProcesses);
+                            return subProcesses;
 
                         }
                     },
-                    controller:function($scope,$state,$stateParams,ProjectService,ExeProjectService,subProcesses){
-                        $scope.processes=subProcesses.selected;
+                    controller:function($scope,$state,$stateParams,ProjectService,ProcessService,ExeProjectService,subProcesses){
+                        $scope.processes=subProcesses;
                         $scope.start=function(){
                             //1.update project's status to Active
                             //2.copy project to exeProject
                             //3.create processData field and paste all selected process to it
                             ProjectService.find($stateParams.id).then(function(project){
+                                var projectId=$stateParams.id;
                                 project.status="Active";
                                 console.log("project");
                                 console.log(project);
-                                ProjectService.update($stateParams.id,project).then(function(){
-                                    console.log(subProcesses);
-                                    ExeProjectService.create(subProcesses).then(function(ref){
-                                        var pId=ref.name();
-
-                                        _.each(subProcesses.selected,function(process){
-
-                                            ExeProjectService.addProcessData(pId,process);
-                                        });
+                                ProjectService.update(projectId,project).then(function(){
+                                    var exeProject={};
+                                    exeProject[projectId]=project;
+                                    console.log("exeProject");
+                                    console.log(exeProject);
+                                    ExeProjectService.create(exeProject).then(function(){
+                                        ExeProjectService.createProcessProjectData(projectId);
 ;                                    });
                                     $state.go("^",{},{reload:true});
                                 })

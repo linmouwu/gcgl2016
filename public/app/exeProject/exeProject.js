@@ -23,7 +23,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                         $scope.selectId=ExeProjectService.getCurrentProjectId();
                         $scope.myData = [];
                         if(!_.isUndefined(currentProject)){
-                            $scope.myData=firebaseService.embedIds(currentProject.processData);
+                            $scope.myData=firebaseService.embedIdsObj(currentProject.processData);
                         };
                         $scope.mySelections=[];
                         $scope.gridOptions = {
@@ -84,7 +84,7 @@ app.config(function($stateProvider, $urlRouterProvider){
         })
 });
 
-app.factory('ExeProjectService', function(firebaseService,$q) {
+app.factory('ExeProjectService', function(firebaseService,ProjectService,ProcessService,ProductService,$q) {
     var exeProjectRef = firebaseService.ref("/exeProject");
     var exeProjectRefLoad=$q.defer();
     exeProjectRef.$on("loaded",function(){
@@ -96,7 +96,7 @@ app.factory('ExeProjectService', function(firebaseService,$q) {
     //Public Method
     var exeProjectService = {
         create: function(project) {
-            return exeProjectRef.$add(project);
+            return exeProjectRef.$update(project);
         },
         remove: function(key){
             return exeProjectRef.$remove(key);
@@ -138,12 +138,54 @@ app.factory('ExeProjectService', function(firebaseService,$q) {
                 })[0];
             })
         },
-        addProcessData:function(pId,processData){
-            var promise=exeProjectRefLoad.promise.then(function(){
+        createProcessProjectData:function(pId){
+            exeProjectService.find(pId).then(function(exeProjectContent){
                 var processDataRef=exeProjectRef.$child(pId).$child("processData");
-                return processDataRef.$add(processData);
+                var productDataRef=exeProjectRef.$child(pId).$child("productData");
+                ProcessService.list().then(function(processes){
+                    var selectProcesses=firebaseService.extend(exeProjectContent.selected,processes);
+                    _.each(selectProcesses,function(process){
+                        processDataRef.$update(process);
+                        var processContent=process[Object.keys(process)[0]];
+                        ProductService.list().then(function(products){
+                            ProcessService.withProduct(processContent,products,processes);
+                            if(Object.keys(processContent.input).length==1){
+                                if(processContent.inputType=="product"){
+                                    productDataRef.$update(processContent.input);
+                                }
+                                if(processContent.inputType=="process"){
+                                    processDataRef.$update(processContent.input);
+                                }
+                            }
+
+                            if(Object.keys(processContent.output).length==1){
+                                if(processContent.outputType=="product"){
+                                    productDataRef.$update(processContent.output);
+                                }
+                                if(processContent.outputType=="process"){
+                                    processDataRef.$update(processContent.output);
+                                }
+                            }
+                        })
+                    });
+                })
             });
-            return promise;
+
+//            var promise=exeProjectRefLoad.promise.then(function(){
+//                var processDataRef=exeProjectRef.$child(pId).$child("processData");
+//                var productDataRef=exeProjectRef.$child(pId).$child("productData");
+//                _.each(processIds,function(processId){
+//                    ProcessService.find(processId).then(function(processContent){
+//                        var process={};
+//                        process[processId]=processContent;
+//                        processDataRef.$update(process);
+//                        if(!_.isUndefined(processContent.input)&&!(processContent.input=="")){
+//                            if(processContent.inputType=="document"){}
+//                        }
+//                    })
+//                })
+//            });
+//            return promise;
         }
     };
     return exeProjectService;

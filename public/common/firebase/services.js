@@ -4,7 +4,7 @@
 var firebase=angular.module('myApp.firebase', []);
 firebase.factory("firebaseService",function($firebase){
     var baseUrl="https://sweltering-fire-3478.firebaseio.com"
-    return {
+    var firebaseService = {
         ref: function(path){
             return $firebase(new Firebase(baseUrl+path));
         },
@@ -22,8 +22,8 @@ firebase.factory("firebaseService",function($firebase){
                 return false;
             });
             var result= _.map(entities,function(id){
-                var o=angular.copy(ref[id]);
-                o.id=id;
+                var o={};
+                o[id]=angular.copy(ref[id]);
                 return o;
             });
             return result;
@@ -32,9 +32,36 @@ firebase.factory("firebaseService",function($firebase){
             if(_.isUndefined(id)){
                 return {};
             }
-            var result=angular.copy(ref[id]);
-            result.id=id;
+            var result={};
+            result[id]=angular.copy(ref[id]);
             return result;
+        },
+        //before {key:{field1:"",field2:""}}
+        //after {id:key,field1:"",field2:""}
+        embedIdsObj:function(obj){
+            var keys=Object.keys(obj);
+            var ret=_.map(keys,function(id){
+                var o=angular.copy(obj[id]);
+                o.id=id;
+                return o;
+            });
+            return ret;
+        },
+        embedIdsArray:function(objs){
+            var ret=_.map(objs,function(obj){
+                return firebaseService.embedId(obj);
+            });
+            return ret;
+        },
+        embedId:function(obj){
+            var keys=Object.keys(obj);
+            if(keys.length!=1){
+                return {};
+            }
+            var id=keys[0];
+            var ret=angular.copy(obj[id]);
+            ret.id=id;
+            return ret;
         },
         toIds:function(array){
             return _.map(array,function(item){
@@ -52,16 +79,15 @@ firebase.factory("firebaseService",function($firebase){
             });
             return list;
         },
-        //before {key:{field1:"",field2:""}}
-        //after {id:key,field1:"",field2:""}
-        embedIds:function(obj){
+        objToArray:function(obj){
             var keys=Object.keys(obj);
-            var ret=_.map(keys,function(id){
-                var o=angular.copy(obj[id]);
-                o.id=id;
+            var ret= _.map(keys,function(key){
+                var o={};
+                o[key]=obj[key];
                 return o;
             });
             return ret;
         }
     }
+    return firebaseService;
 });
