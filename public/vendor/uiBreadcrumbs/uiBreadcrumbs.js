@@ -7,7 +7,7 @@ angular.module('myApp.directives.uiBreadcrumbs', ['ui.router'])
     .directive('uiBreadcrumbs', function($interpolate, $state) {
         return {
             restrict: 'E',
-            templateUrl: 'common/uiBreadcrumbs/uiBreadcrumbs.tpl.html',
+            templateUrl: 'vendor/uiBreadcrumbs/uiBreadcrumbs.tpl.html',
             scope: {
                 displaynameProperty: '@'
             },

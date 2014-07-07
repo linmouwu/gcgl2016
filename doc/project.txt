@@ -1,0 +1,12 @@
+product={
+	项目名称name,
+	项目描述description,
+	项目状态status:{"New","Active","Archieve"}
+	所选过程selected:[processId]
+}
+
+项目主页列表：项目名称，项目状态，操作，修改，删除
+
+新建项目页面：项目名称，项目描述。
+
+修改项目页面：项目名称，项目描述，项目所选子过程

@@ -1,0 +1,10 @@
+product={
+	产品名称name,
+	产品类型type:[document],
+	产品描述description,
+	产品细节fields:{name,description}
+}
+
+产品主页列表：产品名称，产品类型，修改，删除
+
+新建产品页面：产品名称，产品类型，产品描述。

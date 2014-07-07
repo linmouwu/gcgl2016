@@ -1,0 +1,26 @@
+{
+  "name": "gcgl2016",
+  "version": "0.0.0",
+  "homepage": "https://github.com/dingziran/gcgl2016",
+  "authors": [
+    "dingziran <dingziranrr@163.com>"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.19"
+  },
+  "devDependencies": {
+    "angular": "~1.2.19",
+    "angular-mocks": "~1.2.19"
+  }
+}
