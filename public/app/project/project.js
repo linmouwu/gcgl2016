@@ -87,7 +87,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                             return angular.copy(project.selected);
                         }
                     },
-                    controller:function($scope,$state,$stateParams,ProjectService,project,selectIds,toSelectIds,processes,$stateParams,firebaseService){
+                    controller:function($scope,$state,$stateParams,ProjectService,project,selectIds,toSelectIds,processes,firebaseService){
                         $scope.project=project;
 //                        console.log("0:new projectCopy");
 //                        console.log($scope.projectCopy);
