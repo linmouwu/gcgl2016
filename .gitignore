@@ -29,6 +29,6 @@ bin
 
 public
 
-bower_components
+vendor
 
 .sonar

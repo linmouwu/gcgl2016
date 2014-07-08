@@ -19,6 +19,15 @@
 
     <!-- SB Admin CSS - Include with every page -->
     <link href="sb-admin.css" rel="stylesheet">
+	
+	
+    <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+
+    <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+    <script type="text/javascript" src="<%= file %>"></script><% }); %>
+	
+	
 
 </head>
 

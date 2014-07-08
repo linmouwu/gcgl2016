@@ -17,6 +17,11 @@
     "karma-jasmine": "^0.1.5",
     "grunt-conventional-changelog": "^1.1.0",
     "grunt-contrib-jshint": "^0.10.0",
-    "grunt-bump": "0.0.14"
+    "grunt-bump": "0.0.14",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-karma": "^0.8.3",
+    "grunt-html2js": "^0.2.8",
+    "grunt-contrib-concat": "^0.4.0",
+    "grunt-contrib-copy": "^0.5.0"
   }
 }

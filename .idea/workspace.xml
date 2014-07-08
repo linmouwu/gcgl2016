@@ -1,142 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="464aae23-0f1f-461f-9086-2b46606fad35" name="Default" comment="new refactor">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/fonts/FontAwesome.otf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/fonts/fontawesome-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/fonts/fontawesome-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/fonts/fontawesome-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CHANGELOG.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/scss/_bordered-pulled.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/scss/_core.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/scss/_fixed-width.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/scss/_icons.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/scss/_larger.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/scss/_list.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/scss/_mixins.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/scss/_path.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/scss/_rotated-flipped.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/scss/_spinning.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/scss/_stacked.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/scss/_variables.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/angularjs/angular-ui-router.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/angularjs/angular.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/firebase/angularfire.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/charts/bar-chart.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/blank/blank.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/bootstrap/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/bootstrap/bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/bootstrap/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/bootstrap/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/less/bordered-pulled.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/ui-elements/buttons.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/changelog.tpl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/controllers.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/less/core.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/create.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/process/createProcess.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/product/createProduct.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/project/createProject.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/user/createUser.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/common/d3/d3.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/d3/d3.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/dashboard/dashboard-demo.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/dataTables/dataTables.bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/dataTables/dataTables.bootstrap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/common/d3/directives.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/process/editProcess.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/product/editProduct.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/project/editProject.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/flot/excanvas.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/exeProject/exeProject.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/exeProject.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/firebase/firebase.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/less/fixed-width.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/charts/flot-demo.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/charts/flot.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/css/font-awesome.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/less/font-awesome.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/css/font-awesome.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/scss/font-awesome.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/fonts/fontawesome-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/forms/forms.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/ui-elements/grid.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/less/icons.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/dashboard/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/jquery-1.10.2.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/dataTables/jquery.dataTables.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/flot/jquery.flot.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/flot/jquery.flot.pie.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/flot/jquery.flot.resize.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/flot/jquery.flot.tooltip.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/metisMenu/jquery.metisMenu.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/karma.conf.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/less/larger.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/less/list.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/login.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/login.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/less/mixins.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/morris/morris-0.4.3.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/charts/morris-demo.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/charts/morris.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/morris/morris.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/angularjs/ng-grid-2.0.11.debug.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/angularjs/ng-grid.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/ui-elements/notifications.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/ui-elements/panels-wells.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/less/path.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/project/prepare.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/process/process.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/process.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/process/process.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/process.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/exeProject/processExe.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/exeProject/processList.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/product/product.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/views/product.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/product/product.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/product.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/project main page.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/project/project.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/project/project.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/project.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/morris/raphael-2.1.0.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/less/rotated-flipped.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sb-admin.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sb-admin.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/common/firebase/services.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/social-buttons/social-buttons.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sonar-project.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/less/spinning.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/less/stacked.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/tables/tables.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/test.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/timeline/timeline.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/ui-elements/typography.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/angularjs/ui-bootstrap-tpls-0.11.0.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/uiBreadcrumbs/uiBreadcrumbs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/uiBreadcrumbs/uiBreadcrumbs.tpl.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/underscore.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/user/user.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/user/user.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/common/underscore/util.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/vendor/font-awesome/less/variables.less" />
-      <change type="MOVED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\common\uiBreadcrumbs\uiBreadcrumbs.js" afterPath="$PROJECT_DIR$/public/vendor/uiBreadcrumbs/uiBreadcrumbs.js" />
-      <change type="MOVED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\common\uiBreadcrumbs\uiBreadcrumbs.tpl.html" afterPath="$PROJECT_DIR$/public/vendor/uiBreadcrumbs/uiBreadcrumbs.tpl.html" />
-      <change type="MOVED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\d3.js" afterPath="$PROJECT_DIR$/public/vendor/d3/d3.js" />
+    <list default="true" id="464aae23-0f1f-461f-9086-2b46606fad35" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.bowerrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/karma/karma-unit.tpl.js" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\charts\flot-demo.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\charts\morris-demo.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\dashboard\dashboard-demo.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\exeProject\exeProject.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\exeProject\processExe.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\exeProject\processList.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\forms\forms.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\process\createProcess.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\process\editProcess.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\process\process.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\process\process.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\product\createProduct.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\product\editProduct.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\product\product.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\product\product.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\project\createProject.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\project\editProject.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\project\prepare.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\project\project.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\project\project.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\tables\tables.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\test.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\ui-elements\buttons.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\ui-elements\grid.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\ui-elements\notifications.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\ui-elements\panels-wells.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\ui-elements\typography.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\user\createUser.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\user\user.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\user\user.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\common\d3\d3.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\common\d3\directives.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\common\firebase\services.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\common\underscore\util.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\controllers.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\login.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\sb-admin.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\sb-admin.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\angularjs\angular-ui-router.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\angularjs\angular.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\angularjs\ng-grid-2.0.11.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\angularjs\ng-grid.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\angularjs\ui-bootstrap-tpls-0.11.0.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\bootstrap\bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\bootstrap\bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\bootstrap\bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\bootstrap\bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\d3\d3.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\dataTables\dataTables.bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\dataTables\dataTables.bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\dataTables\jquery.dataTables.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\firebase\angularfire.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\firebase\firebase.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\flot\excanvas.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\flot\jquery.flot.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\flot\jquery.flot.pie.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\flot\jquery.flot.resize.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\flot\jquery.flot.tooltip.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\css\font-awesome.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\css\font-awesome.min.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\fonts\FontAwesome.otf" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\fonts\fontawesome-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\fonts\fontawesome-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\fonts\fontawesome-webfont.ttf" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\fonts\fontawesome-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\less\bordered-pulled.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\less\core.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\less\fixed-width.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\less\font-awesome.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\less\icons.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\less\larger.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\less\list.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\less\mixins.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\less\path.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\less\rotated-flipped.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\less\spinning.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\less\stacked.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\less\variables.less" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\scss\_bordered-pulled.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\scss\_core.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\scss\_fixed-width.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\scss\_icons.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\scss\_larger.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\scss\_list.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\scss\_mixins.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\scss\_path.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\scss\_rotated-flipped.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\scss\_spinning.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\scss\_stacked.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\scss\_variables.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\font-awesome\scss\font-awesome.scss" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\fonts\glyphicons-halflings-regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\fonts\glyphicons-halflings-regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\fonts\glyphicons-halflings-regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\fonts\glyphicons-halflings-regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\jquery-1.10.2.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\metisMenu\jquery.metisMenu.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\morris\morris-0.4.3.min.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\morris\morris.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\morris\raphael-2.1.0.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\social-buttons\social-buttons.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\timeline\timeline.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\uiBreadcrumbs\uiBreadcrumbs.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\uiBreadcrumbs\uiBreadcrumbs.tpl.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\underscore.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\views\create.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\views\list.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\views\login.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\views\process.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\views\product.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\src\app\blank\blank.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\src\app\charts\bar-chart.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\src\app\charts\flot.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\src\app\charts\morris.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\src\app\dashboard\index.html" afterPath="" />
+      <change type="MOVED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\blank\blank.html" afterPath="$PROJECT_DIR$/src/app/blank/blank.tpl.html" />
+      <change type="MOVED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\charts\bar-chart.html" afterPath="$PROJECT_DIR$/src/app/charts/bar-chart.tpl.html" />
+      <change type="MOVED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\charts\flot.html" afterPath="$PROJECT_DIR$/src/app/charts/flot.tpl.html" />
+      <change type="MOVED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\charts\morris.html" afterPath="$PROJECT_DIR$/src/app/charts/morris.tpl.html" />
+      <change type="MOVED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\dashboard\index.html" afterPath="$PROJECT_DIR$/src/app/dashboard/index.tpl.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gruntfile.js" afterPath="$PROJECT_DIR$/Gruntfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/common/d3/d3.js" afterPath="$PROJECT_DIR$/public/common/d3/d3.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.config.js" afterPath="$PROJECT_DIR$/build.config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.html" afterPath="$PROJECT_DIR$/src/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -164,16 +158,7 @@
       <file leaf-file-name="Gruntfile.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Gruntfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="14" selection-start="750" selection-end="750" vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="1672">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="0" selection-start="572" selection-end="572" vertical-scroll-proportion="0.8333333" vertical-offset="133" max-vertical-offset="760">
+            <state line="101" column="41" selection-start="3399" selection-end="3399" vertical-scroll-proportion="-12.16" vertical-offset="1615" max-vertical-offset="5434">
               <folding />
             </state>
           </provider>
@@ -182,7 +167,43 @@
       <file leaf-file-name="build.config.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build.config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="67" selection-start="1010" selection-end="1010" vertical-scroll-proportion="0.0" vertical-offset="228" max-vertical-offset="1558">
+            <state line="67" column="68" selection-start="2580" selection-end="2580" vertical-scroll-proportion="0.0" vertical-offset="969" max-vertical-offset="1672">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bower.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bower.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="34" selection-start="676" selection-end="676" vertical-scroll-proportion="-14.142858" vertical-offset="193" max-vertical-offset="760">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1311">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="334" column="24" selection-start="12581" selection-end="12581" vertical-scroll-proportion="-11.428572" vertical-offset="6026" max-vertical-offset="8132">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="6" selection-start="561" selection-end="561" vertical-scroll-proportion="0.8" vertical-offset="133" max-vertical-offset="760">
               <folding />
             </state>
           </provider>
@@ -206,8 +227,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/public/common/services.js" />
-        <option value="$PROJECT_DIR$/public/common/d3.js" />
         <option value="$PROJECT_DIR$/public/app/test.html" />
         <option value="$PROJECT_DIR$/public/app/dashboard/index.html" />
         <option value="$PROJECT_DIR$/public/app/charts/flot.html" />
@@ -254,8 +273,10 @@
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/public/vendor/uiBreadcrumbs/uiBreadcrumbs.js" />
         <option value="$PROJECT_DIR$/public/common/d3/d3.js" />
-        <option value="$PROJECT_DIR$/build.config.js" />
         <option value="$PROJECT_DIR$/Gruntfile.js" />
+        <option value="$PROJECT_DIR$/src/index.html" />
+        <option value="$PROJECT_DIR$/build.config.js" />
+        <option value="$PROJECT_DIR$/bower.json" />
         <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
@@ -310,6 +331,84 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="angular-bootstrap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="karma" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -345,18 +444,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\WebstormProjects\gcgl2016\karma" />
       <recent name="C:\Users\Administrator\WebstormProjects\gcgl2016" />
       <recent name="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\process" />
       <recent name="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\angularjs" />
       <recent name="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\project" />
-      <recent name="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\product" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\WebstormProjects\gcgl2016" />
       <recent name="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor" />
       <recent name="C:\Users\Administrator\WebstormProjects\gcgl2016\public\vendor\d3" />
       <recent name="C:\Users\Administrator\WebstormProjects\gcgl2016\public" />
       <recent name="C:\Users\Administrator\WebstormProjects\gcgl2016\public\common\d3" />
-      <recent name="C:\Users\Administrator\WebstormProjects\gcgl2016\public\app\typography" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.app.js">
@@ -504,7 +603,11 @@
       <created>1404738714283</created>
       <updated>1404738714283</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="new architecture with grunt">
+      <created>1404747956565</created>
+      <updated>1404747956565</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -562,109 +665,16 @@
     <MESSAGE value="before refactor of inner id problem" />
     <MESSAGE value="complete data structure of exeProject" />
     <MESSAGE value="before add grunt and karma and sonar qube&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="before add grunt and karma and sonar qube&#10;" />
+    <MESSAGE value="new architecture with grunt" />
+    <option name="LAST_COMMIT_MESSAGE" value="new architecture with grunt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/app/process/editProcess.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="44" selection-start="653" selection-end="653" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="893" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/process/createProcess.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="26" selection-start="397" selection-end="1508" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="893" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/process/process.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="44" selection-start="1200" selection-end="1207" vertical-scroll-proportion="0.0" vertical-offset="269" max-vertical-offset="874" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/project/project.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="150" column="20" selection-start="4967" selection-end="4967" vertical-scroll-proportion="0.0" vertical-offset="2597" max-vertical-offset="3534">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/common/firebase/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="327" selection-end="327" vertical-scroll-proportion="0.0" vertical-offset="190" max-vertical-offset="361" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/process/process.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="15" selection-start="3300" selection-end="3441" vertical-scroll-proportion="0.0" vertical-offset="1919" max-vertical-offset="3477" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/product/product.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="30" selection-start="2654" selection-end="2654" vertical-scroll-proportion="0.0" vertical-offset="1153" max-vertical-offset="1748">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/product.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="30" selection-start="2410" selection-end="2410" vertical-scroll-proportion="0.0" vertical-offset="656" max-vertical-offset="1235" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/process.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="73" selection-start="1653" selection-end="1653" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1482" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="6" selection-start="876" selection-end="876" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="912" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="50" selection-start="1262" selection-end="1262" vertical-scroll-proportion="0.0" vertical-offset="399" max-vertical-offset="912" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="76" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0" vertical-offset="95" max-vertical-offset="494" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/create.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="4" selection-start="184" selection-end="184" vertical-scroll-proportion="0.328152" vertical-offset="0" max-vertical-offset="579" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/product.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="30" selection-start="2410" selection-end="2410" vertical-scroll-proportion="0.7046632" vertical-offset="656" max-vertical-offset="1235" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/process.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="47" selection-start="1624" selection-end="1624" vertical-scroll-proportion="0.82038" vertical-offset="285" max-vertical-offset="1501" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/sb-admin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/sb-admin.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="267" column="35" selection-start="4151" selection-end="4151" vertical-scroll-proportion="0.0" vertical-offset="4858" max-vertical-offset="6650" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/forms/forms.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="46" selection-start="6758" selection-end="6766" vertical-scroll-proportion="-4.75" vertical-offset="2280" max-vertical-offset="3914" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/express/node_modules/connect/node_modules/express-session/session/session.js">
@@ -677,124 +687,9 @@
         <state line="27" column="9" selection-start="404" selection-end="404" vertical-scroll-proportion="0.33277312" vertical-offset="315" max-vertical-offset="1254" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/project/createProject.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="38" selection-start="0" selection-end="1000" vertical-scroll-proportion="0.6031746" vertical-offset="0" max-vertical-offset="665" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/project/project.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="47" selection-start="1177" selection-end="1177" vertical-scroll-proportion="0.680776" vertical-offset="241" max-vertical-offset="931" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/process/createProcess.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="81" selection-start="576" selection-end="576" vertical-scroll-proportion="0.6031746" vertical-offset="0" max-vertical-offset="893" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/product/createProduct.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="81" selection-start="1129" selection-end="1136" vertical-scroll-proportion="0.54428047" vertical-offset="237" max-vertical-offset="779" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/product/editProduct.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="56" selection-start="1756" selection-end="1756" vertical-scroll-proportion="0.3915344" vertical-offset="557" max-vertical-offset="1330" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/project/editProject.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="81" selection-start="794" selection-end="794" vertical-scroll-proportion="0.11111111" vertical-offset="355" max-vertical-offset="988" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/blank/blank.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="44" selection-start="171" selection-end="171" vertical-scroll-proportion="0.16754851" vertical-offset="0" max-vertical-offset="567" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="65" selection-start="2679" selection-end="2679" vertical-scroll-proportion="0.52100843" vertical-offset="1419" max-vertical-offset="2318" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="17" selection-start="34" selection-end="58" vertical-scroll-proportion="-0.6785714" vertical-offset="0" max-vertical-offset="190" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/project/prepare.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="49" selection-start="884" selection-end="884" vertical-scroll-proportion="-12.107142" vertical-offset="136" max-vertical-offset="703" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/process/editProcess.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="81" selection-start="556" selection-end="556" vertical-scroll-proportion="0.44620812" vertical-offset="89" max-vertical-offset="1482" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/product/product.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="17" selection-start="162" selection-end="526" vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="893" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/exeProject/processExe.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="24" selection-start="347" selection-end="352" vertical-scroll-proportion="0.4691358" vertical-offset="0" max-vertical-offset="567" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/exeProject/processList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="17" selection-start="516" selection-end="872" vertical-scroll-proportion="0.4021164" vertical-offset="0" max-vertical-offset="760" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/grunt/node_modules/getobject/test/namespace_test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="2" selection-start="953" selection-end="953" vertical-scroll-proportion="0.33277312" vertical-offset="125" max-vertical-offset="1083" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/product/product.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="18" selection-start="4825" selection-end="4826" vertical-scroll-proportion="0.0" vertical-offset="2166" max-vertical-offset="2736">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/process/process.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="35" selection-start="1049" selection-end="1054" vertical-scroll-proportion="0.0" vertical-offset="279" max-vertical-offset="931">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/common/firebase/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="25" selection-start="927" selection-end="933" vertical-scroll-proportion="0.0" vertical-offset="11" max-vertical-offset="1881">
-          <folding>
-            <marker date="1404550039332" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1404550039332" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/process/process.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="204" column="8" selection-start="8798" selection-end="8798" vertical-scroll-proportion="0.0" vertical-offset="3686" max-vertical-offset="4351">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/exeProject/exeProject.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="29" selection-start="4279" selection-end="4279" vertical-scroll-proportion="0.0" vertical-offset="1824" max-vertical-offset="3762">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/project/project.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="52" selection-start="723" selection-end="723" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5035">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
@@ -811,51 +706,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/common/underscore/util.js">
+    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
+        <state line="101" column="41" selection-start="3399" selection-end="3399" vertical-scroll-proportion="-12.16" vertical-offset="1615" max-vertical-offset="5434">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/common/d3/d3.js">
+    <entry file="file://$PROJECT_DIR$/src/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="33" selection-start="565" selection-end="565" vertical-scroll-proportion="0.38319328" vertical-offset="0" max-vertical-offset="595">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1311">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/vendor/uiBreadcrumbs/uiBreadcrumbs.js">
+    <entry file="file://$PROJECT_DIR$/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="32" selection-start="250" selection-end="250" vertical-scroll-proportion="0.28739497" vertical-offset="0" max-vertical-offset="1729">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="399" column="61" selection-start="15023" selection-end="15023" vertical-scroll-proportion="0.4514991" vertical-offset="7325" max-vertical-offset="7961">
+        <state line="334" column="24" selection-start="12581" selection-end="12581" vertical-scroll-proportion="-11.428572" vertical-offset="6026" max-vertical-offset="8132">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="67" selection-start="1010" selection-end="1010" vertical-scroll-proportion="0.0" vertical-offset="228" max-vertical-offset="1558">
+        <state line="67" column="68" selection-start="2580" selection-end="2580" vertical-scroll-proportion="0.0" vertical-offset="969" max-vertical-offset="1672">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
+    <entry file="file://$PROJECT_DIR$/bower.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="14" selection-start="750" selection-end="750" vertical-scroll-proportion="0.0" vertical-offset="114" max-vertical-offset="1672">
+        <state line="31" column="34" selection-start="676" selection-end="676" vertical-scroll-proportion="-14.142858" vertical-offset="193" max-vertical-offset="760">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="572" selection-end="572" vertical-scroll-proportion="0.8333333" vertical-offset="133" max-vertical-offset="760">
+        <state line="31" column="6" selection-start="561" selection-end="561" vertical-scroll-proportion="0.8" vertical-offset="133" max-vertical-offset="760">
           <folding />
         </state>
       </provider>
