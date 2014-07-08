@@ -98,7 +98,6 @@ module.exports = function(grunt){
              */
             build_css: {
                 src: [
-                    '<%= vendor_files.css %>',
                     '<%= app_files.css %>'
                 ],
                 dest: '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
@@ -170,6 +169,26 @@ module.exports = function(grunt){
                     }
                 ]
             },
+            build_vendorcss: {
+                files: [
+                    {
+                        src: [ '<%= vendor_files.css %>' ],
+                        dest: '<%= build_dir %>/',
+                        cwd: '.',
+                        expand: true
+                    }
+                ]
+            },
+            build_fontawesome: {
+                files: [
+                    {
+                        src: [ '<%= vendor_files.fontawesome %>' ],
+                        dest: '<%= build_dir %>/',
+                        cwd: '.',
+                        expand: true
+                    }
+                ]
+            },
             compile_assets: {
                 files: [
                     {
@@ -227,7 +246,7 @@ module.exports = function(grunt){
 
     grunt.registerTask( 'build', [
         'clean','html2js','concat:build_css','copy:build_app_assets','copy:build_vendor_assets',
-        'copy:build_appjs', 'copy:build_vendorjs', 'index:build'
+        'copy:build_appjs', 'copy:build_vendorjs',  'copy:build_vendorcss','copy:build_fontawesome', 'index:build'
     ]);
 
     /**

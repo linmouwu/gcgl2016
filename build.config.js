@@ -62,21 +62,26 @@ module.exports = {
      */
     vendor_files: {
         js: [
+            'vendor/jquery/jquery.js',
+            'vendor/firebase/firebase.js',
             'vendor/angular/angular.js',
             'vendor/angular-bootstrap/ui-bootstrap-tpls.js',
             'vendor/angular-mocks/angular-mocks.js',
             'vendor/angular-ui-router/release/angular-ui-router.js',
             'vendor/angularfire/angularfire.js',
             'vendor/bootstrap/dist/js/bootstrap.js',
-            'vendor/firebase/firebase.js',
-            'vendor/jquery/jquery.js',
             'vendor/ng-grid/ng-grid-2.0.11.debug.js',
+            'vendor/metisMenu/dist/jquery.metisMenu.js'
         ],
         css: [
             'vendor/bootstrap/dist/css/bootstrap.css',
-            'vendor/ng-grid/ng-grid.css'
+            'vendor/ng-grid/ng-grid.css',
+            'vendor/font-awesome/css/font-awesome.css'
         ],
         assets: [
+        ],
+        fontawesome:[
+            'vendor/font-awesome/**/*'
         ]
     }
 };
