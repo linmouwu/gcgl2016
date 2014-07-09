@@ -28,13 +28,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CHANGELOG.md" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="CHANGELOG.md" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
           <provider editor-type-id="MarkdownPreviewEditor">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="133" selection-end="133" vertical-scroll-proportion="-7.3076925" vertical-offset="0" max-vertical-offset="342">
+            <state line="11" column="0" selection-start="165" selection-end="165" vertical-scroll-proportion="0.36731106" vertical-offset="0" max-vertical-offset="569">
               <folding />
             </state>
           </provider>
@@ -85,10 +85,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="package.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="33" selection-start="373" selection-end="382" vertical-scroll-proportion="0.5696649" vertical-offset="0" max-vertical-offset="665">
+            <state line="17" column="33" selection-start="373" selection-end="382" vertical-scroll-proportion="-11.535714" vertical-offset="0" max-vertical-offset="665">
               <folding />
             </state>
           </provider>
@@ -833,16 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="133" selection-end="133" vertical-scroll-proportion="-7.3076925" vertical-offset="0" max-vertical-offset="342">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/changelog.tpl">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="35" selection-start="594" selection-end="594" vertical-scroll-proportion="-12.92" vertical-offset="0" max-vertical-offset="551">
@@ -852,7 +842,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="33" selection-start="373" selection-end="382" vertical-scroll-proportion="0.5696649" vertical-offset="0" max-vertical-offset="665">
+        <state line="17" column="33" selection-start="373" selection-end="382" vertical-scroll-proportion="-11.535714" vertical-offset="0" max-vertical-offset="665">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="165" selection-end="165" vertical-scroll-proportion="0.36731106" vertical-offset="0" max-vertical-offset="569">
           <folding />
         </state>
       </provider>
