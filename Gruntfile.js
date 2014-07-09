@@ -3,6 +3,7 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-conventional-changelog');
     grunt.loadNpmTasks('grunt-bump');
     grunt.loadNpmTasks('grunt-karma');
@@ -179,10 +180,10 @@ module.exports = function(grunt){
                     }
                 ]
             },
-            build_fontawesome: {
+            build_lib: {
                 files: [
                     {
-                        src: [ '<%= vendor_files.fontawesome %>' ],
+                        src: [ '<%= vendor_files.lib %>' ],
                         dest: '<%= build_dir %>/',
                         cwd: '.',
                         expand: true
@@ -238,7 +239,173 @@ module.exports = function(grunt){
                     '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
                 ]
             }
+        },
+
+        /**
+         * This task compiles the karma template so that changes to its file array
+         * don't have to be managed manually.
+         */
+        karmaconfig: {
+            unit: {
+                dir: '<%= build_dir %>',
+                src: [
+                    '<%= vendor_files.js %>',
+                    '<%= html2js.app.dest %>',
+                    '<%= html2js.common.dest %>',
+                    '<%= test_files.js %>'
+                ]
+            }
+        },
+
+        /**
+         * The Karma configurations.
+         */
+        karma: {
+            options: {
+                configFile: '<%= build_dir %>/karma-unit.js'
+            },
+            unit: {
+                port: 9019,
+                background: true
+            },
+            continuous: {
+                singleRun: true
+            }
+        },
+
+        /**
+         * And for rapid development, we have a watch set up that checks to see if
+         * any of the files listed below change, and then to execute the listed
+         * tasks when they do. This just saves us from having to type "grunt" into
+         * the command-line every time we want to see what we're working on; we can
+         * instead just leave "grunt watch" running in a background terminal. Set it
+         * and forget it, as Ron Popeil used to tell us.
+         *
+         * But we don't need the same thing to happen for all the files.
+         */
+        delta: {
+            /**
+             * By default, we want the Live Reload to work for all tasks; this is
+             * overridden in some tasks (like this file) where browser resources are
+             * unaffected. It runs by default on port 35729, which your browser
+             * plugin should auto-detect.
+             */
+            options: {
+                livereload: true
+            },
+
+            /**
+             * When the Gruntfile changes, we just want to lint it. In fact, when
+             * your Gruntfile changes, it will automatically be reloaded!
+             */
+            gruntfile: {
+                files: 'Gruntfile.js',
+                tasks: [ 'jshint:gruntfile' ],
+                options: {
+                    livereload: false
+                }
+            },
+
+            /**
+             * When our JavaScript source files change, we want to run lint them and
+             * run our unit tests.
+             */
+            jssrc: {
+                files: [
+                    '<%= app_files.js %>'
+                ],
+                tasks: [ 'jshint:src', 'karma:unit:run', 'copy:build_appjs' ]
+            },
+
+            /**
+             * When assets are changed, copy them. Note that this will *not* copy new
+             * files, so this is probably not very useful.
+             */
+            assets: {
+                files: [
+                    'src/assets/**/*'
+                ],
+                tasks: [ 'copy:build_app_assets', 'copy:build_vendor_assets' ]
+            },
+
+            /**
+             * When index.html changes, we need to compile it.
+             */
+            html: {
+                files: [ '<%= app_files.html %>' ],
+                tasks: [ 'index:build' ]
+            },
+
+            /**
+             * When our templates change, we only rewrite the template cache.
+             */
+            tpls: {
+                files: [
+                    '<%= app_files.atpl %>',
+                    '<%= app_files.ctpl %>'
+                ],
+                tasks: [ 'html2js' ]
+            },
+
+
+            /**
+             * When a css file changes, copy them.
+             */
+            css:{
+                files:[
+                    '<%= app_files.css %>'
+                ],
+                tasks:['concat:build_css']
+            },
+            /**
+             * When a JavaScript unit test file changes, we only want to lint it and
+             * run the unit tests. We don't want to do any live reloading.
+             */
+            jsunit: {
+                files: [
+                    '<%= app_files.jsunit %>'
+                ],
+                tasks: [ 'jshint:test', 'karma:unit:run' ],
+                options: {
+                    livereload: false
+                }
+            }
+
+        },
+        /**
+         * Increments the version number, etc.
+         */
+        bump: {
+            options: {
+                files: [
+                    "package.json",
+                    "bower.json"
+                ],
+                commit: true,
+                commitMessage: 'chore(release): v%VERSION%',
+                commitFiles: [
+                    "package.json",
+                    "client/bower.json"
+                ],
+                createTag: true,
+                tagName: 'v%VERSION%',
+                tagMessage: 'Version %VERSION%',
+                push: false,
+                pushTo: 'origin'
+            }
+        },
+        /**
+         * Creates a changelog on a new version.
+         */
+            //demo
+            //closes #1
+        changelog: {
+            options: {
+                dest: 'CHANGELOG.md',
+                template: 'changelog.tpl'
+            }
         }
+
 
     };
 
@@ -246,7 +413,8 @@ module.exports = function(grunt){
 
     grunt.registerTask( 'build', [
         'clean','html2js','concat:build_css','copy:build_app_assets','copy:build_vendor_assets',
-        'copy:build_appjs', 'copy:build_vendorjs',  'copy:build_vendorcss','copy:build_fontawesome', 'index:build'
+        'copy:build_appjs', 'copy:build_vendorjs',  'copy:build_vendorcss','copy:build_lib', 'index:build', 'karmaconfig',
+        'karma:continuous','bump-only'
     ]);
 
     /**
@@ -276,7 +444,33 @@ module.exports = function(grunt){
             }
         });
     });
+    /**
+     * In order to make it safe to just compile or copy *only* what was changed,
+     * we need to ensure we are starting from a clean, fresh build. So we rename
+     * the `watch` task to `delta` (that's why the configuration var above is
+     * `delta`) and then add a new task called `watch` that does a clean build
+     * before watching for changes.
+     */
+    grunt.renameTask( 'watch', 'delta' );
+    grunt.registerTask( 'watch', [ 'build', 'karma:unit', 'delta' ] );
+    /**
+     * In order to avoid having to specify manually the files needed for karma to
+     * run, we use grunt to manage the list for us. The `karma/*` files are
+     * compiled as grunt templates for use by Karma. Yay!
+     */
+    grunt.registerMultiTask( 'karmaconfig', 'Process karma config templates', function () {
+        var jsFiles = filterForJS( this.filesSrc );
 
+        grunt.file.copy( 'karma/karma-unit.tpl.js', grunt.config( 'build_dir' ) + '/karma-unit.js', {
+            process: function ( contents, path ) {
+                return grunt.template.process( contents, {
+                    data: {
+                        scripts: jsFiles
+                    }
+                });
+            }
+        });
+    });
     grunt.initConfig( grunt.util._.extend( taskConfig, userConfig ) );
 
     /**

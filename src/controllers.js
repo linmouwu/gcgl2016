@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 14-3-17.
  */
-var app=angular.module("myApp");
+var app=angular.module("gcgl2016");
 app.controller('ListController',function($scope,$firebase){
     var usersRef = new Firebase("https://sweltering-fire-3478.firebaseio.com/people");
     $scope.users = $firebase(usersRef);

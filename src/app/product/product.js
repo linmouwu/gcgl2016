@@ -1,14 +1,14 @@
 /**
  * Created by Administrator on 14-5-1.
  */
-var app=angular.module("myApp");
+var app=angular.module("gcgl2016.product",[]);
 app.config(function($stateProvider, $urlRouterProvider){
     $stateProvider
         .state('product', {
             url: "/product",
             views:{
                 'main@':{
-                    templateUrl: "app/product/product.html",
+                    templateUrl: "product/product.html",
                     resolve:{
                         productList:function(ProductService){
                             return ProductService.list();
@@ -39,7 +39,7 @@ app.config(function($stateProvider, $urlRouterProvider){
             url: "/product/create",
             views:{
                 'main@':{
-                    templateUrl: "app/product/createProduct.html",
+                    templateUrl: "product/createProduct.html",
                     resolve:{
                         types:function(ProductService){
                             return ProductService.getTypes();
@@ -64,7 +64,7 @@ app.config(function($stateProvider, $urlRouterProvider){
             url: "/product/edit/:id",
             views:{
                 'main@':{
-                    templateUrl: "app/product/editProduct.html",
+                    templateUrl: "product/editProduct.html",
                     resolve:{
                         product:function(ProductService,$stateParams){
                             return ProductService.find($stateParams.id);

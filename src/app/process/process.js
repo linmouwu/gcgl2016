@@ -1,4 +1,4 @@
-var app=angular.module("myApp");
+var app=angular.module("gcgl2016.process",[]);
 app.config(function($stateProvider, $urlRouterProvider){
 
     $stateProvider
@@ -6,7 +6,7 @@ app.config(function($stateProvider, $urlRouterProvider){
             url:"/process",
             views:{
                 'main@':{
-                    templateUrl:"app/process/process.html",
+                    templateUrl:"process/process.html",
                     resolve:{
                         productList:function(ProductService){
                             return ProductService.list();
@@ -62,7 +62,7 @@ app.config(function($stateProvider, $urlRouterProvider){
             url:"/process/create",
             views:{
                 'main@':{
-                    templateUrl:"app/process/createProcess.html",
+                    templateUrl:"process/createProcess.html",
                     controller:function($scope,$state,$stateParams,ProcessService){
                         $scope.process={};
                         $scope.create=function(){
@@ -88,7 +88,7 @@ app.config(function($stateProvider, $urlRouterProvider){
             url: "/process/edit/:id",
             views:{
                 'main@':{
-                    templateUrl: "app/process/editProcess.html",
+                    templateUrl: "process/editProcess.html",
                     resolve:{
                         process:function(ProcessService,$stateParams){
                             return ProcessService.find($stateParams.id);

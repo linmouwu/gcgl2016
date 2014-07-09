@@ -2,12 +2,12 @@
  * Created by Michael on 02/04/14.
  */
 
-angular.module('myApp.directives.uiBreadcrumbs', ['ui.router'])
+angular.module('gcgl2016.directives.uiBreadcrumbs', ['ui.router'])
 
     .directive('uiBreadcrumbs', function($interpolate, $state) {
         return {
             restrict: 'E',
-            templateUrl: 'vendor/uiBreadcrumbs/uiBreadcrumbs.tpl.html',
+            templateUrl: 'uiBreadcrumbs/uiBreadcrumbs.tpl.html',
             scope: {
                 displaynameProperty: '@'
             },

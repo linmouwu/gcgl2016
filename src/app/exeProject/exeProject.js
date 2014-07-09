@@ -1,11 +1,11 @@
-var app=angular.module("myApp");
+var app=angular.module("gcgl2016.exeProject",[]);
 app.config(function($stateProvider, $urlRouterProvider){
     $stateProvider
         .state('main',{
             url:"/main",
             views:{
                 'main@':{
-                    templateUrl:"app/exeProject/processList.html",
+                    templateUrl:"exeProject/processList.html",
                     resolve:{
                         projects:function(ExeProjectService){
                             return ExeProjectService.list();
@@ -69,7 +69,7 @@ app.config(function($stateProvider, $urlRouterProvider){
             url:"/process/:pId/:id",
             views:{
                 'main@':{
-                    templateUrl:"app/exeProject/processExe.html",
+                    templateUrl:"exeProject/processExe.html",
                     resolve:{
                         process:function(ExeProjectService,$stateParams){
                             return ExeProjectService.getProcess($stateParams.pId,$stateParams.id);

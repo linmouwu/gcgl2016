@@ -1,5 +1,5 @@
 
-# <%= version%> (<%= today%>) 
+# <%= version%> (<%= today%>)
 
 <% if (_(changelog.feat).size() > 0) { %> ## Features
 <% _(changelog.feat).forEach(function(changes, scope) { %>

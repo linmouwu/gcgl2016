@@ -1,4 +1,20 @@
-var app=angular.module("myApp",['ui.router','firebase','ui.bootstrap','myApp.directives','myApp.directives.uiBreadcrumbs','myApp.firebase','ngGrid','myApp.util']);
+var app=angular.module("gcgl2016",[
+    'ui.router',
+    'firebase',
+    'ui.bootstrap',
+    'gcgl2016.directives',
+    'gcgl2016.directives.uiBreadcrumbs',
+    'gcgl2016.firebase',
+    'ngGrid',
+    'gcgl2016.util',
+    'templates-app',
+    'templates-common',
+    'gcgl2016.exeProject',
+    'gcgl2016.process',
+    'gcgl2016.product',
+    'gcgl2016.project',
+    'gcgl2016.user'
+]);
 app.config(function($stateProvider, $urlRouterProvider){
     // For any unmatched url, redirect to /state1
     $urlRouterProvider.otherwise("/dashboard");

@@ -26,8 +26,8 @@ module.exports = {
         coffee: [ 'src/**/*.coffee', '!src/**/*.spec.coffee' ],
         coffeeunit: [ 'src/**/*.spec.coffee' ],
 
-        atpl: [ 'src/app/**/*.tpl.html' ],
-        ctpl: [ 'src/common/**/*.tpl.html' ],
+        atpl: [ 'src/app/**/*.html' ],
+        ctpl: [ 'src/common/**/*.html' ],
 
         html: [ 'src/index.html' ],
         css: 'src/sb-admin.css'
@@ -64,6 +64,7 @@ module.exports = {
         js: [
             'vendor/jquery/jquery.js',
             'vendor/firebase/firebase.js',
+            'vendor/underscore/underscore.js',
             'vendor/angular/angular.js',
             'vendor/angular-bootstrap/ui-bootstrap-tpls.js',
             'vendor/angular-mocks/angular-mocks.js',
@@ -80,8 +81,9 @@ module.exports = {
         ],
         assets: [
         ],
-        fontawesome:[
-            'vendor/font-awesome/**/*'
+        lib:[
+            'vendor/font-awesome/**/*',
+            'vendor/bootstrap/dist/**/*'
         ]
     }
 };

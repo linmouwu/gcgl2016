@@ -1,4 +1,4 @@
-var dir=angular.module('myApp.directives', ['d3']);
+var dir=angular.module('gcgl2016.directives', ['d3']);
 dir.directive('burndown',function($window,$timeout,d3Service){
         return {
             restrict: 'A',

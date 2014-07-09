@@ -1,14 +1,14 @@
 /**
  * Created by Administrator on 14-5-1.
  */
-var app=angular.module("myApp");
-app.config(function($stateProvider, $urlRouterProvider){
+var app=angular.module("gcgl2016.user",[]);
+app.config(function($stateProvider){
     $stateProvider
         .state('user', {
             url: "/user",
             views:{
                 'main@':{
-                    templateUrl: "app/user/user.html",
+                    templateUrl: "user/user.html",
                     controller:"UserController",
                     resolve:{
                         userList:function(UserService){
@@ -19,10 +19,10 @@ app.config(function($stateProvider, $urlRouterProvider){
             }
         })
         .state('user.create', {
-            url: "/user/create",
+            url: "/create",
             views:{
                 'main@':{
-                    templateUrl: "app/user/createUser.html",
+                    templateUrl: "user/createUser.html",
                     controller:"CreateUserController"
                 }
             }

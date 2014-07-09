@@ -1,14 +1,14 @@
 /**
  * Created by Administrator on 14-5-1.
  */
-var app=angular.module("myApp");
+var app=angular.module("gcgl2016.project",[]);
 app.config(function($stateProvider, $urlRouterProvider){
     $stateProvider
         .state('project', {
             url: "/project",
             views:{
                 'main@':{
-                    templateUrl: "app/project/project.html",
+                    templateUrl: "project/project.html",
                     resolve:{
                         projectList:function(ProjectService){
                             return ProjectService.list();
@@ -37,7 +37,7 @@ app.config(function($stateProvider, $urlRouterProvider){
             url: "/create",
             views:{
                 'main@':{
-                    templateUrl: "app/project/createProject.html",
+                    templateUrl: "project/createProject.html",
                     controller:function($scope,$state,ProjectService){
                         $scope.project={};
                         $scope.create=function(){
@@ -57,7 +57,7 @@ app.config(function($stateProvider, $urlRouterProvider){
             url: "/edit/:id",
             views:{
                 'main@':{
-                    templateUrl: "app/project/editProject.html",
+                    templateUrl: "project/editProject.html",
                     resolve:{
                         project:function(ProjectService,$stateParams){
                             return ProjectService.find($stateParams.id);
@@ -141,7 +141,7 @@ app.config(function($stateProvider, $urlRouterProvider){
             url: "/start/:id",
             views:{
                 'main@':{
-                    templateUrl: "app/project/prepare.html",
+                    templateUrl: "project/prepare.html",
                     resolve:{
                         project:function(ProjectService,$stateParams){
                             return ProjectService.find($stateParams.id);
