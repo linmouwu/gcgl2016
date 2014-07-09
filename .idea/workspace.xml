@@ -6,26 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="464aae23-0f1f-461f-9086-2b46606fad35" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CHANGELOG.md" afterPath="$PROJECT_DIR$/CHANGELOG.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gruntfile.js" afterPath="$PROJECT_DIR$/Gruntfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app.js" afterPath="$PROJECT_DIR$/src/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app.spec.js" afterPath="$PROJECT_DIR$/src/app.spec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.config.js" afterPath="$PROJECT_DIR$/build.config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/changelog.tpl" afterPath="$PROJECT_DIR$/changelog.tpl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers.js" afterPath="$PROJECT_DIR$/src/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/d3/directives.js" afterPath="$PROJECT_DIR$/src/common/d3/directives.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/exeProject/exeProject.js" afterPath="$PROJECT_DIR$/src/app/exeProject/exeProject.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.html" afterPath="$PROJECT_DIR$/src/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/karma/karma-unit.tpl.js" afterPath="$PROJECT_DIR$/karma/karma-unit.tpl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/process/process.js" afterPath="$PROJECT_DIR$/src/app/process/process.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/product/product.js" afterPath="$PROJECT_DIR$/src/app/product/product.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/project/project.js" afterPath="$PROJECT_DIR$/src/app/project/project.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/firebase/services.js" afterPath="$PROJECT_DIR$/src/common/firebase/services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/uiBreadcrumbs/uiBreadcrumbs.js" afterPath="$PROJECT_DIR$/src/common/uiBreadcrumbs/uiBreadcrumbs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/user/user.js" afterPath="$PROJECT_DIR$/src/app/user/user.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/underscore/util.js" afterPath="$PROJECT_DIR$/src/common/underscore/util.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="gcgl2016.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,7 +34,7 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="43" selection-end="43" vertical-scroll-proportion="-1.4615384" vertical-offset="0" max-vertical-offset="190">
+            <state line="10" column="0" selection-start="133" selection-end="133" vertical-scroll-proportion="-7.3076925" vertical-offset="0" max-vertical-offset="342">
               <folding />
             </state>
           </provider>
@@ -105,10 +85,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="package.json" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="19" selection-start="51" selection-end="51" vertical-scroll-proportion="-1.3571428" vertical-offset="0" max-vertical-offset="665">
+            <state line="17" column="33" selection-start="373" selection-end="382" vertical-scroll-proportion="0.5696649" vertical-offset="0" max-vertical-offset="665">
               <folding />
             </state>
           </provider>
@@ -132,10 +112,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gruntfile.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Gruntfile.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Gruntfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="401" column="18" selection-start="13326" selection-end="13326" vertical-scroll-proportion="0.32941177" vertical-offset="7423" max-vertical-offset="9481">
+            <state line="401" column="18" selection-start="13326" selection-end="13326" vertical-scroll-proportion="0.0" vertical-offset="7423" max-vertical-offset="9481">
               <folding />
             </state>
           </provider>
@@ -825,13 +805,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="19" selection-start="51" selection-end="51" vertical-scroll-proportion="-1.3571428" vertical-offset="0" max-vertical-offset="665">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bower.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="19" selection-start="43" selection-end="43" vertical-scroll-proportion="-0.6785714" vertical-offset="19" max-vertical-offset="798">
@@ -846,16 +819,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/changelog.tpl">
+    <entry file="file://$PROJECT_DIR$/src/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="35" selection-start="594" selection-end="594" vertical-scroll-proportion="-12.92" vertical-offset="0" max-vertical-offset="551">
+        <state line="4" column="21" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2622">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app.js">
+    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="21" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2622">
+        <state line="401" column="18" selection-start="13326" selection-end="13326" vertical-scroll-proportion="0.0" vertical-offset="7423" max-vertical-offset="9481">
           <folding />
         </state>
       </provider>
@@ -865,14 +838,21 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="43" selection-end="43" vertical-scroll-proportion="-1.4615384" vertical-offset="0" max-vertical-offset="190">
+        <state line="10" column="0" selection-start="133" selection-end="133" vertical-scroll-proportion="-7.3076925" vertical-offset="0" max-vertical-offset="342">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
+    <entry file="file://$PROJECT_DIR$/changelog.tpl">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="401" column="18" selection-start="13326" selection-end="13326" vertical-scroll-proportion="0.32941177" vertical-offset="7423" max-vertical-offset="9481">
+        <state line="17" column="35" selection-start="594" selection-end="594" vertical-scroll-proportion="-12.92" vertical-offset="0" max-vertical-offset="551">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="33" selection-start="373" selection-end="382" vertical-scroll-proportion="0.5696649" vertical-offset="0" max-vertical-offset="665">
           <folding />
         </state>
       </provider>
