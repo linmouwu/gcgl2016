@@ -393,17 +393,6 @@ module.exports = function(grunt){
                 push: false,
                 pushTo: 'origin'
             }
-        },
-        /**
-         * Creates a changelog on a new version.
-         */
-            //demo
-            //closes #1
-        changelog: {
-            options: {
-                dest: 'CHANGELOG.md',
-                template: 'changelog.tpl'
-            }
         }
 
 
