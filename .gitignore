@@ -33,3 +33,5 @@ public
 vendor
 
 .sonar
+
+karma.conf.js
