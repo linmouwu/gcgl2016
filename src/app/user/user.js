@@ -58,8 +58,8 @@ app.controller("UserController",function($scope,UserService,userList){
             console.log("UserController:Remove Successful");
         },function(){
             console.log("UserController:Remove failed");
-        })
-    }
+        });
+    };
 
 });
 app.controller("CreateUserController",function($scope,$state,UserService){
@@ -70,6 +70,6 @@ app.controller("CreateUserController",function($scope,$state,UserService){
             $state.go("^");
         },function(){
             console.log("CreateUserController:Create Failed");
-        })
-    }
+        });
+    };
 });

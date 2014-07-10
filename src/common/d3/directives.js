@@ -92,15 +92,12 @@ dir.directive('burndown',function($window,$timeout,d3Service){
                         }
 
                         function renderBody(svg) {
-                            if (!_bodyG)
+                            if (!_bodyG){
                                 _bodyG = svg.append("g")
                                         .attr("class", "body")
-                                        .attr("transform", "translate(" 
-                                                + xStart() 
-                                                + "," 
-                                                + yEnd() + ")")
+                                        .attr("transform", "translate("+ xStart()  + "," + yEnd() + ")")
                                         .attr("clip-path", "url(#body-clip)");
-
+                            }
                             renderBars();
                         }
                         
@@ -155,37 +152,37 @@ dir.directive('burndown',function($window,$timeout,d3Service){
                         }
 
                         _chart.width = function (w) {
-                            if (!arguments.length) return _width;
+                            if (!arguments.length) {return _width;}
                             _width = w;
                             return _chart;
                         };
 
                         _chart.height = function (h) {
-                            if (!arguments.length) return _height;
+                            if (!arguments.length) {return _height;}
                             _height = h;
                             return _chart;
                         };
 
                         _chart.margins = function (m) {
-                            if (!arguments.length) return _margins;
+                            if (!arguments.length) {return _margins;}
                             _margins = m;
                             return _chart;
                         };
 
                         _chart.colors = function (c) {
-                            if (!arguments.length) return _colors;
+                            if (!arguments.length){ return _colors;}
                             _colors = c;
                             return _chart;
                         };
 
                         _chart.x = function (x) {
-                            if (!arguments.length) return _x;
+                            if (!arguments.length) {return _x;}
                             _x = x;
                             return _chart;
                         };
 
                         _chart.y = function (y) {
-                            if (!arguments.length) return _y;
+                            if (!arguments.length) {return _y;}
                             _y = y;
                             return _chart;
                         };
@@ -200,6 +197,7 @@ dir.directive('burndown',function($window,$timeout,d3Service){
                             console.log(minDate);
                             console.log(maxDate);
                             var maxValue=0;
+                            var item;
                             for(item in series){
                                 if(series[item].y>maxValue){
                                     maxValue=series[item].y;
@@ -217,7 +215,7 @@ dir.directive('burndown',function($window,$timeout,d3Service){
                         };
 
                         _chart.maxData = function (m) {
-                            if (!arguments.length) return _maxData;
+                            if (!arguments.length) {return _maxData;}
                             _maxData = m;
                             return _chart;
                         };
@@ -225,9 +223,9 @@ dir.directive('burndown',function($window,$timeout,d3Service){
                         return _chart;
                     }
                     //end of barChart()
-                })
+                });
             }
-        }
+        };
     });
 dir.directive('d3Bars', ['$window', '$timeout', 'd3Service',
         function($window, $timeout, d3Service) {
@@ -273,8 +271,8 @@ dir.directive('d3Bars', ['$window', '$timeout', 'd3Service',
                         scope.render = function(data) {
                             svg.selectAll('*').remove();
 
-                            if (!data) return;
-                            if (renderTimeout) clearTimeout(renderTimeout);
+                            if (!data) {return;}
+                            if (renderTimeout) {clearTimeout(renderTimeout);}
 
                             renderTimeout = $timeout(function() {
                                 var width = d3.select(ele[0])[0][0].offsetWidth - margin,
@@ -324,5 +322,5 @@ dir.directive('d3Bars', ['$window', '$timeout', 'd3Service',
                             }, 200);
                         };
                     });
-                }}
-        }])
+                }};
+        }]);

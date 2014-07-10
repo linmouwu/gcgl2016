@@ -412,7 +412,7 @@ module.exports = function(grunt){
     grunt.registerTask( 'default', [ 'build' ] );
 
     grunt.registerTask( 'build', [
-        'clean','html2js','concat:build_css','copy:build_app_assets','copy:build_vendor_assets',
+        'clean','html2js','jshint','concat:build_css','copy:build_app_assets','copy:build_vendor_assets',
         'copy:build_appjs', 'copy:build_vendorjs',  'copy:build_vendorcss','copy:build_lib', 'index:build', 'karmaconfig',
         'karma:continuous','bump-only:build','changelog'
     ]);

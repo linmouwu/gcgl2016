@@ -28,8 +28,8 @@ app.config(function($stateProvider, $urlRouterProvider){
                                 console.log("ProductController:Remove Successful");
                             },function(){
                                 console.log("ProductController:Remove failed");
-                            })
-                        }
+                            });
+                        };
 
                     }
                 }
@@ -54,8 +54,8 @@ app.config(function($stateProvider, $urlRouterProvider){
                                 $state.go("^",{},{reload:true});
                             },function(){
                                 console.log("CreateProductController:Create Failed");
-                            })
-                        }
+                            });
+                        };
                     }
                 }
             }
@@ -84,7 +84,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                         };
                         $scope.remove=function(field){
                             $scope.product.fields= _.filter($scope.product.fields,function(obj){
-                                return !(field==obj);
+                                return field!=obj;
                             });
                         };
                         $scope.addField=function(){
@@ -93,14 +93,14 @@ app.config(function($stateProvider, $urlRouterProvider){
                             }
                             $scope.product.fields.push($scope.newField);
                             $scope.newField={};
-                        }
+                        };
                     }
                 }
             }
         });
 });
 app.factory('ProductService', function(firebaseService,$q) {
-    var productRef=firebaseService.ref("/product")
+    var productRef=firebaseService.ref("/product");
     var productRefLoad=$q.defer();
     productRef.$on("loaded",function(){
         productRefLoad.resolve(productRef);

@@ -24,7 +24,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                         $scope.myData = [];
                         if(!_.isUndefined(currentProject)){
                             $scope.myData=firebaseService.embedIdsObj(currentProject.processData);
-                        };
+                        }
                         $scope.mySelections=[];
                         $scope.gridOptions = {
                             data: 'myData',
@@ -45,7 +45,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                                 inherit: false,
                                 notify: true
                             });
-                        }
+                        };
                         $scope.remove=function(){
                             ExeProjectService.remove($scope.selectId);
                             $state.transitionTo($state.current, $stateParams, {
@@ -54,13 +54,13 @@ app.config(function($stateProvider, $urlRouterProvider){
                                 notify: true
                             });
 
-                        }
+                        };
                         $scope.enterProcess=function(){
-                            if($scope.mySelections.length==0){
+                            if($scope.mySelections.length===0){
                                 return;
                             }
                             $state.go("main.process",{id:$scope.mySelections[0].id,pId:$scope.selectId});
-                        }
+                        };
                     }
                 }
             }
@@ -81,7 +81,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 
                 }
             }
-        })
+        });
 });
 
 app.factory('ExeProjectService', function(firebaseService,ProjectService,ProcessService,ProductService,$q) {
@@ -136,7 +136,7 @@ app.factory('ExeProjectService', function(firebaseService,ProjectService,Process
                         return true;
                     }
                 })[0];
-            })
+            });
         },
         createProcessProjectData:function(pId){
             exeProjectService.find(pId).then(function(exeProjectContent){
@@ -166,9 +166,9 @@ app.factory('ExeProjectService', function(firebaseService,ProjectService,Process
                                     processDataRef.$update(processContent.output);
                                 }
                             }
-                        })
+                        });
                     });
-                })
+                });
             });
 
 //            var promise=exeProjectRefLoad.promise.then(function(){

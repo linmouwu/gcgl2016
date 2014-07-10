@@ -74,16 +74,16 @@ app.controller('ProductController',function($scope,$firebase,$modal,$log){
     $scope.newItem={};
     $scope.remove = function(key){
         $scope.products.$remove(key);
-    }
+    };
     $scope.create = function(){
         $scope.products.$add($scope.product).then(function(){
             $scope.product={};
         });
-    }
+    };
     $scope.addItem=function(){
         $scope.product.items.push($scope.newItem);
         $scope.newItem={};
-    }
+    };
     $scope.open = function () {
 
         var modalInstance = $modal.open({

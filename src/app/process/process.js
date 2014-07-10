@@ -49,8 +49,8 @@ app.config(function($stateProvider, $urlRouterProvider){
                                 console.log("ProcessController:Remove Successful");
                             },function(){
                                 console.log("ProcessController:Remove failed");
-                            })
-                        }
+                            });
+                        };
                     }
                 }
             },
@@ -75,8 +75,8 @@ app.config(function($stateProvider, $urlRouterProvider){
                                 $state.go("^",{},{reload:true});
                             },function(){
                                 console.log("CreateProcessController:Create Failed");
-                            })
-                        }
+                            });
+                        };
                     }
                 }
             },
@@ -116,10 +116,10 @@ app.config(function($stateProvider, $urlRouterProvider){
                         }
 
                         if($scope.process.outputType=="process"){
-                            $scope.outputs=processes
+                            $scope.outputs=processes;
                         }
                         else if($scope.process.outputType=="product"){
-                            $scope.outputs=products
+                            $scope.outputs=products;
                         }
                         else{
                             $scope.outputs=[];

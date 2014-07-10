@@ -26,8 +26,8 @@ app.config(function($stateProvider, $urlRouterProvider){
                                 console.log("ProjectController:Remove Successful");
                             },function(){
                                 console.log("ProjectController:Remove failed");
-                            })
-                        }
+                            });
+                        };
 
                     }
                 }
@@ -47,8 +47,8 @@ app.config(function($stateProvider, $urlRouterProvider){
                                 $state.go("^",{},{reload:true});
                             },function(){
                                 console.log("CreateProjectController:Create Failed");
-                            })
-                        }
+                            });
+                        };
                     }
                 }
             }
@@ -110,14 +110,14 @@ app.config(function($stateProvider, $urlRouterProvider){
                             columnDefs: [{ field: 'name', displayName: 'Process Name'}]
                         };
                         $scope.select=function(){
-                            console.log($scope.rightItems)
-                            $scope.myData2= _.difference($scope.myData2,$scope.rightItems)
+                            console.log($scope.rightItems);
+                            $scope.myData2= _.difference($scope.myData2,$scope.rightItems);
                             $scope.myData=$scope.myData.concat($scope.rightItems);
                             $scope.gridOptions2.selectAll(false);
                         };
                         $scope.unselect=function(){
-                            console.log($scope.leftItems)
-                            $scope.myData= _.difference($scope.myData,$scope.leftItems)
+                            console.log($scope.leftItems);
+                            $scope.myData= _.difference($scope.myData,$scope.leftItems);
                             $scope.myData2=$scope.myData2.concat($scope.leftItems);
                             $scope.gridOptions.selectAll(false);
                         };
@@ -194,12 +194,12 @@ app.config(function($stateProvider, $urlRouterProvider){
                                     console.log(exeProject);
                                     ExeProjectService.create(exeProject).then(function(){
                                         ExeProjectService.createProcessProjectData(projectId);
-;                                    });
+                                    });
                                     $state.go("^",{},{reload:true});
-                                })
+                                });
 
                             });
-                        }
+                        };
 //                        console.log(subProcesses);
                     }
                 }

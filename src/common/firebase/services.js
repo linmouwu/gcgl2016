@@ -3,7 +3,7 @@
  */
 var firebase=angular.module('gcgl2016.firebase', []);
 firebase.factory("firebaseService",function($firebase){
-    var baseUrl="https://sweltering-fire-3478.firebaseio.com"
+    var baseUrl="https://sweltering-fire-3478.firebaseio.com";
     var firebaseService = {
         ref: function(path){
             return $firebase(new Firebase(baseUrl+path));
@@ -88,6 +88,6 @@ firebase.factory("firebaseService",function($firebase){
             });
             return ret;
         }
-    }
+    };
     return firebaseService;
 });

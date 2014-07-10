@@ -12,8 +12,10 @@ angular.module('d3', [])
         scriptTag.async = true;
         scriptTag.src = 'vendor/d3/d3.js';
         scriptTag.onreadystatechange = function () {
-            if (this.readyState == 'complete') onScriptLoad();
-        }
+            if (this.readyState == 'complete'){
+                onScriptLoad();
+            }
+        };
         scriptTag.onload = onScriptLoad;
 
         var s = $document[0].getElementsByTagName('body')[0];
