@@ -5,20 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="464aae23-0f1f-461f-9086-2b46606fad35" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\public\index.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gruntfile.js" afterPath="$PROJECT_DIR$/Gruntfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers.js" afterPath="$PROJECT_DIR$/src/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/d3/d3.js" afterPath="$PROJECT_DIR$/src/common/d3/d3.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/d3/directives.js" afterPath="$PROJECT_DIR$/src/common/d3/directives.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/exeProject/exeProject.spec.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/product/product.spec.js" />
+      <change type="DELETED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\karma.conf.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CHANGELOG.md" afterPath="$PROJECT_DIR$/CHANGELOG.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app.spec.js" afterPath="$PROJECT_DIR$/src/app.spec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/exeProject/exeProject.js" afterPath="$PROJECT_DIR$/src/app/exeProject/exeProject.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/process/process.js" afterPath="$PROJECT_DIR$/src/app/process/process.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/product/product.js" afterPath="$PROJECT_DIR$/src/app/product/product.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/karma/karma-unit.tpl.js" afterPath="$PROJECT_DIR$/karma/karma-unit.tpl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/project/project.js" afterPath="$PROJECT_DIR$/src/app/project/project.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sb-admin.js" afterPath="$PROJECT_DIR$/src/sb-admin.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/firebase/services.js" afterPath="$PROJECT_DIR$/src/common/firebase/services.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sonar-project.properties" afterPath="$PROJECT_DIR$/sonar-project.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/user/user.js" afterPath="$PROJECT_DIR$/src/app/user/user.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/common/underscore/util.js" afterPath="$PROJECT_DIR$/src/common/underscore/util.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="gcgl2016.iws" />
@@ -45,8 +45,28 @@
       <file leaf-file-name="exeProject.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/exeProject/exeProject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="170" column="19" selection-start="7628" selection-end="7628" vertical-scroll-proportion="0.0" vertical-offset="2679" max-vertical-offset="3762">
+            <state line="161" column="35" selection-start="7150" selection-end="7150" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4294">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="services.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/common/firebase/services.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="29" selection-start="77" selection-end="94" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1881">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="exeProject.spec.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/exeProject/exeProject.spec.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="24" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="361">
+              <folding>
+                <element signature="e#0#47#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -54,8 +74,28 @@
       <file leaf-file-name="process.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/process/process.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="121" column="52" selection-start="5798" selection-end="5798" vertical-scroll-proportion="0.0" vertical-offset="1824" max-vertical-offset="4351">
+            <state line="203" column="57" selection-start="8797" selection-end="9487" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="4351">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="13" selection-start="58" selection-end="66" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2622">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="product.spec.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/product/product.spec.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="14" selection-start="62" selection-end="62" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="152">
+              <folding>
+                <element signature="e#0#47#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,7 +103,7 @@
       <file leaf-file-name="product.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/product/product.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="102" column="51" selection-start="4400" selection-end="4400" vertical-scroll-proportion="0.0" vertical-offset="1482" max-vertical-offset="2736">
+            <state line="63" column="37" selection-start="2669" selection-end="2669" vertical-scroll-proportion="0.0" vertical-offset="969" max-vertical-offset="2736">
               <folding />
             </state>
           </provider>
@@ -72,73 +112,25 @@
       <file leaf-file-name="project.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/project/project.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="201" column="26" selection-start="10344" selection-end="10344" vertical-scroll-proportion="0.0" vertical-offset="3363" max-vertical-offset="5035">
+            <state line="12" column="61" selection-start="458" selection-end="458" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5035">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="d3.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/common/d3/d3.js">
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="10" selection-start="732" selection-end="732" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="608">
+            <state line="26" column="5" selection-start="541" selection-end="541" vertical-scroll-proportion="0.74453783" vertical-offset="51" max-vertical-offset="855">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="directives.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/common/d3/directives.js">
+      <file leaf-file-name="Gruntfile.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Gruntfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="325" column="12" selection-start="14304" selection-end="14304" vertical-scroll-proportion="0.0" vertical-offset="4555" max-vertical-offset="5225">
-              <folding>
-                <element signature="e#4080#4525#0" expanded="false" />
-                <element signature="e#4597#5866#0" expanded="false" />
-                <element signature="e#5910#5987#0" expanded="false" />
-                <element signature="e#6031#6120#0" expanded="false" />
-                <element signature="e#6162#6249#0" expanded="false" />
-                <element signature="e#6291#6367#0" expanded="false" />
-                <element signature="e#6418#6521#0" expanded="false" />
-                <element signature="e#6573#6677#0" expanded="false" />
-                <element signature="e#6731#6909#0" expanded="false" />
-                <element signature="e#6965#7145#0" expanded="false" />
-                <element signature="e#7202#7384#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="services.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/common/firebase/services.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="6" selection-start="2719" selection-end="2719" vertical-scroll-proportion="0.0" vertical-offset="1286" max-vertical-offset="1881">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="util.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/common/underscore/util.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="6" selection-start="312" selection-end="312" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="361">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="controllers.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="6" selection-start="2852" selection-end="2852" vertical-scroll-proportion="0.0" vertical-offset="1210" max-vertical-offset="2090">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sb-admin.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/sb-admin.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="3" selection-start="482" selection-end="482" vertical-scroll-proportion="0.54285717" vertical-offset="0" max-vertical-offset="595">
+            <state line="251" column="45" selection-start="8626" selection-end="8626" vertical-scroll-proportion="0.0" vertical-offset="5865" max-vertical-offset="9481">
               <folding />
             </state>
           </provider>
@@ -162,8 +154,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/public/app/user/createUser.html" />
-        <option value="$PROJECT_DIR$/public/app/user/user.js" />
         <option value="$PROJECT_DIR$/public/app/user/user.html" />
         <option value="$PROJECT_DIR$/public/app/process/relation.html" />
         <option value="$PROJECT_DIR$/public/sb-admin.css" />
@@ -194,25 +184,27 @@
         <option value="$PROJECT_DIR$/src/app.js" />
         <option value="$PROJECT_DIR$/build.config.js" />
         <option value="$PROJECT_DIR$/src/index.html" />
-        <option value="$PROJECT_DIR$/karma/karma-unit.tpl.js" />
-        <option value="$PROJECT_DIR$/src/app.spec.js" />
         <option value="$PROJECT_DIR$/changelog.tpl" />
-        <option value="$PROJECT_DIR$/CHANGELOG.md" />
         <option value="$PROJECT_DIR$/bower.json" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Gruntfile.js" />
-        <option value="$PROJECT_DIR$/src/app/exeProject/exeProject.js" />
         <option value="$PROJECT_DIR$/src/app/process/process.js" />
         <option value="$PROJECT_DIR$/src/app/product/product.js" />
-        <option value="$PROJECT_DIR$/src/app/project/project.js" />
         <option value="$PROJECT_DIR$/src/app/user/user.js" />
         <option value="$PROJECT_DIR$/src/common/d3/d3.js" />
-        <option value="$PROJECT_DIR$/src/common/firebase/services.js" />
         <option value="$PROJECT_DIR$/src/common/d3/directives.js" />
         <option value="$PROJECT_DIR$/src/common/underscore/util.js" />
         <option value="$PROJECT_DIR$/src/controllers.js" />
         <option value="$PROJECT_DIR$/src/sb-admin.js" />
+        <option value="$PROJECT_DIR$/CHANGELOG.md" />
+        <option value="$PROJECT_DIR$/src/app.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/product/product.spec.js" />
+        <option value="$PROJECT_DIR$/src/app/exeProject/exeProject.spec.js" />
+        <option value="$PROJECT_DIR$/src/common/firebase/services.js" />
+        <option value="$PROJECT_DIR$/src/app/exeProject/exeProject.js" />
+        <option value="$PROJECT_DIR$/src/app/project/project.js" />
+        <option value="$PROJECT_DIR$/karma/karma-unit.tpl.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -295,11 +287,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="underscore" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -357,33 +345,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="d3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gcgl2016" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gcgl2016" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -472,6 +434,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="exeProject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="karma" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -689,14 +665,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="1" width="1918" height="1038" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15194532" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15194532" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32901832" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -752,18 +728,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="401" column="18" selection-start="13326" selection-end="13326" vertical-scroll-proportion="0.0" vertical-offset="7619" max-vertical-offset="9481">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="40" selection-start="3226" selection-end="3226" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1805" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="393" column="55" selection-start="14657" selection-end="14657" vertical-scroll-proportion="0.0" vertical-offset="7467" max-vertical-offset="7923" />
@@ -796,13 +760,6 @@
     <entry file="file://$PROJECT_DIR$/changelog.tpl">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="27" selection-start="579" selection-end="587" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="551">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/karma.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1387">
           <folding />
         </state>
       </provider>
@@ -915,63 +872,6 @@
         <state line="393" column="55" selection-start="14657" selection-end="14657" vertical-scroll-proportion="0.0" vertical-offset="7467" max-vertical-offset="7923" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/karma/karma-unit.tpl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="47" selection-start="569" selection-end="569" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1216">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app.spec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="3" selection-start="172" selection-end="172" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="209">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/karma.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1387">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="31" selection-start="421" selection-end="421" vertical-scroll-proportion="0.0" vertical-offset="203" max-vertical-offset="798">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="21" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2622">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/changelog.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="35" selection-start="594" selection-end="594" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="551">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="40" selection-start="3226" selection-end="3226" vertical-scroll-proportion="0.6806723" vertical-offset="1210" max-vertical-offset="1805" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="569">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bower.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="19" selection-start="43" selection-end="43" vertical-scroll-proportion="0.0" vertical-offset="38" max-vertical-offset="798">
@@ -986,48 +886,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="12" selection-start="534" selection-end="534" vertical-scroll-proportion="0.76638657" vertical-offset="0" max-vertical-offset="817">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="414" column="35" selection-start="13587" selection-end="13587" vertical-scroll-proportion="0.0" vertical-offset="7746" max-vertical-offset="9481">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/exeProject/exeProject.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="170" column="19" selection-start="7628" selection-end="7628" vertical-scroll-proportion="0.0" vertical-offset="2679" max-vertical-offset="3762">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/process/process.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="52" selection-start="5798" selection-end="5798" vertical-scroll-proportion="0.0" vertical-offset="1824" max-vertical-offset="4351">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/product/product.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="102" column="51" selection-start="4400" selection-end="4400" vertical-scroll-proportion="0.0" vertical-offset="1482" max-vertical-offset="2736">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/project/project.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="201" column="26" selection-start="10344" selection-end="10344" vertical-scroll-proportion="0.0" vertical-offset="3363" max-vertical-offset="5035">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/user/user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="73" column="6" selection-start="2110" selection-end="2110" vertical-scroll-proportion="0.0" vertical-offset="925" max-vertical-offset="1520">
@@ -1038,13 +896,6 @@
     <entry file="file://$PROJECT_DIR$/src/common/d3/d3.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="10" selection-start="732" selection-end="732" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="608">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/firebase/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="6" selection-start="2719" selection-end="2719" vertical-scroll-proportion="0.0" vertical-offset="1286" max-vertical-offset="1881">
           <folding />
         </state>
       </provider>
@@ -1084,7 +935,142 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sb-admin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="3" selection-start="482" selection-end="482" vertical-scroll-proportion="0.54285717" vertical-offset="0" max-vertical-offset="595">
+        <state line="17" column="3" selection-start="482" selection-end="482" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="456">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changelog.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="35" selection-start="594" selection-end="594" vertical-scroll-proportion="0.56666666" vertical-offset="0" max-vertical-offset="570">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="85" column="40" selection-start="3226" selection-end="3226" vertical-scroll-proportion="0.6806723" vertical-offset="1210" max-vertical-offset="1805">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
+      <provider selected="true" editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="969">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="48" selection-start="131" selection-end="131" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="266">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/angularfire/.jshintrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/bootstrap/Gruntfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-2.0117648" vertical-offset="1197" max-vertical-offset="9234">
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="251" column="45" selection-start="8626" selection-end="8626" vertical-scroll-proportion="0.0" vertical-offset="5865" max-vertical-offset="9481">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/process/process.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="203" column="57" selection-start="8797" selection-end="9487" vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="4351">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="31" selection-start="421" selection-end="421" vertical-scroll-proportion="0.57478994" vertical-offset="0" max-vertical-offset="798">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="13" selection-start="58" selection-end="66" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2622">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/firebase/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="29" selection-start="77" selection-end="94" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1881">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/exeProject/exeProject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="161" column="35" selection-start="7150" selection-end="7150" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4294">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/product/product.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="37" selection-start="2669" selection-end="2669" vertical-scroll-proportion="0.0" vertical-offset="969" max-vertical-offset="2736">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/project/project.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="61" selection-start="458" selection-end="458" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5035">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/product/product.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="14" selection-start="62" selection-end="62" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="152">
+          <folding>
+            <element signature="e#0#47#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/exeProject/exeProject.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="24" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="361">
+          <folding>
+            <element signature="e#0#47#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/karma/karma-unit.tpl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="18" selection-start="1970" selection-end="1974" vertical-scroll-proportion="0.79831934" vertical-offset="684" max-vertical-offset="1387">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="5" selection-start="541" selection-end="541" vertical-scroll-proportion="0.74453783" vertical-offset="51" max-vertical-offset="855">
           <folding />
         </state>
       </provider>

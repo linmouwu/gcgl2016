@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 14-5-1.
  */
-var app=angular.module("gcgl2016.project",[]);
+var app=angular.module("gcgl2016.project",['gcgl2016.process','gcgl2016.product']);
 app.config(function($stateProvider, $urlRouterProvider){
     $stateProvider
         .state('project', {

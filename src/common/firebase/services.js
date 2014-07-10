@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 14-5-24.
  */
-var firebase=angular.module('gcgl2016.firebase', []);
+var firebase=angular.module('gcgl2016.firebase', ['firebase']);
 firebase.factory("firebaseService",function($firebase){
     var baseUrl="https://sweltering-fire-3478.firebaseio.com";
     var firebaseService = {

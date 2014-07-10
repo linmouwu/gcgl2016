@@ -1,5 +1,5 @@
-var app=angular.module("gcgl2016.exeProject",[]);
-app.config(function($stateProvider, $urlRouterProvider){
+var app=angular.module("gcgl2016.exeProject",['ui.router','gcgl2016.firebase','gcgl2016.project']);
+app.config(function($stateProvider){
     $stateProvider
         .state('main',{
             url:"/main",
@@ -13,11 +13,18 @@ app.config(function($stateProvider, $urlRouterProvider){
                         currentProject:function(ExeProjectService,projects){
 //                            console.log("ExeProjectService.getCurrentProjectId()");
 //                            console.log(ExeProjectService.getCurrentProjectId());
-                            return angular.copy(projects[ExeProjectService.getCurrentProjectId()]);
+                            var project=angular.copy(projects[ExeProjectService.getCurrentProjectId()]);
+                            if(!_.isUndefined(project)){
+                                _.each(project.processData,function(process){
+                                    ExeProjectService.withInputOutput(process);
+                                });
+                            }
+                            return project;
                         }
                     },
                     controller:function($scope,$stateParams,$state,firebaseService,ExeProjectService,projects,currentProject){
                         $scope.projects=projects;
+
                         console.log("projects");
                         console.log(projects);
                         $scope.selectId=ExeProjectService.getCurrentProjectId();
@@ -26,11 +33,13 @@ app.config(function($stateProvider, $urlRouterProvider){
                             $scope.myData=firebaseService.embedIdsObj(currentProject.processData);
                         }
                         $scope.mySelections=[];
+                        console.log("$scope.myData");
+                        console.log($scope.myData);
                         $scope.gridOptions = {
                             data: 'myData',
                             columnDefs: [{field:'name', displayName:'Name'},
-                                {field:'input.name', displayName:'Input'},
-                                {field:'output.name', displayName:'Output'}
+                                {field:'input', displayName:'Input'},
+                                {field:'output', displayName:'Output'}
                             ],
                             selectedItems: $scope.mySelections,
                             multiSelect: false
@@ -186,6 +195,25 @@ app.factory('ExeProjectService', function(firebaseService,ProjectService,Process
 //                })
 //            });
 //            return promise;
+        },
+        withInputOutput:function(process){
+//            console.log(productList);
+//            console.log(processList);
+            if(process.inputType=="product"){
+                process.input=firebaseService.extendSingle(process.input,productList);
+            }
+            else{
+                process.input=firebaseService.extendSingle(process.input,processList);
+            }
+            if(process.outputType=="product"){
+                process.output=firebaseService.extendSingle(process.output,productList);
+            }
+            else{
+                process.output=firebaseService.extendSingle(process.output,processList);
+            }
+        },
+        test:function(){
+            return "hello world";
         }
     };
     return exeProjectService;

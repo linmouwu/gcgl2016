@@ -11,18 +11,22 @@ module.exports = function ( karma ) {
         files: [
             <% scripts.forEach( function ( file ) { %>'<%= file %>',
                 <% }); %>
-            'src/**/*.js',
+            'src/**/*.js'
     ],
     exclude: [
       'src/assets/**/*.js'
     ],
     frameworks: [ 'jasmine' ],
-    plugins: [ 'karma-jasmine', 'karma-chrome-launcher'],
+    plugins: [ 'karma-jasmine', 'karma-chrome-launcher','karma-coverage'],
+    preprocessors: {
+      'src/*.js': ['coverage']
+    },
+
 
     /**
      * How to report, by default.
      */
-    reporters: 'dots',
+    reporters: ['dots','coverage'],
 
     /**
      * On which port should the browser connect, on which port is the test runner
@@ -52,7 +56,12 @@ module.exports = function ( karma ) {
      */
     browsers: [
       'Chrome'
-    ]
+    ],
+    // optionally, configure the reporter
+    coverageReporter: {
+      type : 'lcov',
+      dir : 'coverage/'
+     }
   });
 };
 

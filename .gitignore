@@ -30,6 +30,8 @@ bin
 
 public
 
+coverage
+
 vendor
 
 .sonar
