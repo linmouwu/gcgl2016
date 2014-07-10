@@ -1,3 +1,33 @@
+<a name="0.1.0-12"></a>
+### 0.1.0-12 (2014-07-10)
+
+
+#### Bug Fixes
+
+* **gcgl2016:** all in jslint ((c59284bc))
+* **pen:** use blue ink instead of red ink ((135884e3))
+
+
+#### Features
+
+* **ruler:** add inches as well as centimeters ((2792d7a6))
+
+
+<a name="0.1.0-11"></a>
+### 0.1.0-11 (2014-07-10)
+
+
+#### Bug Fixes
+
+* **gcgl2016:** all in jslint ((c59284bc))
+* **pen:** use blue ink instead of red ink ((135884e3))
+
+
+#### Features
+
+* **ruler:** add inches as well as centimeters ((2792d7a6))
+
+
 <a name="0.1.0-10"></a>
 ### 0.1.0-10 (2014-07-10)
 
