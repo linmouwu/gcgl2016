@@ -28,8 +28,8 @@ app.config(function($stateProvider){
             }
         });
 });
-app.factory('UserService', function(firebaseService,$q) {
-    var userRef = firebaseService.ref("/user");
+app.factory('UserService', function(f,$q) {
+    var userRef = f.ref("/user");
     var userRefLoad=$q.defer();
     userRef.$on("loaded",function(){
         userRefLoad.resolve(userRef);

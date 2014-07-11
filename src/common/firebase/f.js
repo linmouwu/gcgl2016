@@ -2,7 +2,7 @@
  * Created by Administrator on 14-5-24.
  */
 var firebase=angular.module('gcgl2016.firebase', ['firebase']);
-firebase.factory("firebaseService",function($firebase){
+firebase.factory("f",function($firebase){
     var baseUrl="https://sweltering-fire-3478.firebaseio.com";
     var firebaseService = {
         ref: function(path){
@@ -87,6 +87,10 @@ firebase.factory("firebaseService",function($firebase){
                 return o;
             });
             return ret;
+        },
+        getContent:function(obj){
+            var key=Object.keys(obj)[0];
+            return obj[key];
         }
     };
     return firebaseService;

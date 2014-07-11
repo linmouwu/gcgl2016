@@ -1,12 +1,36 @@
-exeProject{basic:project,
-	selected:[process1,process2:process],
-	processesData:{basic:process,
-			inputData:productDataId
-			outputData:productDataId
+exeProject:[
+	id:{
+		name
+		processData:[
+			id:{
+				inputType
+				name
+				object
+				output
+				outputType
+				overview
+				result
+				way
 			}
-	productsData:{basic:product,
+		]
+		productData:[
+			id:{
+				description
+				fields:[
+					{
+					description
+					name
+					}
+				]
+				name
+				type
 			}
-}
+		selected[
+			processId
+		]
+		status
+	}
+]
 
 
 在项目集管理中创建exeProject，从project复制过来，然后建立processesData,productsData,将所选过程复制到processesData中，检查所有的产品，复制到productData中

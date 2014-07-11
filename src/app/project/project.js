@@ -87,12 +87,12 @@ app.config(function($stateProvider, $urlRouterProvider){
                             return angular.copy(project.selected);
                         }
                     },
-                    controller:function($scope,$state,$stateParams,ProjectService,project,selectIds,toSelectIds,processes,firebaseService){
+                    controller:function($scope,$state,$stateParams,ProjectService,project,selectIds,toSelectIds,processes,f){
                         $scope.project=project;
 //                        console.log("0:new projectCopy");
 //                        console.log($scope.projectCopy);
-                        $scope.myData2 =firebaseService.embedIdsArray(firebaseService.extend(toSelectIds,processes));
-                        $scope.myData = firebaseService.embedIdsArray(firebaseService.extend(selectIds,processes));
+                        $scope.myData2 =f.embedIdsArray(f.extend(toSelectIds,processes));
+                        $scope.myData = f.embedIdsArray(f.extend(selectIds,processes));
 
 //                        console.log($scope.myData2);
 //                        console.log($scope.myData);
@@ -126,7 +126,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 //                            console.log(processes);
 //                            console.log("1:projectCopy");
 //                            console.log($scope.projectCopy);
-                            $scope.project.selected=firebaseService.toIds($scope.myData);
+                            $scope.project.selected=f.toIds($scope.myData);
 //                            console.log("2:projectCopy with new selected");
 //                            console.log($scope.projectCopy);
                             console.log($scope.project);
@@ -152,19 +152,19 @@ app.config(function($stateProvider, $urlRouterProvider){
                         processes:function(ProcessService){
                             return ProcessService.list();
                         },
-                        subProcesses:function(ProcessService,firebaseService,ProjectService,project,processes,products){
+                        subProcesses:function(ProcessService,f,ProjectService,project,processes,products){
                             console.log(processes);
                             console.log(project);
                             ProjectService.withProcess(project,processes);
-                            var subProcesses=firebaseService.embedIdsArray(project.selected);
-//                            //var withProcess=firebaseService.extend(project.selected,processes);
+                            var subProcesses=f.embedIdsArray(project.selected);
+//                            //var withProcess=f.extend(project.selected,processes);
 //                            console.log(project.selected);
                             console.log("subProcesses");
                             console.log(angular.copy(subProcesses));
                             _.each(subProcesses,function(process){
                                 ProcessService.withProduct(process,products,processes);
-                                process.input=firebaseService.embedId(process.input);
-                                process.output=firebaseService.embedId(process.output);
+                                process.input=f.embedId(process.input);
+                                process.output=f.embedId(process.output);
                             });
 //
 //                            console.log("full project");
@@ -206,13 +206,13 @@ app.config(function($stateProvider, $urlRouterProvider){
             }
         });
 });
-app.factory('ProjectService', function(firebaseService,$q) {
-    var projectRef = firebaseService.ref("/project");
+app.factory('ProjectService', function(f,$q) {
+    var projectRef = f.ref("/project");
     var projectRefLoad=$q.defer();
     projectRef.$on("loaded",function(){
         projectRefLoad.resolve(projectRef);
     });
-    var processRef = firebaseService.ref("/process");
+    var processRef = f.ref("/process");
     var processRefLoad=$q.defer();
     processRef.$on("loaded",function(){
         processRefLoad.resolve(projectRef);
@@ -235,21 +235,21 @@ app.factory('ProjectService', function(firebaseService,$q) {
         find:function(key){
             var promise=projectRefLoad.promise.then(function(){
 //                console.log("projectRef[key]");
-//                console.log(firebaseService.copy(projectRef[key]));
-                return firebaseService.copy(projectRef[key]);
+//                console.log(f.copy(projectRef[key]));
+                return f.copy(projectRef[key]);
             });
             return promise;
         },
         list: function(){
             return projectRefLoad.promise.then(function(data){
-                return firebaseService.copyList(data);
+                return f.copyList(data);
             });
         },
         //project without key, project modified , no return
         withProcess:function(project,processList){
 //            console.log(productList);
 //            console.log(processList);
-            project.selected=firebaseService.extend(project.selected,processList);
+            project.selected=f.extend(project.selected,processList);
         }
     };
     return projectService;

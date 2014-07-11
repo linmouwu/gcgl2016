@@ -99,8 +99,8 @@ app.config(function($stateProvider, $urlRouterProvider){
             }
         });
 });
-app.factory('ProductService', function(firebaseService,$q) {
-    var productRef=firebaseService.ref("/product");
+app.factory('ProductService', function(f,$q) {
+    var productRef=f.ref("/product");
     var productRefLoad=$q.defer();
     productRef.$on("loaded",function(){
         productRefLoad.resolve(productRef);
@@ -120,13 +120,13 @@ app.factory('ProductService', function(firebaseService,$q) {
         },
         find:function(key){
             var promise=productRefLoad.promise.then(function(){
-                return firebaseService.copy(productRef[key]);
+                return f.copy(productRef[key]);
             });
             return promise;
         },
         list: function(){
             return productRefLoad.promise.then(function(data){
-                return firebaseService.copyList(data);
+                return f.copyList(data);
             });
         },
         getTypes:function(){

@@ -206,16 +206,16 @@ app.factory('ProcessService', function(firebaseService,$q) {
 //            console.log(productList);
 //            console.log(processList);
             if(process.inputType=="product"){
-                process.input=firebaseService.extendSingle(process.input,productList);
+                process.input=f.extendSingle(process.input,productList);
             }
             else{
-                process.input=firebaseService.extendSingle(process.input,processList);
+                process.input=f.extendSingle(process.input,processList);
             }
             if(process.outputType=="product"){
-                process.output=firebaseService.extendSingle(process.output,productList);
+                process.output=f.extendSingle(process.output,productList);
             }
             else{
-                process.output=firebaseService.extendSingle(process.output,processList);
+                process.output=f.extendSingle(process.output,processList);
             }
         }
     };

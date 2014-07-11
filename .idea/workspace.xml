@@ -4,11 +4,19 @@
     <bookmark url="file://$PROJECT_DIR$/Gruntfile.js" line="394" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="464aae23-0f1f-461f-9086-2b46606fad35" name="Default" comment="">
+    <list default="true" id="464aae23-0f1f-461f-9086-2b46606fad35" name="Default" comment="test&#10;">
+      <change type="MOVED" beforePath="C:\Users\Administrator\WebstormProjects\gcgl2016\src\common\firebase\services.js" afterPath="$PROJECT_DIR$/src/common/firebase/f.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CHANGELOG.md" afterPath="$PROJECT_DIR$/CHANGELOG.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gruntfile.js" afterPath="$PROJECT_DIR$/Gruntfile.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/exeProject/exeProject.js" afterPath="$PROJECT_DIR$/src/app/exeProject/exeProject.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/exeProject/exeProject.spec.js" afterPath="$PROJECT_DIR$/src/app/exeProject/exeProject.spec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/exeProject.txt" afterPath="$PROJECT_DIR$/doc/exeProject.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/process/process.js" afterPath="$PROJECT_DIR$/src/app/process/process.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/product/product.js" afterPath="$PROJECT_DIR$/src/app/product/product.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/project/project.js" afterPath="$PROJECT_DIR$/src/app/project/project.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/user/user.js" afterPath="$PROJECT_DIR$/src/app/user/user.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="gcgl2016.iws" />
@@ -32,22 +40,67 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Gruntfile.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Gruntfile.js">
+      <file leaf-file-name="exeProject.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/exeProject/exeProject.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="395" column="9" selection-start="13190" selection-end="13190" vertical-scroll-proportion="-12.92" vertical-offset="7182" max-vertical-offset="9272">
+            <state line="229" column="39" selection-start="10322" selection-end="10323" vertical-scroll-proportion="-5.2" vertical-offset="4091" max-vertical-offset="4636">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CHANGELOG.md" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
-          <provider editor-type-id="MarkdownPreviewEditor">
-            <state />
-          </provider>
+      <file leaf-file-name="process.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/process/process.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4731">
+            <state line="217" column="32" selection-start="9364" selection-end="9365" vertical-scroll-proportion="-6.34" vertical-offset="3806" max-vertical-offset="4351">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="product.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/product/product.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="128" column="24" selection-start="5175" selection-end="5176" vertical-scroll-proportion="-4.82" vertical-offset="2191" max-vertical-offset="2736">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="project.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/project/project.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="251" column="29" selection-start="11781" selection-end="11781" vertical-scroll-proportion="0.0" vertical-offset="4440" max-vertical-offset="5035">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/user/user.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="18" selection-start="903" selection-end="903" vertical-scroll-proportion="0.3882353" vertical-offset="358" max-vertical-offset="1520">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="exeProject.spec.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/exeProject/exeProject.spec.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="37" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1121">
+              <folding>
+                <element signature="e#0#47#0" expanded="false" />
+                <marker date="1405062788591" expanded="true" signature="95:1683" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="f.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/common/firebase/f.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="19" selection-start="131" selection-end="131" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1957">
               <folding />
             </state>
           </provider>
@@ -113,9 +166,6 @@
         <option value="$PROJECT_DIR$/changelog.tpl" />
         <option value="$PROJECT_DIR$/bower.json" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/app/process/process.js" />
-        <option value="$PROJECT_DIR$/src/app/product/product.js" />
-        <option value="$PROJECT_DIR$/src/app/user/user.js" />
         <option value="$PROJECT_DIR$/src/common/d3/d3.js" />
         <option value="$PROJECT_DIR$/src/common/d3/directives.js" />
         <option value="$PROJECT_DIR$/src/common/underscore/util.js" />
@@ -123,14 +173,17 @@
         <option value="$PROJECT_DIR$/src/sb-admin.js" />
         <option value="$PROJECT_DIR$/src/app.spec.js" />
         <option value="$PROJECT_DIR$/src/app/product/product.spec.js" />
-        <option value="$PROJECT_DIR$/src/app/exeProject/exeProject.spec.js" />
-        <option value="$PROJECT_DIR$/src/common/firebase/services.js" />
-        <option value="$PROJECT_DIR$/src/app/exeProject/exeProject.js" />
-        <option value="$PROJECT_DIR$/src/app/project/project.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/karma/karma-unit.tpl.js" />
         <option value="$PROJECT_DIR$/Gruntfile.js" />
         <option value="$PROJECT_DIR$/CHANGELOG.md" />
+        <option value="$PROJECT_DIR$/src/app/exeProject/exeProject.spec.js" />
+        <option value="$PROJECT_DIR$/src/common/firebase/services.js" />
+        <option value="$PROJECT_DIR$/src/app/exeProject/exeProject.js" />
+        <option value="$PROJECT_DIR$/src/app/process/process.js" />
+        <option value="$PROJECT_DIR$/src/app/product/product.js" />
+        <option value="$PROJECT_DIR$/src/app/project/project.js" />
+        <option value="$PROJECT_DIR$/src/app/user/user.js" />
       </list>
     </option>
   </component>
@@ -182,6 +235,170 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="firebase" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="product" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="process" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exeProject" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -427,6 +644,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15194532" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -436,7 +654,6 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -644,13 +861,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/user/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="6" selection-start="2110" selection-end="2110" vertical-scroll-proportion="0.0" vertical-offset="925" max-vertical-offset="1520">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/common/d3/d3.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="10" selection-start="732" selection-end="732" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="608">
@@ -721,13 +931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/process/process.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="203" column="57" selection-start="8797" selection-end="9487" vertical-scroll-proportion="6.003361" vertical-offset="285" max-vertical-offset="4351">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="31" selection-start="421" selection-end="421" vertical-scroll-proportion="0.57478994" vertical-offset="0" max-vertical-offset="798">
@@ -739,36 +942,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="13" selection-start="58" selection-end="66" vertical-scroll-proportion="0.06386555" vertical-offset="0" max-vertical-offset="2622">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/common/firebase/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="29" selection-start="77" selection-end="94" vertical-scroll-proportion="0.09579832" vertical-offset="0" max-vertical-offset="1881">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/product/product.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="37" selection-start="2669" selection-end="2669" vertical-scroll-proportion="0.38319328" vertical-offset="969" max-vertical-offset="2736">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/project/project.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="61" selection-start="458" selection-end="458" vertical-scroll-proportion="0.38319328" vertical-offset="0" max-vertical-offset="5035">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/exeProject/exeProject.spec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="24" selection-start="72" selection-end="72" vertical-scroll-proportion="0.031932775" vertical-offset="0" max-vertical-offset="595">
-          <folding>
-            <element signature="e#0#47#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -795,13 +968,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/exeProject/exeProject.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="161" column="35" selection-start="7150" selection-end="7150" vertical-scroll-proportion="5.1411767" vertical-offset="0" max-vertical-offset="4294">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/changelog.tpl">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="35" selection-start="594" selection-end="594" vertical-scroll-proportion="0.56666666" vertical-offset="0" max-vertical-offset="570">
@@ -816,19 +982,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="395" column="9" selection-start="13190" selection-end="13190" vertical-scroll-proportion="-12.92" vertical-offset="7182" max-vertical-offset="9272">
+    <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
+      <provider selected="true" editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="362" selection-end="362" vertical-scroll-proportion="-0.76" vertical-offset="323" max-vertical-offset="2546">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4731">
+        <state line="395" column="9" selection-start="13190" selection-end="13190" vertical-scroll-proportion="-3.8" vertical-offset="7410" max-vertical-offset="9272">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/exeProject/exeProject.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="37" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1121">
+          <folding>
+            <element signature="e#0#47#0" expanded="false" />
+            <marker date="1405062788591" expanded="true" signature="95:1683" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/common/firebase/f.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="19" selection-start="131" selection-end="131" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1957">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/exeProject/exeProject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="229" column="39" selection-start="10322" selection-end="10323" vertical-scroll-proportion="-5.2" vertical-offset="4091" max-vertical-offset="4636">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/process/process.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="217" column="32" selection-start="9364" selection-end="9365" vertical-scroll-proportion="-6.34" vertical-offset="3806" max-vertical-offset="4351">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/product/product.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="128" column="24" selection-start="5175" selection-end="5176" vertical-scroll-proportion="-4.82" vertical-offset="2191" max-vertical-offset="2736">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/project/project.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="251" column="29" selection-start="11781" selection-end="11781" vertical-scroll-proportion="0.0" vertical-offset="4440" max-vertical-offset="5035">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/user/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="18" selection-start="903" selection-end="903" vertical-scroll-proportion="0.3882353" vertical-offset="358" max-vertical-offset="1520">
           <folding />
         </state>
       </provider>

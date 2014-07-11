@@ -10,27 +10,34 @@ app.config(function($stateProvider){
                         projects:function(ExeProjectService){
                             return ExeProjectService.list();
                         },
-                        currentProject:function(ExeProjectService,projects){
+                        currentProcesses:function(ExeProjectService,projects){
 //                            console.log("ExeProjectService.getCurrentProjectId()");
 //                            console.log(ExeProjectService.getCurrentProjectId());
                             var project=angular.copy(projects[ExeProjectService.getCurrentProjectId()]);
-                            if(!_.isUndefined(project)){
-                                _.each(project.processData,function(process){
-                                    ExeProjectService.withInputOutput(process);
-                                });
+                            if(_.isUndefined(project)){
+                                return project;
                             }
-                            return project;
+                            console.log("This project doesn't have processData with");
+                            console.log(project);
+                            var subProcess=project.processData;
+                            subProcess=_.map(project.processData,function(process){
+                                ExeProjectService.withInputOutput(process,angular.copy(project.processData),project.productData);
+                                return process;
+                            });
+                            console.log("This project must have processData with");
+                            console.log(project);
+                            return subProcess;
                         }
                     },
-                    controller:function($scope,$stateParams,$state,firebaseService,ExeProjectService,projects,currentProject){
+                    controller:function($scope,$stateParams,$state,f,ExeProjectService,projects,currentProcesses){
                         $scope.projects=projects;
 
                         console.log("projects");
                         console.log(projects);
                         $scope.selectId=ExeProjectService.getCurrentProjectId();
                         $scope.myData = [];
-                        if(!_.isUndefined(currentProject)){
-                            $scope.myData=firebaseService.embedIdsObj(currentProject.processData);
+                        if(!_.isUndefined(currentProcesses)){
+                            $scope.myData=f.embedIdsObj(currentProcesses);
                         }
                         $scope.mySelections=[];
                         console.log("$scope.myData");
@@ -93,8 +100,8 @@ app.config(function($stateProvider){
         });
 });
 
-app.factory('ExeProjectService', function(firebaseService,ProjectService,ProcessService,ProductService,$q) {
-    var exeProjectRef = firebaseService.ref("/exeProject");
+app.factory('ExeProjectService', function(f,ProjectService,ProcessService,ProductService,$q) {
+    var exeProjectRef = f.ref("/exeProject");
     var exeProjectRefLoad=$q.defer();
     exeProjectRef.$on("loaded",function(){
         exeProjectRefLoad.resolve(exeProjectRef);
@@ -118,8 +125,8 @@ app.factory('ExeProjectService', function(firebaseService,ProjectService,Process
         find:function(key){
             var promise=exeProjectRefLoad.promise.then(function(){
 //                console.log("projectRef[key]");
-//                console.log(firebaseService.copy(projectRef[key]));
-                return firebaseService.copy(exeProjectRef[key]);
+//                console.log(f.copy(projectRef[key]));
+                return f.copy(exeProjectRef[key]);
             });
             return promise;
         },
@@ -127,7 +134,7 @@ app.factory('ExeProjectService', function(firebaseService,ProjectService,Process
             return exeProjectRefLoad.promise.then(function(data){
                 console.log("data");
                 console.log(data);
-                return firebaseService.copyList(data);
+                return f.copyList(data);
             });
         },
         getCurrentProjectId:function(){
@@ -152,7 +159,7 @@ app.factory('ExeProjectService', function(firebaseService,ProjectService,Process
                 var processDataRef=exeProjectRef.$child(pId).$child("processData");
                 var productDataRef=exeProjectRef.$child(pId).$child("productData");
                 ProcessService.list().then(function(processes){
-                    var selectProcesses=firebaseService.extend(exeProjectContent.selected,processes);
+                    var selectProcesses=f.extend(exeProjectContent.selected,processes);
                     _.each(selectProcesses,function(process){
                         processDataRef.$update(process);
                         var processContent=process[Object.keys(process)[0]];
@@ -196,20 +203,31 @@ app.factory('ExeProjectService', function(firebaseService,ProjectService,Process
 //            });
 //            return promise;
         },
-        withInputOutput:function(process){
+        /**
+         *
+         * @param process
+         * @param processList
+         * @param productList
+         */
+        withInputOutputAndEmbed:function(process,processList,productList){
+            if(_.isUndefined(processList)|| _.isUndefined(productList)){
+                console.log("process and products is undefine");
+                return;
+            }
 //            console.log(productList);
 //            console.log(processList);
-            if(process.inputType=="product"){
-                process.input=firebaseService.extendSingle(process.input,productList);
+            var processContent=f.getContent(process);
+            if(processContent.inputType=="product"){
+                processContent.input=f.embedId(f.extendSingle(processContent.input,productList));
             }
             else{
-                process.input=firebaseService.extendSingle(process.input,processList);
+                processContent.input=f.extendSingle(processContent.input,processList);
             }
-            if(process.outputType=="product"){
-                process.output=firebaseService.extendSingle(process.output,productList);
+            if(processContent.outputType=="product"){
+                processContent.output=f.extendSingle(processContent.output,productList);
             }
             else{
-                process.output=firebaseService.extendSingle(process.output,processList);
+                processContent.output=f.extendSingle(processContent.output,processList);
             }
         },
         test:function(){
