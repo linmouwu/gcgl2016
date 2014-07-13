@@ -1,4 +1,4 @@
-var app=angular.module("gcgl2016.process",[]);
+var app=angular.module("gcgl2016.process",['gcgl2016.firebase']);
 app.config(function($stateProvider, $urlRouterProvider){
 
     $stateProvider
@@ -14,7 +14,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                         processList:function(ProcessService){
                             return ProcessService.list();
                         },
-                        processListWithProduct:function(ProcessService,firebaseService,processList,productList){
+                        processListWithProduct:function(ProcessService,f,processList,productList){
                             var ret={};
                             _.each(processList,function(process,id){
 //                                console.log("process");
@@ -24,8 +24,8 @@ app.config(function($stateProvider, $urlRouterProvider){
                                 ProcessService.withProduct(process,productList,processList);
                                 console.log("process.input");
                                 console.log(process.input);
-                                process.input=firebaseService.embedId(process.input);
-                                process.output=firebaseService.embedId(process.output);
+                                process.input=f.embedId(process.input);
+                                process.output=f.embedId(process.output);
                                 console.log("process.input");
                                 console.log(process.input);
                                 ret[id]=process;
@@ -159,15 +159,15 @@ app.config(function($stateProvider, $urlRouterProvider){
             }
         });
 });
-app.factory('ProcessService', function(firebaseService,$q) {
+app.factory('ProcessService', function(f,$q) {
 
-    var processRef = firebaseService.ref("/process");
+    var processRef = f.ref("/process");
     var processRefLoad = $q.defer();
     processRef.$on("loaded",function(){
         processRefLoad.resolve(processRef);
     });
 
-    var processRelationRef = firebaseService.ref("/processRelation");
+    var processRelationRef = f.ref("/processRelation");
     var processRelationRefLoad = $q.defer();
     processRelationRef.$on("loaded",function(){
         processRelationRefLoad.resolve(processRelationRef);
@@ -188,13 +188,13 @@ app.factory('ProcessService', function(firebaseService,$q) {
         },
         find:function(key){
             var promise=processRefLoad.promise.then(function(){
-                return firebaseService.copy(processRef[key]);
+                return f.copy(processRef[key]);
             });
             return promise;
         },
         list: function(){
             return processRefLoad.promise.then(function(data){
-                return firebaseService.copyList(data);
+                return f.copyList(data);
             });
         },
         types:function(){

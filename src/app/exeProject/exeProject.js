@@ -10,22 +10,27 @@ app.config(function($stateProvider){
                         projects:function(ExeProjectService){
                             return ExeProjectService.list();
                         },
-                        currentProcesses:function(ExeProjectService,projects){
+                        currentProcesses:function(ExeProjectService,f,projects){
 //                            console.log("ExeProjectService.getCurrentProjectId()");
 //                            console.log(ExeProjectService.getCurrentProjectId());
                             var project=angular.copy(projects[ExeProjectService.getCurrentProjectId()]);
                             if(_.isUndefined(project)){
                                 return project;
                             }
-                            console.log("This project doesn't have processData with");
-                            console.log(project);
-                            var subProcess=project.processData;
-                            subProcess=_.map(project.processData,function(process){
-                                ExeProjectService.withInputOutput(process,angular.copy(project.processData),project.productData);
-                                return process;
+//                            console.log('0.9');
+//                            console.log(project.selected);
+//                            console.log(project.processData);
+                            var subProcess= f.extend(project.selected,project.processData);
+//                            console.log("1.Sub Process");
+//                            console.log(subProcess);
+                            subProcess=_.map(project.processData,function(processContent,id){
+                                processContent.id=id;
+                                console.log('processContent');
+                                console.log(processContent);
+                                return ExeProjectService.withInputOutputAndEmbed(processContent,project.productData,project.processData);
                             });
-                            console.log("This project must have processData with");
-                            console.log(project);
+                            console.log("This processes must have list inside.");
+                            console.log(subProcess);
                             return subProcess;
                         }
                     },
@@ -37,7 +42,7 @@ app.config(function($stateProvider){
                         $scope.selectId=ExeProjectService.getCurrentProjectId();
                         $scope.myData = [];
                         if(!_.isUndefined(currentProcesses)){
-                            $scope.myData=f.embedIdsObj(currentProcesses);
+                            $scope.myData=currentProcesses;
                         }
                         $scope.mySelections=[];
                         console.log("$scope.myData");
@@ -45,8 +50,10 @@ app.config(function($stateProvider){
                         $scope.gridOptions = {
                             data: 'myData',
                             columnDefs: [{field:'name', displayName:'Name'},
-                                {field:'input', displayName:'Input'},
-                                {field:'output', displayName:'Output'}
+                                {field:'input.name', displayName:'Input'},
+                                {field:'input.status',displayName:'Input Status'},
+                                {field:'output.name', displayName:'Output'},
+                                {field:'output.status', displayName:'Output Status'}
                             ],
                             selectedItems: $scope.mySelections,
                             multiSelect: false
@@ -75,6 +82,8 @@ app.config(function($stateProvider){
                             if($scope.mySelections.length===0){
                                 return;
                             }
+                            console.log('$scope.mySelections');
+                            console.log($scope.mySelections);
                             $state.go("main.process",{id:$scope.mySelections[0].id,pId:$scope.selectId});
                         };
                     }
@@ -87,12 +96,42 @@ app.config(function($stateProvider){
                 'main@':{
                     templateUrl:"exeProject/processExe.html",
                     resolve:{
+                        project:function(ExeProjectService,ProductDataService,$stateParams){
+                            ProductDataService.setProject($stateParams.pId);
+                            return ExeProjectService.find($stateParams.pId);
+                        },
                         process:function(ExeProjectService,$stateParams){
-                            return ExeProjectService.getProcess($stateParams.pId,$stateParams.id);
+                            return ExeProjectService.getProcessData($stateParams.pId,$stateParams.id);
+                        },
+                        input:function(process){
+                            return process.input;
+                        },
+                        output:function(process,project,f){
+                            console.log('output:function(process,project){');
+                            console.log(process.output);
+                            console.log(project.productData);
+                            return f.embedId(f.extendSingle(process.output,project.productData));
                         }
                     },
-                    controller:function($scope,process){
+                    controller:function($stateParams,$state,$scope,process,input,output,ProductDataService){
+                        console.log(input);
+                        console.log(output);
                         $scope.process=process;
+                        $scope.input=input;
+                        $scope.output=output;
+                        $scope.save=function(){
+                            ProductDataService.find($scope.output.id).then(function(productDataContent){
+                                productDataContent.fields=$scope.output.fields;
+                                ProductDataService.update($scope.output.id,productDataContent).then(function(){
+
+                                    $state.transitionTo($state.current, $stateParams, {
+                                        reload: true,
+                                        inherit: false,
+                                        notify: true
+                                    });
+                                });
+                            });
+                        };
                     }
 
                 }
@@ -145,13 +184,10 @@ app.factory('ExeProjectService', function(f,ProjectService,ProcessService,Produc
             console.log(id);
             currentProjectId=id;
         },
-        getProcess:function(pId,id){
+        getProcessData:function(pId,id){
             return exeProjectService.find(pId).then(function(project){
-                return _.filter(project.selected,function(process){
-                    if(process.id==id){
-                        return true;
-                    }
-                })[0];
+                var processData=project.processData;
+                return processData[id];
             });
         },
         createProcessProjectData:function(pId){
@@ -209,30 +245,74 @@ app.factory('ExeProjectService', function(f,ProjectService,ProcessService,Produc
          * @param processList
          * @param productList
          */
-        withInputOutputAndEmbed:function(process,processList,productList){
+        withInputOutputAndEmbed:function(processContent,productList,processList){
             if(_.isUndefined(processList)|| _.isUndefined(productList)){
-                console.log("process and products is undefine");
-                return;
+                console.log("processes and products is undefine");
+                return processContent;
             }
 //            console.log(productList);
 //            console.log(processList);
-            var processContent=f.getContent(process);
+//            console.log('processContent ');
+            processContent=angular.copy(processContent);
             if(processContent.inputType=="product"){
                 processContent.input=f.embedId(f.extendSingle(processContent.input,productList));
             }
             else{
-                processContent.input=f.extendSingle(processContent.input,processList);
+                processContent.input= f.embedId(f.extendSingle(processContent.input,processList));
             }
+//            console.log('after input');
             if(processContent.outputType=="product"){
-                processContent.output=f.extendSingle(processContent.output,productList);
+                processContent.output= f.embedId(f.extendSingle(processContent.output,productList));
             }
             else{
-                processContent.output=f.extendSingle(processContent.output,processList);
+                processContent.output= f.embedId(f.extendSingle(processContent.output,processList));
             }
+            return processContent;
         },
         test:function(){
             return "hello world";
+        },
+        updateFields:function(productId,fields){
+            exeProjectService.find(pId).then(function(exeProjectContent){
+                var productDataRef=exeProjectRef.$child(pId).$child("productData".$child(productId));
+            });
+            console.log('updateFields');
+            console.log(productId);
+            console.log(fields);
+            return productService.find(productId).then(function(productContent){
+                productContent.fields=fields;
+                console.log('productContent');
+                console.log(productContent);
+                return productService.update(productId,productContent);
+            });
         }
     };
     return exeProjectService;
+});
+app.factory('ProductDataService',function($q,f){
+    var productDataRef;
+    var productDataRefLoad;
+
+    var productDataService = {
+        setProject:function(projectId){
+            productDataRef= f.ref("/exeProject/"+projectId+"/productData");
+            productDataRefLoad=$q.defer();
+            productDataRef.$on("loaded",function(){
+                productDataRefLoad.resolve(productDataRef);
+            });
+            return;
+        },
+        update: function(key,value){
+            var obj={};
+            obj[key]=value;
+            return productDataRef.$update(obj);
+        },
+        find:function(key){
+            var promise=productDataRefLoad.promise.then(function(){
+                return f.copy(productDataRef[key]);
+            });
+            return promise;
+        }
+    };
+    return productDataService;
 });

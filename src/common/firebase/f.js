@@ -9,31 +9,34 @@ firebase.factory("f",function($firebase){
             return $firebase(new Firebase(baseUrl+path));
         },
 
-        extend:function (ids,ref) {
-            if(_.isUndefined(ids)){
+        extend:function (ids,refs) {
+            if(_.isUndefined(ids)|| _.isUndefined(refs)){
                 return [];
             }
             //base is an array of id
             //ref is a reference of entities
             var entities= _.filter(ids,function(id){
-                if(_.contains(Object.keys(ref),id)){
-                    return true;
+                if(_.isUndefined(refs[id])){
+                    return false;
                 }
-                return false;
+                return true;
             });
             var result= _.map(entities,function(id){
                 var o={};
-                o[id]=angular.copy(ref[id]);
+                o[id]=angular.copy(refs[id]);
                 return o;
             });
+
             return result;
         },
-        extendSingle:function(id,ref){
-            if(_.isUndefined(id)){
+        extendSingle:function(id,refs){
+            if(_.isUndefined(id)|| _.isUndefined(refs)){
                 return {};
             }
             var result={};
-            result[id]=angular.copy(ref[id]);
+            if(!_.isUndefined(refs[id])){
+                result[id]=angular.copy(refs[id]);
+            }
             return result;
         },
         //before {key:{field1:"",field2:""}}
@@ -54,6 +57,9 @@ firebase.factory("f",function($firebase){
             return ret;
         },
         embedId:function(obj){
+            if(_.isUndefined(obj)){
+                return {};
+            }
             var keys=Object.keys(obj);
             if(keys.length!=1){
                 return {};
@@ -90,7 +96,7 @@ firebase.factory("f",function($firebase){
         },
         getContent:function(obj){
             var key=Object.keys(obj)[0];
-            return obj[key];
+            return angular.copy(obj[key]);
         }
     };
     return firebaseService;

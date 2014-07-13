@@ -1,0 +1,352 @@
+commit af64f0a3178aa2b40fb75f497fa8a7243b4817c1
+Author: dingziran <dingziranrr@163.com>
+Date:   Thu Jul 10 23:36:46 2014 +0800
+
+    test
+
+commit 74397210efeb3bda2cf272fa3f138f59887b5714
+Author: dingziran <dingziranrr@163.com>
+Date:   Thu Jul 10 23:07:10 2014 +0800
+
+    chore(release): v0.1.1-0
+
+commit 4cc93f0f13997c3db64315488ddd72ed6eab0a74
+Author: dingziran <dingziranrr@163.com>
+Date:   Thu Jul 10 23:03:38 2014 +0800
+
+    fix(karma-coverage): choose the right js file to analyze
+
+commit 0feeff6753bf75fe0c607b15dae281777e5270da
+Author: dingziran <dingziranrr@163.com>
+Date:   Thu Jul 10 22:31:54 2014 +0800
+
+    refactor(gcgl2016): add some sample unit test and test coverage
+
+commit 6b132e9f15025fa8bf3f442d9770c8ed7f2583bf
+Author: dingziran <dingziranrr@163.com>
+Date:   Thu Jul 10 12:06:31 2014 +0800
+
+    chore(release): v0.1.0-0
+
+commit c59284bca7d203d9615da3cecb241e8e8283fff7
+Author: dingziran <dingziranrr@163.com>
+Date:   Thu Jul 10 12:05:29 2014 +0800
+
+    fix(gcgl2016): all in jslint
+
+commit aa73e15490429655d97699534f0dbfd98deef63e
+Author: dingziran <dingziranrr@163.com>
+Date:   Thu Jul 10 10:45:47 2014 +0800
+
+    refactor(gcgl2016): make new whole grunt support
+
+commit 331d24358876fda1ff716c739103f5e9faaa3718
+Author: dingziran <dingziranrr@163.com>
+Date:   Thu Jul 10 00:27:18 2014 +0800
+
+    refactor(pencil): use graphite instead of lead
+    
+    Closes #640.
+    
+    Graphite is a much more available resource than lead, so we use it to lower the price.
+
+commit 135884e3c30cea3aaf31d543945bcf34b07f5a1e
+Author: dingziran <dingziranrr@163.com>
+Date:   Thu Jul 10 00:23:18 2014 +0800
+
+    fix(pen): use blue ink instead of red ink
+
+commit 2792d7a65ee6a47650c9755d9fe5d66dedab2f67
+Author: dingziran <dingziranrr@163.com>
+Date:   Thu Jul 10 00:18:41 2014 +0800
+
+    feat(ruler): add inches as well as centimeters
+
+commit 33b08d79a8f5984b1e56d8bb04d15bda3dff6cd9
+Author: dingziran <dingziranrr@163.com>
+Date:   Thu Jul 10 00:12:38 2014 +0800
+
+    fixes #001:what the fuck
+
+commit 77ef7402fd43e3b3f60e7edef38dc1687c97be57
+Author: dingziran <dingziranrr@163.com>
+Date:   Thu Jul 10 00:11:34 2014 +0800
+
+    closes #1
+
+commit f8357837dad46be49cc146a3e1d0ffbdcc909319
+Author: dingziran <dingziranrr@163.com>
+Date:   Thu Jul 10 00:08:50 2014 +0800
+
+    closes #001:what the fuck
+
+commit 99edad4a6c1b73bbd161a73e5a4d29d038adba94
+Author: dingziran <dingziranrr@163.com>
+Date:   Wed Jul 9 23:39:47 2014 +0800
+
+    chore(release): v0.4.0-0
+
+commit a6ec2d7bd26e5caf60d729bd6ab27e7bf7e8d83a
+Author: dingziran <dingziranrr@163.com>
+Date:   Wed Jul 9 23:39:35 2014 +0800
+
+    chore(release): v0.3.0-1
+
+commit 007409e1f3324eaabf0b19bdce94c1e9694fb9ff
+Author: dingziran <dingziranrr@163.com>
+Date:   Wed Jul 9 23:25:43 2014 +0800
+
+    Release v0.0.2
+
+commit b900b9289ba4c5261ab848ac0f4465a0d3d17d69
+Author: dingziran <dingziranrr@163.com>
+Date:   Wed Jul 9 23:24:42 2014 +0800
+
+    Release v0.0.1
+
+commit 39f721983dbeca8413f2e50ee9e4fb2edf0e2b11
+Author: dingziran <dingziranrr@163.com>
+Date:   Tue Jul 8 19:44:34 2014 +0800
+
+    ui fixed
+
+commit ad3146210a7c35db45445211c58be7d8e8311d2d
+Author: dingziran <dingziranrr@163.com>
+Date:   Tue Jul 8 18:04:48 2014 +0800
+
+    prototype of new architecture
+
+commit c0cdf86e3727a501d7ca0e978b5052f43fcf57a7
+Author: dingziran <dingziranrr@163.com>
+Date:   Mon Jul 7 23:45:55 2014 +0800
+
+    new architecture with grunt
+
+commit 626b6221ee4c92a55bff58b70a8f968c818040cd
+Author: dingziran <dingziranrr@163.com>
+Date:   Mon Jul 7 21:11:54 2014 +0800
+
+    before add grunt and karma and sonar qube
+
+commit 7cae7786a7ec647d5d1d5ece5c6b3160fd27a2bb
+Author: dingziran <dingziranrr@163.com>
+Date:   Sat Jul 5 17:11:29 2014 +0800
+
+    complete data structure of exeProject
+
+commit 4a2ac3606895b79b2743d8c8d5e4b59ca020585d
+Author: dingziran <dingziranrr@163.com>
+Date:   Sat Jul 5 14:56:56 2014 +0800
+
+    before refactor of inner id problem
+
+commit fcbfb03b2caf7562f54d4f5dbe3bbcf7935f8e55
+Author: dingziran <dingziranrr@163.com>
+Date:   Thu Jul 3 22:06:44 2014 +0800
+
+    all refactored
+
+commit e2e7132ea6afec372bc78b955e047b2415ac2a1a
+Author: dingziran <dingziranrr@163.com>
+Date:   Wed Jul 2 10:08:39 2014 +0800
+
+    process refactored
+
+commit 25c0b7a1f7fea6a86befcf8ca7ef0197543fcdfa
+Author: dingziran <dingziranrr@163.com>
+Date:   Wed Jul 2 09:00:38 2014 +0800
+
+    before new refactor
+
+commit 15442fc2baec9f0902cdafb83e90f03c8decde70
+Author: dingziran <dingziranrr@163.com>
+Date:   Wed Jul 2 09:00:28 2014 +0800
+
+    before new refactor
+
+commit 767da56e85c4979eca3f16626995cd78ea0e5256
+Author: dingziran <dingziranrr@163.com>
+Date:   Tue Jul 1 21:29:12 2014 +0800
+
+    before new refactor
+
+commit 4baebc0a8cd4d49a8a153cd45429ed096a375f73
+Author: dingziran <dingziranrr@163.com>
+Date:   Mon Jun 30 00:46:06 2014 +0800
+
+    process refactored, product refactored: rearrange the controller and service to use firebase with angular copy.
+
+commit 2095b4cab8bd1b0ff2e0cddcbea5c38f314006cb
+Author: dingziran <dingziranrr@163.com>
+Date:   Sun Jun 29 23:29:40 2014 +0800
+
+    process refactored, product refactored: rearrange the controller and service to use firebase with angular copy.
+
+commit 14f5b5deb15eb58cef1e710d4f1f993aa4aff44a
+Author: dingziran <dingziranrr@163.com>
+Date:   Thu Jun 26 21:37:40 2014 +0800
+
+    process updated. and product is updating.
+    find an important problem about resolve and ui router
+
+commit 667075b2298cb3b73dd00c66320266db94c989dc
+Author: dingziran <dingziranrr@163.com>
+Date:   Tue Jun 24 11:35:54 2014 +0800
+
+    project's process select
+
+commit 98ca6dd3b52146bfc8245399c527793e2ebcd8eb
+Author: dingziran <dingziranrr@163.com>
+Date:   Sun Jun 22 23:41:39 2014 +0800
+
+    branch merge
+
+commit 7bfc5acb9453c899e727fef826946fa4eebe9019
+Author: dingziran <dingziranrr@163.com>
+Date:   Sun Jun 22 23:39:21 2014 +0800
+
+    before merge
+
+commit 7f5ef42a7a91ec6a4b22e44f3bc0d075f305c4ca
+Author: dingziran <dingziranrr@163.com>
+Date:   Tue Jun 3 14:03:26 2014 +0800
+
+    add edit page
+
+commit bb0a310ef1583192f2d91a13222621c8c22511d5
+Author: dingziran <dingziranrr@163.com>
+Date:   Tue Jun 3 10:56:01 2014 +0800
+
+    redefine process relation
+
+commit 790609da35fd1b2f5b1f89434e96d19a82735bde
+Author: dingziran <dingziranrr@163.com>
+Date:   Mon Jun 2 21:28:55 2014 +0800
+
+    project and user pages add.
+
+commit 4b759ba40964cf74b771b9571468d53479b675ba
+Author: dingziran <dingziranrr@163.com>
+Date:   Fri May 30 22:23:04 2014 +0800
+
+    process management and product management v1
+
+commit b1a7b4f8fb068612d611f520be5fc1c85665d0b5
+Author: dingziran <dingziranrr@163.com>
+Date:   Sun May 18 21:37:31 2014 +0800
+
+    burn chart demo v2
+
+commit 06f43d488af910650cffa328b16339b585006f6e
+Author: dingziran <dingziranrr@163.com>
+Date:   Sun May 18 20:03:19 2014 +0800
+
+    debug ok
+    
+    Signed-off-by: dingziran <dingziranrr@163.com>
+
+commit fe670f93bdb77d0035b7eafd4f91601c1c7a0482
+Author: dingziran <dingziranrr@163.com>
+Date:   Sun May 18 19:24:22 2014 +0800
+
+    error with controller, need reverse
+
+commit c809dede7d6393293c5fcee78c35d80a73319b3d
+Author: dingziran <dingziranrr@163.com>
+Date:   Tue May 13 23:59:14 2014 +0800
+
+    burndown graph
+
+commit 959ca3c847ed8d97fa1991f029286ffa603ae039
+Author: dingziran <dingziranrr@163.com>
+Date:   Tue May 13 10:57:57 2014 +0800
+
+    	deleted:    public/vendor/flot/chart-data-flot.js
+    	deleted:    public/vendor/morris/chart-data-morris.js
+    	deleted:    public/vendor/tablesorter/jquery.tablesorter.js
+    	deleted:    public/vendor/tablesorter/tables.js
+
+commit 4cf100c0b0949333cca57e24051fd04e957f95b4
+Merge: eb33e69 b48a208
+Author: dingziran <dingziranrr@163.com>
+Date:   Tue May 13 10:54:52 2014 +0800
+
+    merge conflict
+
+commit eb33e69ec87a4b256e2608bbdfec4a87f0796afe
+Author: dingziran <dingziranrr@163.com>
+Date:   Tue May 13 10:50:52 2014 +0800
+
+    sb-admin v2 installed
+
+commit b48a208b612948e8b692f9176cfae8bd21d0927e
+Author: dingziran <dingziran@dingzirandeMacBook-Air.local>
+Date:   Sun May 11 19:39:24 2014 +0800
+
+    d3 directive demo sucuccess
+
+commit f28cb223f14e26df0d33d5a550bbf017823953ce
+Author: dingziran <dingziranrr@163.com>
+Date:   Sun May 11 16:43:50 2014 +0800
+
+    d3 in directive first demo, can't work
+
+commit ebcad8abddf0b8cd90cab53e965a5cb607f90ce9
+Author: dingziran <dingziranrr@163.com>
+Date:   Sat May 10 16:33:58 2014 +0800
+
+    full updete source code
+
+commit b106d2aed7bfe96a8c15c7bd8a6ec6a2ca56f833
+Author: dingziran <dingziranrr@163.com>
+Date:   Sat May 10 01:20:41 2014 +0800
+
+    5.10
+
+commit 9f4098cd7c4634d47cedd4bff8fe44ea57e7c7eb
+Author: dingziran <dingziranrr@163.com>
+Date:   Tue May 6 23:15:35 2014 +0800
+
+    sd admin demo
+
+commit 596ee38525196ea1693f71cd0b961aaf75656079
+Author: dingziran <dingziranrr@163.com>
+Date:   Thu May 1 19:11:53 2014 +0800
+
+    add tab and modal
+
+commit 682f66dff97a8d2b98de79e0585ef4e6ea2c6ec2
+Author: dingziran <dingziranrr@163.com>
+Date:   Tue Apr 22 22:43:25 2014 +0800
+
+    add tab and modal
+
+commit bfb02ec729504d89ccf8d16e9047a591fa1b823b
+Author: dingziran <dingziranrr@163.com>
+Date:   Tue Apr 22 10:52:05 2014 +0800
+
+    create product and process management demo
+
+commit 0e4afa3e0bd5c51eb3ad9f8063a28ba9f4b84a29
+Author: dingziran <dingziranrr@163.com>
+Date:   Wed Apr 16 20:19:20 2014 +0800
+
+    modified main page
+
+commit 0815e108908d5c5f99b31a100c8abd6d7756abef
+Author: dingziran <dingziranrr@163.com>
+Date:   Sun Apr 6 11:37:39 2014 +0800
+
+    new main page
+
+commit 702ce6a27d4afb554cc73fe54fc272bd093d5282
+Author: dingziran <dingziranrr@163.com>
+Date:   Sat Apr 5 23:53:31 2014 +0800
+
+    initial
+
+commit 13429ee0eaa2b2e526dfe5e12b4aa18e6e38965e
+Author: Ding Ziran <dingziranrr@163.com>
+Date:   Sat Apr 5 08:46:57 2014 -0700
+
+    Initial commit

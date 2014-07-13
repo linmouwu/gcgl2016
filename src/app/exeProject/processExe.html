@@ -12,12 +12,24 @@
             <tab heading="Input">
                 <div class="row">
                     <div class="col-lg-12">
-                        hello
+                        {{input}}
                     </div>
                 </div>
             </tab>
             <tab heading="Process">process</tab>
-            <tab heading="Output">output</tab>
+            <tab heading="Output">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form>
+                            <div class="form-group" ng-repeat="field in output.fields">
+                                <label>{{field.name}}</label>
+                                <textarea class="form-control" rows="10" ng-model="field.value"></textarea>
+                            </div>
+                            <button class="btn" ng-click="save()">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </tab>
         </tabset>
     </div>
 </div>
