@@ -103,26 +103,42 @@ app.config(function($stateProvider){
                         process:function(ExeProjectService,$stateParams){
                             return ExeProjectService.getProcessData($stateParams.pId,$stateParams.id);
                         },
-                        input:function(process){
-                            return process.input;
+                        input:function(process,project,f){
+                            return f.embedId(f.extendSingle(process.input,project.productData));
                         },
                         output:function(process,project,f){
-                            console.log('output:function(process,project){');
-                            console.log(process.output);
-                            console.log(project.productData);
+//                            console.log('output:function(process,project){');
+//                            console.log(process.output);
+//                            console.log(project.productData);
                             return f.embedId(f.extendSingle(process.output,project.productData));
                         }
                     },
                     controller:function($stateParams,$state,$scope,process,input,output,ProductDataService){
+                        console.log("input");
                         console.log(input);
+                        console.log("output");
                         console.log(output);
+
                         $scope.process=process;
                         $scope.input=input;
                         $scope.output=output;
-                        $scope.save=function(){
+                        $scope.saveOutput=function(){
                             ProductDataService.find($scope.output.id).then(function(productDataContent){
                                 productDataContent.fields=$scope.output.fields;
                                 ProductDataService.update($scope.output.id,productDataContent).then(function(){
+
+                                    $state.transitionTo($state.current, $stateParams, {
+                                        reload: true,
+                                        inherit: false,
+                                        notify: true
+                                    });
+                                });
+                            });
+                        };
+                        $scope.saveInput=function(){
+                            ProductDataService.find($scope.output.id).then(function(productDataContent){
+                                productDataContent.fields=$scope.input.fields;
+                                ProductDataService.update($scope.input.id,productDataContent).then(function(){
 
                                     $state.transitionTo($state.current, $stateParams, {
                                         reload: true,

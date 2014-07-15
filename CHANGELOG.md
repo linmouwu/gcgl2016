@@ -1,3 +1,37 @@
+<a name="0.1.3-1"></a>
+### 0.1.3-1 (2014-07-15)
+
+
+#### Bug Fixes
+
+* **gcgl2016:** all in jslint ((c59284bc))
+* **karma-coverage:** choose the right js file to analyze ((4cc93f0f))
+* **pen:** use blue ink instead of red ink ((135884e3))
+
+
+#### Features
+
+* **exeProject:** add process' output's input list. ((abb83f85))
+* **ruler:** add inches as well as centimeters ((2792d7a6))
+
+
+<a name="0.1.3-0"></a>
+### 0.1.3-0 (2014-07-15)
+
+
+#### Bug Fixes
+
+* **gcgl2016:** all in jslint ((c59284bc))
+* **karma-coverage:** choose the right js file to analyze ((4cc93f0f))
+* **pen:** use blue ink instead of red ink ((135884e3))
+
+
+#### Features
+
+* **exeProject:** add process' output's input list. ((abb83f85))
+* **ruler:** add inches as well as centimeters ((2792d7a6))
+
+
 <a name="0.1.2-6"></a>
 ### 0.1.2-6 (2014-07-13)
 
