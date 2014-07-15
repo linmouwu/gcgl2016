@@ -1,4 +1,4 @@
-var app=angular.module("gcgl2016.exeProject",['ui.router','gcgl2016.firebase','gcgl2016.project']);
+var app=angular.module("gcgl2016.exeProject",['ui.router','gcgl2016.firebase','gcgl2016.project','ui.bootstrap']);
 app.config(function($stateProvider){
     $stateProvider
         .state('main',{
@@ -36,7 +36,6 @@ app.config(function($stateProvider){
                     },
                     controller:function($scope,$stateParams,$state,f,ExeProjectService,projects,currentProcesses){
                         $scope.projects=projects;
-
                         console.log("projects");
                         console.log(projects);
                         $scope.selectId=ExeProjectService.getCurrentProjectId();
@@ -118,7 +117,7 @@ app.config(function($stateProvider){
                             return f.embedId(f.extendSingle(process.output,project.productData));
                         }
                     },
-                    controller:function($stateParams,$state,$scope,process,input,output,ProductDataService,ProcessDataService){
+                    controller:function($stateParams,$state,$modal,$scope,process,input,output,ProductDataService,ProcessDataService){
                         console.log("input");
                         console.log(input);
                         console.log("output");
@@ -141,7 +140,7 @@ app.config(function($stateProvider){
                             });
                         };
                         $scope.saveInput=function(){
-                            ProductDataService.find($scope.output.id).then(function(productDataContent){
+                            ProductDataService.find($scope.input.id).then(function(productDataContent){
                                 productDataContent.fields=$scope.input.fields;
                                 ProductDataService.update($scope.input.id,productDataContent).then(function(){
 
@@ -157,13 +156,74 @@ app.config(function($stateProvider){
                             ProcessDataService.finish($stateParams.id);
                             $state.go('^',{},{reload:"true"});
                         };
+                        $scope.showInput=function(){
+                            var modalInstance = $modal.open({
+                                templateUrl: 'productTemplate/document.html',
+                                controller: 'ModalInputCtrl',
+                                size: 'lg',
+                                resolve: {
+                                    input: function () {
+                                        return $scope.input;
+                                    }
+                                }
+                            });
+
+                            modalInstance.result.then(function (output) {
+                                $scope.output=input;
+                                $scope.saveOutput();
+                            }, function () {
+                                console.log('Modal dismissed at: ' + new Date());
+                            });
+                        };
+                        $scope.showOutput=function(){
+                            var modalInstance = $modal.open({
+                                templateUrl: 'productTemplate/document.html',
+                                controller: 'ModalOutputCtrl',
+                                size: 'lg',
+                                resolve: {
+                                    output: function () {
+                                        return $scope.output;
+                                    }
+                                }
+                            });
+
+                            modalInstance.result.then(function (output) {
+                                $scope.output=output;
+                                $scope.saveOutput();
+                            }, function () {
+                                console.log('Modal dismissed at: ' + new Date());
+                            });
+                        };
                     }
 
                 }
             }
         });
 });
+app.controller('ModalInputCtrl',function ($scope, $modalInstance, input) {
+    console.log("ModalInputCtrl input");
+    console.log(input);
+    $scope.input = input;
+    $scope.readonly=true;
 
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+});
+app.controller('ModalOutputCtrl',function ($scope, $modalInstance, output) {
+    console.log("ModalOutputCtrl output");
+    console.log(output);
+    $scope.input = output;
+    $scope.readonly=undefined;
+
+    $scope.ok = function () {
+        $modalInstance.close($scope.input);
+    };
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+});
 app.factory('ExeProjectService', function(f,ProjectService,ProcessService,ProductService,$q) {
     var exeProjectRef = f.ref("/exeProject");
     var exeProjectRefLoad=$q.defer();
