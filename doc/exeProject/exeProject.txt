@@ -11,6 +11,7 @@ exeProject:[
 				overview
 				result
 				way
+				status:finish
 			}
 		]
 		productData:[

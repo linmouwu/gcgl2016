@@ -53,7 +53,8 @@ app.config(function($stateProvider){
                                 {field:'input.name', displayName:'Input'},
                                 {field:'input.status',displayName:'Input Status'},
                                 {field:'output.name', displayName:'Output'},
-                                {field:'output.status', displayName:'Output Status'}
+                                {field:'output.status', displayName:'Output Status'},
+                                {field:'status', displayName:'Process Status'}
                             ],
                             selectedItems: $scope.mySelections,
                             multiSelect: false
@@ -82,6 +83,9 @@ app.config(function($stateProvider){
                             if($scope.mySelections.length===0){
                                 return;
                             }
+                            if($scope.mySelections[0].status==="finish"){
+                                return;
+                            }
                             console.log('$scope.mySelections');
                             console.log($scope.mySelections);
                             $state.go("main.process",{id:$scope.mySelections[0].id,pId:$scope.selectId});
@@ -96,8 +100,9 @@ app.config(function($stateProvider){
                 'main@':{
                     templateUrl:"exeProject/processExe.html",
                     resolve:{
-                        project:function(ExeProjectService,ProductDataService,$stateParams){
+                        project:function(ExeProjectService,ProductDataService,ProcessDataService,$stateParams){
                             ProductDataService.setProject($stateParams.pId);
+                            ProcessDataService.setProject($stateParams.pId);
                             return ExeProjectService.find($stateParams.pId);
                         },
                         process:function(ExeProjectService,$stateParams){
@@ -113,7 +118,7 @@ app.config(function($stateProvider){
                             return f.embedId(f.extendSingle(process.output,project.productData));
                         }
                     },
-                    controller:function($stateParams,$state,$scope,process,input,output,ProductDataService){
+                    controller:function($stateParams,$state,$scope,process,input,output,ProductDataService,ProcessDataService){
                         console.log("input");
                         console.log(input);
                         console.log("output");
@@ -147,6 +152,10 @@ app.config(function($stateProvider){
                                     });
                                 });
                             });
+                        };
+                        $scope.finish=function(){
+                            ProcessDataService.finish($stateParams.id);
+                            $state.go('^',{},{reload:"true"});
                         };
                     }
 
@@ -331,4 +340,45 @@ app.factory('ProductDataService',function($q,f){
         }
     };
     return productDataService;
+});
+
+app.factory('ProcessDataService',function($q,f){
+
+    var processDataRef;
+    var processDataRefLoad;
+
+    var processDataService = {
+        setProject:function(projectId){
+            processDataRef= f.ref("/exeProject/"+projectId+"/processData");
+            processDataRefLoad=$q.defer();
+            processDataRef.$on("loaded",function(){
+                processDataRefLoad.resolve(processDataRef);
+            });
+            return;
+        },
+        find:function(key){
+            var promise=processDataRefLoad.promise.then(function(){
+                return f.copy(processDataRef[key]);
+            });
+            return promise;
+        },
+        update: function(key,value){
+            var obj={};
+            obj[key]=value;
+            return processDataRef.$update(obj);
+        },
+        finish:function(processId){
+            console.log('processId');
+            console.log(processId);
+            return processDataService.find(processId).then(function(processDataContent){
+                console.log('processDataContent');
+                console.log(processDataContent);
+
+
+                processDataContent.status="finish";
+                return processDataService.update(processId,processDataContent);
+            });
+        }
+    };
+    return processDataService;
 });
