@@ -122,8 +122,8 @@ app.config(function($stateProvider){
                         console.log(input);
                         console.log("output");
                         console.log(output);
-
                         $scope.process=process;
+//                        $scope.process.path="template/processTemplate/description/description.html";
                         $scope.input=input;
                         $scope.output=output;
                         $scope.saveOutput=function(){
@@ -287,6 +287,7 @@ app.factory('ExeProjectService', function(f,ProjectService,ProcessService,Produc
                 ProcessService.list().then(function(processes){
                     var selectProcesses=f.extend(exeProjectContent.selected,processes);
                     _.each(selectProcesses,function(process){
+                        process[Object.keys(process)[0]].path='template/processTemplate/description/description.html';
                         processDataRef.$update(process);
                         var processContent=process[Object.keys(process)[0]];
                         ProductService.list().then(function(products){
@@ -363,89 +364,7 @@ app.factory('ExeProjectService', function(f,ProjectService,ProcessService,Produc
         },
         test:function(){
             return "hello world";
-        },
-        updateFields:function(productId,fields){
-            exeProjectService.find(pId).then(function(exeProjectContent){
-                var productDataRef=exeProjectRef.$child(pId).$child("productData".$child(productId));
-            });
-            console.log('updateFields');
-            console.log(productId);
-            console.log(fields);
-            return productService.find(productId).then(function(productContent){
-                productContent.fields=fields;
-                console.log('productContent');
-                console.log(productContent);
-                return productService.update(productId,productContent);
-            });
         }
     };
     return exeProjectService;
-});
-app.factory('ProductDataService',function($q,f){
-    var productDataRef;
-    var productDataRefLoad;
-
-    var productDataService = {
-        setProject:function(projectId){
-            productDataRef= f.ref("/exeProject/"+projectId+"/productData");
-            productDataRefLoad=$q.defer();
-            productDataRef.$on("loaded",function(){
-                productDataRefLoad.resolve(productDataRef);
-            });
-            return;
-        },
-        update: function(key,value){
-            var obj={};
-            obj[key]=value;
-            return productDataRef.$update(obj);
-        },
-        find:function(key){
-            var promise=productDataRefLoad.promise.then(function(){
-                return f.copy(productDataRef[key]);
-            });
-            return promise;
-        }
-    };
-    return productDataService;
-});
-
-app.factory('ProcessDataService',function($q,f){
-
-    var processDataRef;
-    var processDataRefLoad;
-
-    var processDataService = {
-        setProject:function(projectId){
-            processDataRef= f.ref("/exeProject/"+projectId+"/processData");
-            processDataRefLoad=$q.defer();
-            processDataRef.$on("loaded",function(){
-                processDataRefLoad.resolve(processDataRef);
-            });
-            return;
-        },
-        find:function(key){
-            var promise=processDataRefLoad.promise.then(function(){
-                return f.copy(processDataRef[key]);
-            });
-            return promise;
-        },
-        update: function(key,value){
-            var obj={};
-            obj[key]=value;
-            return processDataRef.$update(obj);
-        },
-        finish:function(processId){
-            console.log('processId');
-            console.log(processId);
-            return processDataService.find(processId).then(function(processDataContent){
-                console.log('processDataContent');
-                console.log(processDataContent);
-
-
-                processDataContent.status="finish";
-                return processDataService.update(processId,processDataContent);
-            });
-        }
-    };
-    return processDataService;
 });

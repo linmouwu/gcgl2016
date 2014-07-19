@@ -14,11 +14,13 @@ var app=angular.module("gcgl2016",[
     'gcgl2016.product',
     'gcgl2016.project',
     'gcgl2016.user',
-    'gcgl2016.template'
+    'gcgl2016.template',
+    'gcgl2016.custom'
 ]);
+angular.module("gcgl2016.template",[]);
 app.config(function($stateProvider, $urlRouterProvider){
     // For any unmatched url, redirect to /state1
-    $urlRouterProvider.otherwise("/dashboard");
+    $urlRouterProvider.otherwise("/main");
     // Now set up the states
     $stateProvider
         .state('dashboard', {
