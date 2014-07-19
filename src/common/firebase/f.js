@@ -97,6 +97,33 @@ firebase.factory("f",function($firebase){
         getContent:function(obj){
             var key=Object.keys(obj)[0];
             return angular.copy(obj[key]);
+        },
+        //c r u d
+        create: function(ref,item) {
+            return ref.$add(item);
+        },
+        remove: function(ref,key){
+            return ref.$remove(key);
+        },
+        update:function(ref,key,value){
+            var obj={};
+            obj[key]=value;
+            return ref.$update(obj);
+        },
+        find:function(refLoad,ref,key){
+            var promise=refLoad.promise.then(function(){
+                return angular.copy(ref[key]);
+            });
+            return promise;
+        },
+        list: function(refLoad){
+            return refLoad.promise.then(function(data){
+                return firebaseService.copyList(data);
+            });
+        },
+        getTypes:function(){
+            var types=["document"];
+            return types;
         }
     };
     return firebaseService;

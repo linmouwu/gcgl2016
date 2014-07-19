@@ -157,8 +157,9 @@ app.config(function($stateProvider){
                             $state.go('^',{},{reload:"true"});
                         };
                         $scope.showInput=function(){
+                            //$scope.input.path='template/productTemplate/document.html';
                             var modalInstance = $modal.open({
-                                templateUrl: 'productTemplate/document.html',
+                                templateUrl:  $scope.input.path,
                                 controller: 'ModalInputCtrl',
                                 size: 'lg',
                                 resolve: {
@@ -177,7 +178,7 @@ app.config(function($stateProvider){
                         };
                         $scope.showOutput=function(){
                             var modalInstance = $modal.open({
-                                templateUrl: 'productTemplate/document.html',
+                                templateUrl: $scope.output.path,
                                 controller: 'ModalOutputCtrl',
                                 size: 'lg',
                                 resolve: {
@@ -201,8 +202,8 @@ app.config(function($stateProvider){
         });
 });
 app.controller('ModalInputCtrl',function ($scope, $modalInstance, input) {
-    console.log("ModalInputCtrl input");
-    console.log(input);
+//    console.log("ModalInputCtrl input");
+//    console.log(input);
     $scope.input = input;
     $scope.readonly=true;
 
@@ -211,8 +212,8 @@ app.controller('ModalInputCtrl',function ($scope, $modalInstance, input) {
     };
 });
 app.controller('ModalOutputCtrl',function ($scope, $modalInstance, output) {
-    console.log("ModalOutputCtrl output");
-    console.log(output);
+//    console.log("ModalOutputCtrl output");
+//    console.log(output);
     $scope.input = output;
     $scope.readonly=undefined;
 
@@ -236,6 +237,7 @@ app.factory('ExeProjectService', function(f,ProjectService,ProcessService,Produc
     //Public Method
     var exeProjectService = {
         create: function(project) {
+            //This is an usual situation
             return exeProjectRef.$update(project);
         },
         remove: function(key){
@@ -248,16 +250,16 @@ app.factory('ExeProjectService', function(f,ProjectService,ProcessService,Produc
         },
         find:function(key){
             var promise=exeProjectRefLoad.promise.then(function(){
-//                console.log("projectRef[key]");
-//                console.log(f.copy(projectRef[key]));
+//                console.log("exeProjectRef[key]");
+//                console.log(f.copy(exeProjectRef[key]));
                 return f.copy(exeProjectRef[key]);
             });
             return promise;
         },
         list: function(){
             return exeProjectRefLoad.promise.then(function(data){
-                console.log("data");
-                console.log(data);
+//                console.log("data");
+//                console.log(data);
                 return f.copyList(data);
             });
         },
@@ -277,6 +279,9 @@ app.factory('ExeProjectService', function(f,ProjectService,ProcessService,Produc
         },
         createProcessProjectData:function(pId){
             exeProjectService.find(pId).then(function(exeProjectContent){
+//                console.log('############');
+//                console.log(pId);
+//                console.log(exeProjectContent);
                 var processDataRef=exeProjectRef.$child(pId).$child("processData");
                 var productDataRef=exeProjectRef.$child(pId).$child("productData");
                 ProcessService.list().then(function(processes){
@@ -288,6 +293,7 @@ app.factory('ExeProjectService', function(f,ProjectService,ProcessService,Produc
                             ProcessService.withProduct(processContent,products,processes);
                             if(Object.keys(processContent.input).length==1){
                                 if(processContent.inputType=="product"){
+                                    processContent.input[Object.keys(processContent.input)[0]].path='template/productTemplate/document.html';
                                     productDataRef.$update(processContent.input);
                                 }
                                 if(processContent.inputType=="process"){
@@ -297,6 +303,7 @@ app.factory('ExeProjectService', function(f,ProjectService,ProcessService,Produc
 
                             if(Object.keys(processContent.output).length==1){
                                 if(processContent.outputType=="product"){
+                                    processContent.output[Object.keys(processContent.output)[0]].path='template/productTemplate/document.html';
                                     productDataRef.$update(processContent.output);
                                 }
                                 if(processContent.outputType=="process"){

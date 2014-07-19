@@ -13,7 +13,8 @@ var app=angular.module("gcgl2016",[
     'gcgl2016.process',
     'gcgl2016.product',
     'gcgl2016.project',
-    'gcgl2016.user'
+    'gcgl2016.user',
+    'gcgl2016.template'
 ]);
 app.config(function($stateProvider, $urlRouterProvider){
     // For any unmatched url, redirect to /state1

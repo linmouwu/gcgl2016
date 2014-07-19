@@ -25,6 +25,7 @@ exeProject:[
 				]
 				name
 				type
+				path   #which contain the template
 			}
 		selected[
 			processId
