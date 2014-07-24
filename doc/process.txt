@@ -3,12 +3,7 @@
 	输入类型inputType：[process，product]，
 	过程输出input：id，
 	输出类型outputType：[process，product],
-	过程描述description：{
-		过程目标object，
-		过程方式way，
-		过程结果result，
-		过程概述overview
-	}
+	过程描述description:String
 }
 
 

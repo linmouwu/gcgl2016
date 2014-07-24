@@ -23,7 +23,7 @@
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="vendor/ng-grid/ng-grid.css" />
     <link rel="stylesheet" type="text/css" href="vendor/font-awesome/css/font-awesome.css" />
-    <link rel="stylesheet" type="text/css" href="assets/application-name-0.2.0-8.css" />
+    <link rel="stylesheet" type="text/css" href="assets/application-name-0.2.0-15.css" />
 
     <!-- compiled JavaScript -->
     <script type="text/javascript" src="vendor/jquery/jquery.js"></script>
@@ -38,16 +38,18 @@
     <script type="text/javascript" src="vendor/ng-grid/ng-grid-2.0.11.debug.js"></script>
     <script type="text/javascript" src="vendor/metisMenu/dist/jquery.metisMenu.js"></script>
     <script type="text/javascript" src="src/app.js"></script>
+    <script type="text/javascript" src="src/app/activity/activity.js"></script>
     <script type="text/javascript" src="src/app/custom/custom.js"></script>
     <script type="text/javascript" src="src/app/exeProject/exeProject.js"></script>
     <script type="text/javascript" src="src/app/process/process.js"></script>
     <script type="text/javascript" src="src/app/product/product.js"></script>
     <script type="text/javascript" src="src/app/project/project.js"></script>
-    <script type="text/javascript" src="src/app/template/template.js"></script>
     <script type="text/javascript" src="src/app/template/processTemplate/description/description.js"></script>
+    <script type="text/javascript" src="src/app/template/template.js"></script>
     <script type="text/javascript" src="src/app/user/user.js"></script>
     <script type="text/javascript" src="src/common/d3/d3.js"></script>
     <script type="text/javascript" src="src/common/d3/directives.js"></script>
+    <script type="text/javascript" src="src/common/directives/directives.js"></script>
     <script type="text/javascript" src="src/common/firebase/f.js"></script>
     <script type="text/javascript" src="src/common/uiBreadcrumbs/uiBreadcrumbs.js"></script>
     <script type="text/javascript" src="src/common/underscore/util.js"></script>
@@ -359,10 +361,13 @@
                         <a ui-sref="project">Program Management</a>
                     </li>
                     <li>
-                        <a href="#">Process Management<span class="fa arrow"></span></a>
+                        <a href="#">Process Asset Management<span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level">
                             <li>
-                                <a ui-sref="process">Process Management</a>
+                                <a ui-sref="activity">Process Management</a>
+                            </li>
+                            <li>
+                                <a ui-sref="process">Process Management2</a>
                             </li>
                             <li>
                                 <a ui-sref="product">Product Management</a>

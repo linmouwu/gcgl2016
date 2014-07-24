@@ -1,3 +1,171 @@
+<a name="0.2.0-15"></a>
+### 0.2.0-15 (2014-07-24)
+
+
+#### Bug Fixes
+
+* **gcgl2016:** all in jslint ((c59284bc))
+* **karma-coverage:** choose the right js file to analyze ((4cc93f0f))
+* **pen:** use blue ink instead of red ink ((135884e3))
+
+
+#### Features
+
+* **exeProject:**
+  * using modal to implement document template ((061e8b5f))
+  * finish process ((37e9f5f6))
+  * add input and output template ((8377dd11))
+  * add process' output's input list. ((abb83f85))
+* **ruler:** add inches as well as centimeters ((2792d7a6))
+* **template:**
+  * dynamic process and product finished! ((460a8490))
+  * add dynamic template ((92605bea))
+
+
+<a name="0.2.0-14"></a>
+### 0.2.0-14 (2014-07-24)
+
+
+#### Bug Fixes
+
+* **gcgl2016:** all in jslint ((c59284bc))
+* **karma-coverage:** choose the right js file to analyze ((4cc93f0f))
+* **pen:** use blue ink instead of red ink ((135884e3))
+
+
+#### Features
+
+* **exeProject:**
+  * using modal to implement document template ((061e8b5f))
+  * finish process ((37e9f5f6))
+  * add input and output template ((8377dd11))
+  * add process' output's input list. ((abb83f85))
+* **ruler:** add inches as well as centimeters ((2792d7a6))
+* **template:**
+  * dynamic process and product finished! ((460a8490))
+  * add dynamic template ((92605bea))
+
+
+<a name="0.2.0-13"></a>
+### 0.2.0-13 (2014-07-23)
+
+
+#### Bug Fixes
+
+* **gcgl2016:** all in jslint ((c59284bc))
+* **karma-coverage:** choose the right js file to analyze ((4cc93f0f))
+* **pen:** use blue ink instead of red ink ((135884e3))
+
+
+#### Features
+
+* **exeProject:**
+  * using modal to implement document template ((061e8b5f))
+  * finish process ((37e9f5f6))
+  * add input and output template ((8377dd11))
+  * add process' output's input list. ((abb83f85))
+* **ruler:** add inches as well as centimeters ((2792d7a6))
+* **template:**
+  * dynamic process and product finished! ((460a8490))
+  * add dynamic template ((92605bea))
+
+
+<a name="0.2.0-12"></a>
+### 0.2.0-12 (2014-07-23)
+
+
+#### Bug Fixes
+
+* **gcgl2016:** all in jslint ((c59284bc))
+* **karma-coverage:** choose the right js file to analyze ((4cc93f0f))
+* **pen:** use blue ink instead of red ink ((135884e3))
+
+
+#### Features
+
+* **exeProject:**
+  * using modal to implement document template ((061e8b5f))
+  * finish process ((37e9f5f6))
+  * add input and output template ((8377dd11))
+  * add process' output's input list. ((abb83f85))
+* **ruler:** add inches as well as centimeters ((2792d7a6))
+* **template:**
+  * dynamic process and product finished! ((460a8490))
+  * add dynamic template ((92605bea))
+
+
+<a name="0.2.0-11"></a>
+### 0.2.0-11 (2014-07-23)
+
+
+#### Bug Fixes
+
+* **gcgl2016:** all in jslint ((c59284bc))
+* **karma-coverage:** choose the right js file to analyze ((4cc93f0f))
+* **pen:** use blue ink instead of red ink ((135884e3))
+
+
+#### Features
+
+* **exeProject:**
+  * using modal to implement document template ((061e8b5f))
+  * finish process ((37e9f5f6))
+  * add input and output template ((8377dd11))
+  * add process' output's input list. ((abb83f85))
+* **ruler:** add inches as well as centimeters ((2792d7a6))
+* **template:**
+  * dynamic process and product finished! ((460a8490))
+  * add dynamic template ((92605bea))
+
+
+<a name="0.2.0-10"></a>
+### 0.2.0-10 (2014-07-22)
+
+
+#### Bug Fixes
+
+* **gcgl2016:** all in jslint ((c59284bc))
+* **karma-coverage:** choose the right js file to analyze ((4cc93f0f))
+* **pen:** use blue ink instead of red ink ((135884e3))
+
+
+#### Features
+
+* **exeProject:**
+  * using modal to implement document template ((061e8b5f))
+  * finish process ((37e9f5f6))
+  * add input and output template ((8377dd11))
+  * add process' output's input list. ((abb83f85))
+* **ruler:** add inches as well as centimeters ((2792d7a6))
+* **template:**
+  * dynamic process and product finished! ((460a8490))
+  * add dynamic template ((92605bea))
+
+
+<a name="0.2.0-9"></a>
+### 0.2.0-9 (2014-07-19)
+
+
+#### Bug Fixes
+
+* **gcgl2016:** all in jslint ((c59284bc))
+* **karma-coverage:** choose the right js file to analyze ((4cc93f0f))
+* **pen:** use blue ink instead of red ink ((135884e3))
+
+
+#### Features
+
+* **exeProject:**
+  * using modal to implement document template ((061e8b5f))
+  * finish process ((37e9f5f6))
+  * add input and output template ((8377dd11))
+  * add process' output's input list. ((abb83f85))
+* **ruler:** add inches as well as centimeters ((2792d7a6))
+* **template:**
+  * dynamic process and product finished! ((460a8490))
+  * add dynamic template ((92605bea))
+
+
 <a name="0.2.0-8"></a>
 ### 0.2.0-8 (2014-07-19)
 
