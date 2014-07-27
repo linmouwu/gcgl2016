@@ -13,11 +13,11 @@
             <div class="panel-body">
                 <p><button type="button" class="btn btn-primary btn-block" ui-sref="activity.create">Create Activity</button></p>
                 <p><button type="button" class="btn btn-primary btn-block" ui-sref="activity.createPhase">Create Phase</button></p>
+                <p><button type="button" class="btn btn-primary btn-block" ui-sref="activity.createLifecycle">Create Lifecycle</button></p>
             </div>
         </div>
     </div>
     <div class="col-lg-10">
-        <div class="panel panel-primary">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     Activity List
@@ -47,34 +47,50 @@
                     </table>
                 </div>
             </div>
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    Activity List
-                </div>
-                <div class="panel-body">
-                    <table class="table">
-                        <tr>
-                            <th>Activity Name</th>
-                            <th>Dependencies</th>
-                            <th>Inputs</th>
-                            <th>Outputs</th>
-                            <th>Type</th>
-                            <th>Tag</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                        </tr>
-                        <tr ng-repeat="(key,activity) in activityList">
-                            <td>{{activity.name}}</td>
-                            <td>{{activity.dependencies}}</td>
-                            <td>{{activity.inputs}}</td>
-                            <td>{{activity.outputs}}</td>
-                            <td>{{activity.type}}</td>
-                            <td>{{activity.tags}}</td>
-                            <td ui-sref="activity.edit({id:key})"><span class="glyphicon glyphicon-pencil"></span></td>
-                            <td ng-click="remove(key)"><span class="glyphicon glyphicon-remove"></span></td>
-                        </tr>
-                    </table>
-                </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Phase List
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <th>Phase Name</th>
+                        <th>Description</th>
+                        <th>Activities</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    <tr ng-repeat="(key,phase) in phaseList">
+                        <td>{{phase.name}}</td>
+                        <td>{{phase.description}}</td>
+                        <td>{{phase.activities}}</td>
+                        <td ui-sref="activity.editPhase({id:key})"><span class="glyphicon glyphicon-pencil"></span></td>
+                        <td ng-click="removePhase(key)"><span class="glyphicon glyphicon-remove"></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Lifecycle List
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <th>Lifecycle Name</th>
+                        <th>Description</th>
+                        <th>Phases</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    <tr ng-repeat="(key,lifecycle) in lifecycleList">
+                        <td>{{lifecycle.name}}</td>
+                        <td>{{lifecycle.description}}</td>
+                        <td>{{lifecycle.phases}}</td>
+                        <td ui-sref="activity.editLifecycle({id:key})"><span class="glyphicon glyphicon-pencil"></span></td>
+                        <td ng-click="removeLifecycle(key)"><span class="glyphicon glyphicon-remove"></span></td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>

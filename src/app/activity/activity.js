@@ -14,12 +14,46 @@ app.config(function($stateProvider, $urlRouterProvider){
                     resolve:{
                         activityList:function(ActivityService){
                             return ActivityService.list();
+                        },
+                        phaseList:function(PhaseService,activityList){
+                            return PhaseService.listWithActivities(activityList);
+                        },
+                        lifecycleList:function(LifecycleService,phaseList){
+                            return LifecycleService.listWithPhases(phaseList);
                         }
                     },
-                    controller:function($scope,ActivityService,activityList,$state,$stateParams){
+                    controller:function($scope,ActivityService,PhaseService,LifecycleService,activityList,phaseList,lifecycleList,$state,$stateParams,f){
                         $scope.activityList=activityList;
+                        $scope.phaseList={};
+                        _.each(phaseList,function(phaseContent,id){
+                            var phaseContentCopy= f.copy(phaseContent);
+                            phaseContentCopy.activities= f.arrayToString(phaseContent.activities,"name");
+                            $scope.phaseList[id]=phaseContentCopy;
+                        });
+                        $scope.lifecycleList={};
+                        _.each(lifecycleList,function(lifecycleContent,id){
+                            var lifecycleContentCopy= f.copy(lifecycleContent);
+                            lifecycleContentCopy.phases= f.arrayToString(lifecycleContent.phases,"name");
+                            $scope.lifecycleList[id]=lifecycleContentCopy;
+                        });
                         $scope.remove=function(key){
                             ActivityService.remove(key);
+                            $state.transitionTo($state.current, $stateParams, {
+                                reload: true,
+                                inherit: false,
+                                notify: true
+                            });
+                        };
+                        $scope.removePhase=function(key){
+                            PhaseService.remove(key);
+                            $state.transitionTo($state.current, $stateParams, {
+                                reload: true,
+                                inherit: false,
+                                notify: true
+                            });
+                        };
+                        $scope.removeLifecycle=function(key){
+                            LifecycleService.remove(key);
                             $state.transitionTo($state.current, $stateParams, {
                                 reload: true,
                                 inherit: false,
@@ -49,36 +83,6 @@ app.config(function($stateProvider, $urlRouterProvider){
             },
             data: {
                 displayName: 'Create Activity'
-            }
-        })
-        .state('activity.createPhase',{
-            url:"/createPhase",
-            views:{
-                'main@':{
-                    templateUrl:"activity/createPhase.html",
-                    resolve:{
-                        activityList:function(ActivityService){
-                            return ActivityService.list();
-                        }
-                    },
-                    controller:function($scope,$state,ActivityService,activityList,f){
-                        $scope.phase={};
-                        $scope.create=function(){
-                            ActivityService.createPhase($scope.phase);
-                            $state.go("^",{},{reload:true});
-                        };
-                        $scope.activitList= f.embedIdsObj(activityList);
-                        $scope.selectedItems=[];
-                        $scope.gridOptions = {
-                            data: 'activitList',
-                            selectedItems:$scope.selectedItems,
-                            columnDefs: [{field:'name', displayName:'Name'}]
-                        };
-                    }
-                }
-            },
-            data: {
-                displayName: 'Create Phase'
             }
         })
         .state('activity.edit', {
@@ -133,9 +137,6 @@ app.factory('ActivityService', function(f,$q) {
             return refLoad.promise.then(function(items){
                 return f.copyList(items);
             });
-        },
-        createPhase:function(item){
-            return ;
         }
     };
     return activityService;

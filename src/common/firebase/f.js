@@ -95,6 +95,9 @@ firebase.factory("f",function($firebase){
             return ret;
         },
         getContent:function(obj){
+            if(_.isUndefined(obj)){
+                return {};
+            }
             var key=Object.keys(obj)[0];
             return angular.copy(obj[key]);
         },
@@ -124,6 +127,13 @@ firebase.factory("f",function($firebase){
         getTypes:function(){
             var types=["document"];
             return types;
+        },
+        arrayToString:function(array,field){
+            var ret="";
+            _.each(array,function(item){
+                ret+=firebaseService.getContent(item)[field]+" ";
+            });
+            return ret;
         }
     };
     return firebaseService;

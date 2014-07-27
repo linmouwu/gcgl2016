@@ -16,7 +16,9 @@ var app=angular.module("gcgl2016",[
     'gcgl2016.user',
     'gcgl2016.template',
     'gcgl2016.custom',
-    'gcgl2016.activity'
+    'gcgl2016.activity',
+    'gcgl2016.phase',
+    'gcgl2016.lifecycle'
 ]);
 angular.module("gcgl2016.template",[]);
 app.config(function($stateProvider, $urlRouterProvider){
