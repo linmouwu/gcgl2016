@@ -1,3 +1,55 @@
+<a name="0.2.0-23"></a>
+### 0.2.0-23 (2014-07-27)
+
+
+#### Bug Fixes
+
+* **gcgl2016:** all in jslint ((c59284bc))
+* **karma-coverage:** choose the right js file to analyze ((4cc93f0f))
+* **pen:** use blue ink instead of red ink ((135884e3))
+
+
+#### Features
+
+* **activity:** create a new entity activity which will replace process ((6511f4fe))
+* **exeProject:**
+  * using modal to implement document template ((061e8b5f))
+  * finish process ((37e9f5f6))
+  * add input and output template ((8377dd11))
+  * add process' output's input list. ((abb83f85))
+* **process:** add activities phases and lifecycles ((9d2d1378))
+* **ruler:** add inches as well as centimeters ((2792d7a6))
+* **template:**
+  * dynamic process and product finished! ((460a8490))
+  * add dynamic template ((92605bea))
+
+
+<a name="0.2.0-22"></a>
+### 0.2.0-22 (2014-07-27)
+
+
+#### Bug Fixes
+
+* **gcgl2016:** all in jslint ((c59284bc))
+* **karma-coverage:** choose the right js file to analyze ((4cc93f0f))
+* **pen:** use blue ink instead of red ink ((135884e3))
+
+
+#### Features
+
+* **activity:** create a new entity activity which will replace process ((6511f4fe))
+* **exeProject:**
+  * using modal to implement document template ((061e8b5f))
+  * finish process ((37e9f5f6))
+  * add input and output template ((8377dd11))
+  * add process' output's input list. ((abb83f85))
+* **process:** add activities phases and lifecycles ((9d2d1378))
+* **ruler:** add inches as well as centimeters ((2792d7a6))
+* **template:**
+  * dynamic process and product finished! ((460a8490))
+  * add dynamic template ((92605bea))
+
+
 <a name="0.2.0-21"></a>
 ### 0.2.0-21 (2014-07-27)
 

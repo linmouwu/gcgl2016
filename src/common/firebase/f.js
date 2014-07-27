@@ -131,7 +131,7 @@ firebase.factory("f",function($firebase){
         arrayToString:function(array,field){
             var ret="";
             _.each(array,function(item){
-                ret+=firebaseService.getContent(item)[field]+" ";
+                ret+=firebaseService.getContent(item)[field]+", ";
             });
             return ret;
         }

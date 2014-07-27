@@ -1,6 +1,6 @@
 {
   "name": "gcgl2016",
-  "version": "0.2.0-22",
+  "version": "0.2.0-24",
   "homepage": "https://github.com/dingziran/gcgl2016",
   "authors": [
     "dingziran <dingziranrr@163.com>"
@@ -31,6 +31,7 @@
     "angular-ui-router": "~0.2.10",
     "angular-bootstrap": "~0.11.0",
     "metisMenu": "~1.0.3",
-    "font-awesome": "~4.1.0"
+    "font-awesome": "~4.1.0",
+    "angular-ui-tree": "~2.1.4"
   }
 }

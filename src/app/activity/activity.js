@@ -78,6 +78,17 @@ app.config(function($stateProvider, $urlRouterProvider){
                             ActivityService.create($scope.activity);
                             $state.go("^",{},{reload:true});
                         };
+                        $scope.removeStep=function(){
+
+                        };
+                        $scope.addStep=function(){
+                            if(_.isUndefined($scope.activity.steps)){
+                                $scope.activity.steps=[{}];
+                            }
+                            else{
+                                $scope.activity.steps.push({});
+                            }
+                        };
                     }
                 }
             },
@@ -100,6 +111,17 @@ app.config(function($stateProvider, $urlRouterProvider){
                         $scope.save=function(){
                             ActivityService.update($stateParams.id,$scope.activity);
                             $state.go("^",{},{reload:true});
+                        };
+                        $scope.removeStep=function(step){
+                            $scope.activity.steps=_.without($scope.activity.steps,step);
+                        };
+                        $scope.addStep=function(){
+                            if(_.isUndefined($scope.activity.steps)){
+                                $scope.activity.steps=[{}];
+                            }
+                            else{
+                                $scope.activity.steps.push({});
+                            }
                         };
                     }
                 }

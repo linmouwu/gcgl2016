@@ -16,18 +16,12 @@ app.config(function($stateProvider, $urlRouterProvider){
                     },
                     controller:function($scope,$state,$stateParams,ProductService,productList){
                         $scope.productList=productList;
-//                        console.log("$scope.productList");
-//                        console.log(productList);
                         $scope.remove=function(key){
-                            ProductService.remove(key).then(function(){
-                                $state.transitionTo($state.current, $stateParams, {
-                                    reload: true,
-                                    inherit: false,
-                                    notify: true
-                                });
-                                console.log("ProductController:Remove Successful");
-                            },function(){
-                                console.log("ProductController:Remove failed");
+                            ProductService.remove(key);
+                            $state.transitionTo($state.current, $stateParams, {
+                                reload: true,
+                                inherit: false,
+                                notify: true
                             });
                         };
 

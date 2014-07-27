@@ -7,8 +7,8 @@
 </div>
 
 <div class="row">
-    <div class="col-lg-12">
-        <div class="panel panel-success">
+    <div class="col-lg-6">
+        <div class="panel panel-primary">
             <div class="panel-heading">
                 Input your product information.
             </div>
@@ -28,37 +28,53 @@
                         <textarea class="form-control" rows="3" ng-model="product.object"></textarea>
                     </div>
 
-                    <div class="panel panel-success">
-                        <div class="panel-heading">
-                            Edit Document Fields
-                        </div>
-                        <div class="panel-body">
-                            <table class="table">
-                                <tr>
-                                    <th>Field Name</th>
-                                    <th>Field Description</th>
-                                    <th>Delete</th>
-                                </tr>
-                                <tr ng-repeat="field in product.fields">
-                                    <td>{{field.name}}</td>
-                                    <td>{{field.description}}</td>
-                                    <td ng-click="remove(field)"><span class="glyphicon glyphicon-remove"></span></td>
-                                </tr>
-                            </table>
-                            <form class="form-inline" role="form">
-                                <div class="form-group">
-                                    <label class="sr-only" for="exampleInputEmail2">Field Name</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Field Name" ng-model="newField.name">
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="exampleInputPassword2">Field Description</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword2" placeholder="Field Description" ng-model="newField.description">
-                                </div>
-                                <button class="btn btn-default" ng-click="addField()">Add Field</button>
-                            </form>
-                        </div>
-                    </div>
                     <button class="btn" ng-click="save()">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Edit Document Fields
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <th>Field Name</th>
+                        <th>Field Description</th>
+                        <th>Delete</th>
+                    </tr>
+                    <tr ng-repeat="field in product.fields">
+                        <td>{{field.name}}</td>
+                        <td>{{field.description}}</td>
+                        <td ng-click="remove(field)"><span class="glyphicon glyphicon-remove"></span></td>
+                    </tr>
+                </table>
+                <form class="form-inline" role="form">
+                    <div class="dd">
+                        <ol class="dd-list">
+                            <li class="dd-item" data-id="1">
+                                <div class="dd-handle">Item 1</div>
+                            </li>
+                            <li class="dd-item" data-id="2">
+                                <div class="dd-handle">Item 2</div>
+                            </li>
+                            <li class="dd-item" data-id="3">
+                                <div class="dd-handle">Item 3</div>
+                                <ol class="dd-list">
+                                    <li class="dd-item" data-id="4">
+                                        <div class="dd-handle">Item 4</div>
+                                    </li>
+                                    <li class="dd-item" data-id="5">
+                                        <div class="dd-handle">Item 5</div>
+                                    </li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                    <button class="btn btn-default" ng-click="addField()">Add Field</button>
+                </form>
             </div>
         </div>
     </div>
