@@ -1,0 +1,17 @@
+
+        <div class="modal-header">
+            <h3 class="modal-title">I'm a modal!</h3>
+        </div>
+        <div class="modal-body">
+
+                <form>
+                    <div class="form-group" ng-repeat="field in input.fields">
+                        <label>{{field.name}}</label>
+                        <textarea class="form-control" rows="10" ng-model="field.value" ng-readonly="readonly"></textarea>
+                    </div>
+                </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>

@@ -20,7 +20,7 @@ module.exports = {
      * app's unit tests.
      */
     app_files: {
-        js: [ 'src/**/*.js', '!src/**/*.spec.js', '!src/assets/**/*.js' ],
+        js: [ 'public/app/**/*.js', '!public/app/**/*.spec.js','public/app.js' ],
         jsunit: [ 'src/**/*.spec.js' ],
 
         coffee: [ 'src/**/*.coffee', '!src/**/*.spec.coffee' ],
@@ -32,6 +32,7 @@ module.exports = {
         html: [ 'src/index.html' ],
         css: 'src/sb-admin.css'
     },
+
 
     /**
      * This is a collection of files used during testing only.

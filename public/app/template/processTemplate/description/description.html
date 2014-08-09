@@ -1,0 +1,41 @@
+<div class="container-fluid" ng-controller="DescriptionController">
+        <div class="row-fluid">
+            <div class="span12">
+                <h3>
+                    Using the process description to execute the process. And then fill the production to the output area..
+                </h3>
+                <dl>
+                    <dt>
+                        Process Name
+                    </dt>
+                    <dd>
+                        {{process.name}}
+                    </dd>
+                    <dt>
+                        Objective To
+                    </dt>
+                    <dd>
+                        {{process.description.object}}
+                    </dd>
+                    <dt>
+                        In a way that
+                    </dt>
+                    <dd>
+                        {{process.description.way}}
+                    </dd>
+                    <dt>
+                        So that
+                    </dt>
+                    <dd>
+                        {{process.description.result}}
+                    </dd>
+                    <dt>
+                        Overview
+                    </dt>
+                    <dd>
+                        {{process.description.overview}}
+                    </dd>
+                </dl>
+            </div>
+        </div>
+</div>

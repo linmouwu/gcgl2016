@@ -1,18 +1,13 @@
 module.exports = function(grunt){
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-copy');
+//    grunt.loadNpmTasks('grunt-contrib-clean');
+//    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-concat');
+//    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-conventional-changelog');
-    grunt.loadNpmTasks('grunt-bump');
-    grunt.loadNpmTasks('grunt-karma');
-    grunt.loadNpmTasks('grunt-html2js');
-    grunt.registerTask('default', function(){
-		grunt.log.writeln('Hello from Grunt.');
-	});
-    grunt.registerTask('sonar',function(){
-    });
+//    grunt.loadNpmTasks('grunt-conventional-changelog');
+//    grunt.loadNpmTasks('grunt-bump');
+//    grunt.loadNpmTasks('grunt-karma');
+//    grunt.loadNpmTasks('grunt-html2js');
     var userConfig = require( './build.config.js' );
     var taskConfig = {
         /**
@@ -398,7 +393,7 @@ module.exports = function(grunt){
 
     };
 
-    grunt.registerTask( 'default', [ 'build' ] );
+    grunt.registerTask( 'default', [ 'jshint' ] );
 
     grunt.registerTask( 'build', [
         'clean','html2js','jshint','concat:build_css','copy:build_app_assets','copy:build_vendor_assets',
