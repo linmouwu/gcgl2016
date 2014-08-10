@@ -1,3 +1,0 @@
-name:String
-description:LongString
-activities:[Activity]

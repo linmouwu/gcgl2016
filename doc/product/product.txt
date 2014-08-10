@@ -1,3 +1,0 @@
-name:String
-type:Enum[Type]
-description:LongString

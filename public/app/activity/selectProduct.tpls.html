@@ -1,0 +1,37 @@
+<div class="modal-header">
+    <h3 class="modal-title">I'm a modal!</h3>
+</div>
+<div class="modal-body">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Product List
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <tr>
+                    <th>Product name</th>
+                    <th>Product Type</th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="(key,pro) in productList">
+                    <td>{{pro.name}}</td>
+                    <td>{{pro.type}}</td>
+                    <td>
+                        <div class="btn-group" dropdown>
+                            <button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+                                Operate <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a ng-click="select(key,pro)">Select</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

@@ -106,7 +106,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                             return ActivityService.find($stateParams.id);
                         }
                     },
-                    controller:function($scope,$stateParams,$state,activity,ActivityService){
+                    controller:function($scope,$stateParams,$state,$modal,activity,ActivityService){
                         $scope.activity=activity;
                         $scope.save=function(){
                             ActivityService.update($stateParams.id,$scope.activity);
@@ -123,6 +123,43 @@ app.config(function($stateProvider, $urlRouterProvider){
                                 $scope.activity.steps.push({});
                             }
                         };
+                        $scope.deleteInput=function(index){
+                            $scope.activity.inputs.splice(index,1);
+                        };
+                        $scope.deleteOutput=function(index){
+                            $scope.activity.outputs.splice(index,1);
+                        };
+                        $scope.addProduct=function(type){
+                            var modalInstance = $modal.open({
+                                templateUrl: 'app/activity/selectProduct.tpls.html',
+                                controller: function ($scope, $modalInstance, productList) {
+                                    $scope.productList=productList;
+                                    $scope.select=function(key,pro){
+                                        pro.id=key;
+                                        $modalInstance.close(pro);
+                                    };
+
+                                    $scope.cancel = function () {
+                                        $modalInstance.dismiss('cancel');
+                                    };
+                                },
+                                size: 'lg',
+                                resolve: {
+                                    productList:function(ProductService){
+                                        return ProductService.list();
+                                    }
+                                }
+                            });
+
+                            modalInstance.result.then(function (selectedItem) {
+                                if(_.isUndefined($scope.activity[type])){
+                                    $scope.activity[type]=[];
+                                }
+                                $scope.activity[type].push(selectedItem);
+                            }, function () {
+                                console.log('Modal dismissed at: ' + new Date());
+                            });
+                        }
                     }
                 }
             }

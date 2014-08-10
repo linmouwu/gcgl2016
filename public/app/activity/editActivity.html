@@ -28,12 +28,64 @@
                         <input type="text" class="form-control" ng-model="activity.dependencies">
                     </div>
                     <div class="form-group">
-                        <label>Activity inputs</label>
-                        <input type="text" class="form-control" ng-model="activity.inputs">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                Activity inputs <button class="btn btn-success" ng-click="addProduct('inputs')">Add Input</button>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Operate</th>
+                                    </tr>
+                                    <tr ng-repeat="input in activity.inputs">
+                                        <td>{{input.name}}</td>
+                                        <td>{{input.description}}</td>
+                                        <td>
+                                            <div class="btn-group" dropdown>
+                                                <button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+                                                    Operate <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a ng-click="deleteInput($index)">Delete</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label>Activity outputs</label>
-                        <input type="text" class="form-control" ng-model="activity.outputs">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                Activity outputs <button class="btn btn-success" ng-click="addProduct('outputs')">Add Output</button>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Operate</th>
+                                    </tr>
+                                    <tr ng-repeat="output in activity.outputs">
+                                        <td>{{output.name}}</td>
+                                        <td>{{output.description}}</td>
+                                        <td>
+                                            <div class="btn-group" dropdown>
+                                                <button type="button" class="btn btn-primary dropdown-toggle" ng-disabled="disabled">
+                                                    Operate <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a ng-click="deleteOutput($index)">Delete</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Activity steps</label>
