@@ -20,9 +20,16 @@ app.config(function($stateProvider, $urlRouterProvider){
                         },
                         lifecycleList:function(LifecycleService,phaseList){
                             return LifecycleService.listWithPhases(phaseList);
+                        },
+                        tagList:function(TagService){
+                            return TagService.list();
+                        },
+                        featureList:function(FeatureService){
+                            return FeatureService.list();
                         }
                     },
-                    controller:function($scope,ActivityService,PhaseService,LifecycleService,activityList,phaseList,lifecycleList,$state,$stateParams,f){
+                    controller:function($scope,ActivityService,PhaseService,LifecycleService,activityList,phaseList,lifecycleList,featureList,tagList,$state,$stateParams,f){
+                        $scope.featureList=featureList;
                         $scope.activityList=activityList;
                         $scope.phaseList={};
                         _.each(phaseList,function(phaseContent,id){
@@ -36,6 +43,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                             lifecycleContentCopy.phases= f.arrayToString(lifecycleContent.phases,"name");
                             $scope.lifecycleList[id]=lifecycleContentCopy;
                         });
+                        $scope.tagList=tagList;
                         $scope.remove=function(key){
                             ActivityService.remove(key);
                             $state.transitionTo($state.current, $stateParams, {
@@ -72,7 +80,7 @@ app.config(function($stateProvider, $urlRouterProvider){
             views:{
                 'main@':{
                     templateUrl:"app/activity/createActivity.html",
-                    controller:function($scope,$state,ActivityService){
+                    controller:function($scope,$state,$modal,ActivityService){
                         $scope.activity={};
                         $scope.create=function(){
                             ActivityService.create($scope.activity);
@@ -88,6 +96,47 @@ app.config(function($stateProvider, $urlRouterProvider){
                             else{
                                 $scope.activity.steps.push({});
                             }
+                        };
+
+                        $scope.addFeature = function (size) {
+
+                            var modalInstance = $modal.open({
+                                templateUrl: 'app/activity/addFeature.tpls.html',
+                                controller:function ($scope, $modalInstance, items) {
+                                    $scope.search="",
+                                    $scope.items = items;
+                                    $scope.selected = {
+                                        item: $scope.items[0]
+                                    };
+
+                                    $scope.ok = function () {
+                                        $modalInstance.close($scope.active);
+                                    };
+
+                                    $scope.cancel = function () {
+                                        $modalInstance.dismiss('cancel');
+                                    };
+                                    $scope.active;
+                                    $scope.select=function(index){
+                                        $scope.active=index;
+                                    }
+                                },
+                                size:'lg',
+                                resolve: {
+                                    items: function (FeatureService) {
+                                        return FeatureService.list();
+                                    }
+                                }
+                            });
+
+                            modalInstance.result.then(function (selectedItem) {
+                                if(!angular.isDefined($scope.activity.features)){
+                                    $scope.activity.features=[];
+                                }
+                                $scope.activity.features.push(selectedItem);
+                            }, function () {
+                                $log.info('Modal dismissed at: ' + new Date());
+                            });
                         };
                     }
                 }

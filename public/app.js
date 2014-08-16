@@ -3,6 +3,7 @@ var app=angular.module("gcgl2016",[
     'firebase',
     'ui.bootstrap',
     'gcgl2016.directives',
+    "gcgl2016.filters",
     'gcgl2016.directives.uiBreadcrumbs',
     'gcgl2016.firebase',
     'ngGrid',
@@ -16,7 +17,9 @@ var app=angular.module("gcgl2016",[
     'gcgl2016.custom',
     'gcgl2016.activity',
     'gcgl2016.phase',
-    'gcgl2016.lifecycle'
+    'gcgl2016.lifecycle',
+    'gcgl2016.tag',
+    'gcgl2016.feature'
 ]);
 app.config(function($stateProvider, $urlRouterProvider){
     // For any unmatched url, redirect to /state1
