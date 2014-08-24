@@ -13,19 +13,23 @@
                 <tr>
                     <th>Activity Name</th>
                     <th>Description</th>
+                    <th>Features</th>
+                    <th>Tags</th>
                     <th>Opt</th>
                 </tr>
                 <tr ng-repeat="(key,item) in activityList">
                     <td>{{item.name}}</td>
                     <td>{{item.description}}</td>
+                    <td>{{item.features}}</td>
+                    <td>{{item.tags}}</td>
                     <td zr-dropdown>
                         <li>
-                            <a ui-sref="activity.edit({id:key})">
+                            <a class="btn" ui-sref="activity.edit({id:key})">
                                 edit<span class="glyphicon glyphicon-pencil"></span>
                             </a>
                         </li>
                         <li>
-                            <a ng-click="remove(key)">
+                            <a class="btn" ng-click="remove(key)">
                                 remove<span class="glyphicon glyphicon-remove"></span>
                             </a>
                         </li>
@@ -45,12 +49,12 @@
                     <td>{{item.description}}</td>
                     <td zr-dropdown>
                         <li>
-                            <a ui-sref="activity.edit({id:key})">
+                            <a class="btn" ui-sref="activity.edit({id:key})">
                                 edit<span class="glyphicon glyphicon-pencil"></span>
                             </a>
                         </li>
                         <li>
-                            <a ng-click="remove(key)">
+                            <a class="btn" ng-click="remove(key)">
                                 remove<span class="glyphicon glyphicon-remove"></span>
                             </a>
                         </li>
@@ -70,12 +74,12 @@
                     <td>{{item.description}}</td>
                     <td zr-dropdown>
                         <li>
-                            <a ui-sref="activity.edit({id:key})">
+                            <a class="btn" ui-sref="activity.edit({id:key})">
                                 edit<span class="glyphicon glyphicon-pencil"></span>
                             </a>
                         </li>
                         <li>
-                            <a ng-click="remove(key)">
+                            <a class="btn" ng-click="remove(key)">
                                 remove<span class="glyphicon glyphicon-remove"></span>
                             </a>
                         </li>

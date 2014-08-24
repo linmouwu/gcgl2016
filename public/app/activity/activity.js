@@ -30,7 +30,13 @@ app.config(function($stateProvider, $urlRouterProvider){
                     },
                     controller:function($scope,ActivityService,PhaseService,LifecycleService,activityList,phaseList,lifecycleList,featureList,tagList,$state,$stateParams,f){
                         $scope.featureList=featureList;
+                        $scope.tagList=tagList;
                         $scope.activityList=activityList;
+                        //
+                        angular.forEach($scope.activityList,function(activity){
+                            activity.features= f.arrayToString(f.extend(activity.features,featureList),"name");
+                            activity.tags= f.arrayToString(f.extend(activity.tags,tagList),"name");
+                        });
                         $scope.phaseList={};
                         _.each(phaseList,function(phaseContent,id){
                             var phaseContentCopy= f.copy(phaseContent);
@@ -43,7 +49,6 @@ app.config(function($stateProvider, $urlRouterProvider){
                             lifecycleContentCopy.phases= f.arrayToString(lifecycleContent.phases,"name");
                             $scope.lifecycleList[id]=lifecycleContentCopy;
                         });
-                        $scope.tagList=tagList;
                         $scope.remove=function(key){
                             ActivityService.remove(key);
                             $state.transitionTo($state.current, $stateParams, {
@@ -80,14 +85,29 @@ app.config(function($stateProvider, $urlRouterProvider){
             views:{
                 'main@':{
                     templateUrl:"app/activity/createActivity.html",
-                    controller:function($scope,$state,$modal,ActivityService){
+                    controller:function($scope,$state,$modal,ActivityService,f){
                         $scope.activity={};
                         $scope.create=function(){
+                            $scope.activity.features= f.toIds($scope.activity.features);
+                            $scope.activity.tags= f.toIds($scope.activity.tags);
                             ActivityService.create($scope.activity);
                             $state.go("^",{},{reload:true});
                         };
-                        $scope.removeStep=function(){
-
+                        $scope.removeFeature=function(item){
+                            $scope.activity.features= _.filter($scope.activity.features,function(feature){
+                                if(feature===item){
+                                    return false;
+                                }
+                                return true;
+                            });
+                        };
+                        $scope.removeTag=function(item){
+                            $scope.activity.tags= _.filter($scope.activity.tags,function(tag){
+                                if(tag===item){
+                                    return false;
+                                }
+                                return true;
+                            });
                         };
                         $scope.addStep=function(){
                             if(_.isUndefined($scope.activity.steps)){
@@ -98,13 +118,13 @@ app.config(function($stateProvider, $urlRouterProvider){
                             }
                         };
 
-                        $scope.addFeature = function (size) {
+                        $scope.addFeature = function () {
 
                             var modalInstance = $modal.open({
                                 templateUrl: 'app/activity/addFeature.tpls.html',
                                 controller:function ($scope, $modalInstance, items) {
                                     $scope.search="",
-                                    $scope.items = items;
+                                        $scope.items = items;
                                     $scope.selected = {
                                         item: $scope.items[0]
                                     };
@@ -117,8 +137,8 @@ app.config(function($stateProvider, $urlRouterProvider){
                                         $modalInstance.dismiss('cancel');
                                     };
                                     $scope.active;
-                                    $scope.select=function(index){
-                                        $scope.active=index;
+                                    $scope.select=function(item){
+                                        $scope.active=item;
                                     }
                                 },
                                 size:'lg',
@@ -135,7 +155,47 @@ app.config(function($stateProvider, $urlRouterProvider){
                                 }
                                 $scope.activity.features.push(selectedItem);
                             }, function () {
-                                $log.info('Modal dismissed at: ' + new Date());
+                                console.log('Modal dismissed at: ' + new Date());
+                            });
+                        };
+                        $scope.addTag = function () {
+
+                            var modalInstance = $modal.open({
+                                templateUrl: 'app/activity/addTag.tpls.html',
+                                controller:function ($scope, $modalInstance, items) {
+                                    $scope.search="";
+                                    $scope.items = items;
+                                    $scope.active;
+                                    $scope.selected = {
+                                        item: $scope.items[0]
+                                    };
+
+                                    $scope.ok = function () {
+                                        $modalInstance.close($scope.active);
+                                    };
+
+                                    $scope.cancel = function () {
+                                        $modalInstance.dismiss('cancel');
+                                    };
+                                    $scope.select=function(item){
+                                        $scope.active=item;
+                                    }
+                                },
+                                size:'lg',
+                                resolve: {
+                                    items: function (TagService) {
+                                        return TagService.list();
+                                    }
+                                }
+                            });
+
+                            modalInstance.result.then(function (selectedItem) {
+                                if(!angular.isDefined($scope.activity.tags)){
+                                    $scope.activity.tags=[];
+                                }
+                                $scope.activity.tags.push(selectedItem);
+                            }, function () {
+                                console.log('Modal dismissed at: ' + new Date());
                             });
                         };
                     }

@@ -12,8 +12,48 @@
             </div>
             <div class="form-group">
                 <div zr-panel title="Activity features">
-                    <button class="btn btn-default" ng-click="addFeature()">Add Feature</button>
-                    <pre>{{activity.features}}</pre>
+                    <table class="table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Opt</th>
+                        </tr>
+                        <tr ng-repeat="feature in activity.features">
+                            <td>{{feature.name}}</td>
+                            <td>{{feature.description}}</td>
+                            <td zr-dropdown>
+                                <li>
+                                    <a ng-click="removeFeature(feature)">
+                                        remove<span class="glyphicon glyphicon-remove"></span>
+                                    </a>
+                                </li>
+                            </td>
+                        </tr>
+                    </table>
+                    <button class="btn btn-primary" ng-click="addFeature()">Add Feature</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <div zr-panel title="Activity tags">
+                    <table class="table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Opt</th>
+                        </tr>
+                        <tr ng-repeat="tag in activity.tags">
+                            <td>{{tag.name}}</td>
+                            <td>{{tag.description}}</td>
+                            <td zr-dropdown>
+                                <li>
+                                    <a ng-click="removeTag(tag)">
+                                        remove<span class="glyphicon glyphicon-remove"></span>
+                                    </a>
+                                </li>
+                            </td>
+                        </tr>
+                    </table>
+                    <button class="btn btn-primary" ng-click="addTag()">Add Tag</button>
                 </div>
             </div>
             <div class="form-group">
@@ -60,7 +100,7 @@
                 <label>Activity tags</label>
                 <input type="text" class="form-control" ng-model="activity.tags">
             </div>
-            <button class="btn" ng-click="create()">Create</button>
+            <button class="btn btn-success" ng-click="create()">Create</button>
         </form>
     </div>
 </div>

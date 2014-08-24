@@ -1,12 +1,13 @@
 var app=angular.module("gcgl2016",[
     'ui.router',
-    'firebase',
     'ui.bootstrap',
+    'ui.tree',
+    'ngGrid',
+    'firebase',
     'gcgl2016.directives',
     "gcgl2016.filters",
     'gcgl2016.directives.uiBreadcrumbs',
     'gcgl2016.firebase',
-    'ngGrid',
     'gcgl2016.util',
     'gcgl2016.exeProject',
     'gcgl2016.process',
@@ -19,7 +20,8 @@ var app=angular.module("gcgl2016",[
     'gcgl2016.phase',
     'gcgl2016.lifecycle',
     'gcgl2016.tag',
-    'gcgl2016.feature'
+    'gcgl2016.feature',
+    "gcgl2016.enum"
 ]);
 app.config(function($stateProvider, $urlRouterProvider){
     // For any unmatched url, redirect to /state1
@@ -136,4 +138,62 @@ app.config(function($stateProvider, $urlRouterProvider){
         });
 });
 app.controller('HomeController',function($scope,$location,$rootScope){
+
+    $scope.data = [{
+        "id": 1,
+        "title": "node1",
+        "nodes": [
+            {
+                "id": 11,
+                "title": "node1.1",
+                "nodes": [
+                    {
+                        "id": 111,
+                        "title": "node1.1.1",
+                        "nodes": []
+                    }
+                ]
+            },
+            {
+                "id": 12,
+                "title": "node1.2",
+                "nodes": []
+            }
+        ],
+    }, {
+        "id": 2,
+        "title": "node2",
+        "nodes": [
+            {
+                "id": 21,
+                "title": "node2.1",
+                "nodes": []
+            },
+            {
+                "id": 22,
+                "title": "node2.2",
+                "nodes": []
+            }
+        ],
+    }, {
+        "id": 3,
+        "title": "node3",
+        "nodes": [
+            {
+                "id": 31,
+                "title": "node3.1",
+                "nodes": []
+            }
+        ],
+    }, {
+        "id": 4,
+        "title": "node4",
+        "nodes": [
+            {
+                "id": 41,
+                "title": "node4.1",
+                "nodes": []
+            }
+        ],
+    }];
 });

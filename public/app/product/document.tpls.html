@@ -1,0 +1,69 @@
+<style>
+
+    .btn {
+        margin-right: 8px;
+    }
+
+    .angular-ui-tree-handle {
+        background: #f8faff;
+        border: 1px solid #dae2ea;
+        color: #7c9eb2;
+        padding: 10px 10px;
+    }
+
+    .angular-ui-tree-handle:hover {
+        color: #438eb9;
+        background: #f4f6f7;
+        border-color: #dce2e8;
+    }
+
+    .angular-ui-tree-placeholder {
+        background: #f0f9ff;
+        border: 2px dashed #bed2db;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+
+    .group-title {
+        background-color: #687074 !important;
+        color: #FFF !important;
+    }
+</style>
+
+
+<h3>Tree
+    <a href="" class="btn btn-default pull-right" ng-click="collapseAll()">Collapse all</a>
+    <a href="" class="btn btn-default pull-right" ng-click="expandAll()">Expand all</a>
+    <a href="" class="btn btn-default pull-right" ng-click="addNode()">Add node</a>
+</h3>
+
+<!-- Nested node template -->
+<script type="text/ng-template" id="nodes_renderer.html">
+    <div ui-tree-handle class="tree-node tree-node-content" ng-show="!node.editing">
+        <a class="btn btn-success btn-xs" ng-if="node.nodes && node.nodes.length > 0" data-nodrag ng-click="toggle(this)"><span class="glyphicon" ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed}"></span></a>
+        {{node.title}}
+        <a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span class="glyphicon glyphicon-remove"></span></a>
+        <a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="editNode(node)" style="margin-right: 8px;"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a class="pull-right btn btn-success btn-xs" data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;"><span class="glyphicon glyphicon-plus"></span></a>
+    </div>
+    <div class="angular-ui-tree-handle" data-nodrag ng-show="node.editing">
+        <form class="form-inline" role="form">
+            <div class="form-group">
+                <label class="sr-only" for="chapterName">Chapter name</label>
+                <input id="chapterName" type="text" class="form-control" placeholder="Chapter name" ng-model="node.title">
+            </div>
+            <button type="submit" class="btn btn-default" ng-click="saveNode(node)">Save</button>
+        </form>
+    </div>
+    <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+        <li ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'">
+        </li>
+    </ol>
+</script>
+<div ui-tree id="tree-root">
+    <ol ui-tree-nodes="" ng-model="data">
+        <li ng-repeat="node in data" ui-tree-node ng-include="'nodes_renderer.html'"></li>
+    </ol>
+</div>

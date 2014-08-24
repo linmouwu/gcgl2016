@@ -8,7 +8,16 @@ firebase.factory("f",function($firebase){
         ref: function(path){
             return $firebase(new Firebase(baseUrl+path));
         },
-
+        /**
+         *
+         * @param ids [id1,id2]
+         * @param refs {
+         *                  id1:{name:a,age:b},
+         *                  id2:{name:c,age:d}
+         *              }
+         * @returns {Array} [id1:{name:a,age:b},id2:{name:c,age:d}]
+         */
+        //after
         extend:function (ids,refs) {
             if(_.isUndefined(ids)|| _.isUndefined(refs)){
                 return [];
@@ -69,10 +78,17 @@ firebase.factory("f",function($firebase){
             ret.id=id;
             return ret;
         },
+        //before [{id:XX,name:XX},{id:YY,name:YY}]
+        //after [XX,YY]
         toIds:function(array){
-            return _.map(array,function(item){
-                return item.id;
-            });
+            if(angular.isDefined(array)) {
+                return _.map(array, function (item) {
+                    return item.id;
+                });
+            }
+            else{
+                return [];
+            }
         },
         copy:function(data){
             return angular.copy(data);
@@ -128,6 +144,12 @@ firebase.factory("f",function($firebase){
             var types=["document"];
             return types;
         },
+        /**
+         *
+         * @param array [id:{name:xx,age:xx},id2:{name:yy,age:xx}]
+         * @param field name
+         * @returns {string} "xx, yy"
+         */
         arrayToString:function(array,field){
             var ret="";
             _.each(array,function(item){

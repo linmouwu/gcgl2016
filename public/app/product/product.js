@@ -8,7 +8,7 @@ app.config(function($stateProvider, $urlRouterProvider){
             url: "/product",
             views:{
                 'main@':{
-                    templateUrl: "product/product.html",
+                    templateUrl: "app/product/product.html",
                     resolve:{
                         productList:function(ProductService){
                             return ProductService.list();
@@ -33,15 +33,15 @@ app.config(function($stateProvider, $urlRouterProvider){
             url: "/product/create",
             views:{
                 'main@':{
-                    templateUrl: "product/createProduct.html",
+                    templateUrl: "app/product/createProduct.html",
                     resolve:{
-                        types:function(ProductService){
-                            return ProductService.getTypes();
+                        types:function(EnumService){
+                            return EnumService.getProductTypes();
                         }
                     },
                     controller:function($scope,$state,ProductService,types){
                         $scope.types=types;
-                        $scope.product={};
+                        $scope.product={type:"simple"};
                         $scope.create=function(){
                             ProductService.create($scope.product).then(function(){
                                 console.log("CreateProductController:Create Success");
@@ -58,13 +58,13 @@ app.config(function($stateProvider, $urlRouterProvider){
             url: "/product/edit/:id",
             views:{
                 'main@':{
-                    templateUrl: "product/editProduct.html",
+                    templateUrl: "app/product/editProduct.html",
                     resolve:{
                         product:function(ProductService,$stateParams){
                             return ProductService.find($stateParams.id);
                         },
-                        types:function(ProductService){
-                            return ProductService.getTypes();
+                        types:function(EnumService){
+                            return EnumService.getProductTypes();
                         }
                     },
                     controller:function($scope,$stateParams,$state,ProductService,product,types){
@@ -129,4 +129,127 @@ app.factory('ProductService', function(f,$q) {
         }
     };
     return productService;
+});
+app.directive('zrDocument',function(){
+    return {
+        templateUrl: 'app/product/document.tpls.html',
+        scope:{
+            data:'='
+        },
+        controller: function ($scope) {
+
+
+            $scope.remove = function(scope) {
+                scope.remove();
+            };
+
+            $scope.toggle = function(scope) {
+                scope.toggle();
+            };
+            $scope.editNode = function(node) {
+                node.editing = true;
+            };
+            $scope.saveNode = function(node) {
+                node.editing = false;
+            };
+            $scope.moveLastToTheBegginig = function () {
+                var a = $scope.data.pop();
+                $scope.data.splice(0,0, a);
+            };
+
+            $scope.newSubItem = function(scope) {
+                var nodeData = scope.$modelValue;
+                nodeData.nodes.push({
+                    id: nodeData.id * 10 + nodeData.nodes.length,
+                    title: nodeData.title + '.' + (nodeData.nodes.length + 1),
+                    nodes: []
+                });
+            };
+            $scope.addNode = function(){
+                $scope.data.push({
+                    id:$scope.data.length+1,
+                    title:'node'+($scope.data.length+1),
+                    nodes:[]
+                });
+            }
+
+            var getRootNodesScope = function() {
+                return angular.element(document.getElementById("tree-root")).scope();
+            };
+
+            $scope.collapseAll = function() {
+                var scope = getRootNodesScope();
+                scope.collapseAll();
+            };
+
+            $scope.expandAll = function() {
+                var scope = getRootNodesScope();
+                scope.expandAll();
+            };
+            if(!$scope.data){
+                $scope.data = [
+                    {
+                        "id": 1,
+                        "title": "node1",
+                        "nodes": [
+                            {
+                                "id": 11,
+                                "title": "node1.1",
+                                "nodes": [
+                                    {
+                                        "id": 111,
+                                        "title": "node1.1.1",
+                                        "nodes": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 12,
+                                "title": "node1.2",
+                                "nodes": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 2,
+                        "title": "node2",
+                        "nodes": [
+                            {
+                                "id": 21,
+                                "title": "node2.1",
+                                "nodes": []
+                            },
+                            {
+                                "id": 22,
+                                "title": "node2.2",
+                                "nodes": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 3,
+                        "title": "node3",
+                        "nodes": [
+                            {
+                                "id": 31,
+                                "title": "node3.1",
+                                "nodes": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 4,
+                        "title": "node4",
+                        "nodes": [
+                            {
+                                "id": 41,
+                                "title": "node4.1",
+                                "nodes": []
+                            }
+                        ]
+                    }
+                ];
+            }
+        }
+    }
 });
