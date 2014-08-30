@@ -4,8 +4,6 @@
         <p><button type="button" class="btn btn-primary btn-block" ui-sref="activity.create">Create Activity</button></p>
         <p><button type="button" class="btn btn-primary btn-block" ui-sref="activity.createTag">Create Tag</button></p>
         <p><button type="button" class="btn btn-primary btn-block" ui-sref="activity.createFeature">Create Feature</button></p>
-        <p><button type="button" class="btn btn-primary btn-block" ui-sref="activity.createPhase">Create Phase</button></p>
-        <p><button type="button" class="btn btn-primary btn-block" ui-sref="activity.createLifecycle">Create Lifecycle</button></p>
     </div>
     <div class="col-lg-10">
         <div zr-panel title="Activity List">
@@ -29,7 +27,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="btn" ng-click="remove(key)">
+                            <a class="btn" ng-click="removeActivity(key)">
                                 remove<span class="glyphicon glyphicon-remove"></span>
                             </a>
                         </li>
@@ -54,7 +52,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="btn" ng-click="remove(key)">
+                            <a class="btn" ng-click="removeTag(key)">
                                 remove<span class="glyphicon glyphicon-remove"></span>
                             </a>
                         </li>
@@ -79,7 +77,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="btn" ng-click="remove(key)">
+                            <a class="btn" ng-click="removeFeature(key)">
                                 remove<span class="glyphicon glyphicon-remove"></span>
                             </a>
                         </li>

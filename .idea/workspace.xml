@@ -2,83 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f38b5c4a-17a2-473f-a72c-227ebcc6f672" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/app/activity/addTag.tpls.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendor/angular-ui-tree/source/angular-ui-tree.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/app/product/document.tpls.html" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\bower.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\css\font-awesome.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\css\font-awesome.min.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\fonts\FontAwesome.otf" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\fonts\fontawesome-webfont.eot" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\fonts\fontawesome-webfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\fonts\fontawesome-webfont.ttf" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\fonts\fontawesome-webfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\less\bordered-pulled.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\less\core.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\less\extras.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\less\fixed-width.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\less\font-awesome.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\less\icons.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\less\larger.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\less\list.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\less\mixins.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\less\path.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\less\rotated-flipped.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\less\spinning.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\less\stacked.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\less\variables.less" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\scss\_bordered-pulled.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\scss\_core.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\scss\_extras.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\scss\_fixed-width.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\scss\_icons.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\scss\_larger.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\scss\_list.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\scss\_mixins.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\scss\_path.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\scss\_rotated-flipped.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\scss\_spinning.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\scss\_stacked.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\scss\_variables.scss" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\fontawesome\scss\font-awesome.scss" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/angular-ui-tree/.bower.json" afterPath="$PROJECT_DIR$/public/vendor/angular-ui-tree/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/angular-ui-tree/README.md" afterPath="$PROJECT_DIR$/public/vendor/angular-ui-tree/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendor/angularfire/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendor/angularfire/dist/angularfire.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendor/angularfire/dist/angularfire.js" />
+      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\firebase-simple-login\Gruntfile.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\angularfire\angularfire.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\angularfire\angularfire.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\firebase-simple-login\package.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\angularfire\lib\omnibinder.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\angularfire\lib\omnibinder-protocol.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\firebase-simple-login\CONTRIBUTING.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\angularfire\.jshintrc" afterPath="" />
+      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\angularfire\.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\angularfire\lib\omnibinder.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\vendor\angularfire\package.json" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/activity/activity.html" afterPath="$PROJECT_DIR$/public/app/activity/activity.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/activity/activity.js" afterPath="$PROJECT_DIR$/public/app/activity/activity.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/activity/addFeature.tpls.html" afterPath="$PROJECT_DIR$/public/app/activity/addFeature.tpls.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/angular-ui-tree/demo/dist/angular-ui-tree.js" afterPath="$PROJECT_DIR$/public/vendor/angular-ui-tree/demo/dist/angular-ui-tree.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/angular-ui-tree/dist/angular-ui-tree.js" afterPath="$PROJECT_DIR$/public/vendor/angular-ui-tree/dist/angular-ui-tree.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/angular-ui-tree/demo/dist/angular-ui-tree.min.js" afterPath="$PROJECT_DIR$/public/vendor/angular-ui-tree/demo/dist/angular-ui-tree.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/angular-ui-tree/dist/angular-ui-tree.min.js" afterPath="$PROJECT_DIR$/public/vendor/angular-ui-tree/dist/angular-ui-tree.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app.js" afterPath="$PROJECT_DIR$/public/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/angular-ui-tree/bower.json" afterPath="$PROJECT_DIR$/public/vendor/angular-ui-tree/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/activity/createActivity.html" afterPath="$PROJECT_DIR$/public/app/activity/createActivity.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/product/createProduct.html" afterPath="$PROJECT_DIR$/public/app/product/createProduct.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/tag/createTag.html" afterPath="$PROJECT_DIR$/public/app/tag/createTag.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/product/editProduct.html" afterPath="$PROJECT_DIR$/public/app/product/editProduct.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/common/enum/enum.js" afterPath="$PROJECT_DIR$/public/common/enum/enum.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/common/firebase/f.js" afterPath="$PROJECT_DIR$/public/common/firebase/f.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/angular-ui-tree/demo/filter.html" afterPath="$PROJECT_DIR$/public/vendor/angular-ui-tree/demo/filter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/angular-ui-tree/demo/groups.html" afterPath="$PROJECT_DIR$/public/vendor/angular-ui-tree/demo/groups.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/angular-ui-tree/demo/index.html" afterPath="$PROJECT_DIR$/public/vendor/angular-ui-tree/demo/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/angular-ui-tree/source/main.js" afterPath="$PROJECT_DIR$/public/vendor/angular-ui-tree/source/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/angular-ui-tree/source/controllers/nodeCtrl.js" afterPath="$PROJECT_DIR$/public/vendor/angular-ui-tree/source/controllers/nodeCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/angular-ui-tree/source/controllers/nodesCtrl.js" afterPath="$PROJECT_DIR$/public/vendor/angular-ui-tree/source/controllers/nodesCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/angular-ui-tree/package.json" afterPath="$PROJECT_DIR$/public/vendor/angular-ui-tree/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/product/product.html" afterPath="$PROJECT_DIR$/public/app/product/product.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/feature/feature.js" afterPath="$PROJECT_DIR$/public/app/feature/feature.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/phase/phase.js" afterPath="$PROJECT_DIR$/public/app/phase/phase.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/product/product.js" afterPath="$PROJECT_DIR$/public/app/product/product.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/sb-admin.css" afterPath="$PROJECT_DIR$/public/sb-admin.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/angular-ui-tree/demo/tree-horizontal.html" afterPath="$PROJECT_DIR$/public/vendor/angular-ui-tree/demo/tree-horizontal.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/angular-ui-tree/demo/tree.html" afterPath="$PROJECT_DIR$/public/vendor/angular-ui-tree/demo/tree.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/angular-ui-tree/demo/trees.html" afterPath="$PROJECT_DIR$/public/vendor/angular-ui-tree/demo/trees.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/angular-ui-tree/source/directives/uiTree.js" afterPath="$PROJECT_DIR$/public/vendor/angular-ui-tree/source/directives/uiTree.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/angular-ui-tree/source/directives/uiTreeNode.js" afterPath="$PROJECT_DIR$/public/vendor/angular-ui-tree/source/directives/uiTreeNode.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/angular-ui-tree/source/directives/uiTreeNodes.js" afterPath="$PROJECT_DIR$/public/vendor/angular-ui-tree/source/directives/uiTreeNodes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/tag/tag.js" afterPath="$PROJECT_DIR$/public/app/tag/tag.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/angularfire/bower.json" afterPath="$PROJECT_DIR$/public/vendor/angularfire/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/firebase-simple-login/CHANGELOG.md" afterPath="$PROJECT_DIR$/public/vendor/firebase-simple-login/CHANGELOG.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/firebase/firebase-debug.js" afterPath="$PROJECT_DIR$/public/vendor/firebase/firebase-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/firebase/bower.json" afterPath="$PROJECT_DIR$/public/vendor/firebase/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/firebase/firebase.js" afterPath="$PROJECT_DIR$/public/vendor/firebase/firebase.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/firebase/.bower.json" afterPath="$PROJECT_DIR$/public/vendor/firebase/.bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/firebase-simple-login/.bower.json" afterPath="$PROJECT_DIR$/public/vendor/firebase-simple-login/.bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/firebase-simple-login/firebase-simple-login.js" afterPath="$PROJECT_DIR$/public/vendor/firebase-simple-login/firebase-simple-login.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/firebase-simple-login/firebase-simple-login-debug.js" afterPath="$PROJECT_DIR$/public/vendor/firebase-simple-login/firebase-simple-login-debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app.js" afterPath="$PROJECT_DIR$/public/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/firebase-simple-login/bower.json" afterPath="$PROJECT_DIR$/public/vendor/firebase-simple-login/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/firebase-simple-login/README.md" afterPath="$PROJECT_DIR$/public/vendor/firebase-simple-login/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/angularfire/.bower.json" afterPath="$PROJECT_DIR$/public/vendor/angularfire/.bower.json" />
     </list>
     <ignored path="gcgl2016.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -101,11 +59,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2793">
+              <caret line="0" column="35" selection-start-line="0" selection-start-column="35" selection-end-line="1" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="activity.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/app/activity/activity.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="5416" max-vertical-offset="6023">
-              <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="4934" max-vertical-offset="5852">
+              <caret line="300" column="19" selection-start-line="264" selection-start-column="0" selection-end-line="300" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -114,38 +82,78 @@
       <file leaf-file-name="product.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/app/product/product.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40691927" vertical-offset="570" max-vertical-offset="4940">
-              <caret line="43" column="52" selection-start-line="43" selection-start-column="52" selection-end-line="43" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.12418301" vertical-offset="1710" max-vertical-offset="4959">
+              <caret line="96" column="29" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="editProduct.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/app/product/editProduct.html">
+      <file leaf-file-name="createActivity.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/app/activity/createActivity.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.857142" vertical-offset="0" max-vertical-offset="627">
-              <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+            <state vertical-scroll-proportion="-13.464286" vertical-offset="1219" max-vertical-offset="2109">
+              <caret line="84" column="50" selection-start-line="84" selection-start-column="48" selection-end-line="84" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="document.tpls.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/app/product/document.tpls.html">
+      <file leaf-file-name="feature.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/app/feature/feature.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="3.0714285" vertical-offset="808" max-vertical-offset="1406">
-              <caret line="38" column="67" selection-start-line="38" selection-start-column="60" selection-end-line="38" selection-end-column="67" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="317" max-vertical-offset="1235">
+              <caret line="32" column="29" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="createProduct.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/app/product/createProduct.html">
+      <file leaf-file-name="lifecycle.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/app/lifecycle/lifecycle.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.142858" vertical-offset="20" max-vertical-offset="627">
-              <caret line="16" column="85" selection-start-line="16" selection-start-column="74" selection-end-line="16" selection-end-column="85" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1552" max-vertical-offset="2527">
+              <caret line="88" column="7" selection-start-line="88" selection-start-column="7" selection-end-line="88" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="phase.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/app/phase/phase.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1514" max-vertical-offset="2432">
+              <caret line="120" column="19" selection-start-line="86" selection-start-column="28" selection-end-line="120" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tag.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/app/tag/tag.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="317" max-vertical-offset="1235">
+              <caret line="58" column="19" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="7135" max-vertical-offset="8759">
+              <caret line="393" column="60" selection-start-line="393" selection-start-column="60" selection-end-line="393" selection-end-column="60" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/app/activity/activity.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-53.607143" vertical-offset="0" max-vertical-offset="1805">
+              <caret line="79" column="66" selection-start-line="79" selection-start-column="66" selection-end-line="79" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -173,9 +181,7 @@
         <option value="$PROJECT_DIR$/public/app/activity/addProduct.tpl.html" />
         <option value="$PROJECT_DIR$/public/app/activity/addProduct.tpls.html" />
         <option value="$PROJECT_DIR$/public/app/activity/selectProduct.tpls.html" />
-        <option value="$PROJECT_DIR$/public/app/phase/phase.js" />
         <option value="$PROJECT_DIR$/public/app/tag/tag.html" />
-        <option value="$PROJECT_DIR$/public/app/tag/tag.js" />
         <option value="$PROJECT_DIR$/public/common/directives/createPanel.js" />
         <option value="$PROJECT_DIR$/public/app/activity/editActivity.html" />
         <option value="$PROJECT_DIR$/public/common/directives/panel.js" />
@@ -183,7 +189,6 @@
         <option value="$PROJECT_DIR$/public/common/directives/directives.js" />
         <option value="$PROJECT_DIR$/public/common/directives/dropdown.js" />
         <option value="$PROJECT_DIR$/public/common/directives/dropdown.tpls.html" />
-        <option value="$PROJECT_DIR$/public/app/feature/feature.js" />
         <option value="$PROJECT_DIR$/public/common/directives/header.js" />
         <option value="$PROJECT_DIR$/public/app/feature/createFeature.html" />
         <option value="$PROJECT_DIR$/public/common/filter/filters.js" />
@@ -194,12 +199,9 @@
         <option value="$PROJECT_DIR$/public/app/activity/addFeature.tpls.html" />
         <option value="$PROJECT_DIR$/public/app/activity/createActivity.html" />
         <option value="$PROJECT_DIR$/public/common/firebase/f.js" />
-        <option value="$PROJECT_DIR$/public/app/activity/activity.html" />
-        <option value="$PROJECT_DIR$/public/app/activity/activity.js" />
         <option value="$PROJECT_DIR$/public/app/product/product.html" />
         <option value="$PROJECT_DIR$/public/common/enum/enum.js" />
         <option value="$PROJECT_DIR$/public/app/product/documentDef.html" />
-        <option value="$PROJECT_DIR$/public/app.js" />
         <option value="$PROJECT_DIR$/public/vendor/angular-ui-tree/dist/angular-ui-tree.min.css" />
         <option value="$PROJECT_DIR$/public/sb-admin.css" />
         <option value="$PROJECT_DIR$/public/app/angular-ui-tree.min.css" />
@@ -207,11 +209,17 @@
         <option value="$PROJECT_DIR$/public/sb-admin2.css" />
         <option value="$PROJECT_DIR$/public/angular-ui-tree.css" />
         <option value="$PROJECT_DIR$/public/vendor/angular-ui-tree/source/angular-ui-tree.css" />
-        <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/public/app/product/document.tpls.html" />
         <option value="$PROJECT_DIR$/public/app/product/createProduct.html" />
-        <option value="$PROJECT_DIR$/public/app/product/product.js" />
         <option value="$PROJECT_DIR$/public/app/product/editProduct.html" />
+        <option value="$PROJECT_DIR$/public/app.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/public/app/phase/phase.js" />
+        <option value="$PROJECT_DIR$/public/app/tag/tag.js" />
+        <option value="$PROJECT_DIR$/public/app/feature/feature.js" />
+        <option value="$PROJECT_DIR$/public/app/activity/activity.html" />
+        <option value="$PROJECT_DIR$/public/app/activity/activity.js" />
+        <option value="$PROJECT_DIR$/public/app/product/product.js" />
       </list>
     </option>
   </component>
@@ -236,7 +244,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
@@ -255,7 +263,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -324,18 +331,104 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="tag" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="product" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phase" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gcgl2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bower_components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="FullScreen" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../goal" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -350,15 +443,15 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="Chrome" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -387,7 +480,11 @@
       <created>1408178652670</created>
       <updated>1408178652670</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="directive(zr-document)&#10;entity(product.document)">
+      <created>1408882711672</created>
+      <updated>1408882711672</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -398,7 +495,6 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32910052" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -409,6 +505,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32910052" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -432,12 +529,29 @@
     </option>
     <MESSAGE value="activity's input and output" />
     <MESSAGE value="directive(zr-dropdown zr-panel zr-header)&#10;filter(array)&#10;html(createActivity)" />
-    <option name="LAST_COMMIT_MESSAGE" value="directive(zr-dropdown zr-panel zr-header)&#10;filter(array)&#10;html(createActivity)" />
+    <MESSAGE value="directive(zr-document)&#10;entity(product.document)" />
+    <option name="LAST_COMMIT_MESSAGE" value="directive(zr-document)&#10;entity(product.document)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/public/common/directives/panel.tpls.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="38" max-vertical-offset="304">
+          <caret line="2" column="35" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/common/firebase/f.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="266" max-vertical-offset="3192">
+          <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/app/activity/selectProduct.tpls.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="342" max-vertical-offset="798">
@@ -508,13 +622,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/lifecycle/lifecycle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.6589786" vertical-offset="1824" max-vertical-offset="2527">
-          <caret line="43" column="37" selection-start-line="43" selection-start-column="37" selection-end-line="43" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Gruntfile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.15650742" vertical-offset="399" max-vertical-offset="9177">
@@ -540,30 +647,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.5" vertical-offset="0" max-vertical-offset="779">
           <caret line="14" column="18" selection-start-line="0" selection-start-column="0" selection-end-line="35" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/phase/phase.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1628" max-vertical-offset="2546">
-          <caret line="127" column="3" selection-start-line="82" selection-start-column="0" selection-end-line="127" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/common/directives/panel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="342">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#49#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/common/directives/panel.tpls.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.7142856" vertical-offset="0" max-vertical-offset="304">
-          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -603,7 +686,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="95" max-vertical-offset="228">
           <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -618,15 +700,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="342">
           <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/feature/feature.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1311">
-          <caret line="16" column="38" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -634,7 +707,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="304">
           <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="9" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -642,7 +714,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.04269663" vertical-offset="0" max-vertical-offset="890">
           <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -650,7 +721,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34157303" vertical-offset="0" max-vertical-offset="890">
           <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -658,39 +728,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.3571428" vertical-offset="0" max-vertical-offset="494">
           <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/tag/tag.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="393" max-vertical-offset="1311">
-          <caret line="41" column="10" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/common/firebase/f.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2274" max-vertical-offset="3192">
-          <caret line="152" column="21" selection-start-line="152" selection-start-column="8" selection-end-line="152" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/activity/createActivity.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.535715" vertical-offset="1105" max-vertical-offset="2109">
-          <caret line="84" column="50" selection-start-line="84" selection-start-column="48" selection-end-line="84" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/activity/activity.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.607142" vertical-offset="0" max-vertical-offset="1843">
-          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -698,7 +735,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1235">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -706,7 +742,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.821428" vertical-offset="0" max-vertical-offset="532">
           <caret line="13" column="53" selection-start-line="13" selection-start-column="53" selection-end-line="13" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -714,7 +749,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0959596" vertical-offset="0" max-vertical-offset="1292">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -722,7 +756,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="117971">
           <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -730,7 +763,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1292">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -738,55 +770,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.06260297" vertical-offset="0" max-vertical-offset="6631">
           <caret line="2" column="37" selection-start-line="0" selection-start-column="0" selection-end-line="343" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="7.0811744" vertical-offset="3196" max-vertical-offset="8759">
-          <caret line="384" column="0" selection-start-line="384" selection-start-column="0" selection-end-line="384" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="6.1663923" vertical-offset="0" max-vertical-offset="3876">
-          <caret line="197" column="7" selection-start-line="197" selection-start-column="7" selection-end-line="197" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/activity/activity.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="6023">
-          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/product/createProduct.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.142858" vertical-offset="20" max-vertical-offset="627">
+        <state vertical-scroll-proportion="0.49050087" vertical-offset="20" max-vertical-offset="627">
           <caret line="16" column="85" selection-start-line="16" selection-start-column="74" selection-end-line="16" selection-end-column="85" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/product/document.tpls.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.0714285" vertical-offset="808" max-vertical-offset="1406">
+        <state vertical-scroll-proportion="-0.14853196" vertical-offset="808" max-vertical-offset="1406">
           <caret line="38" column="67" selection-start-line="38" selection-start-column="60" selection-end-line="38" selection-end-column="67" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/product/editProduct.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.857142" vertical-offset="0" max-vertical-offset="627">
+        <state vertical-scroll-proportion="0.5250432" vertical-offset="0" max-vertical-offset="627">
           <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -794,14 +798,116 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.21911038" vertical-offset="0" max-vertical-offset="607">
           <caret line="7" column="30" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/common/firebase/f.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3192">
+          <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/common/directives/panel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="342">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/vendor/angularfire/dist/angularfire.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="38532">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/common/directives/panel.tpls.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="190" max-vertical-offset="304">
+          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="7135" max-vertical-offset="8759">
+          <caret line="393" column="60" selection-start-line="393" selection-start-column="60" selection-end-line="393" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/phase/phase.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1514" max-vertical-offset="2432">
+          <caret line="120" column="19" selection-start-line="86" selection-start-column="28" selection-end-line="120" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/tag/tag.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="317" max-vertical-offset="1235">
+          <caret line="58" column="19" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/feature/feature.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="317" max-vertical-offset="1235">
+          <caret line="32" column="29" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/lifecycle/lifecycle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1552" max-vertical-offset="2527">
+          <caret line="88" column="7" selection-start-line="88" selection-start-column="7" selection-end-line="88" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/activity/createActivity.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.464286" vertical-offset="1219" max-vertical-offset="2109">
+          <caret line="84" column="50" selection-start-line="84" selection-start-column="48" selection-end-line="84" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2793">
+          <caret line="0" column="35" selection-start-line="0" selection-start-column="35" selection-end-line="1" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/activity/activity.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-53.607143" vertical-offset="0" max-vertical-offset="1805">
+          <caret line="79" column="66" selection-start-line="79" selection-start-column="66" selection-end-line="79" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/activity/activity.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4934" max-vertical-offset="5852">
+          <caret line="300" column="19" selection-start-line="264" selection-start-column="0" selection-end-line="300" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/app/product/product.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40691927" vertical-offset="570" max-vertical-offset="4940">
-          <caret line="43" column="52" selection-start-line="43" selection-start-column="52" selection-end-line="43" selection-end-column="52" />
+        <state vertical-scroll-proportion="0.12418301" vertical-offset="1710" max-vertical-offset="4959">
+          <caret line="96" column="29" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="29" />
           <folding />
         </state>
       </provider>

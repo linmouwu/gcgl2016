@@ -12,65 +12,50 @@ app.config(function($stateProvider, $urlRouterProvider){
                 'main@':{
                     templateUrl:"app/activity/activity.html",
                     resolve:{
-                        activityList:function(ActivityService){
-                            return ActivityService.list();
-                        },
-                        phaseList:function(PhaseService,activityList){
-                            return PhaseService.listWithActivities(activityList);
-                        },
-                        lifecycleList:function(LifecycleService,phaseList){
-                            return LifecycleService.listWithPhases(phaseList);
-                        },
                         tagList:function(TagService){
                             return TagService.list();
                         },
                         featureList:function(FeatureService){
                             return FeatureService.list();
+                        },
+                        activityList:function(ActivityService,featureList,tagList){
+                            return ActivityService.listWithFeatureAndTag(featureList,tagList);
                         }
                     },
-                    controller:function($scope,ActivityService,PhaseService,LifecycleService,activityList,phaseList,lifecycleList,featureList,tagList,$state,$stateParams,f){
+                    controller:function($scope,ActivityService,FeatureService,activityList,TagService,featureList,tagList,$state,$stateParams,f){
                         $scope.featureList=featureList;
                         $scope.tagList=tagList;
                         $scope.activityList=activityList;
-                        //
-                        angular.forEach($scope.activityList,function(activity){
-                            activity.features= f.arrayToString(f.extend(activity.features,featureList),"name");
-                            activity.tags= f.arrayToString(f.extend(activity.tags,tagList),"name");
-                        });
-                        $scope.phaseList={};
-                        _.each(phaseList,function(phaseContent,id){
-                            var phaseContentCopy= f.copy(phaseContent);
-                            phaseContentCopy.activities= f.arrayToString(phaseContent.activities,"name");
-                            $scope.phaseList[id]=phaseContentCopy;
-                        });
-                        $scope.lifecycleList={};
-                        _.each(lifecycleList,function(lifecycleContent,id){
-                            var lifecycleContentCopy= f.copy(lifecycleContent);
-                            lifecycleContentCopy.phases= f.arrayToString(lifecycleContent.phases,"name");
-                            $scope.lifecycleList[id]=lifecycleContentCopy;
-                        });
-                        $scope.remove=function(key){
-                            ActivityService.remove(key);
-                            $state.transitionTo($state.current, $stateParams, {
-                                reload: true,
-                                inherit: false,
-                                notify: true
+//                        //
+//                        angular.forEach($scope.activityList,function(activity){
+//                            activity.features= f.arrayToString(f.extend(activity.features,featureList),"name");
+//                            activity.tags= f.arrayToString(f.extend(activity.tags,tagList),"name");
+//                        });
+                        $scope.removeActivity=function(key){
+                            ActivityService.remove(key).then(function(){
+                                $state.transitionTo($state.current, $stateParams, {
+                                    reload: true,
+                                    inherit: false,
+                                    notify: true
+                                });
                             });
                         };
-                        $scope.removePhase=function(key){
-                            PhaseService.remove(key);
-                            $state.transitionTo($state.current, $stateParams, {
-                                reload: true,
-                                inherit: false,
-                                notify: true
+                        $scope.removeFeature=function(key){
+                            FeatureService.remove(key).then(function(){
+                                $state.transitionTo($state.current, $stateParams, {
+                                    reload: true,
+                                    inherit: false,
+                                    notify: true
+                                });
                             });
                         };
-                        $scope.removeLifecycle=function(key){
-                            LifecycleService.remove(key);
-                            $state.transitionTo($state.current, $stateParams, {
-                                reload: true,
-                                inherit: false,
-                                notify: true
+                        $scope.removeTag=function(key){
+                            TagService.remove(key).then(function(){
+                                $state.transitionTo($state.current, $stateParams, {
+                                    reload: true,
+                                    inherit: false,
+                                    notify: true
+                                });
                             });
                         };
                     }
@@ -90,8 +75,9 @@ app.config(function($stateProvider, $urlRouterProvider){
                         $scope.create=function(){
                             $scope.activity.features= f.toIds($scope.activity.features);
                             $scope.activity.tags= f.toIds($scope.activity.tags);
-                            ActivityService.create($scope.activity);
-                            $state.go("^",{},{reload:true});
+                            ActivityService.create($scope.activity).then(function(){
+                                $state.go("^",{},{reload:true});
+                            });
                         };
                         $scope.removeFeature=function(item){
                             $scope.activity.features= _.filter($scope.activity.features,function(feature){
@@ -278,34 +264,39 @@ app.config(function($stateProvider, $urlRouterProvider){
 app.factory('ActivityService', function(f,$q) {
 
     var ref = f.ref("/activity");
-    var refLoad = $q.defer();
-    ref.$on("loaded",function(){
-        refLoad.resolve(ref);
-    });
+    var list=ref.$asArray();
     //Public Method
-    var activityService = {
+    var service = {
         create: function(item) {
-            return ref.$add(item);
+            return list.$add(item);
         },
         remove: function(key){
-            return ref.$remove(key);
+            return list.$remove(key);
         },
         update:function(key,value){
             var obj={};
             obj[key]=value;
-            return ref.$update(obj);
+            return list.$save(obj);
         },
         find:function(key){
-            var promise=refLoad.promise.then(function(){
-                return f.copy(ref[key]);
+            return list.$loaded().then(function(){
+                return f.copy(list.$getRecord(key));
             });
-            return promise;
         },
         list: function(){
-            return refLoad.promise.then(function(items){
-                return f.copyList(items);
+            return list.$loaded().then(function(){
+                return list;
+            });
+        },
+        listWithFeatureAndTag:function(featureList,tagList){
+            return list.$loaded().then(function(){
+                return _.map(f.copy(list),function(activity){
+                    activity.features= f.arrayToString(f.extend(activity.features,featureList),"name");
+                    activity.tags= f.arrayToString(f.extend(activity.tags,tagList),"name");
+                    return activity;
+                });
             });
         }
     };
-    return activityService;
+    return service;
 });

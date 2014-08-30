@@ -94,41 +94,42 @@ app.config(function($stateProvider, $urlRouterProvider){
         });
 });
 app.factory('ProductService', function(f,$q) {
-    var productRef=f.ref("/product");
-    var productRefLoad=$q.defer();
-    productRef.$on("loaded",function(){
-        productRefLoad.resolve(productRef);
-    });
+    var ref = f.ref("/product");
+    var list=ref.$asArray();
     //Public Method
-    var productService = {
-        create: function(product) {
-            return productRef.$add(product);
+    var service = {
+        create: function(item) {
+            return list.$add(item);
         },
         remove: function(key){
-            return productRef.$remove(key);
+            return list.$remove(key);
         },
         update:function(key,value){
             var obj={};
             obj[key]=value;
-            return productRef.$update(obj);
+            return list.$save(obj);
         },
         find:function(key){
-            var promise=productRefLoad.promise.then(function(){
-                return f.copy(productRef[key]);
+            return list.$loaded().then(function(){
+                return f.copy(list.$getRecord(key));
             });
-            return promise;
         },
         list: function(){
-            return productRefLoad.promise.then(function(data){
-                return f.copyList(data);
+            return list.$loaded().then(function(){
+                return list;
             });
         },
-        getTypes:function(){
-            var types=["document"];
-            return types;
+        listWithFeatureAndTag:function(featureList,tagList){
+            return list.$loaded().then(function(){
+                return _.map(f.copy(list),function(activity){
+                    activity.features= f.arrayToString(f.extend(activity.features,featureList),"name");
+                    activity.tags= f.arrayToString(f.extend(activity.tags,tagList),"name");
+                    return activity;
+                });
+            });
         }
     };
-    return productService;
+    return service;
 });
 app.directive('zrDocument',function(){
     return {

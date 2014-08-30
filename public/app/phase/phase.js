@@ -84,44 +84,38 @@ app.config(function($stateProvider, $urlRouterProvider){
 app.factory('PhaseService', function(f,$q) {
 
     var ref = f.ref("/phase");
-    var refLoad = $q.defer();
-    ref.$on("loaded",function(){
-        refLoad.resolve(ref);
-    });
+    var list=ref.$asArray();
     //Public Method
     var service = {
         create: function(item) {
-            return ref.$add(item);
+            return list.$add(item);
         },
         remove: function(key){
-            return ref.$remove(key);
+            return list.$remove(key);
         },
         update:function(key,value){
             var obj={};
             obj[key]=value;
-            return ref.$update(obj);
+            return list.$save(obj);
         },
         find:function(key){
-            var promise=refLoad.promise.then(function(){
-                return f.copy(ref[key]);
+            return list.$loaded().then(function(){
+                return f.copy(list.$getRecord(key));
             });
-            return promise;
         },
         list: function(){
-            return refLoad.promise.then(function(items){
-                return f.copyList(items);
+            return list.$loaded().then(function(){
+                return list;
             });
         },
         listWithActivities:function(activityList){
-            return refLoad.promise.then(function(items){
+            return list.$loaded().then(function(items){
                 var phases=f.copyList(items);
                 _.each(phases,function(content,id){
                     content.activities= f.extend(content.activities,activityList);
                 });
                 return phases;
             });
-
-
         }
     };
     return service;
