@@ -8,7 +8,7 @@ app.config(function($stateProvider, $urlRouterProvider){
             url: "/project",
             views:{
                 'main@':{
-                    templateUrl: "project/project.html",
+                    templateUrl: "app/project/project.html",
                     resolve:{
                         projectList:function(ProjectService){
                             return ProjectService.list();
@@ -23,9 +23,6 @@ app.config(function($stateProvider, $urlRouterProvider){
                                     inherit: false,
                                     notify: true
                                 });
-                                console.log("ProjectController:Remove Successful");
-                            },function(){
-                                console.log("ProjectController:Remove failed");
                             });
                         };
 
@@ -37,18 +34,60 @@ app.config(function($stateProvider, $urlRouterProvider){
             url: "/create",
             views:{
                 'main@':{
-                    templateUrl: "project/createProject.html",
+                    templateUrl: "app/project/createProject.html",
                     controller:function($scope,$state,ProjectService){
                         $scope.project={};
                         $scope.create=function(){
                             $scope.project.status="New";
                             ProjectService.create($scope.project).then(function(){
-                                console.log("CreateProjectController:Create Success");
                                 $state.go("^",{},{reload:true});
-                            },function(){
-                                console.log("CreateProjectController:Create Failed");
                             });
                         };
+                    }
+                }
+            }
+        })
+        .state('project.selectProcess',{
+            url:"/selectProcess",
+            views:{
+                'main@':{
+                    templateUrl:"app/project/selectProcess.html",
+                    resolve:{
+                        projectList:function(ProjectService){
+                            return ProjectService.list();
+                        },
+                        activityList:function(ActivityService){
+                            return ActivityService.list();
+                        },
+                        tagList:function(TagService){
+                            return TagService.list();
+                        },
+                        featureList:function(FeatureService){
+                            return FeatureService.list();
+                        }
+                    },
+                    controller:function($scope,f,projectList,activityList,tagList,featureList){
+                        $scope.projectList=projectList;
+                        $scope.init= function(){
+                            $scope.activityList= f.copy(activityList);
+                            $scope.tagList= f.copy(tagList);
+                            $scope.featureList= f.copy(featureList);
+                            $scope.selectedActivity=[];
+                        };
+                        $scope.init();
+                        $scope.unselect=function(item){
+                            item.select=false;
+                        };
+                        $scope.selectTag=function(item){
+
+                        };
+                        $scope.selectFeature=function(item){
+                            var featureId=item.$id;
+                        };
+                        $scope.selectActivity=function(item){
+                            item.select=true;
+                        };
+
                     }
                 }
             }
@@ -207,52 +246,81 @@ app.config(function($stateProvider, $urlRouterProvider){
         });
 });
 app.factory('ProjectService', function(f,$q) {
-    var projectRef = f.ref("/project");
-    var projectRefLoad=$q.defer();
-    projectRef.$on("loaded",function(){
-        projectRefLoad.resolve(projectRef);
-    });
-    var processRef = f.ref("/process");
-    var processRefLoad=$q.defer();
-    processRef.$on("loaded",function(){
-        processRefLoad.resolve(projectRef);
-    });
 
-
+    var ref = f.ref("/project");
+    var list=ref.$asArray();
     //Public Method
-    var projectService = {
-        create: function(project) {
-            return projectRef.$add(project);
+    var service = {
+        create: function(item) {
+            return list.$add(item);
         },
         remove: function(key){
-            return projectRef.$remove(key);
+            return list.$remove(key);
         },
-        update: function(key,value){
+        update:function(key,value){
             var obj={};
             obj[key]=value;
-            return projectRef.$update(obj);
+            return list.$save(obj);
         },
         find:function(key){
-            var promise=projectRefLoad.promise.then(function(){
-//                console.log("projectRef[key]");
-//                console.log(f.copy(projectRef[key]));
-                return f.copy(projectRef[key]);
+            return list.$loaded().then(function(){
+                return f.copy(list.$getRecord(key));
             });
-            return promise;
         },
         list: function(){
-            return projectRefLoad.promise.then(function(data){
-                return f.copyList(data);
+            return list.$loaded().then(function(){
+                return list;
             });
-        },
-        //project without key, project modified , no return
-        withProcess:function(project,processList){
-//            console.log(productList);
-//            console.log(processList);
-            project.selected=f.extend(project.selected,processList);
         }
     };
-    return projectService;
+    return service;
+//
+//    var projectRef = f.ref("/project");
+//    var projectRefLoad=$q.defer();
+//    projectRef.$on("loaded",function(){
+//        projectRefLoad.resolve(projectRef);
+//    });
+//    var processRef = f.ref("/process");
+//    var processRefLoad=$q.defer();
+//    processRef.$on("loaded",function(){
+//        processRefLoad.resolve(projectRef);
+//    });
+//
+//
+//    //Public Method
+//    var projectService = {
+//        create: function(project) {
+//            return projectRef.$add(project);
+//        },
+//        remove: function(key){
+//            return projectRef.$remove(key);
+//        },
+//        update: function(key,value){
+//            var obj={};
+//            obj[key]=value;
+//            return projectRef.$update(obj);
+//        },
+//        find:function(key){
+//            var promise=projectRefLoad.promise.then(function(){
+////                console.log("projectRef[key]");
+////                console.log(f.copy(projectRef[key]));
+//                return f.copy(projectRef[key]);
+//            });
+//            return promise;
+//        },
+//        list: function(){
+//            return projectRefLoad.promise.then(function(data){
+//                return f.copyList(data);
+//            });
+//        },
+//        //project without key, project modified , no return
+//        withProcess:function(project,processList){
+////            console.log(productList);
+////            console.log(processList);
+//            project.selected=f.extend(project.selected,processList);
+//        }
+//    };
+//    return projectService;
 });
 
 

@@ -1,30 +1,17 @@
+<zr-header title="Create Project"></zr-header>
 
 <div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">Create Project</h1>
-    </div>
-    <!-- /.col-lg-12 -->
-</div>
-
-<div class="row">
-    <div class="col-lg-12">
-        <div class="panel panel-success">
-            <div class="panel-heading">
-                Input your project information.
+    <div zr-panel="" title="Input your project information" col-lg="6">
+        <form>
+            <div class="form-group">
+                <label>Project Name</label>
+                <input type="text" class="form-control" ng-model="project.name">
             </div>
-            <div class="panel-body">
-                <form>
-                    <div class="form-group">
-                        <label>Project Name</label>
-                        <input type="text" class="form-control" ng-model="project.name">
-                    </div>
-                    <div class="form-group">
-                        <label>Project Description</label>
-                        <textarea class="form-control" rows="3" ng-model="project.description"></textarea>
-                    </div>
-                    <button class="btn" ng-click="create()">Create</button>
-                </form>
+            <div class="form-group">
+                <label>Project Description</label>
+                <textarea class="form-control" rows="3" ng-model="project.description"></textarea>
             </div>
-        </div>
+            <button class="btn btn-success" ng-click="create()">Create</button>
+        </form>
     </div>
 </div>
