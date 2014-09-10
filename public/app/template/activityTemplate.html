@@ -1,0 +1,17 @@
+<zr-header title="Activity Templates"></zr-header>
+<div class="row">
+    <div zr-panel="" title="Template List">
+        <table class="table">
+            <tr>
+                <th>Activity Name</th>
+                <th>Template Url</th>
+                <th>Save</th>
+            </tr>
+            <tr ng-repeat="activity in activityList">
+                <td>{{activity.name}}</td>
+                <td><input size="100" type="text" ng-model="activity.url" placeholder="Put template url in here"/></td>
+                <td><button class="btn btn-success" ng-click="save(activity)">Save</button></td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,98 +1,144 @@
 var app=angular.module("gcgl2016.exeProject",['ui.router','gcgl2016.firebase','gcgl2016.project','ui.bootstrap']);
 app.config(function($stateProvider){
     $stateProvider
-        .state('main',{
-            url:"/main",
-            views:{
-                'main@':{
-                    templateUrl:"app/exeProject/processList.html",
-                    resolve:{
-                        projects:function(ExeProjectService){
-                            return ExeProjectService.list();
-                        },
-                        currentProcesses:function(ExeProjectService,f,projects){
-//                            console.log("ExeProjectService.getCurrentProjectId()");
-//                            console.log(ExeProjectService.getCurrentProjectId());
-                            var project=angular.copy(projects[ExeProjectService.getCurrentProjectId()]);
-                            if(_.isUndefined(project)){
-                                return project;
-                            }
-//                            console.log('0.9');
-//                            console.log(project.selected);
-//                            console.log(project.processData);
-                            var subProcess= f.extend(project.selected,project.processData);
-//                            console.log("1.Sub Process");
-//                            console.log(subProcess);
-                            subProcess=_.map(project.processData,function(processContent,id){
-                                processContent.id=id;
-                                console.log('processContent');
-                                console.log(processContent);
-                                return ExeProjectService.withInputOutputAndEmbed(processContent,project.productData,project.processData);
-                            });
-                            console.log("This processes must have list inside.");
-                            console.log(subProcess);
-                            return subProcess;
-                        }
-                    },
-                    controller:function($scope,$stateParams,$state,f,ExeProjectService,projects,currentProcesses){
-                        $scope.projects=projects;
-                        console.log("projects");
-                        console.log(projects);
-                        $scope.selectId=ExeProjectService.getCurrentProjectId();
-                        $scope.myData = [];
-                        if(!_.isUndefined(currentProcesses)){
-                            $scope.myData=currentProcesses;
-                        }
-                        $scope.mySelections=[];
-                        console.log("$scope.myData");
-                        console.log($scope.myData);
-                        $scope.gridOptions = {
-                            data: 'myData',
-                            columnDefs: [{field:'name', displayName:'Name'},
-                                {field:'input.name', displayName:'Input'},
-                                {field:'input.status',displayName:'Input Status'},
-                                {field:'output.name', displayName:'Output'},
-                                {field:'output.status', displayName:'Output Status'},
-                                {field:'status', displayName:'Process Status'}
-                            ],
-                            selectedItems: $scope.mySelections,
-                            multiSelect: false
-                        };
-                        $scope.select=function(){
-                            console.log("$scope.selectId");
-                            console.log($scope.selectId);
-                            ExeProjectService.setCurrentProjectId($scope.selectId);
-
-                            $state.transitionTo($state.current, $stateParams, {
-                                reload: true,
-                                inherit: false,
-                                notify: true
-                            });
-                        };
-                        $scope.remove=function(){
-                            ExeProjectService.remove($scope.selectId);
-                            $state.transitionTo($state.current, $stateParams, {
-                                reload: true,
-                                inherit: false,
-                                notify: true
-                            });
-
-                        };
-                        $scope.enterProcess=function(){
-                            if($scope.mySelections.length===0){
-                                return;
-                            }
-                            if($scope.mySelections[0].status==="finish"){
-                                return;
-                            }
-                            console.log('$scope.mySelections');
-                            console.log($scope.mySelections);
-                            $state.go("main.process",{id:$scope.mySelections[0].id,pId:$scope.selectId});
-                        };
+        .state('main', {
+            url: "/main",
+            templateUrl: "app/exeProject/selectProject.html",
+            resolve: {
+                projectList: function (ProjectService, $state) {
+                    return ProjectService.list();
+                }
+            },
+            controller: function ($scope,projectList) {
+                $scope.projectList=projectList;
+            }
+        })
+        .state('main.project',{
+            url:"/project/:projectId",
+            templateUrl:"app/exeProject/activityList.html",
+            resolve:{
+                url:function(ExeProjectService,$stateParams){
+                    var baseUrl=ExeProjectService.getBaseUrl();
+                    return baseUrl+"/"+$stateParams.projectId;
+                },
+                activityList:function(f,url){
+                    return f.ref(url+'/exeActivities').$asArray().$loaded();
+                }
+            },
+            controller:function($scope,$state,$stateParams,f,url,activityList){
+                $scope.activityList= f.copy(activityList);
+                $scope.selected={};
+                $scope.select= function(item){
+                    $scope.selected=item;
+                };
+                $scope.enterProcess=function(){
+                    if(_.isEmpty($scope.selected)){
+                        return;
                     }
+                    $state.go("main.project.activity",{projectId:$stateParams.projectId,activityId:$scope.selected.$id});
                 }
             }
         })
+        .state('main.project.activity',{
+            url:"/:activityId",
+            templateUrl:function(activity){
+                if(_.isUndefined(activity.url)){
+                    return "app/template/activityTemplate/activityTemplate.html";
+                }
+                return activity.url;
+            },
+            resolve:{
+                activity:function($stateParams,activityList){
+                    return activityList.$getRecord($stateParams.activityId);
+                }
+            },
+            controller:function($scope,activity){
+                $scope.activity=activity;
+            }
+        })
+//                        currentProcesses:function(ExeProjectService,f,projects){
+////                            console.log("ExeProjectService.getCurrentProjectId()");
+////                            console.log(ExeProjectService.getCurrentProjectId());
+//                            var project=angular.copy(projects[ExeProjectService.getCurrentProjectId()]);
+//                            if(_.isUndefined(project)){
+//                                return project;
+//                            }
+////                            console.log('0.9');
+////                            console.log(project.selected);
+////                            console.log(project.processData);
+//                            var subProcess= f.extend(project.selected,project.processData);
+////                            console.log("1.Sub Process");
+////                            console.log(subProcess);
+//                            subProcess=_.map(project.processData,function(processContent,id){
+//                                processContent.id=id;
+//                                console.log('processContent');
+//                                console.log(processContent);
+//                                return ExeProjectService.withInputOutputAndEmbed(processContent,project.productData,project.processData);
+//                            });
+//                            console.log("This processes must have list inside.");
+//                            console.log(subProcess);
+//                            return subProcess;
+//                        }
+//                    },
+//                    controller:function($scope,$stateParams,$state,f,ExeProjectService,projects,currentProcesses){
+//                        $scope.projects=projects;
+//                        console.log("projects");
+//                        console.log(projects);
+//                        $scope.selectId=ExeProjectService.getCurrentProjectId();
+//                        $scope.myData = [];
+//                        if(!_.isUndefined(currentProcesses)){
+//                            $scope.myData=currentProcesses;
+//                        }
+//                        $scope.mySelections=[];
+//                        console.log("$scope.myData");
+//                        console.log($scope.myData);
+//                        $scope.gridOptions = {
+//                            data: 'myData',
+//                            columnDefs: [{field:'name', displayName:'Name'},
+//                                {field:'input.name', displayName:'Input'},
+//                                {field:'input.status',displayName:'Input Status'},
+//                                {field:'output.name', displayName:'Output'},
+//                                {field:'output.status', displayName:'Output Status'},
+//                                {field:'status', displayName:'Process Status'}
+//                            ],
+//                            selectedItems: $scope.mySelections,
+//                            multiSelect: false
+//                        };
+//                        $scope.select=function(){
+//                            console.log("$scope.selectId");
+//                            console.log($scope.selectId);
+//                            ExeProjectService.setCurrentProjectId($scope.selectId);
+//
+//                            $state.transitionTo($state.current, $stateParams, {
+//                                reload: true,
+//                                inherit: false,
+//                                notify: true
+//                            });
+//                        };
+//                        $scope.remove=function(){
+//                            ExeProjectService.remove($scope.selectId);
+//                            $state.transitionTo($state.current, $stateParams, {
+//                                reload: true,
+//                                inherit: false,
+//                                notify: true
+//                            });
+//
+//                        };
+//                        $scope.enterProcess=function(){
+//                            if($scope.mySelections.length===0){
+//                                return;
+//                            }
+//                            if($scope.mySelections[0].status==="finish"){
+//                                return;
+//                            }
+//                            console.log('$scope.mySelections');
+//                            console.log($scope.mySelections);
+//                            $state.go("main.process",{id:$scope.mySelections[0].id,pId:$scope.selectId});
+//                        };
+//                    }
+//                }
+//            }
+//        })
         .state('main.process',{
             url:"/process/:pId/:id",
             views:{
@@ -225,17 +271,18 @@ app.controller('ModalOutputCtrl',function ($scope, $modalInstance, output) {
         $modalInstance.dismiss('cancel');
     };
 });
-app.factory('ExeProjectService', function(f,ProjectService,ProcessService,ProductService,$q) {
-    var exeProjectRef = f.ref("/exeProject");
-    var exeProjectRefLoad=$q.defer();
-    exeProjectRef.$on("loaded",function(){
-        exeProjectRefLoad.resolve(exeProjectRef);
-    });
-    var currentProjectId="";
+app.factory('ExeProjectService', function(f) {
+    var baseUrl = "/project";
+    var projectRef = f.ref(baseUrl);
+    var list=projectRef.$asArray();
+    var currentProjectId={};
 
 
     //Public Method
     var exeProjectService = {
+        getBaseUrl:function(){
+            return baseUrl;
+        },
         create: function(project) {
             //This is an usual situation
             return exeProjectRef.$update(project);
@@ -257,10 +304,8 @@ app.factory('ExeProjectService', function(f,ProjectService,ProcessService,Produc
             return promise;
         },
         list: function(){
-            return exeProjectRefLoad.promise.then(function(data){
-//                console.log("data");
-//                console.log(data);
-                return f.copyList(data);
+            return list.$loaded().then(function(){
+                return list;
             });
         },
         getCurrentProjectId:function(){

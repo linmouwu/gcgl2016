@@ -7,51 +7,42 @@ app.config(function($stateProvider, $urlRouterProvider){
     $stateProvider
         .state('template', {
             url: "/template",
-            views:{
-                'main@':{
-                    templateUrl: "template/template.html",
-                    resolve:{
-                    },
-                    controller:function($scope){
+            templateUrl: "app/template/template.html",
+            resolve:{
+            },
+            controller:function($scope){
 
-                    }
-                }
             }
         })
-        .state('template.process', {
-            url: "/process",
-            views:{
-                'main@':{
-                    templateUrl: "template/processTemplate.html",
-                    resolve:{
-                    },
-                    controller:function($scope){
-                    }
+        .state('template.activity', {
+            url: "/activity",
+            templateUrl: "app/template/activityTemplate.html",
+            resolve:{
+                activityList:function(ActivityService){
+                    return ActivityService.list();
+                }
+            },
+            controller:function($scope,activityList,ActivityService){
+                $scope.activityList=activityList;
+                $scope.save=function(activity){
+                    ActivityService.update(activity);
+
                 }
             }
         })
         .state('template.product', {
             url: "/template",
-            views:{
-                'main@':{
-                    templateUrl: "template/productTemplate.html",
-                    resolve:{
-                        productTemplate:function(ProductTemplateService){
-                            return ProductTemplateService.list();
-                        }
-                    },
-                    controller:function($scope,$state,$stateParams,productTemplate,ProductTemplateService){
-                        $scope.productTemplates=productTemplate;
-                        $scope.remove=function(key){
-                            ProductTemplateService.remove(key);
-                            $state.transitionTo($state.current, $stateParams, {
-                                reload: true,
-                                inherit: false,
-                                notify: true
-                            });
+            templateUrl: "app/template/productTemplate.html",
+            resolve:{
+                productList:function(ProductService){
+                    return ProductService.list();
+                }
+            },
+            controller:function($scope,productList,ProductService){
+                $scope.productList=productList;
+                $scope.save=function(product){
+                    ProductService.update(product);
 
-                        };
-                    }
                 }
             }
         })

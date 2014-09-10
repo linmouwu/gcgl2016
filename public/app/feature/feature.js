@@ -8,18 +8,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('activity.createFeature', {
             url: "/createFeature",
-            views: {
-                'main@': {
-                    templateUrl: "app/feature/createFeature.html",
-                    resolve: {
-                    },
-                    controller: function ($scope,$state,FeatureService) {
-                        $scope.feature = {};
-                        $scope.create=function(){
-                            FeatureService.create($scope.feature);
-                            $state.go("activity",{},{reload:true});
-                        }
-                    }
+            templateUrl: "app/feature/createFeature.html",
+            resolve: {
+            },
+            controller: function ($scope,$state,FeatureService) {
+                $scope.feature = {};
+                $scope.create=function(){
+                    FeatureService.create($scope.feature);
+                    $state.go("activity",{},{reload:true});
                 }
             },
             data: {

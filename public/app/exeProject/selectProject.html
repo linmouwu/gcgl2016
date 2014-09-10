@@ -1,0 +1,15 @@
+<div ui-view>
+    <zr-header title="Select Project"></zr-header>
+    <div class="row">
+        <div class="col-lg-4" ng-repeat="project in projectList">
+            <div class="thumbnail">
+                <div class="caption" style="background-color: #C8E4FF">
+                    <h3>{{project.name}}</h3>
+                    <p>{{project.description}}</p>
+                    <br/>
+                    <p><a ui-sref="main.project({projectId:project.$id})" class="btn btn-primary" role="button">Enter</a> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

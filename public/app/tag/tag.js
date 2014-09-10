@@ -8,18 +8,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('activity.createTag', {
             url: "/createTag",
-            views: {
-                'main@': {
-                    templateUrl: "app/tag/createTag.html",
-                    resolve: {
-                    },
-                    controller: function ($scope,$state,TagService) {
-                        $scope.tag = {};
-                        $scope.create=function(){
-                            TagService.create($scope.tag);
-                            $state.go("activity",{},{reload:true});
-                        }
-                    }
+            templateUrl: "app/tag/createTag.html",
+            resolve: {
+            },
+            controller: function ($scope,$state,TagService) {
+                $scope.tag = {};
+                $scope.create=function(){
+                    TagService.create($scope.tag);
+                    $state.go("activity",{},{reload:true});
                 }
             },
             data: {

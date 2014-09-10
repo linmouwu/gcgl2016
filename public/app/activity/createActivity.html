@@ -57,48 +57,50 @@
                 </div>
             </div>
             <div class="form-group">
-                <label>Activity dependencies</label>
-                <input type="text" class="form-control" ng-model="activity.dependencies">
+                <div zr-panel title="Activity inputs">
+                    <table class="table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Opt</th>
+                        </tr>
+                        <tr ng-repeat="input in activity.inputs">
+                            <td>{{input.name}}</td>
+                            <td>{{input.description}}</td>
+                            <td zr-dropdown>
+                                <li>
+                                    <a ng-click="removeInput(input)">
+                                        remove<span class="glyphicon glyphicon-remove"></span>
+                                    </a>
+                                </li>
+                            </td>
+                        </tr>
+                    </table>
+                    <button class="btn btn-primary" ng-click="addInput()">Add Input</button>
+                </div>
             </div>
             <div class="form-group">
-                <label>Activity inputs</label>
-                <input type="text" class="form-control" ng-model="activity.inputs">
-            </div>
-            <div class="form-group">
-                <label>Activity outputs</label>
-                <input type="text" class="form-control" ng-model="activity.outputs">
-            </div>
-            <div class="form-group">
-                <label>Activity steps</label>
-                <table class="table">
-                    <tr>
-                        <th>Step Name</th>
-                        <th>Description</th>
-                        <th>Delete</th>
-                    </tr>
-                    <tr ng-repeat="step in activity.steps">
-                        <td><input type="text" ng-model="step.name"></td>
-                        <td><textarea rows="3" ng-model="step.description"></textarea></td>
-                        <td ng-click="removeStep(step)"><span class="glyphicon glyphicon-remove"></span></td>
-                    </tr>
-                </table>
-                <button class="btn btn-primary" ng-click="addStep()">Add Step</button>
-            </div>
-            <div class="form-group">
-                <label>Activity measure</label>
-                <input type="text" class="form-control" ng-model="activity.measure">
-            </div>
-            <div class="form-group">
-                <label>Activity training</label>
-                <input type="text" class="form-control" ng-model="activity.training">
-            </div>
-            <div class="form-group">
-                <label>Activity type</label>
-                <input type="text" class="form-control" ng-model="activity.type">
-            </div>
-            <div class="form-group">
-                <label>Activity tags</label>
-                <input type="text" class="form-control" ng-model="activity.tags">
+                <div zr-panel title="Activity outputs">
+                    <table class="table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Opt</th>
+                        </tr>
+                        <tr ng-repeat="output in activity.outputs">
+                            <td>{{output.name}}</td>
+                            <td>{{output.description}}</td>
+                            <td zr-dropdown>
+                                <li>
+                                    <a ng-click="removeOutput(output)">
+                                        remove<span class="glyphicon glyphicon-remove"></span>
+                                    </a>
+                                </li>
+                            </td>
+                        </tr>
+                    </table>
+                    <button class="btn btn-primary" ng-click="addOutput()">Add Output</button>
+                </div>
             </div>
             <button class="btn btn-success" ng-click="create()">Create</button>
         </form>

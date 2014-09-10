@@ -2,14 +2,14 @@
 <div class="row">
     <div zr-panel="" col-lg="6">
         <div class="well">
-            <select class="pull-right" ng-model="cProject" ng-options="project as project.name for project in projectList">
+            <select class="pull-right" ng-model="cProject.project" ng-options="project as project.name for project in projectList">
                 <option value="">---choose project---</option>
             </select>
             <h1>
-                Project Name: {{cProject.name}}
+                Project Name: {{cProject.project.name}}
             </h1>
             <p>
-                {{cProject.description}}
+                {{cProject.project.description}}
             </p>
         </div>
         <div class="well">
@@ -20,10 +20,11 @@
                 </tr>
                 <tr ng-repeat="item in activityList" ng-show="item.select">
                     <td>{{item.name}}</td>
-                    <td><button class="btn btn-danger" ng-click="unselect(item)">Unselect</button></td>
+                    <td><button class="btn btn-danger" ng-click="unselectActivity(item)">Unselect</button></td>
                 </tr>
             </table>
         </div>
+            <button class="btn btn-success btn-block" ng-click="save()">Save</button>
     </div>
     <div zr-panel="" col-lg="6">
         <div zr-panel title="Select By Tag">
@@ -34,7 +35,10 @@
                 </tr>
                 <tr ng-repeat="item in tagList">
                     <td>{{item.name}}</td>
-                    <td><button class="btn btn-success" ng-click="selectTag(item)">Select</button></td>
+                    <td>
+                        <button ng-hide="item.select" class="btn btn-success" ng-click="selectTag(item)">Select</button>
+                        <button ng-show="item.select" class="btn btn-success" ng-click="unselectTag(item)">Unselect</button>
+                    </td>
                 </tr>
             </table>
         </div>
@@ -47,7 +51,10 @@
                 </tr>
                 <tr ng-repeat="item in featureList">
                     <td>{{item.name}}</td>
-                    <td><button class="btn btn-success" ng-click="selectFeature(item)">Select</button></td>
+                    <td>
+                        <button ng-hide="item.select" class="btn btn-success" ng-click="selectFeature(item)">Select</button>
+                        <button ng-show="item.select" class="btn btn-success" ng-click="unselectFeature(item)">Unselect</button>
+                    </td>
                 </tr>
             </table>
         </div>

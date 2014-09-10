@@ -1,95 +1,145 @@
 /**
  * Created by Administrator on 14-5-1.
  */
-var app=angular.module("gcgl2016.project",['gcgl2016.process','gcgl2016.product']);
+var app=angular.module("gcgl2016.project",['gcgl2016.process','gcgl2016.product','gcgl2016.activity']);
 app.config(function($stateProvider, $urlRouterProvider){
     $stateProvider
         .state('project', {
             url: "/project",
-            views:{
-                'main@':{
-                    templateUrl: "app/project/project.html",
-                    resolve:{
-                        projectList:function(ProjectService){
-                            return ProjectService.list();
-                        }
-                    },
-                    controller:function($scope,$state,$stateParams,ProjectService,projectList){
-                        $scope.projectList=projectList;
-                        $scope.remove=function(key){
-                            ProjectService.remove(key).then(function(){
-                                $state.transitionTo($state.current, $stateParams, {
-                                    reload: true,
-                                    inherit: false,
-                                    notify: true
-                                });
-                            });
-                        };
-
-                    }
+            templateUrl: "app/project/project.html",
+            resolve:{
+                projectList:function(ProjectService){
+                    return ProjectService.list();
                 }
+            },
+            controller:function($scope,$state,$stateParams,ProjectService,projectList){
+                $scope.projectList=projectList;
+                $scope.remove=function(key){
+                    ProjectService.remove(key).then(function(){
+                        $state.transitionTo($state.current, $stateParams, {
+                            reload: true,
+                            inherit: false,
+                            notify: true
+                        });
+                    });
+                };
+                $scope.start=function(project){
+                    ProjectService.start(project).then(function(){
+                        $state.go("main");
+                    });
+                }
+
             }
         })
         .state('project.create', {
             url: "/create",
-            views:{
-                'main@':{
-                    templateUrl: "app/project/createProject.html",
-                    controller:function($scope,$state,ProjectService){
-                        $scope.project={};
-                        $scope.create=function(){
-                            $scope.project.status="New";
-                            ProjectService.create($scope.project).then(function(){
-                                $state.go("^",{},{reload:true});
-                            });
-                        };
-                    }
-                }
+            templateUrl: "app/project/createProject.html",
+            controller:function($scope,$state,ProjectService){
+                $scope.project={};
+                $scope.create=function(){
+                    $scope.project.status="New";
+                    ProjectService.create($scope.project).then(function(){
+                        $state.go("^",{},{reload:true});
+                    });
+                };
             }
         })
         .state('project.selectProcess',{
             url:"/selectProcess",
-            views:{
-                'main@':{
-                    templateUrl:"app/project/selectProcess.html",
-                    resolve:{
-                        projectList:function(ProjectService){
-                            return ProjectService.list();
-                        },
-                        activityList:function(ActivityService){
-                            return ActivityService.list();
-                        },
-                        tagList:function(TagService){
-                            return TagService.list();
-                        },
-                        featureList:function(FeatureService){
-                            return FeatureService.list();
-                        }
-                    },
-                    controller:function($scope,f,projectList,activityList,tagList,featureList){
-                        $scope.projectList=projectList;
-                        $scope.init= function(){
-                            $scope.activityList= f.copy(activityList);
-                            $scope.tagList= f.copy(tagList);
-                            $scope.featureList= f.copy(featureList);
-                            $scope.selectedActivity=[];
-                        };
-                        $scope.init();
-                        $scope.unselect=function(item){
-                            item.select=false;
-                        };
-                        $scope.selectTag=function(item){
-
-                        };
-                        $scope.selectFeature=function(item){
-                            var featureId=item.$id;
-                        };
-                        $scope.selectActivity=function(item){
-                            item.select=true;
-                        };
-
-                    }
+            templateUrl:"app/project/selectProcess.html",
+            resolve:{
+                projectList:function(ProjectService){
+                    return ProjectService.list();
+                },
+                activityList:function(ActivityService){
+                    return ActivityService.list();
+                },
+                tagList:function(TagService){
+                    return TagService.list();
+                },
+                featureList:function(FeatureService){
+                    return FeatureService.list();
                 }
+            },
+            controller:function($scope,$state,f,ProjectService,projectList,activityList,tagList,featureList){
+                $scope.cProject={};
+                $scope.projectList=projectList;
+                $scope.$watch('cProject.project',function(){
+                    $scope.init();
+                });
+                $scope.init= function(){
+                    $scope.activityList= f.copy(activityList);
+                    $scope.tagList= f.copy(tagList);
+                    $scope.featureList= f.copy(featureList);
+                    if(!_.isUndefined($scope.cProject.project)){
+                        _.each($scope.activityList,function(activity){
+                            if(_.contains($scope.cProject.project.activities,activity.$id)){
+                                activity.select=true;
+                            }
+                        });
+                    }
+                };
+                $scope.selectTag=function(item){
+                    item.select=true;
+                    var tagId=item.$id;
+                    _.each($scope.activityList,function(activity){
+                        if(_.contains(activity.tags,tagId)){
+                            activity.select=true;
+                        }
+                    });
+                };
+                $scope.unselectTag=function(item){
+                    item.select=false;
+                    var tagId=item.$id;
+                    _.each($scope.activityList,function(activity){
+                        if(_.contains(activity.tags,tagId)){
+                            activity.select=false;
+                        }
+                    });
+                };
+                $scope.selectFeature=function(item){
+                    item.select=true;
+                    var featureId=item.$id;
+                    _.each($scope.activityList,function(activity){
+                        if(_.contains(activity.features,featureId)){
+                            activity.select=true;
+                        }
+                    });
+                };
+                $scope.unselectFeature=function(item){
+                    item.select=false;
+                    var featureId=item.$id;
+                    _.each($scope.activityList,function(activity){
+                        if(_.contains(activity.features,featureId)){
+                            activity.select=false;
+                        }
+                    });
+                };
+                $scope.selectActivity=function(item){
+                    item.select=true;
+                };
+                $scope.unselectActivity=function(item){
+                    item.select=false;
+                };
+
+
+                $scope.save=function(){
+                    if(_.isUndefined($scope.cProject.project.$id)){
+                        return;
+                    }
+                    var list=_.filter($scope.activityList,function(activity){
+                        if(activity.select===true){
+                            return true;
+                        }
+                        else{
+                            return false;
+                        }
+                    });
+                    $scope.cProject.project.activities= f.toIds(list);
+                    ProjectService.update($scope.cProject.project).then(function(){
+                        $state.go("^",{},{reload:true});
+                    });
+                };
             }
         })
         .state('project.edit', {
@@ -245,7 +295,7 @@ app.config(function($stateProvider, $urlRouterProvider){
             }
         });
 });
-app.factory('ProjectService', function(f,$q) {
+app.factory('ProjectService', function(f,ActivityService) {
 
     var ref = f.ref("/project");
     var list=ref.$asArray();
@@ -257,10 +307,8 @@ app.factory('ProjectService', function(f,$q) {
         remove: function(key){
             return list.$remove(key);
         },
-        update:function(key,value){
-            var obj={};
-            obj[key]=value;
-            return list.$save(obj);
+        update:function(item){
+            return list.$save(item);
         },
         find:function(key){
             return list.$loaded().then(function(){
@@ -270,6 +318,18 @@ app.factory('ProjectService', function(f,$q) {
         list: function(){
             return list.$loaded().then(function(){
                 return list;
+            });
+        },
+        start: function(project){
+            project.status="Active";
+            return ActivityService.list().then(function(activityList){
+                project.exeActivities={};
+                _.each(activityList,function(activity){
+                    if(_.contains(project.activities,activity.$id)){
+                        project.exeActivities[activity.$id]=activity;
+                    }
+                });
+                return list.$save(project);
             });
         }
     };

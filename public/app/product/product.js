@@ -104,10 +104,8 @@ app.factory('ProductService', function(f,$q) {
         remove: function(key){
             return list.$remove(key);
         },
-        update:function(key,value){
-            var obj={};
-            obj[key]=value;
-            return list.$save(obj);
+        update:function(item){
+            return list.$save(item);
         },
         find:function(key){
             return list.$loaded().then(function(){

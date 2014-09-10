@@ -24,18 +24,14 @@ firebase.factory("f",function($firebase){
             }
             //base is an array of id
             //ref is a reference of entities
-            var entities= _.filter(ids,function(id){
-                if(_.isUndefined(refs[id])){
+            var result= _.filter(angular.copy(refs),function(item){
+                if(_.contains(ids,item.$id)){
+                    return true;
+                }
+                else{
                     return false;
                 }
-                return true;
             });
-            var result= _.map(entities,function(id){
-                var o={};
-                o[id]=angular.copy(refs[id]);
-                return o;
-            });
-
             return result;
         },
         extendSingle:function(id,refs){
@@ -83,7 +79,7 @@ firebase.factory("f",function($firebase){
         toIds:function(array){
             if(angular.isDefined(array)) {
                 return _.map(array, function (item) {
-                    return item.id;
+                    return item.$id;
                 });
             }
             else{
@@ -153,7 +149,7 @@ firebase.factory("f",function($firebase){
         arrayToString:function(array,field){
             var ret="";
             _.each(array,function(item){
-                ret+=firebaseService.getContent(item)[field]+", ";
+                ret+=item[field]+", ";
             });
             return ret;
         }
