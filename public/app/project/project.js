@@ -295,7 +295,7 @@ app.config(function($stateProvider, $urlRouterProvider){
             }
         });
 });
-app.factory('ProjectService', function(f,ActivityService) {
+app.factory('ProjectService', function(f,ActivityService,ProductService) {
 
     var ref = f.ref("/project");
     var list=ref.$asArray();
@@ -329,7 +329,20 @@ app.factory('ProjectService', function(f,ActivityService) {
                         project.exeActivities[activity.$id]=activity;
                     }
                 });
-                return list.$save(project);
+                ProductService.list().then(function(productList){
+                    project.exeProducts={};
+                    _.each(productList,function(product){
+                        _.each(project.activities,function(activityId){
+                            if(_.contains(project.exeActivities[activityId].inputs,product.$id)){
+                                project.exeProducts[product.$id]=product;
+                            }
+                            if(_.contains(project.exeActivities[activityId].outputs,product.$id)){
+                                project.exeProducts[product.$id]=product;
+                            }
+                        });
+                    });
+                    return list.$save(project);
+                });
             });
         }
     };

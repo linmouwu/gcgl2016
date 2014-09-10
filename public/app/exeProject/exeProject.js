@@ -36,7 +36,19 @@ app.config(function($stateProvider){
                         return;
                     }
                     $state.go("main.project.activity",{projectId:$stateParams.projectId,activityId:$scope.selected.$id});
-                }
+                };
+                $scope.showInput=function(){
+                    if(_.isEmpty($scope.selected)){
+                        return;
+                    }
+                    $state.go("main.project.activity",{projectId:$stateParams.projectId,activityId:$scope.selected.$id});
+                };
+                $scope.showOutput=function(){
+                    if(_.isEmpty($scope.selected)){
+                        return;
+                    }
+                    $state.go("main.project.activity",{projectId:$stateParams.projectId,activityId:$scope.selected.$id});
+                };
             }
         })
         .state('main.project.activity',{
@@ -49,6 +61,23 @@ app.config(function($stateProvider){
             },
             resolve:{
                 activity:function($stateParams,activityList){
+                    return activityList.$getRecord($stateParams.activityId);
+                }
+            },
+            controller:function($scope,activity){
+                $scope.activity=activity;
+            }
+        })
+        .state('main.project.input',{
+            url:"/:productId",
+            templateUrl:function(product){
+                if(_.isUndefined(product.url)){
+                    return "app/template/activityTemplate/activityTemplate.html";
+                }
+                return product.url;
+            },
+            resolve:{
+                product:function($stateParams,activityList){
                     return activityList.$getRecord($stateParams.activityId);
                 }
             },

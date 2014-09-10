@@ -2,146 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f38b5c4a-17a2-473f-a72c-227ebcc6f672" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular/angular.min.js.gzip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/build/compiler.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/tests/lib/jasmine_favicon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular/.bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/.bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angularfire/.bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/.bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/firebase/.bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/firebase-simple-login/.bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/mockfirebase/.bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/.bowerrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/.jshintrc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/.travis.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/.travis.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/guide/00_usage.ngdoc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/guide/01_development_setup.ngdoc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/firebase-simple-login/CHANGELOG.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/CHANGES" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/mockfirebase/CONTRIBUTING.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/CONTRIBUTORS.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/Gruntfile.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/firebase/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/firebase-simple-login/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/mockfirebase/MAINTAINING.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angularfire/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/firebase/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/firebase-simple-login/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/mockfirebase/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/app/exeProject/activityList.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/app/template/activityTemplate.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/app/template/activityTemplate/activityTemplate.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/app/activity/addInput.tpls.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/app/activity/addOutput.tpls.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular/angular-csp.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/source/angular-ui-tree.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/demo/dist/angular-ui-tree.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/dist/angular-ui-tree.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/demo/dist/angular-ui-tree.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/dist/angular-ui-tree.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/demo/dist/angular-ui-tree.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/dist/angular-ui-tree.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/source/angular-ui-tree.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular/angular.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular/angular.min.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular/angular.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angularfire/dist/angularfire.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angularfire/dist/angularfire.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angularfire/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/firebase/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/firebase-simple-login/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/mockfirebase/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/demo/css/demo-horizontal.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/demo/css/demo.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/demo/js/demo.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/es5-sham.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/es5-sham.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/es5-sham.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/es5-shim.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/es5-shim.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/es5-shim.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/demo/filter.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/demo/js/filter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/firebase/firebase-debug.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/firebase-simple-login/firebase-simple-login-debug.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/firebase-simple-login/firebase-simple-login.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/firebase/firebase.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/firebase.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/demo/groups.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/demo/js/groups.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/tests/helpers/h-kill.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/tests/helpers/h-matchers.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/tests/helpers/h.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/source/controllers/handleCtrl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/source/services/helper.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/tests/spec/helpers-jasmine.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/demo/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/tests/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/tests/index.min.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/guide/index.ngdoc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/tests/lib/jasmine-html.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/tests/lib/jasmine.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/tests/lib/jasmine.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/tests/lib/json2.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/karma.conf.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/source/main.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/mockfirebase/dist/mockfirebase.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/source/controllers/nodeCtrl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/source/controllers/nodesCtrl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/tests/spec/s-array.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/tests/spec/s-date.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/tests/spec/s-function.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/tests/spec/s-global.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/tests/spec/s-number.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/tests/spec/s-object.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/es5-shim/tests/spec/s-string.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/app/exeProject/selectProject.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/demo/test.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/demo/tree-horizontal.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/demo/css/tree.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/demo/tree.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/demo/js/tree.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/source/controllers/treeCtrl.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/demo/trees.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/demo/js/trees.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/source/directives/uiTree.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/source/directives/uiTreeHandle.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/source/directives/uiTreeNode.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bower_components/angular-ui-tree/source/directives/uiTreeNodes.js" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\app\template\processTemplate.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\app\template\processTemplate\description\description.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\workspaces\angularjs\gcgl2016\public\app\template\processTemplate\description\description.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/activity/activity.html" afterPath="$PROJECT_DIR$/public/app/activity/activity.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/activity/activity.js" afterPath="$PROJECT_DIR$/public/app/activity/activity.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app.js" afterPath="$PROJECT_DIR$/public/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/activity/createActivity.html" afterPath="$PROJECT_DIR$/public/app/activity/createActivity.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/feature/createFeature.html" afterPath="$PROJECT_DIR$/public/app/feature/createFeature.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/tag/createTag.html" afterPath="$PROJECT_DIR$/public/app/tag/createTag.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/exeProject/exeProject.js" afterPath="$PROJECT_DIR$/public/app/exeProject/exeProject.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/common/firebase/f.js" afterPath="$PROJECT_DIR$/public/common/firebase/f.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/feature/feature.js" afterPath="$PROJECT_DIR$/public/app/feature/feature.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/product/product.js" afterPath="$PROJECT_DIR$/public/app/product/product.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/template/productTemplate.html" afterPath="$PROJECT_DIR$/public/app/template/productTemplate.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/project/project.html" afterPath="$PROJECT_DIR$/public/app/project/project.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/project/project.js" afterPath="$PROJECT_DIR$/public/app/project/project.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/project/selectProcess.html" afterPath="$PROJECT_DIR$/public/app/project/selectProcess.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/tag/tag.js" afterPath="$PROJECT_DIR$/public/app/tag/tag.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/template/template.html" afterPath="$PROJECT_DIR$/public/app/template/template.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/app/template/template.js" afterPath="$PROJECT_DIR$/public/app/template/template.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="gcgl2016.iws" />
@@ -164,7 +26,28 @@
     <favorites_list name="gcgl2016" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="exeProject.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/app/exeProject/exeProject.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.78088963" vertical-offset="1008" max-vertical-offset="8531">
+              <caret line="78" column="21" selection-start-line="78" selection-start-column="21" selection-end-line="78" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activityList.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/app/exeProject/activityList.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.7142856" vertical-offset="0" max-vertical-offset="475">
+              <caret line="4" column="93" selection-start-line="4" selection-start-column="81" selection-end-line="4" selection-end-column="93" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -213,7 +96,6 @@
         <option value="$PROJECT_DIR$/public/app/feature/createFeature.html" />
         <option value="$PROJECT_DIR$/public/app/feature/feature.js" />
         <option value="$PROJECT_DIR$/public/app/tag/tag.js" />
-        <option value="$PROJECT_DIR$/public/app/project/project.js" />
         <option value="$PROJECT_DIR$/public/app/project/project.html" />
         <option value="$PROJECT_DIR$/public/app/exeProject/activity.html" />
         <option value="$PROJECT_DIR$/public/app/exeProject/activityList.html" />
@@ -222,12 +104,13 @@
         <option value="$PROJECT_DIR$/public/app/template/activityTemplate.html" />
         <option value="$PROJECT_DIR$/public/app/activity/activity.js" />
         <option value="$PROJECT_DIR$/public/app/exeProject/selectProject.html" />
-        <option value="$PROJECT_DIR$/public/app/exeProject/exeProject.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/public/app/template/template.html" />
         <option value="$PROJECT_DIR$/public/app/template/template.js" />
         <option value="$PROJECT_DIR$/public/app/template/productTemplate.html" />
         <option value="$PROJECT_DIR$/public/app/product/product.js" />
+        <option value="$PROJECT_DIR$/public/app/exeProject/exeProject.js" />
+        <option value="$PROJECT_DIR$/public/app/project/project.js" />
       </list>
     </option>
   </component>
@@ -317,95 +200,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gcgl2016" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gcgl2016" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gcgl2016" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gcgl2016" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gcgl2016" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gcgl2016" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="template" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="activityTemplate" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gcgl2016" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gcgl2016" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tag" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -449,43 +244,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="feature" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gcgl2016" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gcgl2016" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="exeProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gcgl2016" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gcgl2016" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bower_components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -567,7 +326,11 @@
       <created>1409401620928</created>
       <updated>1409401620928</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feature(template): create activity and product template">
+      <created>1410355687363</created>
+      <updated>1410355687363</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -617,7 +380,8 @@
     <MESSAGE value="directive(zr-document)&#10;entity(product.document)" />
     <MESSAGE value="refactor: update firebase" />
     <MESSAGE value="feature(project): create project" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature(project): create project" />
+    <MESSAGE value="feature(template): create activity and product template" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature(template): create activity and product template" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -914,22 +678,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/project/project.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="35.72" vertical-offset="3591" max-vertical-offset="7467">
-          <caret line="142" column="13" selection-start-line="142" selection-start-column="13" selection-end-line="142" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/exeProject/activityList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1312608" vertical-offset="0" max-vertical-offset="579">
-          <caret line="4" column="93" selection-start-line="4" selection-start-column="81" selection-end-line="4" selection-end-column="93" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/app/template/activityTemplate/activityTemplate.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.098445594" vertical-offset="0" max-vertical-offset="579">
@@ -942,16 +690,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19689119" vertical-offset="0" max-vertical-offset="579">
           <caret line="6" column="45" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/app/exeProject/exeProject.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4678748" vertical-offset="571" max-vertical-offset="7980">
-          <caret line="45" column="57" selection-start-line="45" selection-start-column="57" selection-end-line="45" selection-end-column="57" />
           <folding />
         </state>
       </provider>
@@ -1008,6 +746,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5930807" vertical-offset="6651" max-vertical-offset="7619">
           <caret line="369" column="36" selection-start-line="369" selection-start-column="36" selection-end-line="369" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/exeProject/activityList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.7142856" vertical-offset="0" max-vertical-offset="475">
+          <caret line="4" column="93" selection-start-line="4" selection-start-column="81" selection-end-line="4" selection-end-column="93" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/project/project.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6735395" vertical-offset="6011" max-vertical-offset="7714">
+          <caret line="337" column="29" selection-start-line="337" selection-start-column="29" selection-end-line="337" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app/exeProject/exeProject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.78088963" vertical-offset="1008" max-vertical-offset="8531">
+          <caret line="78" column="21" selection-start-line="78" selection-start-column="21" selection-end-line="78" selection-end-column="21" />
           <folding />
         </state>
       </provider>
