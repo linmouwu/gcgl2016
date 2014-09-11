@@ -11,11 +11,13 @@ firebase.factory("f",function($firebase){
         /**
          *
          * @param ids [id1,id2]
-         * @param refs {
-         *                  id1:{name:a,age:b},
-         *                  id2:{name:c,age:d}
-         *              }
-         * @returns {Array} [id1:{name:a,age:b},id2:{name:c,age:d}]
+         * @param refs [
+         *              {$id:id1,name:YY},
+         *              {$id:id2,name:YY},
+         *              {$id:id3,name:YY}
+         *              ]
+         *
+         * @returns {Array} [{$id:id1,name:YY},{$id:id2,name:YY}]
          */
         //after
         extend:function (ids,refs) {

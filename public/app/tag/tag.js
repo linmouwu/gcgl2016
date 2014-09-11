@@ -16,7 +16,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 $scope.create=function(){
                     TagService.create($scope.tag);
                     $state.go("activity",{},{reload:true});
-                }
+                };
             },
             data: {
                 displayName: 'Create Tag'

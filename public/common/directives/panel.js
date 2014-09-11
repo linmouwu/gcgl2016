@@ -10,5 +10,5 @@ app.directive("zrPanel",function(){
         },
         templateUrl:'common/directives/panel.tpls.html',
         transclude:true
-    }
+    };
 });

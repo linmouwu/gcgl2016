@@ -35,54 +35,42 @@ app.config(function($stateProvider){
                     if(_.isEmpty($scope.selected)){
                         return;
                     }
-                    $state.go("main.project.activity",{projectId:$stateParams.projectId,activityId:$scope.selected.$id});
-                };
-                $scope.showInput=function(){
-                    if(_.isEmpty($scope.selected)){
-                        return;
-                    }
-                    $state.go("main.project.activity",{projectId:$stateParams.projectId,activityId:$scope.selected.$id});
-                };
-                $scope.showOutput=function(){
-                    if(_.isEmpty($scope.selected)){
-                        return;
-                    }
-                    $state.go("main.project.activity",{projectId:$stateParams.projectId,activityId:$scope.selected.$id});
+                    console.log($scope.selected);
+                    $state.go("main.project.activity",{activityId:$scope.selected.$id,activityUrl:$scope.selected.url});
                 };
             }
         })
         .state('main.project.activity',{
             url:"/:activityId",
-            templateUrl:function(activity){
-                if(_.isUndefined(activity.url)){
-                    return "app/template/activityTemplate/activityTemplate.html";
-                }
-                return activity.url;
-            },
+            templateUrl:"app/exeProject/activityTemplate.html",
             resolve:{
+                productList:function(f,url){
+                    return f.ref(url+'/exeProducts').$asArray().$loaded();
+                },
                 activity:function($stateParams,activityList){
-                    return activityList.$getRecord($stateParams.activityId);
+                    return angular.copy(activityList.$getRecord($stateParams.activityId));
+                },
+                activityWithProducts:function(f,activity,productList){
+                    activity.inputs= f.extend(activity.inputs,productList);
+                    activity.outputs= f.extend(activity.outputs,productList);
+                    return activity;
                 }
             },
-            controller:function($scope,activity){
-                $scope.activity=activity;
+            controller:function($scope,activityWithProducts){
+                $scope.url=activityWithProducts.url;
+                $scope.activity= activityWithProducts;
             }
         })
-        .state('main.project.input',{
+        .state('main.project.activity.input',{
             url:"/:productId",
-            templateUrl:function(product){
-                if(_.isUndefined(product.url)){
-                    return "app/template/activityTemplate/activityTemplate.html";
-                }
-                return product.url;
-            },
+            templateUrl:'app/exeProject/productTemplate.html',
             resolve:{
-                product:function($stateParams,activityList){
-                    return activityList.$getRecord($stateParams.activityId);
+                product:function($stateParams,productList){
+                    return productList.$getRecord($stateParams.productId);
                 }
             },
-            controller:function($scope,activity){
-                $scope.activity=activity;
+            controller:function($scope,product){
+                $scope.product=product;
             }
         })
 //                        currentProcesses:function(ExeProjectService,f,projects){
