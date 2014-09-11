@@ -27,7 +27,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                 $scope.save=function(activity){
                     ActivityService.update(activity);
 
-                }
+                };
             }
         })
         .state('template.product', {
@@ -43,7 +43,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                 $scope.save=function(product){
                     ProductService.update(product);
 
-                }
+                };
             }
         })
         .state('template.product.create', {

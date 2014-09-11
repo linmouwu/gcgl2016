@@ -170,7 +170,7 @@ app.directive('zrDocument',function(){
                     title:'node'+($scope.data.length+1),
                     nodes:[]
                 });
-            }
+            };
 
             var getRootNodesScope = function() {
                 return angular.element(document.getElementById("tree-root")).scope();
@@ -250,5 +250,5 @@ app.directive('zrDocument',function(){
                 ];
             }
         }
-    }
+    };
 });

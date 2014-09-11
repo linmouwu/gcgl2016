@@ -27,7 +27,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                     ProjectService.start(project).then(function(){
                         $state.go("main");
                     });
-                }
+                };
 
             }
         })

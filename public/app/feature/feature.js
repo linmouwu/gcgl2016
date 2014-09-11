@@ -16,7 +16,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 $scope.create=function(){
                     FeatureService.create($scope.feature);
                     $state.go("activity",{},{reload:true});
-                }
+                };
             },
             data: {
                 displayName: 'Create Feature'

@@ -73,13 +73,16 @@ module.exports = function(grunt){
                 'Gruntfile.js'
             ],
             options: {
-                curly: true,
-                immed: true,
-                newcap: true,
-                noarg: true,
-                sub: true,
-                boss: true,
-                eqnull: true
+//                bitwise:true,
+//                eqeqeq:true,
+//                plusplus:false,
+//                curly: true,
+//                immed: true,
+//                newcap: true,
+//                noarg: true,
+//                sub: true,
+//                boss: true,
+//                eqnull: true
             },
             globals: {}
         },

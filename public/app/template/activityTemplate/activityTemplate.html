@@ -1,6 +1,19 @@
 <zr-header title="Activity"></zr-header>
 <div class="row">
-    <div zr-panel="" title="Activity info">
-        The activity name is {{activity.name}}.
+    <div zr-panel="" title="Activity info" col-lg="4">
+        <p>The activity name is {{activity.name}}.</p>
+        <p>Inputs:
+        <ol>
+            <li ng-repeat="input in activity.inputs"><button class="btn btn-success" ui-sref="main.project.activity.input({productId: input.$id,productUrl:input.url})">Show {{input.name}}</button></li>
+        </ol>
+        </p>
+        <p>Outputs:
+        <ol>
+            <li ng-repeat="output in activity.outputs"><button class="btn btn-success">Show {{output.name}}</button></li>
+        </ol>
+        </p>
+    </div>
+    <div class="col-lg-8" ui-view>
+
     </div>
 </div>

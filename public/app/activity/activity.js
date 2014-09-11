@@ -124,8 +124,8 @@ app.config(function($stateProvider, $urlRouterProvider){
                     var modalInstance = $modal.open({
                         templateUrl: 'app/activity/addFeature.tpls.html',
                         controller:function ($scope, $modalInstance, items) {
-                            $scope.search="",
-                                $scope.items = items;
+                            $scope.search="";
+                            $scope.items = items;
                             $scope.selected = {
                                 item: $scope.items[0]
                             };
@@ -137,10 +137,10 @@ app.config(function($stateProvider, $urlRouterProvider){
                             $scope.cancel = function () {
                                 $modalInstance.dismiss('cancel');
                             };
-                            $scope.active;
+                            $scope.active={};
                             $scope.select=function(item){
                                 $scope.active=item;
-                            }
+                            };
                         },
                         size:'lg',
                         resolve: {
@@ -166,7 +166,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                         controller:function ($scope, $modalInstance, items) {
                             $scope.search="";
                             $scope.items = items;
-                            $scope.active;
+                            $scope.active={};
                             $scope.selected = {
                                 item: $scope.items[0]
                             };
@@ -180,7 +180,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                             };
                             $scope.select=function(item){
                                 $scope.active=item;
-                            }
+                            };
                         },
                         size:'lg',
                         resolve: {
@@ -206,7 +206,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                         controller:function ($scope, $modalInstance, items) {
                             $scope.search="";
                             $scope.items = items;
-                            $scope.active;
+                            $scope.active={};
                             $scope.selected = {
                                 item: $scope.items[0]
                             };
@@ -220,7 +220,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                             };
                             $scope.select=function(item){
                                 $scope.active=item;
-                            }
+                            };
                         },
                         size:'lg',
                         resolve: {
@@ -246,7 +246,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                         controller:function ($scope, $modalInstance, items) {
                             $scope.search="";
                             $scope.items = items;
-                            $scope.active;
+                            $scope.active={};
                             $scope.selected = {
                                 item: $scope.items[0]
                             };
@@ -260,7 +260,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                             };
                             $scope.select=function(item){
                                 $scope.active=item;
-                            }
+                            };
                         },
                         size:'lg',
                         resolve: {
@@ -347,7 +347,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                             }, function () {
                                 console.log('Modal dismissed at: ' + new Date());
                             });
-                        }
+                        };
                     }
                 }
             }
