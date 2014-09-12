@@ -1,22 +1,24 @@
-<zr-header title="Product Management"></zr-header>
-<div class="row">
-    <div zr-panel title="Operation" col-lg="2">
-        <p><button type="button" class="btn btn-primary btn-block" ui-sref="product.create">Create Product</button></p>
-    </div>
-    <div zr-panel title="Product List" col-lg="10">
-        <table class="table">
-            <tr>
-                <th>Product name</th>
-                <th>Product Type</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-            <tr ng-repeat="(key,pro) in productList">
-                <td>{{pro.name}}</td>
-                <td>{{pro.type}}</td>
-                <td ui-sref="product.edit({id:key})"><span class="glyphicon glyphicon-pencil"></span></td>
-                <td ng-click="remove(key)"><span class="glyphicon glyphicon-remove"></span></td>
-            </tr>
-        </table>
+<div ui-view>
+    <zr-header title="Product Management"></zr-header>
+    <div class="row">
+        <div zr-panel title="Operation" col-lg="2">
+            <p><button type="button" class="btn btn-primary btn-block" ui-sref="product.create">Create Product</button></p>
+        </div>
+        <div zr-panel title="Product List" col-lg="10">
+            <table class="table">
+                <tr>
+                    <th>Product name</th>
+                    <th>Product Type</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <tr ng-repeat="(key,pro) in productList">
+                    <td>{{pro.name}}</td>
+                    <td>{{pro.type}}</td>
+                    <td ui-sref="product.edit({id:key})"><span class="glyphicon glyphicon-pencil"></span></td>
+                    <td ng-click="remove(key)"><span class="glyphicon glyphicon-remove"></span></td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>

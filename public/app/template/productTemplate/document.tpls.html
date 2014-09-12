@@ -1,0 +1,17 @@
+<!-- Nested node template -->
+<script type="text/ng-template" id="nodes_renderer.html">
+    <div class="form-group">
+        <label>{{node.title}}</label>
+        <textarea type="text" class="form-control" rows="10" ng-model="node.value"></textarea>
+    </div>
+    <ol>
+        <li style="list-style-type:none" ng-repeat="node in node.nodes" ng-include="'nodes_renderer.html'">
+        </li>
+    </ol>
+</script>
+<div zr-panel="" title="Put your information in">
+    <ol>
+        <li style="list-style-type:none" ng-repeat="node in product.document" ng-include="'nodes_renderer.html'"></li>
+    </ol>
+    <button class="btn btn-primary" ng-click="save(product)">Save</button>
+</div>

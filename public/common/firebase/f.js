@@ -122,10 +122,11 @@ firebase.factory("f",function($firebase){
         remove: function(ref,key){
             return ref.$remove(key);
         },
-        update:function(ref,key,value){
-            var obj={};
-            obj[key]=value;
-            return ref.$update(obj);
+        save:function(ref,item){
+            if(_.isUndefined(ref)|| _.isUndefined(item)||!ref.hasOwnProperty('$save')){
+                return;
+            }
+            return ref.$save(item);
         },
         find:function(refLoad,ref,key){
             var promise=refLoad.promise.then(function(){

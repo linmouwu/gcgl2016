@@ -69,8 +69,32 @@ app.config(function($stateProvider){
                     return productList.$getRecord($stateParams.productId);
                 }
             },
-            controller:function($scope,product){
+            controller:function($scope,$state,f,product,productList){
+                $scope.url=product.url;
                 $scope.product=product;
+                $scope.save=function(item){
+                    f.save(productList,item).then(function(){
+                        $state.go('^');
+                    });
+                }
+            }
+        })
+        .state('main.project.activity.output',{
+            url:"/:productId",
+            templateUrl:'app/exeProject/productTemplate.html',
+            resolve:{
+                product:function($stateParams,productList){
+                    return productList.$getRecord($stateParams.productId);
+                }
+            },
+            controller:function($scope,$state,f,product,productList){
+                $scope.url=product.url;
+                $scope.product=product;
+                $scope.save=function(item){
+                    f.save(productList,item).then(function(){
+                        $state.go('^');
+                    });
+                }
             }
         })
 //                        currentProcesses:function(ExeProjectService,f,projects){

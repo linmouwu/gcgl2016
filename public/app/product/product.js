@@ -6,52 +6,44 @@ app.config(function($stateProvider, $urlRouterProvider){
     $stateProvider
         .state('product', {
             url: "/product",
-            views:{
-                'main@':{
-                    templateUrl: "app/product/product.html",
-                    resolve:{
-                        productList:function(ProductService){
-                            return ProductService.list();
-                        }
-                    },
-                    controller:function($scope,$state,$stateParams,ProductService,productList){
-                        $scope.productList=productList;
-                        $scope.remove=function(key){
-                            ProductService.remove(key);
-                            $state.transitionTo($state.current, $stateParams, {
-                                reload: true,
-                                inherit: false,
-                                notify: true
-                            });
-                        };
-
-                    }
+            templateUrl: "app/product/product.html",
+            resolve:{
+                productList:function(ProductService){
+                    return ProductService.list();
                 }
+            },
+            controller:function($scope,$state,$stateParams,ProductService,productList){
+                $scope.productList=productList;
+                $scope.remove=function(key){
+                    ProductService.remove(key);
+                    $state.transitionTo($state.current, $stateParams, {
+                        reload: true,
+                        inherit: false,
+                        notify: true
+                    });
+                };
+
             }
         })
         .state('product.create', {
             url: "/product/create",
-            views:{
-                'main@':{
-                    templateUrl: "app/product/createProduct.html",
-                    resolve:{
-                        types:function(EnumService){
-                            return EnumService.getProductTypes();
-                        }
-                    },
-                    controller:function($scope,$state,ProductService,types){
-                        $scope.types=types;
-                        $scope.product={type:"simple"};
-                        $scope.create=function(){
-                            ProductService.create($scope.product).then(function(){
-                                console.log("CreateProductController:Create Success");
-                                $state.go("^",{},{reload:true});
-                            },function(){
-                                console.log("CreateProductController:Create Failed");
-                            });
-                        };
-                    }
+            templateUrl: "app/product/createProduct.html",
+            resolve:{
+                types:function(EnumService){
+                    return EnumService.getProductTypes();
                 }
+            },
+            controller:function($scope,$state,ProductService,types){
+                $scope.types=types;
+                $scope.product={type:"simple"};
+                $scope.create=function(){
+                    ProductService.create($scope.product).then(function(){
+                        console.log("CreateProductController:Create Success");
+                        $state.go("^",{},{reload:true});
+                    },function(){
+                        console.log("CreateProductController:Create Failed");
+                    });
+                };
             }
         })
         .state('product.edit', {
