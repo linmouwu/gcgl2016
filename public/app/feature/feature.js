@@ -11,11 +11,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: "app/feature/createFeature.html",
             resolve: {
             },
-            controller: function ($scope,$state,FeatureService) {
+            controller: function ($scope,$state,f,FeatureService,featureListRef) {
                 $scope.feature = {};
                 $scope.create=function(){
-                    FeatureService.create($scope.feature);
-                    $state.go("activity",{},{reload:true});
+                    f.add(featureListRef,$scope.feature).then(function(){
+                        $state.go("activity",{},{reload:true});
+                    });
                 };
             },
             data: {
@@ -25,31 +26,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
 });
 
 app.factory('FeatureService', function(f,$q) {
-
-    var ref = f.ref("/feature");
-    var list=ref.$asArray();
     //Public Method
     var service = {
-        create: function(item) {
-            return list.$add(item);
-        },
-        remove: function(key){
-            return list.$remove(key);
-        },
-        update:function(key,value){
-            var obj={};
-            obj[key]=value;
-            return list.$save(obj);
-        },
-        find:function(key){
-            return list.$loaded().then(function(){
-                return f.copy(list.$getRecord(key));
-            });
-        },
-        list: function(){
-            return list.$loaded().then(function(){
-                return list;
-            });
+        getRefArray:function(){
+            return f.ref("/feature").$asArray().$loaded();
         }
     };
     return service;

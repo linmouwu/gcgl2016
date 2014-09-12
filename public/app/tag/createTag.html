@@ -3,16 +3,22 @@
 
     <div class="row">
         <div zr-panel col-lg="6" title="Input tag information">
-            <form>
+            <div zr-help="">Tag is a just convenient way to help people find activities.
+                You can make whatever tags with you consideration.
+                For example, you can create tags for different lifecycles: waterfall, scrum, kanban, iteration, etc.</div>
+            <form name="form" novalidate>
                 <div class="form-group">
                     <label>Tag name</label>
-                    <input type="text" class="form-control" ng-model="tag.name">
+                    <input name="name" type="text" class="form-control" ng-model="tag.name" required>
+                    <div class="error" ng-show="form.name.$dirty && form.name.$invalid">
+                        <small class="bg-danger">This field is required!</small>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Tag description</label>
                     <textarea class="form-control" rows="10" ng-model="tag.description"></textarea>
                 </div>
-                <button class="btn" ng-click="create()">Create</button>
+                <button class="btn btn-success" ng-click="create()" ng-disabled="form.$invalid">Create</button>
             </form>
         </div>
     </div>

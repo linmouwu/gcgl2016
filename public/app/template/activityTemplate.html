@@ -1,17 +1,42 @@
-<zr-header title="Activity Templates"></zr-header>
+<zr-header title="Templates for feature"></zr-header>
 <div class="row">
-    <div zr-panel="" title="Template List">
+    <div zr-panel="" title="Feature List" col-lg="6">
         <table class="table">
             <tr>
                 <th>Activity Name</th>
-                <th>Template Url</th>
-                <th>Save</th>
+                <th></th>
             </tr>
             <tr ng-repeat="activity in activityList">
                 <td>{{activity.name}}</td>
-                <td><input size="100" type="text" ng-model="activity.url" placeholder="Put template url in here"/></td>
-                <td><button class="btn btn-success" ng-click="save(activity)">Save</button></td>
+                <td>
+                    <table class="table">
+                        <tr>
+                            <th>Feature Name</th>
+                            <th>Template</th>
+                            <th>opt</th>
+                        </tr>
+                        <tr ng-repeat="feature in activity.features">
+                            <td>{{feature.name}}</td>
+                            <td>{{feature.url}}</td>
+                            <td><button class="btn btn-primary" ng-click="save(activity)">Save</button></td>
+                        </tr>
+                    </table>
+                </td>
             </tr>
         </table>
+    </div>
+    <div zr-panel title="Template List" col-lg="6">
+        <table class="table">
+            <tr>
+                <th>Template Name</th>
+                <th>Belong Feature</th>
+                <th>Description</th>
+            </tr>
+            <tr ng-repeat="template in templateList">
+                <td>{{template.name}}</td>
+                <td>{{template.description}}</td>
+            </tr>
+        </table>
+        <button class="btn btn-success" ui-sref="template.activity.template">Add</button>
     </div>
 </div>

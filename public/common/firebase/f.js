@@ -116,11 +116,11 @@ firebase.factory("f",function($firebase){
             return angular.copy(obj[key]);
         },
         //c r u d
-        create: function(ref,item) {
+        add:function(ref,item){
+            if(_.isUndefined(ref)|| _.isUndefined(item)||!ref.hasOwnProperty('$add')){
+                return;
+            }
             return ref.$add(item);
-        },
-        remove: function(ref,key){
-            return ref.$remove(key);
         },
         save:function(ref,item){
             if(_.isUndefined(ref)|| _.isUndefined(item)||!ref.hasOwnProperty('$save')){
@@ -133,6 +133,12 @@ firebase.factory("f",function($firebase){
                 return angular.copy(ref[key]);
             });
             return promise;
+        },
+        remove:function(ref,item){
+            if(_.isUndefined(ref)|| _.isUndefined(item)||!ref.hasOwnProperty('$save')){
+                return;
+            }
+            return ref.$remove(item);
         },
         list: function(refLoad){
             return refLoad.promise.then(function(data){

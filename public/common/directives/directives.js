@@ -6,5 +6,6 @@ var app=angular.module('gcgl2016.directives',
         'gcgl2016.directives.d3',
         'gcgl2016.directives.header',
         'gcgl2016.directives.panel',
-        'gcgl2016.directives.dropdown'
+        'gcgl2016.directives.dropdown',
+        'gcgl2016.directives.help'
     ]);

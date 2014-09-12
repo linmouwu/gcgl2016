@@ -10,30 +10,28 @@ app.config(function($stateProvider, $urlRouterProvider){
             url:"/activity",
             templateUrl:"app/activity/activity.html",
             resolve:{
-                    tagList:function(TagService){
-                        return TagService.list();
-                    },
-                    featureList:function(FeatureService){
-                        return FeatureService.list();
-                    },
-                    productList:function(ProductService){
-                        return ProductService.list();
-                    },
-                    activityList:function(ActivityService,featureList,tagList,productList){
-                        return ActivityService.listWithFeatureAndTagAndInputsAndOutputs(featureList,tagList,productList);
-                    }
+                featureListRef:function(FeatureService){
+                    return FeatureService.getRefArray();
+                },
+                tagListRef:function(TagService){
+                    return TagService.getRefArray();
+                },
+                productListRef:function(ProductService){
+                    return ProductService.getRefArray();
+                },
+                activityListRef:function(ActivityService){
+                    return ActivityService.getRefArray();
+                },
+                activityListWithFull:function(ActivityService,activityListRef,featureListRef,tagListRef,productListRef){
+                    return ActivityService.listWithFeatureAndTagAndInputsAndOutputs(activityListRef,featureListRef,tagListRef,productListRef);
+                }
             },
-            controller:function($scope,ActivityService,FeatureService,activityList,TagService,featureList,tagList,$state,$stateParams,f){
-                $scope.featureList=featureList;
-                $scope.tagList=tagList;
-                $scope.activityList=activityList;
-//                        //
-//                        angular.forEach($scope.activityList,function(activity){
-//                            activity.features= f.arrayToString(f.extend(activity.features,featureList),"name");
-//                            activity.tags= f.arrayToString(f.extend(activity.tags,tagList),"name");
-//                        });
-                $scope.removeActivity=function(key){
-                    ActivityService.remove(key).then(function(){
+            controller:function($scope,ActivityService,FeatureService,activityListWithFull,TagService,activityListRef,featureListRef,tagListRef,$state,$stateParams,f){
+                $scope.featureList= f.copy(featureListRef);
+                $scope.tagList= f.copy(tagListRef);
+                $scope.activityList= activityListWithFull;
+                $scope.removeActivity=function(item){
+                    f.remove(activityListRef,item).then(function(){
                         $state.transitionTo($state.current, $stateParams, {
                             reload: true,
                             inherit: false,
@@ -41,8 +39,8 @@ app.config(function($stateProvider, $urlRouterProvider){
                         });
                     });
                 };
-                $scope.removeFeature=function(key){
-                    FeatureService.remove(key).then(function(){
+                $scope.removeFeature=function(item){
+                    f.remove(featureListRef,item).then(function(){
                         $state.transitionTo($state.current, $stateParams, {
                             reload: true,
                             inherit: false,
@@ -50,8 +48,8 @@ app.config(function($stateProvider, $urlRouterProvider){
                         });
                     });
                 };
-                $scope.removeTag=function(key){
-                    TagService.remove(key).then(function(){
+                $scope.removeTag=function(item){
+                    f.remove(item,tagListRef).then(function(){
                         $state.transitionTo($state.current, $stateParams, {
                             reload: true,
                             inherit: false,
@@ -67,14 +65,15 @@ app.config(function($stateProvider, $urlRouterProvider){
         .state('activity.create',{
             url:"/create",
             templateUrl:"app/activity/createActivity.html",
-            controller:function($scope,$state,$modal,ActivityService,f){
+            resolve:{},
+            controller:function($scope,$state,$modal,ActivityService,activityListRef,f){
                 $scope.activity={};
                 $scope.create=function(){
                     $scope.activity.features= f.toIds($scope.activity.features);
                     $scope.activity.tags= f.toIds($scope.activity.tags);
                     $scope.activity.inputs= f.toIds($scope.activity.inputs);
                     $scope.activity.outputs= f.toIds($scope.activity.outputs);
-                    ActivityService.create($scope.activity).then(function(){
+                    f.add(activityListRef,$scope.activity).then(function(){
                         $state.go("^",{},{reload:true});
                     });
                 };
@@ -110,48 +109,36 @@ app.config(function($stateProvider, $urlRouterProvider){
                         return true;
                     });
                 };
-                $scope.addStep=function(){
-                    if(_.isUndefined($scope.activity.steps)){
-                        $scope.activity.steps=[{}];
-                    }
-                    else{
-                        $scope.activity.steps.push({});
-                    }
-                };
-
                 $scope.addFeature = function () {
 
                     var modalInstance = $modal.open({
                         templateUrl: 'app/activity/addFeature.tpls.html',
+                        resolve: {
+                            items:function(FeatureService){
+                                return f.copy(FeatureService.getRefArray());
+                            }
+                        },
                         controller:function ($scope, $modalInstance, items) {
                             $scope.search="";
                             $scope.items = items;
-                            $scope.selected = {
-                                item: $scope.items[0]
-                            };
+                            $scope.selected={};
 
                             $scope.ok = function () {
-                                $modalInstance.close($scope.active);
+                                $modalInstance.close($scope.selected);
                             };
 
                             $scope.cancel = function () {
                                 $modalInstance.dismiss('cancel');
                             };
-                            $scope.active={};
                             $scope.select=function(item){
-                                $scope.active=item;
+                                $scope.selected=item;
                             };
                         },
-                        size:'lg',
-                        resolve: {
-                            items: function (FeatureService) {
-                                return FeatureService.list();
-                            }
-                        }
+                        size:'lg'
                     });
 
                     modalInstance.result.then(function (selectedItem) {
-                        if(!angular.isDefined($scope.activity.features)){
+                        if(_.isUndefined($scope.activity.features)){
                             $scope.activity.features=[];
                         }
                         $scope.activity.features.push(selectedItem);
@@ -163,35 +150,32 @@ app.config(function($stateProvider, $urlRouterProvider){
 
                     var modalInstance = $modal.open({
                         templateUrl: 'app/activity/addTag.tpls.html',
+                        resolve: {
+                            items: function (TagService) {
+                                return f.copy(TagService.getRefArray());
+                            }
+                        },
                         controller:function ($scope, $modalInstance, items) {
                             $scope.search="";
                             $scope.items = items;
-                            $scope.active={};
-                            $scope.selected = {
-                                item: $scope.items[0]
-                            };
+                            $scope.selected={};
 
                             $scope.ok = function () {
-                                $modalInstance.close($scope.active);
+                                $modalInstance.close($scope.selected);
                             };
 
                             $scope.cancel = function () {
                                 $modalInstance.dismiss('cancel');
                             };
                             $scope.select=function(item){
-                                $scope.active=item;
+                                $scope.selected=item;
                             };
                         },
-                        size:'lg',
-                        resolve: {
-                            items: function (TagService) {
-                                return TagService.list();
-                            }
-                        }
+                        size:'lg'
                     });
 
                     modalInstance.result.then(function (selectedItem) {
-                        if(!angular.isDefined($scope.activity.tags)){
+                        if(_.isUndefined($scope.activity.tags)){
                             $scope.activity.tags=[];
                         }
                         $scope.activity.tags.push(selectedItem);
@@ -203,35 +187,32 @@ app.config(function($stateProvider, $urlRouterProvider){
 
                     var modalInstance = $modal.open({
                         templateUrl: 'app/activity/addInput.tpls.html',
+                        resolve: {
+                            items: function (ProductService) {
+                                return f.copy(ProductService.getRefArray());
+                            }
+                        },
                         controller:function ($scope, $modalInstance, items) {
                             $scope.search="";
                             $scope.items = items;
-                            $scope.active={};
-                            $scope.selected = {
-                                item: $scope.items[0]
-                            };
+                            $scope.selected={};
 
                             $scope.ok = function () {
-                                $modalInstance.close($scope.active);
+                                $modalInstance.close($scope.selected);
                             };
 
                             $scope.cancel = function () {
                                 $modalInstance.dismiss('cancel');
                             };
                             $scope.select=function(item){
-                                $scope.active=item;
+                                $scope.selected=item;
                             };
                         },
-                        size:'lg',
-                        resolve: {
-                            items: function (ProductService) {
-                                return ProductService.list();
-                            }
-                        }
+                        size:'lg'
                     });
 
                     modalInstance.result.then(function (selectedItem) {
-                        if(!angular.isDefined($scope.activity.inputs)){
+                        if(_.isUndefined($scope.activity.inputs)){
                             $scope.activity.inputs=[];
                         }
                         $scope.activity.inputs.push(selectedItem);
@@ -243,35 +224,32 @@ app.config(function($stateProvider, $urlRouterProvider){
 
                     var modalInstance = $modal.open({
                         templateUrl: 'app/activity/addOutput.tpls.html',
+                        resolve: {
+                            items: function (ProductService) {
+                                return f.copy(ProductService.getRefArray());
+                            }
+                        },
                         controller:function ($scope, $modalInstance, items) {
                             $scope.search="";
                             $scope.items = items;
-                            $scope.active={};
-                            $scope.selected = {
-                                item: $scope.items[0]
-                            };
+                            $scope.selected={};
 
                             $scope.ok = function () {
-                                $modalInstance.close($scope.active);
+                                $modalInstance.close($scope.selected);
                             };
 
                             $scope.cancel = function () {
                                 $modalInstance.dismiss('cancel');
                             };
                             $scope.select=function(item){
-                                $scope.active=item;
+                                $scope.selected=item;
                             };
                         },
-                        size:'lg',
-                        resolve: {
-                            items: function (ProductService) {
-                                return ProductService.list();
-                            }
-                        }
+                        size:'lg'
                     });
 
                     modalInstance.result.then(function (selectedItem) {
-                        if(!angular.isDefined($scope.activity.outputs)){
+                        if(_.isUndefined($scope.activity.outputs)){
                             $scope.activity.outputs=[];
                         }
                         $scope.activity.outputs.push(selectedItem);
@@ -355,39 +333,18 @@ app.config(function($stateProvider, $urlRouterProvider){
 });
 
 app.factory('ActivityService', function(f,$q) {
-
-    var ref = f.ref("/activity");
-    var list=ref.$asArray();
     //Public Method
     var service = {
-        create: function(item) {
-            return list.$add(item);
+        getRefArray:function(){
+            return f.ref("/activity").$asArray().$loaded();
         },
-        remove: function(key){
-            return list.$remove(key);
-        },
-        update:function(item){
-            return list.$save(item);
-        },
-        find:function(key){
-            return list.$loaded().then(function(){
-                return f.copy(list.$getRecord(key));
-            });
-        },
-        list: function(){
-            return list.$loaded().then(function(){
-                return list;
-            });
-        },
-        listWithFeatureAndTagAndInputsAndOutputs:function(featureList,tagList,productList){
-            return list.$loaded().then(function(){
-                return _.map(f.copy(list),function(activity){
-                    activity.features= f.arrayToString(f.extend(activity.features,featureList),"name");
-                    activity.tags= f.arrayToString(f.extend(activity.tags,tagList),"name");
-                    activity.inputs= f.arrayToString(f.extend(activity.inputs,productList),"name");
-                    activity.outputs= f.arrayToString(f.extend(activity.outputs,productList),"name");
-                    return activity;
-                });
+        listWithFeatureAndTagAndInputsAndOutputs:function(activityListRef,featureListRef,tagListRef,productList){
+            return _.map(f.copy(activityListRef),function(activity){
+                activity.features= f.arrayToString(f.extend(activity.features,featureListRef),"name");
+                activity.tags= f.arrayToString(f.extend(activity.tags,tagListRef),"name");
+                activity.inputs= f.arrayToString(f.extend(activity.inputs,productList),"name");
+                activity.outputs= f.arrayToString(f.extend(activity.outputs,productList),"name");
+                return activity;
             });
         }
     };

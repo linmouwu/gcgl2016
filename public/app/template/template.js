@@ -11,23 +11,50 @@ app.config(function($stateProvider, $urlRouterProvider){
             resolve:{
             },
             controller:function($scope){
-
             }
         })
         .state('template.activity', {
             url: "/activity",
             templateUrl: "app/template/activityTemplate.html",
             resolve:{
-                activityList:function(ActivityService){
-                    return ActivityService.list();
+                featureListRef:function(FeatureService){
+                    return FeatureService.getRefArray();
+                },
+                activityListRef:function(ActivityService){
+                    return ActivityService.getRefArray();
+                },
+                activityWithFeature:function(activityListRef,featureListRef,f){
+                    return _.map(f.copy(activityListRef),function(activity){
+                        activity.features=f.extend(activity.features,featureListRef);
+                        return activity;
+                    });
                 }
             },
-            controller:function($scope,activityList,ActivityService){
-                $scope.activityList=activityList;
-                $scope.save=function(activity){
-                    ActivityService.update(activity);
-
-                };
+            controller:function($scope,f,activityWithFeature){
+                console.log(activityWithFeature);
+                $scope.activityList= activityWithFeature;
+            }
+        })
+        .state('template.activity.template', {
+            url: "/template",
+            templateUrl: "app/template/activityTemplate.html",
+            resolve:{
+                featureListRef:function(FeatureService){
+                    return FeatureService.getRefArray();
+                },
+                activityListRef:function(ActivityService){
+                    return ActivityService.getRefArray();
+                },
+                activityWithFeature:function(activityListRef,featureListRef,f){
+                    return _.map(f.copy(activityListRef),function(activity){
+                        activity.features=f.extend(activity.features,featureListRef);
+                        return activity;
+                    });
+                }
+            },
+            controller:function($scope,f,activityWithFeature){
+                console.log(activityWithFeature);
+                $scope.activityList= activityWithFeature;
             }
         })
         .state('template.product', {
@@ -67,14 +94,17 @@ app.config(function($stateProvider, $urlRouterProvider){
             }
         });
 });
-app.factory('ProductTemplateService', function(f,$q) {
-    var ref=f.ref("/productTemplate");
-    var refLoad=$q.defer();
-    ref.$on("loaded",function(){
-        refLoad.resolve(ref);
-    });
+app.factory('TemplateService', function(f,$q) {
     //Public Method
     var productService = {
+        getRefArray:function(type){
+            if(type==="activity"){
+                return f.ref("/template/activity");
+            }
+            if(type==="product"){
+                return f.ref("/template/product");
+            }
+        },
         create: function(product) {
             return ref.$add(product);
         },

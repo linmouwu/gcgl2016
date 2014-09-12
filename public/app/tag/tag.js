@@ -11,11 +11,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: "app/tag/createTag.html",
             resolve: {
             },
-            controller: function ($scope,$state,TagService) {
+            controller: function ($scope,$state,f,TagService,tagListRef) {
                 $scope.tag = {};
                 $scope.create=function(){
-                    TagService.create($scope.tag);
-                    $state.go("activity",{},{reload:true});
+                    f.add(tagListRef,$scope.tag).then(function(){
+                        $state.go("activity",{},{reload:true});
+                    });
                 };
             },
             data: {
@@ -25,31 +26,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
 });
 
 app.factory('TagService', function(f,$q) {
-
-    var ref = f.ref("/tag");
-    var list=ref.$asArray();
     //Public Method
     var service = {
-        create: function(item) {
-            return list.$add(item);
-        },
-        remove: function(key){
-            return list.$remove(key);
-        },
-        update:function(key,value){
-            var obj={};
-            obj[key]=value;
-            return list.$save(obj);
-        },
-        find:function(key){
-            return list.$loaded().then(function(){
-                return f.copy(list.$getRecord(key));
-            });
-        },
-        list: function(){
-            return list.$loaded().then(function(){
-                return list;
-            });
+        getRefArray:function(){
+            return f.ref("/tag").$asArray().$loaded();
         }
     };
     return service;

@@ -86,28 +86,10 @@ app.config(function($stateProvider, $urlRouterProvider){
         });
 });
 app.factory('ProductService', function(f,$q) {
-    var ref = f.ref("/product");
-    var list=ref.$asArray();
     //Public Method
     var service = {
-        create: function(item) {
-            return list.$add(item);
-        },
-        remove: function(key){
-            return list.$remove(key);
-        },
-        update:function(item){
-            return list.$save(item);
-        },
-        find:function(key){
-            return list.$loaded().then(function(){
-                return f.copy(list.$getRecord(key));
-            });
-        },
-        list: function(){
-            return list.$loaded().then(function(){
-                return list;
-            });
+        getRefArray:function(){
+            return f.ref('/product').$asArray().$loaded();
         },
         listWithFeatureAndTag:function(featureList,tagList){
             return list.$loaded().then(function(){
