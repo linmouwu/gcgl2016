@@ -1,17 +1,38 @@
-<zr-header title="Product Templates"></zr-header>
-<div class="row">
-    <div zr-panel="" title="Template List">
-        <table class="table">
-            <tr>
-                <th>Product Name</th>
-                <th>Template Url</th>
-                <th>Save</th>
-            </tr>
-            <tr ng-repeat="product in productList">
-                <td>{{product.name}}</td>
-                <td><input size="100" type="text" ng-model="product.url" placeholder="Put template url in here"/></td>
-                <td><button class="btn btn-success" ng-click="save(product)">Save</button></td>
-            </tr>
-        </table>
+<div ui-view>
+    <zr-header title="Templates for product"></zr-header>
+    <div class="row">
+        <div zr-panel="" title="Product List" col-lg="6">
+            <table class="table">
+                <tr>
+                    <th>Product Name</th>
+                    <th>Product type</th>
+                    <th>Product template</th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="product in productList">
+                    <td>{{product.name}}</td>
+                    <td>{{product.type}}</td>
+                    <td>{{product.template.name}}</td>
+                    <td><button class="btn btn-primary" ng-click="choose(product)">Choose</button></td>
+                </tr>
+            </table>
+        </div>
+        <div zr-panel title="Template List" col-lg="6">
+            <table class="table">
+                <tr>
+                    <th>Template Name</th>
+                    <th>Belong Feature</th>
+                    <th>Description</th>
+                    <th>Delete</th>
+                </tr>
+                <tr ng-repeat="template in templateList">
+                    <td>{{template.name}}</td>
+                    <td>{{template.feature.name}}</td>
+                    <td>{{template.description}}</td>
+                    <td><button class="btn btn-danger" ng-click="remove(template)">Del</button></td>
+                </tr>
+            </table>
+            <button class="btn btn-success" ui-sref="template.product.template">Add</button>
+        </div>
     </div>
 </div>

@@ -19,7 +19,6 @@ firebase.factory("f",function($firebase){
          *
          * @returns {Array} [{$id:id1,name:YY},{$id:id2,name:YY}]
          */
-        //after
         extend:function (ids,refs) {
             if(_.isUndefined(ids)|| _.isUndefined(refs)){
                 return [];
@@ -36,15 +35,22 @@ firebase.factory("f",function($firebase){
             });
             return result;
         },
+        /**
+         *
+         * @param id "id1"
+         * @param refs [
+         *              {$id:id1,name:YY},
+         *              {$id:id2,name:YY},
+         *              {$id:id3,name:YY}
+         *              ]
+         *
+         * @returns {Object} {$id:id1,name:YY}
+         */
         extendSingle:function(id,refs){
             if(_.isUndefined(id)|| _.isUndefined(refs)){
-                return {};
+                return null;
             }
-            var result={};
-            if(!_.isUndefined(refs[id])){
-                result[id]=angular.copy(refs[id]);
-            }
-            return result;
+            return angular.copy(refs.$getRecord(id));
         },
         //before {key:{field1:"",field2:""}}
         //after {id:key,field1:"",field2:""}
@@ -135,10 +141,10 @@ firebase.factory("f",function($firebase){
             return promise;
         },
         remove:function(ref,item){
-            if(_.isUndefined(ref)|| _.isUndefined(item)||!ref.hasOwnProperty('$save')){
+            if(_.isUndefined(ref)|| _.isUndefined(item)||!ref.hasOwnProperty('$remove')){
                 return;
             }
-            return ref.$remove(item);
+            return ref.$remove(ref.$getRecord(item.$id));
         },
         list: function(refLoad){
             return refLoad.promise.then(function(data){

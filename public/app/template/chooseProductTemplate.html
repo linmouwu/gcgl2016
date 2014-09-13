@@ -1,0 +1,16 @@
+<zr-header title="Choose Activity Template"></zr-header>
+<div class="row">
+    <div zr-panel title="Input template information" col-lg="6">
+        <table class="table">
+            <tr>
+                <th>Template Name</th>
+                <th>Template Description</th>
+            </tr>
+            <tr ng-repeat="template in templateList" ng-click="select(template)" ng-class="{success:selected===template}">
+                <td>{{template.name}}</td>
+                <td>{{template.description}}</td>
+            </tr>
+        </table>
+        <button class="btn btn-primary" ng-click="choose()" >Choose</button>
+    </div>
+</div>

@@ -49,7 +49,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                     });
                 };
                 $scope.removeTag=function(item){
-                    f.remove(item,tagListRef).then(function(){
+                    f.remove(tagListRef,item).then(function(){
                         $state.transitionTo($state.current, $stateParams, {
                             reload: true,
                             inherit: false,
@@ -70,6 +70,9 @@ app.config(function($stateProvider, $urlRouterProvider){
                 $scope.activity={};
                 $scope.create=function(){
                     $scope.activity.features= f.toIds($scope.activity.features);
+                    $scope.activity.fts= _.map($scope.activity.features,function(featureId){
+                        return {feature:featureId};
+                    });
                     $scope.activity.tags= f.toIds($scope.activity.tags);
                     $scope.activity.inputs= f.toIds($scope.activity.inputs);
                     $scope.activity.outputs= f.toIds($scope.activity.outputs);

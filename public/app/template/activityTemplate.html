@@ -1,42 +1,47 @@
-<zr-header title="Templates for feature"></zr-header>
-<div class="row">
-    <div zr-panel="" title="Feature List" col-lg="6">
-        <table class="table">
-            <tr>
-                <th>Activity Name</th>
-                <th></th>
-            </tr>
-            <tr ng-repeat="activity in activityList">
-                <td>{{activity.name}}</td>
-                <td>
-                    <table class="table">
-                        <tr>
-                            <th>Feature Name</th>
-                            <th>Template</th>
-                            <th>opt</th>
-                        </tr>
-                        <tr ng-repeat="feature in activity.features">
-                            <td>{{feature.name}}</td>
-                            <td>{{feature.url}}</td>
-                            <td><button class="btn btn-primary" ng-click="save(activity)">Save</button></td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div zr-panel title="Template List" col-lg="6">
-        <table class="table">
-            <tr>
-                <th>Template Name</th>
-                <th>Belong Feature</th>
-                <th>Description</th>
-            </tr>
-            <tr ng-repeat="template in templateList">
-                <td>{{template.name}}</td>
-                <td>{{template.description}}</td>
-            </tr>
-        </table>
-        <button class="btn btn-success" ui-sref="template.activity.template">Add</button>
+<div ui-view>
+    <zr-header title="Templates for activity"></zr-header>
+    <div class="row">
+        <div zr-panel="" title="Feature List" col-lg="6">
+            <table class="table">
+                <tr>
+                    <th>Activity Name</th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="activity in activityList">
+                    <td>{{activity.name}}</td>
+                    <td>
+                        <table class="table">
+                            <tr>
+                                <th>Feature Name</th>
+                                <th>Template</th>
+                                <th>opt</th>
+                            </tr>
+                            <tr ng-repeat="ft in activity.fts">
+                                <td>{{ft.feature.name}}</td>
+                                <td>{{ft.template.name}}</td>
+                                <td><button class="btn btn-primary" ng-click="choose(activity,ft.feature)">Choose</button></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div zr-panel title="Template List" col-lg="6">
+            <table class="table">
+                <tr>
+                    <th>Template Name</th>
+                    <th>Belong Feature</th>
+                    <th>Description</th>
+                    <th>Delete</th>
+                </tr>
+                <tr ng-repeat="template in templateList">
+                    <td>{{template.name}}</td>
+                    <td>{{template.feature.name}}</td>
+                    <td>{{template.description}}</td>
+                    <td><button class="btn btn-danger" ng-click="remove(template)">Del</button></td>
+                </tr>
+            </table>
+            <button class="btn btn-success" ui-sref="template.activity.template">Add</button>
+        </div>
     </div>
 </div>
