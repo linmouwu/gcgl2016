@@ -16,12 +16,12 @@
                 <label>Product Description</label>
                 <textarea class="form-control" rows="3" ng-model="product.description"></textarea>
             </div>
-            <button class="btn" ng-click="create()">Create</button>
+            <button class="btn btn-success" ng-click="create()">Create</button>
         </form>
     </div>
     <div zr-panel title="Define format of the product" col-lg="6" ng-switch on="product.type">
         <div ng-switch-when="simple">The product is exist outside the tool.</div>
-        <div zr-document ng-switch-when="document" data="product.document"></div>
+        <div zr-document ng-switch-when="treeDocument" data="product.treeDocument"></div>
         <div ng-switch-when="json">json</div>
         <div ng-switch-default></div>
     </div>

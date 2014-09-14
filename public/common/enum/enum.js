@@ -5,7 +5,7 @@ var app=angular.module("gcgl2016.enum",[]);
 app.factory("EnumService",function(){
     var service={
         getProductTypes:function(){
-            var types=["simple","document","json"];
+            var types=["simple","treeDocument","json"];
             return types;
         }
     };

@@ -8,14 +8,24 @@ app.config(function($stateProvider, $urlRouterProvider){
             url: "/project",
             templateUrl: "app/project/project.html",
             resolve:{
-                projectList:function(ProjectService){
-                    return ProjectService.list();
+                projectListRef:function(ProjectService){
+                    return ProjectService.getRefArray();
                 }
             },
-            controller:function($scope,$state,$stateParams,ProjectService,projectList){
-                $scope.projectList=projectList;
-                $scope.remove=function(key){
-                    ProjectService.remove(key).then(function(){
+            controller:function($scope,$state,f,$stateParams,ProjectService,projectListRef){
+                $scope.projectList= f.copy(projectListRef);
+                $scope.selected={};
+                $scope.select=function(item){
+                    $scope.selected=item;
+                };
+                $scope.selectProcess=function(project){
+                    if(_.isEmpty(project)){
+                        return;
+                    }
+                    $state.go('project.selectProcess',{projectId:project.$id});
+                };
+                $scope.remove=function(item){
+                    f.remove(projectListRef,item).then(function(){
                         $state.transitionTo($state.current, $stateParams, {
                             reload: true,
                             inherit: false,
@@ -24,61 +34,171 @@ app.config(function($stateProvider, $urlRouterProvider){
                     });
                 };
                 $scope.start=function(project){
-                    ProjectService.start(project).then(function(){
-                        $state.go("main");
-                    });
+                    if(_.isEmpty(project)){
+                        return;
+                    }
+                    $state.go("project.start",{projectId:project.$id});
                 };
+
+            }
+        })
+        .state('project.start', {
+            url: "/start/:projectId",
+            templateUrl: "app/project/startProject.html",
+            resolve:{
+                project:function($stateParams,projectListRef){
+                    return projectListRef.$getRecord($stateParams.projectId);
+                },
+                activityListRef:function(ActivityService){
+                    return ActivityService.getRefArray();
+                },
+                productListRef:function(ProductService){
+                    return ProductService.getRefArray();
+                },
+                tagListRef:function(TagService){
+                    return TagService.getRefArray();
+                },
+                featureListRef:function(FeatureService){
+                    return FeatureService.getRefArray();
+                },
+                activityTemplateListRef:function(TemplateService){
+                    return TemplateService.getRefArray('activity');
+                },
+                productTemplateListRef:function(TemplateService){
+                    return TemplateService.getRefArray('product');
+                }
+            },
+            controller:function($scope,$state,f,project,activityListRef,productListRef,featureListRef,activityTemplateListRef,productTemplateListRef){
+                $scope.project=project;
+                //products
+                $scope.exeActivities={};
+                $scope.exeProducts={};
+
+                //activitiy extend
+                $scope.exeActivities= f.extend(project.activities,activityListRef);
+                //activity.templates get
+                _.each($scope.exeActivities,function(activity){
+                    activity.templates= f.extend(_.pluck(activity.fts,'template'),activityTemplateListRef);
+                });
+                //products get
+                var products= _.flatten(_.pluck($scope.exeActivities,"inputs").concat(_.pluck($scope.exeActivities,"outputs")));
+                $scope.exeProducts= _.uniq(products);
+                //products extend
+                $scope.exeProducts= f.extend($scope.exeProducts,productListRef);
+
+
+//
+//                //activities
+//                $scope.exeActivities={};
+//                _.each(f.copy(activityListRef),function(activity){
+//                    if(_.contains(project.activities,activity.$id)){
+//                        activity.inputs= f.extend(activity.inputs,productListRef);
+//                        activity.outputs= f.extend(activity.outputs,productListRef);
+//                        _.each(activity.fts,function(ft){
+//                            ft.feature= f.extendSingle(ft.feature,featureListRef);
+//                            ft.template= f.extendSingle(ft.template,activityTemplateListRef)
+//                        });
+//                        $scope.exeActivities[activity.$id]=activity;
+//                    }
+//                });
+//                $scope.isNew=function(activityKey){
+//                    if(!_.contains(_.keys($scope.project.exeActivities),activityKey)){
+//                        return true;
+//                    }
+//                    return true;
+//                };
+//                $scope.isNewInput=function(activityKey,key){
+//                    if($scope.isNew(activityKey)){
+//                        return true;
+//                    }
+//                    if(!_.contains($scope.project.exeActivities[activityKey].inputs,key)){
+//                        return true;
+//                    }
+//                    return false;
+//                };
+//                $scope.isNewOutput=function(activityKey,key){
+//                    if($scope.isNew(activityKey)){
+//                        return true;
+//                    }
+//                    if(!_.contains($scope.project.exeActivities[activityKey].outputs,key)){
+//                        return true;
+//                    }
+//                    return false;
+//                };
+//                $scope.isNewFeature=function(activityKey,key){
+//                    if($scope.isNew(activityKey)){
+//                        return true;
+//                    }
+//                    var fts=$scope.project.exeActivities[activityKey].fts;
+//                    _.each(fts,function(ft){
+//                        if(ft.feature===key){
+//                            return true;
+//                        }
+//                    });
+//                    return false;
+//                };
+//                $scope.isNewTemplate=function(activityKey,key){
+//                    if($scope.isNew(activityKey)){
+//                        return true;
+//                    }
+//                    var fts=$scope.project.exeActivities[activityKey].fts;
+//                    _.each(fts,function(ft){
+//                        if(ft.template===key){
+//                            return true;
+//                        }
+//                    });
+//                    return false;
+//                };
+//                $scope.isNewProduct=function(productKey){
+//                    if(!_.contains(_.keys($scope.project.exeProducts),productKey)){
+//                        return true;
+//                    }
+//                    return true;
+//                };
 
             }
         })
         .state('project.create', {
             url: "/create",
             templateUrl: "app/project/createProject.html",
-            controller:function($scope,$state,ProjectService){
+            controller:function($scope,$state,f,projectListRef){
                 $scope.project={};
-                $scope.create=function(){
-                    $scope.project.status="New";
-                    ProjectService.create($scope.project).then(function(){
+                $scope.create=function(project){
+                    project.status="New";
+                    f.add(projectListRef,project).then(function(){
                         $state.go("^",{},{reload:true});
                     });
                 };
             }
         })
         .state('project.selectProcess',{
-            url:"/selectProcess",
+            url:"/selectProcess/:projectId",
             templateUrl:"app/project/selectProcess.html",
             resolve:{
-                projectList:function(ProjectService){
-                    return ProjectService.list();
+                project:function($stateParams,projectListRef){
+                    return projectListRef.$getRecord($stateParams.projectId);
                 },
-                activityList:function(ActivityService){
-                    return ActivityService.list();
+                activityListRef:function(ActivityService){
+                    return ActivityService.getRefArray();
                 },
-                tagList:function(TagService){
-                    return TagService.list();
+                tagListRef:function(TagService){
+                    return TagService.getRefArray();
                 },
-                featureList:function(FeatureService){
-                    return FeatureService.list();
+                featureListRef:function(FeatureService){
+                    return FeatureService.getRefArray();
                 }
             },
-            controller:function($scope,$state,f,ProjectService,projectList,activityList,tagList,featureList){
-                $scope.cProject={};
-                $scope.projectList=projectList;
-                $scope.$watch('cProject.project',function(){
-                    $scope.init();
-                });
-                $scope.init= function(){
-                    $scope.activityList= f.copy(activityList);
-                    $scope.tagList= f.copy(tagList);
-                    $scope.featureList= f.copy(featureList);
-                    if(!_.isUndefined($scope.cProject.project)){
-                        _.each($scope.activityList,function(activity){
-                            if(_.contains($scope.cProject.project.activities,activity.$id)){
-                                activity.select=true;
-                            }
-                        });
+            controller:function($scope,$state,f,project,activityListRef,tagListRef,featureListRef,projectListRef){
+                $scope.project=project;
+                $scope.projectList=[];
+                $scope.activityList= f.copy(activityListRef);
+                $scope.tagList= f.copy(tagListRef);
+                $scope.featureList= f.copy(featureListRef);
+                _.each($scope.activityList,function(activity){
+                    if(_.contains($scope.project.activities,activity.$id)){
+                        activity.select=true;
                     }
-                };
+                });
                 $scope.selectTag=function(item){
                     item.select=true;
                     var tagId=item.$id;
@@ -123,10 +243,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                 };
 
 
-                $scope.save=function(){
-                    if(_.isUndefined($scope.cProject.project.$id)){
-                        return;
-                    }
+                $scope.save=function(project){
                     var list=_.filter($scope.activityList,function(activity){
                         if(activity.select===true){
                             return true;
@@ -135,8 +252,8 @@ app.config(function($stateProvider, $urlRouterProvider){
                             return false;
                         }
                     });
-                    $scope.cProject.project.activities= f.toIds(list);
-                    ProjectService.update($scope.cProject.project).then(function(){
+                    $scope.project.activities= f.toIds(list);
+                    f.save(projectListRef,project).then(function(){
                         $state.go("^",{},{reload:true});
                     });
                 };
@@ -225,100 +342,81 @@ app.config(function($stateProvider, $urlRouterProvider){
                     }
                 }
             }
-        })
-        .state('project.start', {
-            url: "/start/:id",
-            views:{
-                'main@':{
-                    templateUrl: "project/prepare.html",
-                    resolve:{
-                        project:function(ProjectService,$stateParams){
-                            return ProjectService.find($stateParams.id);
-                        },
-                        products:function(ProductService){
-                            return ProductService.list();
-                        },
-                        processes:function(ProcessService){
-                            return ProcessService.list();
-                        },
-                        subProcesses:function(ProcessService,f,ProjectService,project,processes,products){
-                            console.log(processes);
-                            console.log(project);
-                            ProjectService.withProcess(project,processes);
-                            var subProcesses=f.embedIdsArray(project.selected);
-//                            //var withProcess=f.extend(project.selected,processes);
-//                            console.log(project.selected);
-                            console.log("subProcesses");
-                            console.log(angular.copy(subProcesses));
-                            _.each(subProcesses,function(process){
-                                ProcessService.withProduct(process,products,processes);
-                                process.input=f.embedId(process.input);
-                                process.output=f.embedId(process.output);
-                            });
-//
-//                            console.log("full project");
-//                            console.log(project);
-
-                            console.log("subProcesses");
-                            console.log(subProcesses);
-                            return subProcesses;
-
-                        }
-                    },
-                    controller:function($scope,$state,$stateParams,ProjectService,ProcessService,ExeProjectService,subProcesses){
-                        $scope.processes=subProcesses;
-                        $scope.start=function(){
-                            //1.update project's status to Active
-                            //2.copy project to exeProject
-                            //3.create processData field and paste all selected process to it
-                            ProjectService.find($stateParams.id).then(function(project){
-                                var projectId=$stateParams.id;
-                                project.status="Active";
-                                console.log("project");
-                                console.log(project);
-                                ProjectService.update(projectId,project).then(function(){
-                                    var exeProject={};
-                                    exeProject[projectId]=project;
-                                    console.log("exeProject");
-                                    console.log(exeProject);
-                                    ExeProjectService.create(exeProject).then(function(){
-                                        ExeProjectService.createProcessProjectData(projectId);
-                                    });
-                                    $state.go("^",{},{reload:true});
-                                });
-
-                            });
-                        };
-//                        console.log(subProcesses);
-                    }
-                }
-            }
         });
+//        .state('project.start', {
+//            url: "/start/:id",
+//            views:{
+//                'main@':{
+//                    templateUrl: "project/prepare.html",
+//                    resolve:{
+//                        project:function(ProjectService,$stateParams){
+//                            return ProjectService.find($stateParams.id);
+//                        },
+//                        products:function(ProductService){
+//                            return ProductService.list();
+//                        },
+//                        processes:function(ProcessService){
+//                            return ProcessService.list();
+//                        },
+//                        subProcesses:function(ProcessService,f,ProjectService,project,processes,products){
+//                            console.log(processes);
+//                            console.log(project);
+//                            ProjectService.withProcess(project,processes);
+//                            var subProcesses=f.embedIdsArray(project.selected);
+////                            //var withProcess=f.extend(project.selected,processes);
+////                            console.log(project.selected);
+//                            console.log("subProcesses");
+//                            console.log(angular.copy(subProcesses));
+//                            _.each(subProcesses,function(process){
+//                                ProcessService.withProduct(process,products,processes);
+//                                process.input=f.embedId(process.input);
+//                                process.output=f.embedId(process.output);
+//                            });
+////
+////                            console.log("full project");
+////                            console.log(project);
+//
+//                            console.log("subProcesses");
+//                            console.log(subProcesses);
+//                            return subProcesses;
+//
+//                        }
+//                    },
+//                    controller:function($scope,$state,$stateParams,ProjectService,ProcessService,ExeProjectService,subProcesses){
+//                        $scope.processes=subProcesses;
+//                        $scope.start=function(){
+//                            //1.update project's status to Active
+//                            //2.copy project to exeProject
+//                            //3.create processData field and paste all selected process to it
+//                            ProjectService.find($stateParams.id).then(function(project){
+//                                var projectId=$stateParams.id;
+//                                project.status="Active";
+//                                console.log("project");
+//                                console.log(project);
+//                                ProjectService.update(projectId,project).then(function(){
+//                                    var exeProject={};
+//                                    exeProject[projectId]=project;
+//                                    console.log("exeProject");
+//                                    console.log(exeProject);
+//                                    ExeProjectService.create(exeProject).then(function(){
+//                                        ExeProjectService.createProcessProjectData(projectId);
+//                                    });
+//                                    $state.go("^",{},{reload:true});
+//                                });
+//
+//                            });
+//                        };
+////                        console.log(subProcesses);
+//                    }
+//                }
+//            }
+//        });
 });
 app.factory('ProjectService', function(f,ActivityService,ProductService) {
-
-    var ref = f.ref("/project");
-    var list=ref.$asArray();
     //Public Method
     var service = {
-        create: function(item) {
-            return list.$add(item);
-        },
-        remove: function(key){
-            return list.$remove(key);
-        },
-        update:function(item){
-            return list.$save(item);
-        },
-        find:function(key){
-            return list.$loaded().then(function(){
-                return f.copy(list.$getRecord(key));
-            });
-        },
-        list: function(){
-            return list.$loaded().then(function(){
-                return list;
-            });
+        getRefArray:function(){
+            return f.ref('/project').$asArray().$loaded();
         },
         start: function(project){
             project.status="Active";

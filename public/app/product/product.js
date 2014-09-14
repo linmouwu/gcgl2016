@@ -8,40 +8,39 @@ app.config(function($stateProvider, $urlRouterProvider){
             url: "/product",
             templateUrl: "app/product/product.html",
             resolve:{
-                productList:function(ProductService){
-                    return ProductService.list();
+                productListRef:function(ProductService){
+                    return ProductService.getRefArray();
                 }
             },
-            controller:function($scope,$state,$stateParams,ProductService,productList){
-                $scope.productList=productList;
-                $scope.remove=function(key){
-                    ProductService.remove(key);
-                    $state.transitionTo($state.current, $stateParams, {
-                        reload: true,
-                        inherit: false,
-                        notify: true
+            controller:function($scope,$state,$stateParams,f,ProductService,productListRef){
+                $scope.productList= f.copy(productListRef);
+                $scope.remove=function(item){
+                    f.remove(productListRef,item).then(function(){
+                        $state.transitionTo($state.current, $stateParams, {
+                            reload: true,
+                            inherit: false,
+                            notify: true
+                        });
+
                     });
                 };
 
             }
         })
         .state('product.create', {
-            url: "/product/create",
+            url: "/create",
             templateUrl: "app/product/createProduct.html",
             resolve:{
                 types:function(EnumService){
                     return EnumService.getProductTypes();
                 }
             },
-            controller:function($scope,$state,ProductService,types){
+            controller:function($scope,$state,f,ProductService,types,productListRef){
                 $scope.types=types;
                 $scope.product={type:"simple"};
                 $scope.create=function(){
-                    ProductService.create($scope.product).then(function(){
-                        console.log("CreateProductController:Create Success");
-                        $state.go("^",{},{reload:true});
-                    },function(){
-                        console.log("CreateProductController:Create Failed");
+                    f.add(productListRef,$scope.product).then(function() {
+                        $state.go("^", {}, {reload: true});
                     });
                 };
             }
@@ -90,15 +89,6 @@ app.factory('ProductService', function(f,$q) {
     var service = {
         getRefArray:function(){
             return f.ref('/product').$asArray().$loaded();
-        },
-        listWithFeatureAndTag:function(featureList,tagList){
-            return list.$loaded().then(function(){
-                return _.map(f.copy(list),function(activity){
-                    activity.features= f.arrayToString(f.extend(activity.features,featureList),"name");
-                    activity.tags= f.arrayToString(f.extend(activity.tags,tagList),"name");
-                    return activity;
-                });
-            });
         }
     };
     return service;

@@ -3,26 +3,22 @@
     <div class="row">
         <div zr-panel="" title="Operation" col-lg="2">
             <p><button type="button" class="btn btn-primary btn-block" ui-sref="project.create">Create Project</button></p>
-            <p><button type="button" class="btn btn-primary btn-block" ui-sref="project.selectProcess">Select Process</button></p>
-            <p><button type="button" class="btn btn-primary btn-block" ui-sref="project.selectProduct">Select Product</button></p>
+            <p><button type="button" class="btn btn-primary btn-block" ng-click="selectProcess(selected)">Select Process</button></p>
+            <p><button type="button" class="btn btn-primary btn-block" ng-click="start(selected)">Start Process</button></p>
         </div>
         <div zr-panel="" title="Project List" col-lg="10">
             <table class="table">
                 <tr>
                     <th>Project Name</th>
                     <th>Project Status</th>
-                    <th>Start</th>
+                    <th>Selected Activities</th>
                     <th>Opt</th>
                 </tr>
-                <tr ng-repeat="project in projectList">
+                <tr ng-repeat="project in projectList"  ng-click="select(project)" ng-class="{success:selected===project}">
                     <td>{{project.name}}</td>
                     <td>{{project.status}}</td>
+                    <td>{{project.activities.length}}</td>
                     <td zr-dropdown>
-                        <li>
-                            <a class="btn" ng-click="start(project)">
-                                start<span class="glyphicon glyphicon-remove"></span>
-                            </a>
-                        </li>
                         <li>
                             <a class="btn" ui-sref="project.edit({id:key})">
                                 edit<span class="glyphicon glyphicon-pencil"></span>

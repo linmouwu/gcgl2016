@@ -2,14 +2,11 @@
 <div class="row">
     <div zr-panel="" col-lg="6">
         <div class="well">
-            <select class="pull-right" ng-model="cProject.project" ng-options="project as project.name for project in projectList">
-                <option value="">---choose project---</option>
-            </select>
             <h1>
-                Project Name: {{cProject.project.name}}
+                Project Name: {{project.name}}
             </h1>
             <p>
-                {{cProject.project.description}}
+                {{project.description}}
             </p>
         </div>
         <div class="well">
@@ -24,7 +21,7 @@
                 </tr>
             </table>
         </div>
-            <button class="btn btn-success btn-block" ng-click="save()">Save</button>
+            <button class="btn btn-success btn-block" ng-click="save(project)">Save</button>
     </div>
     <div zr-panel="" col-lg="6">
         <div zr-panel title="Select By Tag">

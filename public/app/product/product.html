@@ -7,16 +7,27 @@
         <div zr-panel title="Product List" col-lg="10">
             <table class="table">
                 <tr>
-                    <th>Product name</th>
+                    <th>Product Name</th>
                     <th>Product Type</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th>Product Description</th>
+                    <th>Opt</th>
                 </tr>
                 <tr ng-repeat="(key,pro) in productList">
                     <td>{{pro.name}}</td>
                     <td>{{pro.type}}</td>
-                    <td ui-sref="product.edit({id:key})"><span class="glyphicon glyphicon-pencil"></span></td>
-                    <td ng-click="remove(key)"><span class="glyphicon glyphicon-remove"></span></td>
+                    <td>{{pro.description}}</td>
+                    <td zr-dropdown>
+                        <li>
+                            <a class="btn" ui-sref="activity.edit({id:key})">
+                                edit<span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="btn" ng-click="remove(pro)">
+                                remove<span class="glyphicon glyphicon-remove"></span>
+                            </a>
+                        </li>
+                    </td>
                 </tr>
             </table>
         </div>

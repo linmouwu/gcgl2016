@@ -37,7 +37,9 @@ app.config(function($stateProvider, $urlRouterProvider){
                 },
                 templateWithFeature:function(TemplateService,f,templateListRef,featureListRef){
                     return _.map(f.copy(templateListRef),function(template){
+                        console.log(template);
                         template.feature=f.extendSingle(template.feature,featureListRef);
+                        console.log(template);
                         return template;
                     });
                 }
