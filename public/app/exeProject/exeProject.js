@@ -5,38 +5,33 @@ app.config(function($stateProvider){
             url: "/main",
             templateUrl: "app/exeProject/selectProject.html",
             resolve: {
-                projectList: function (ProjectService, $state) {
-                    return ProjectService.list();
+                projectListRef: function (ProjectService) {
+                    return ProjectService.getRefArray();
                 }
             },
-            controller: function ($scope,projectList) {
-                $scope.projectList=projectList;
+            controller: function ($scope,projectListRef,f) {
+                $scope.projectList= f.copy(projectListRef);
             }
         })
         .state('main.project',{
             url:"/project/:projectId",
             templateUrl:"app/exeProject/activityList.html",
             resolve:{
-                url:function(ExeProjectService,$stateParams){
-                    var baseUrl=ExeProjectService.getBaseUrl();
-                    return baseUrl+"/"+$stateParams.projectId;
-                },
-                activityList:function(f,url){
-                    return f.ref(url+'/exeActivities').$asArray().$loaded();
+                activityListRef:function($stateParams,ExeProjectService){
+                    return ExeProjectService.getActivityRefList($stateParams.projectId);
                 }
             },
-            controller:function($scope,$state,$stateParams,f,url,activityList){
-                $scope.activityList= f.copy(activityList);
+            controller:function($scope,$state,$stateParams,f,activityListRef){
+                $scope.activityList= f.copy(activityListRef);
                 $scope.selected={};
                 $scope.select= function(item){
                     $scope.selected=item;
                 };
-                $scope.enterProcess=function(){
-                    if(_.isEmpty($scope.selected)){
+                $scope.enterProcess=function(item){
+                    if(_.isEmpty(item)){
                         return;
                     }
-                    console.log($scope.selected);
-                    $state.go("main.project.activity",{activityId:$scope.selected.$id,activityUrl:$scope.selected.url});
+                    $state.go("main.project.activity",{activityId:item.$id});
                 };
             }
         })
@@ -44,20 +39,20 @@ app.config(function($stateProvider){
             url:"/:activityId",
             templateUrl:"app/exeProject/activityTemplate.html",
             resolve:{
-                productList:function(f,url){
-                    return f.ref(url+'/exeProducts').$asArray().$loaded();
+                productListRef:function($stateParams,ExeProjectService){
+                    return ExeProjectService.getProductRefList($stateParams.projectId);
                 },
-                activity:function($stateParams,activityList){
-                    return angular.copy(activityList.$getRecord($stateParams.activityId));
+                activity:function($stateParams,activityListRef,f){
+                    return f.copy(activityListRef.$getRecord($stateParams.activityId));
                 },
-                activityWithProducts:function(f,activity,productList){
-                    activity.inputs= f.extend(activity.inputs,productList);
-                    activity.outputs= f.extend(activity.outputs,productList);
+                activityWithProducts:function(f,activity,productListRef){
+                    activity.inputs= f.extend(activity.inputs,productListRef);
+                    activity.outputs= f.extend(activity.outputs,productListRef);
                     return activity;
                 }
             },
             controller:function($scope,activityWithProducts){
-                $scope.url=activityWithProducts.url;
+                $scope.templates= activityWithProducts.exeTemplates;
                 $scope.activity= activityWithProducts;
             }
         })
@@ -321,6 +316,18 @@ app.factory('ExeProjectService', function(f) {
 
     //Public Method
     var exeProjectService = {
+        getActivityRefList:function(projectId){
+            if(_.isUndefined(projectId)){
+                return undefined;
+            }
+            return f.ref("/project/"+projectId+"/exeActivities").$asArray().$loaded();
+        },
+        getProductRefList:function(projectId){
+            if(_.isUndefined(projectId)){
+                return undefined;
+            }
+            return f.ref("/project/"+projectId+"/exeProducts").$asArray().$loaded();
+        },
         getBaseUrl:function(){
             return baseUrl;
         },

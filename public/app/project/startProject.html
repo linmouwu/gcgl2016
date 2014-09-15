@@ -1,54 +1,15 @@
 <zr-header title="Start Project"></zr-header>
-
 <div class="row">
-    <div zr-panel="" title="Project's information" col-lg="6">
-        <div ng-repeat="(key,exeActivity) in exeActivities">
-            <hr>
-            <div  ng-class="{'bg-success':isNew(key),'bg-info':!isNew(key)}">
-                <h2>Activity: {{exeActivity.name}}</h2>
-                <p>Description: {{exeActivity.description}}</p>
-                <h3>Inputs</h3>
-                <ol>
-                    <li ng-repeat="input in exeActivity.inputs"
-                        ng-class="{'bg-success':isNewInput(key,input.$id),'bg-info':!isNewInput(key,input.$id)}">{{input.name}}</li>
-                </ol>
-                <h3>Outputs</h3>
-                <ol>
-                    <li  ng-repeat="output in exeActivity.outputs"
-                         ng-class="{'bg-success':isNewOutput(key,output.$id),'bg-info':!isNewOutput(key,output.$id)}">{{output.name}}</li>
-                </ol>
-                <h3>Feature and template</h3>
-                <ol>
-                    <li ng-repeat="ft in exeActivity.fts" ng-class="{'bg-success':isNewFeature(key,ft.feature.$id),'bg-info':!isNewFeature(key,ft.feature.$id)}">{{ft.feature.name}}<br/>
-                        <div ng-class="{'bg-success':isNewTemplate(key,ft.feature.$id),'bg-info':!isNewTemplate(key,ft.feature.$id)}">Template: {{ft.template.name}}</div></li>
-                </ol>
-            </div>
-        </div>
-        <pre>{{exeActivities|json}}</pre>
+    <div class="col-lg-12"><button class="btn btn-success" ng-click="start()">Click</button></div>
+</div>
+<div class="row">
+    <div zr-panel="" title="Activities" col-lg="6">
+        <div zr-panel="" title="previous" col-lg="6"><pre>{{project.exeActivities|json}}</pre></div>
+        <div zr-panel="" title="post" col-lg="6"><pre>{{exeActivities|json}}</pre></div>
+
     </div>
-    <div zr-panel="" title="Project's information" col-lg="6">
-        <div ng-repeat="(key,exeProduct) in exeProducts">
-            <hr>
-            <div  ng-class="{'bg-success':isNewProduct(key),'bg-info':!isNewProduct(key)}">
-                <h2>Activity: {{exeActivity.name}}</h2>
-                <p>Description: {{exeActivity.description}}</p>
-                <h3>Inputs</h3>
-                <ol>
-                    <li ng-repeat="input in exeActivity.inputs"
-                        ng-class="{'bg-success':isNewInput(key,input.$id),'bg-info':!isNewInput(key,input.$id)}">{{input.name}}</li>
-                </ol>
-                <h3>Outputs</h3>
-                <ol>
-                    <li  ng-repeat="output in exeActivity.outputs"
-                         ng-class="{'bg-success':isNewOutput(key,output.$id),'bg-info':!isNewOutput(key,output.$id)}">{{output.name}}</li>
-                </ol>
-                <h3>Feature and template</h3>
-                <ol>
-                    <li ng-repeat="ft in exeActivity.fts" ng-class="{'bg-success':isNewFeature(key,ft.feature.$id),'bg-info':!isNewFeature(key,ft.feature.$id)}">{{ft.feature.name}}<br/>
-                        <div ng-class="{'bg-success':isNewTemplate(key,ft.feature.$id),'bg-info':!isNewTemplate(key,ft.feature.$id)}">Template: {{ft.template.name}}</div></li>
-                </ol>
-            </div>
-        </div>
-        <pre>{{exeProducts|json}}</pre>
+    <div zr-panel="" title="Products" col-lg="6">
+        <div zr-panel="" title="previous" col-lg="6"><pre>{{project.exeProducts|json}}</pre></div>
+        <div zr-panel="" title="post" col-lg="6"><pre>{{exeProducts|json}}</pre></div>
     </div>
 </div>

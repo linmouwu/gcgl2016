@@ -23,17 +23,9 @@ firebase.factory("f",function($firebase){
             if(_.isUndefined(ids)|| _.isUndefined(refs)){
                 return [];
             }
-            //base is an array of id
-            //ref is a reference of entities
-            var result= _.filter(angular.copy(refs),function(item){
-                if(_.contains(ids,item.$id)){
-                    return true;
-                }
-                else{
-                    return false;
-                }
+            return _.map(ids,function(id){
+                return angular.copy(refs.$getRecord(id));
             });
-            return result;
         },
         /**
          *

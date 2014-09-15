@@ -68,7 +68,8 @@ app.config(function($stateProvider, $urlRouterProvider){
                     return TemplateService.getRefArray('product');
                 }
             },
-            controller:function($scope,$state,f,project,activityListRef,productListRef,featureListRef,activityTemplateListRef,productTemplateListRef){
+            controller:function($scope,$state,f,project,activityListRef,productListRef,featureListRef,
+                                activityTemplateListRef,productTemplateListRef,projectListRef){
                 $scope.project=project;
                 //products
                 $scope.exeActivities={};
@@ -78,83 +79,24 @@ app.config(function($stateProvider, $urlRouterProvider){
                 $scope.exeActivities= f.extend(project.activities,activityListRef);
                 //activity.templates get
                 _.each($scope.exeActivities,function(activity){
-                    activity.templates= f.extend(_.pluck(activity.fts,'template'),activityTemplateListRef);
+                    activity.exeTemplates= f.extend(_.pluck(activity.fts,'template'),activityTemplateListRef);
                 });
                 //products get
                 var products= _.flatten(_.pluck($scope.exeActivities,"inputs").concat(_.pluck($scope.exeActivities,"outputs")));
                 $scope.exeProducts= _.uniq(products);
                 //products extend
                 $scope.exeProducts= f.extend($scope.exeProducts,productListRef);
+                //product.templates get
+                _.each($scope.exeProducts,function(product){
+                    product.exeTemplate= f.extendSingle(product.template,productTemplateListRef);
+                });
 
-
-//
-//                //activities
-//                $scope.exeActivities={};
-//                _.each(f.copy(activityListRef),function(activity){
-//                    if(_.contains(project.activities,activity.$id)){
-//                        activity.inputs= f.extend(activity.inputs,productListRef);
-//                        activity.outputs= f.extend(activity.outputs,productListRef);
-//                        _.each(activity.fts,function(ft){
-//                            ft.feature= f.extendSingle(ft.feature,featureListRef);
-//                            ft.template= f.extendSingle(ft.template,activityTemplateListRef)
-//                        });
-//                        $scope.exeActivities[activity.$id]=activity;
-//                    }
-//                });
-//                $scope.isNew=function(activityKey){
-//                    if(!_.contains(_.keys($scope.project.exeActivities),activityKey)){
-//                        return true;
-//                    }
-//                    return true;
-//                };
-//                $scope.isNewInput=function(activityKey,key){
-//                    if($scope.isNew(activityKey)){
-//                        return true;
-//                    }
-//                    if(!_.contains($scope.project.exeActivities[activityKey].inputs,key)){
-//                        return true;
-//                    }
-//                    return false;
-//                };
-//                $scope.isNewOutput=function(activityKey,key){
-//                    if($scope.isNew(activityKey)){
-//                        return true;
-//                    }
-//                    if(!_.contains($scope.project.exeActivities[activityKey].outputs,key)){
-//                        return true;
-//                    }
-//                    return false;
-//                };
-//                $scope.isNewFeature=function(activityKey,key){
-//                    if($scope.isNew(activityKey)){
-//                        return true;
-//                    }
-//                    var fts=$scope.project.exeActivities[activityKey].fts;
-//                    _.each(fts,function(ft){
-//                        if(ft.feature===key){
-//                            return true;
-//                        }
-//                    });
-//                    return false;
-//                };
-//                $scope.isNewTemplate=function(activityKey,key){
-//                    if($scope.isNew(activityKey)){
-//                        return true;
-//                    }
-//                    var fts=$scope.project.exeActivities[activityKey].fts;
-//                    _.each(fts,function(ft){
-//                        if(ft.template===key){
-//                            return true;
-//                        }
-//                    });
-//                    return false;
-//                };
-//                $scope.isNewProduct=function(productKey){
-//                    if(!_.contains(_.keys($scope.project.exeProducts),productKey)){
-//                        return true;
-//                    }
-//                    return true;
-//                };
+                $scope.start=function(){
+                    $scope.project.exeActivities=$scope.exeActivities;
+                    $scope.project.exeProducts=$scope.exeProducts;
+                    f.save(projectListRef,$scope.project);
+                    $state.go("main");
+                };
 
             }
         })

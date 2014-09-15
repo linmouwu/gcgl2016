@@ -1,1 +1,8 @@
-<div ng-include="url"/>
+<pre>{{templates||json}}</pre>
+<tabset>
+    <tab ng-repeat="template in templates" heading="{{template.name}}">
+        {{template.url}}
+
+        <div ng-include="template.url"/>
+    </tab>
+</tabset>
