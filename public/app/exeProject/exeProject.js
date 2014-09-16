@@ -22,6 +22,7 @@ app.config(function($stateProvider){
                 }
             },
             controller:function($scope,$state,$stateParams,f,activityListRef){
+                console.log(activityListRef);
                 $scope.activityList= f.copy(activityListRef);
                 $scope.selected={};
                 $scope.select= function(item){

@@ -1,15 +1,120 @@
 <zr-header title="Start Project"></zr-header>
 <div class="row">
-    <div class="col-lg-12"><button class="btn btn-success" ng-click="start()">Click</button></div>
+    <div class="col-lg-12"><button class="btn btn-success" ng-click="start()">Save</button></div>
 </div>
 <div class="row">
     <div zr-panel="" title="Activities" col-lg="6">
-        <div zr-panel="" title="previous" col-lg="6"><pre>{{project.exeActivities|json}}</pre></div>
-        <div zr-panel="" title="post" col-lg="6"><pre>{{exeActivities|json}}</pre></div>
-
+        <div class="bg-success" ng-repeat="activity in newActivities">
+            <h3>Activity name: {{activity.name}}</h3>
+            <p>Activity description: {{activity.description}}</p>
+            <h4>Inputs:</h4>
+            <ol>
+                <li ng-repeat="product in activity.inputs">
+                    Product name: {{product.name}}
+                </li>
+            </ol>
+            <h4>Outputs:</h4>
+            <ol>
+                <li ng-repeat="product in activity.outputs">
+                    Product name: {{product.name}}
+                </li>
+            </ol>
+            <h4>Template:</h4>
+            <ol>
+                <li ng-repeat="template in activity.exeTemplates">{{template.name}}</li>
+            </ol>
+        </div>
+        <div class="row bg-info" ng-repeat="activity in stayActivities">
+            <h3>Activity name: {{activity.name}} <span ng-show="relate(activity,'name')">({{relate(activity,'name')}})</span></h3>
+            <p>Activity description: {{activity.description}}<span ng-show="relate(activity,'description')">({{relate(activity,'description')}})</span></p>
+            <h4>Inputs:</h4>
+            <ol>
+                <li ng-repeat="product in getNew(activity,'inputs')" class="bg-success">
+                    Product name: {{product.name}}
+                </li>
+                <li ng-repeat="product in getStay(activity,'inputs')" class="bg-info">
+                    Product name: {{product.name}}
+                </li>
+                <li ng-repeat="product in getDel(activity,'inputs')" class="bg-danger">
+                    Product name: {{product.name}}
+                </li>
+            </ol>
+            <h4>Outputs:</h4>
+            <ol>
+                <li ng-repeat="product in getNew(activity,'outputs')" class="bg-success">
+                    Product name: {{product.name}}
+                </li>
+                <li ng-repeat="product in getStay(activity,'outputs')" class="bg-info">
+                    Product name: {{product.name}}
+                </li>
+                <li ng-repeat="product in getDel(activity,'outputs')" class="bg-danger">
+                    Product name: {{product.name}}
+                </li>
+            </ol>
+            <h4>Template:</h4>
+            <ol>
+                <li ng-repeat="product in getNew(activity,'exeTemplates')" class="bg-success">
+                    Template name: {{template.name}}
+                </li>
+                <li ng-repeat="product in getStay(activity,'exeTemplates')" class="bg-info">
+                    Template name: {{template.name}}
+                </li>
+                <li ng-repeat="product in getDel(activity,'exeTemplates')" class="bg-danger">
+                    Template name: {{template.name}}
+                </li>
+            </ol>
+        </div>
+        <div class="row bg-danger" ng-repeat="activity in delActivities">
+            <h3>Activity name: {{activity.name}}</h3>
+            <p>Activity description: {{activity.description}}</p>
+            <h4>Inputs:</h4>
+            <ol>
+                <li ng-repeat="product in activity.inputs">
+                    Product name: {{product.name}}
+                </li>
+            </ol>
+            <h4>Outputs:</h4>
+            <ol>
+                <li ng-repeat="product in activity.outputs">
+                    Product name: {{product.name}}
+                </li>
+            </ol>
+            <h4>Template:</h4>
+            <ol>
+                <li ng-repeat="template in activity.exeTemplates">{{template.name}}</li>
+            </ol>
+        </div>
+        <pre>{{exeActivities|json}}</pre>
     </div>
     <div zr-panel="" title="Products" col-lg="6">
-        <div zr-panel="" title="previous" col-lg="6"><pre>{{project.exeProducts|json}}</pre></div>
-        <div zr-panel="" title="post" col-lg="6"><pre>{{exeProducts|json}}</pre></div>
+        <div class="bg-success" ng-repeat="product in newProducts">
+            <h3>Product name: {{product.name}}</h3>
+            <p>Product description: {{product.description}}</p>
+            <p>Product template: {{product.exeTemplate.name}}</p>
+        </div>
+        <div class="row bg-info" ng-repeat="product in stayProducts">
+            //todo
+        </div>
+        <div class="row bg-danger" ng-repeat="product in delProducts">
+            <h3>Activity name: {{activity.name}}</h3>
+            <p>Activity description: {{activity.description}}</p>
+            <h4>Inputs:</h4>
+            <ol>
+                <li ng-repeat="product in activity.inputs">
+                    Product name: {{product.name}}
+                </li>
+            </ol>
+            <h4>Outputs:</h4>
+            <ol>
+                <li ng-repeat="product in activity.outputs">
+                    Product name: {{product.name}}
+                </li>
+            </ol>
+            <h4>Template:</h4>
+            <ol>
+                <li ng-repeat="template in activity.exeTemplates">{{template.name}}</li>
+            </ol>
+        </div>
+        <pre>{{exeProducts|json}}</pre>
     </div>
 </div>

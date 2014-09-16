@@ -89,6 +89,27 @@ app.factory('ProductService', function(f,$q) {
     var service = {
         getRefArray:function(){
             return f.ref('/product').$asArray().$loaded();
+        },
+        getRefArrayExe:function(projectId){
+            return f.ref('/project/'+projectId+'/exeProduct').$asArray().$loaded();
+        },
+        getNewProduct:function(oldProducts,newProducts,property){
+            var oldIds= _.pluck(oldProducts,property);
+            return _.filter(newProducts,function(product){
+                return !_.contains(oldIds,product[property]);
+            });
+        },
+        getDelProduct:function(oldProducts,newProducts,property){
+            var newIds= _.pluck(newProducts,property);
+            return _.filter(oldProducts,function(product){
+                return !_.contains(newIds,product[property]);
+            });
+        },
+        getStayProduct:function(oldProducts,newProducts,property){
+            var newIds= _.pluck(newProducts,property);
+            return _.filter(oldProducts,function(product){
+                return _.contains(newIds,product[property]);
+            });
         }
     };
     return service;

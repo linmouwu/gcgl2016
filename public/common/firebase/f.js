@@ -23,9 +23,16 @@ firebase.factory("f",function($firebase){
             if(_.isUndefined(ids)|| _.isUndefined(refs)){
                 return [];
             }
-            return _.map(ids,function(id){
+            return _.chain(ids).map(function(id){
                 return angular.copy(refs.$getRecord(id));
-            });
+            }).filter(function(id){
+                if(id){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }).value();
         },
         /**
          *

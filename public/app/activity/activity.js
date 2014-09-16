@@ -341,6 +341,9 @@ app.factory('ActivityService', function(f,$q) {
         getRefArray:function(){
             return f.ref("/activity").$asArray().$loaded();
         },
+        getRefArrayExe:function(projectId){
+            return f.ref("/project/"+projectId+"/exeActivity").$asArray().$loaded();
+        },
         listWithFeatureAndTagAndInputsAndOutputs:function(activityListRef,featureListRef,tagListRef,productList){
             return _.map(f.copy(activityListRef),function(activity){
                 activity.features= f.arrayToString(f.extend(activity.features,featureListRef),"name");
@@ -348,6 +351,24 @@ app.factory('ActivityService', function(f,$q) {
                 activity.inputs= f.arrayToString(f.extend(activity.inputs,productList),"name");
                 activity.outputs= f.arrayToString(f.extend(activity.outputs,productList),"name");
                 return activity;
+            });
+        },
+        getNewActivity:function(oldActivities,newActivities,property){
+            var oldIds= _.pluck(oldActivities,property);
+            return _.filter(newActivities,function(activity){
+                return !_.contains(oldIds,activity[property]);
+            });
+        },
+        getDelActivity:function(oldActivities,newActivities,property){
+            var newIds= _.pluck(newActivities,property);
+            return _.filter(oldActivities,function(activity){
+                return !_.contains(newIds,activity[property]);
+            });
+        },
+        getStayActivity:function(oldActivities,newActivities,property){
+            var oldIds= _.pluck(oldActivities,property);
+            return _.filter(newActivities,function(activity){
+                return _.contains(oldIds,activity[property]);
             });
         }
     };

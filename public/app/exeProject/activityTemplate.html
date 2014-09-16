@@ -1,8 +1,6 @@
+<zr-header title="Execute activity"></zr-header>
+<div class="row">
+    <button  ng-repeat="template in templates" class="btn btn-primary" ui-sref="main.project.activity.{{template.url}}">{{template.name}}:{{template.url}}</button>
+</div>
+<ui-view></ui-view>
 <pre>{{templates||json}}</pre>
-<tabset>
-    <tab ng-repeat="template in templates" heading="{{template.name}}">
-        {{template.url}}
-
-        <div ng-include="template.url"/>
-    </tab>
-</tabset>

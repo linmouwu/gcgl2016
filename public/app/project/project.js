@@ -52,8 +52,14 @@ app.config(function($stateProvider, $urlRouterProvider){
                 activityListRef:function(ActivityService){
                     return ActivityService.getRefArray();
                 },
+                exeActivityListRef:function($stateParams,ActivityService){
+                    return ActivityService.getRefArrayExe($stateParams.projectId);
+                },
                 productListRef:function(ProductService){
                     return ProductService.getRefArray();
+                },
+                exeProductListRef:function(ProductService){
+                    return ProductService.getRefArrayExe();
                 },
                 tagListRef:function(TagService){
                     return TagService.getRefArray();
@@ -68,33 +74,110 @@ app.config(function($stateProvider, $urlRouterProvider){
                     return TemplateService.getRefArray('product');
                 }
             },
-            controller:function($scope,$state,f,project,activityListRef,productListRef,featureListRef,
-                                activityTemplateListRef,productTemplateListRef,projectListRef){
+            controller:function($scope,$state,f,ActivityService,ProductService,project,activityListRef,productListRef,featureListRef,
+                                activityTemplateListRef,productTemplateListRef,projectListRef,exeActivityListRef,exeProductListRef){
                 $scope.project=project;
                 //products
+                $scope.exeActivityListRef=exeActivityListRef;
                 $scope.exeActivities={};
+                $scope.exeProductListRef=exeProductListRef;
                 $scope.exeProducts={};
 
                 //activitiy extend
                 $scope.exeActivities= f.extend(project.activities,activityListRef);
                 //activity.templates get
                 _.each($scope.exeActivities,function(activity){
+                    activity.id=activity.$id;
+                    activity.inputs= f.extend(activity.inputs,productListRef);
+                    _.each(activity.inputs,function(item){
+                        item.id=item.$id;
+                        item.exeTemplate= f.extendSingle(item.template,productTemplateListRef);
+                        item.exeTemplate.id=item.template;
+                    });
+                    activity.outputs= f.extend(activity.outputs,productListRef);
+                    _.each(activity.outputs,function(item){
+                        item.id=item.$id;
+                        item.exeTemplate= f.extendSingle(item.template,productTemplateListRef);
+                        item.exeTemplate.id=item.template;
+                    });
                     activity.exeTemplates= f.extend(_.pluck(activity.fts,'template'),activityTemplateListRef);
+                    _.each(activity.exeTemplates,function(item){
+                        item.id=item.$id;
+                    });
                 });
-                //products get
+//                //products extend
+//                $scope.exeProducts= f.extend($scope.exeProducts,productListRef);
+//                //product.templates get
+//                _.each($scope.exeProducts,function(product){
+//                    product.exeTemplate= f.extendSingle(product.template,productTemplateListRef);
+//                });
+
+                $scope.newActivities=ActivityService.getNewActivity($scope.exeActivityListRef,$scope.exeActivities,"id");
+                $scope.stayActivities=ActivityService.getStayActivity($scope.exeActivityListRef,$scope.exeActivities,"id");
+                $scope.delActivities=ActivityService.getDelActivity($scope.exeActivityListRef,$scope.exeActivities,"id");
+                $scope.relate=function(activity,property){
+                    var dest=$scope.exeActivityListRef.$getRecord(activity.$id)[property];
+                    if(dest===activity[property]){
+                        return null;
+                    }
+                    return dest;
+                };
+                $scope.getNew=function(activity,property){
+                    var dest=$scope.exeActivityListRef.$getRecord(activity.$id);
+                    var destProperty=dest[property];
+                    var oldIds= _.pluck(destProperty,'id');
+                    return _.filter(activity[property],function(product){
+                        return !_.contains(oldIds,product.id);
+                    });
+                };
+                $scope.getStay=function(activity,property){
+                    var dest=$scope.exeActivityListRef.$getRecord(activity.$id);
+                    var destProperty=dest[property];
+                    var oldIds= _.pluck(destProperty,'id');
+                    return _.filter(activity[property],function(product){
+                        return _.contains(oldIds,product.id);
+                    });
+                };
+                $scope.getDel=function(activity,property){
+                    var dest=$scope.exeActivityListRef.$getRecord(activity.$id);
+                    var destProperty=dest[property];
+                    var newIds= _.pluck(activity[property],'id');
+                    return _.filter(destProperty,function(product){
+                        return _.contains(newIds,product.id);
+                    });
+                };
+
+//                //products get
                 var products= _.flatten(_.pluck($scope.exeActivities,"inputs").concat(_.pluck($scope.exeActivities,"outputs")));
-                $scope.exeProducts= _.uniq(products);
-                //products extend
-                $scope.exeProducts= f.extend($scope.exeProducts,productListRef);
-                //product.templates get
-                _.each($scope.exeProducts,function(product){
-                    product.exeTemplate= f.extendSingle(product.template,productTemplateListRef);
+                $scope.exeProducts= _.uniq(products,false,function(item){
+                    return item.id;
                 });
 
+
+                $scope.newProducts=ProductService.getNewProduct($scope.exeProductListRef,$scope.exeProducts,"id");
+                $scope.stayProducts=ProductService.getStayProduct($scope.exeProductListRef,$scope.exeProducts,"id");
+                $scope.delProducts=ProductService.getDelProduct($scope.exeProductListRef,$scope.exeProducts,"id");
+
+
                 $scope.start=function(){
-                    $scope.project.exeActivities=$scope.exeActivities;
-                    $scope.project.exeProducts=$scope.exeProducts;
-                    f.save(projectListRef,$scope.project);
+                    //add
+                    _.each($scope.newProducts,function(product){
+                        f.add(exeProductListRef,product);
+                    });
+                    _.each($scope.newActivities,function(activity){
+                        f.add(exeActivityListRef,activity);
+                    });
+                    //alter
+                    _.each($scope.stayProducts,function(product){
+
+                    })
+                    //delete
+                    _.each($scope.delProducts,function(product){
+                        f.remove(exeProductListRef,product);
+                    });
+                    _.each($scope.delActivities,function(activity){
+                        f.remove(exeActivityListRef,activity);
+                    });
                     $state.go("main");
                 };
 
