@@ -58,8 +58,8 @@ app.config(function($stateProvider, $urlRouterProvider){
                 productListRef:function(ProductService){
                     return ProductService.getRefArray();
                 },
-                exeProductListRef:function(ProductService){
-                    return ProductService.getRefArrayExe();
+                exeProductListRef:function($stateParams,ProductService){
+                    return ProductService.getRefArrayExe($stateParams.projectId);
                 },
                 tagListRef:function(TagService){
                     return TagService.getRefArray();
@@ -122,6 +122,20 @@ app.config(function($stateProvider, $urlRouterProvider){
                     }
                     return dest;
                 };
+                $scope.relateProduct=function(product,property){
+                    var dest=$scope.exeProductListRef.$getRecord(product.$id)[property];
+                    if(dest===product[property]){
+                        return null;
+                    }
+                    return dest;
+                };
+                $scope.relateTemplate=function(product,property){
+                    var dest=$scope.exeProductListRef.$getRecord(product.$id).exeTemplate;
+                    if(dest.id===product.exeTemplate.id){
+                        return null;
+                    }
+                    return dest.name;
+                };
                 $scope.getNew=function(activity,property){
                     var dest=$scope.exeActivityListRef.$getRecord(activity.$id);
                     var destProperty=dest[property];
@@ -143,7 +157,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                     var destProperty=dest[property];
                     var newIds= _.pluck(activity[property],'id');
                     return _.filter(destProperty,function(product){
-                        return _.contains(newIds,product.id);
+                        return !_.contains(newIds,product.id);
                     });
                 };
 
@@ -169,8 +183,11 @@ app.config(function($stateProvider, $urlRouterProvider){
                     });
                     //alter
                     _.each($scope.stayProducts,function(product){
-
-                    })
+                        f.save(exeProductListRef,product);
+                    });
+                    _.each($scope.stayActivities,function(activity){
+                        f.save(exeActivityListRef,activity);
+                    });
                     //delete
                     _.each($scope.delProducts,function(product){
                         f.remove(exeProductListRef,product);

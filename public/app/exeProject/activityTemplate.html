@@ -1,6 +1,10 @@
-<zr-header title="Execute activity"></zr-header>
+<hr/>
 <div class="row">
-    <button  ng-repeat="template in templates" class="btn btn-primary" ui-sref="main.project.activity.{{template.url}}">{{template.name}}:{{template.url}}</button>
+    <div class="col-lg-12">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default" ng-repeat="template in templates" ui-sref="main.project.activity.{{template.url}}">{{template.name}}</button>
+        </div>
+    </div>
 </div>
 <ui-view></ui-view>
 <pre>{{templates||json}}</pre>

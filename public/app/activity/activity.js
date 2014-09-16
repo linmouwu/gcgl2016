@@ -366,9 +366,9 @@ app.factory('ActivityService', function(f,$q) {
             });
         },
         getStayActivity:function(oldActivities,newActivities,property){
-            var oldIds= _.pluck(oldActivities,property);
-            return _.filter(newActivities,function(activity){
-                return _.contains(oldIds,activity[property]);
+            var newIds= _.pluck(newActivities,property);
+            return _.filter(oldActivities,function(activity){
+                return _.contains(newIds,activity[property]);
             });
         }
     };

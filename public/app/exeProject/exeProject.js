@@ -17,8 +17,8 @@ app.config(function($stateProvider){
             url:"/project/:projectId",
             templateUrl:"app/exeProject/activityList.html",
             resolve:{
-                activityListRef:function($stateParams,ExeProjectService){
-                    return ExeProjectService.getActivityRefList($stateParams.projectId);
+                activityListRef:function($stateParams,ActivityService){
+                    return ActivityService.getRefArrayExe($stateParams.projectId);
                 }
             },
             controller:function($scope,$state,$stateParams,f,activityListRef){
@@ -40,8 +40,8 @@ app.config(function($stateProvider){
             url:"/:activityId",
             templateUrl:"app/exeProject/activityTemplate.html",
             resolve:{
-                productListRef:function($stateParams,ExeProjectService){
-                    return ExeProjectService.getProductRefList($stateParams.projectId);
+                productListRef:function($stateParams,ProductService){
+                    return ProductService.getRefArrayExe($stateParams.projectId);
                 },
                 activity:function($stateParams,activityListRef,f){
                     return f.copy(activityListRef.$getRecord($stateParams.activityId));

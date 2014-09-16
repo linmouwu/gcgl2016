@@ -1,6 +1,15 @@
 <zr-header title="Activity"></zr-header>
 <div class="row">
-    {{message}}
+    <div class="well">
+        <h1>The activity's name is {{activity.name}}</h1>
+        <h2 ng-show="activity.description">The activity is using for: {{activity.description}}</h2>
+        <p>
+            There is some inputs and outputs. You can look then by clicking the button.
+        </p>
+        <ol>
+            <ui ng-repeat="input in activity.inputs"><button class="btn btn-primary" ui-sref="{{}}">{{input.name}}</button></ui>
+        </ol>
+    </div>
     <div zr-panel="" title="Activity info" col-lg="4">
         <p>The activity name is {{activity.name}}.</p>
         <p>Inputs:

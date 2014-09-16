@@ -93,27 +93,14 @@
             <p>Product template: {{product.exeTemplate.name}}</p>
         </div>
         <div class="row bg-info" ng-repeat="product in stayProducts">
-            //todo
+            <h3>Product name: {{product.name}}<span ng-show="relateProduct(product,'name')">({{relateProduct(product,'name')}})</span></h3>
+            <p>Product description: {{product.description}}<span ng-show="relateProduct(product,'description')">({{relateProduct(product,'description')}})</span></p>
+            <p>Product template: {{product.exeTemplate.name}}<span ng-show="relateTemplate(product,'name')">({{relateTemplate(product,'name')}})</span></p>
         </div>
         <div class="row bg-danger" ng-repeat="product in delProducts">
-            <h3>Activity name: {{activity.name}}</h3>
-            <p>Activity description: {{activity.description}}</p>
-            <h4>Inputs:</h4>
-            <ol>
-                <li ng-repeat="product in activity.inputs">
-                    Product name: {{product.name}}
-                </li>
-            </ol>
-            <h4>Outputs:</h4>
-            <ol>
-                <li ng-repeat="product in activity.outputs">
-                    Product name: {{product.name}}
-                </li>
-            </ol>
-            <h4>Template:</h4>
-            <ol>
-                <li ng-repeat="template in activity.exeTemplates">{{template.name}}</li>
-            </ol>
+            <h3>Product name: {{product.name}}</h3>
+            <p>Product description: {{product.description}}</p>
+            <p>Product template: {{product.exeTemplate.name}}</p>
         </div>
         <pre>{{exeProducts|json}}</pre>
     </div>

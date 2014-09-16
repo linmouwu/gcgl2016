@@ -2,7 +2,6 @@
  * Created by Administrator on 2014/7/15.
  */
 var app=angular.module("gcgl2016.template",[
-    "gcgl2016.template.activityDefault"
 ]);
 app.config(function($stateProvider, $urlRouterProvider){
     $stateProvider

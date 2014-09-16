@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 9/16/2014.
  */
-var app=angular.module("gcgl2016.template.activityDefault",[]);
+var app=angular.module("gcgl2016.exeProject");
 app.config(function($stateProvider) {
     $stateProvider
         .state('main.project.activity.activityDefault', {
