@@ -1,4 +1,4 @@
-var app=angular.module("gcgl2016.exeProject",['ui.router','gcgl2016.firebase','gcgl2016.project','ui.bootstrap']);
+var app=angular.module("gcgl2016.exeProject",['ui.router','gcgl2016.firebase','gcgl2016.project','ui.bootstrap','gcgl2016.template']);
 app.config(function($stateProvider){
     $stateProvider
         .state('main', {
