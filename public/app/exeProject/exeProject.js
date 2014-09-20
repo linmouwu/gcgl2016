@@ -47,8 +47,8 @@ app.config(function($stateProvider){
                     return f.copy(activityListRef.$getRecord($stateParams.activityId));
                 },
                 activityWithProducts:function(f,activity,productListRef){
-                    activity.inputs= f.extend(activity.inputs,productListRef);
-                    activity.outputs= f.extend(activity.outputs,productListRef);
+                    activity.inputs= f.extendProperty(_.pluck(activity.inputs,'id'),productListRef,'id');
+                    activity.outputs= f.extendProperty(_.pluck(activity.outputs,'id'),productListRef,'id');
                     return activity;
                 }
             },
@@ -72,7 +72,7 @@ app.config(function($stateProvider){
                     f.save(productList,item).then(function(){
                         $state.go('^');
                     });
-                }
+                };
             }
         })
         .state('main.project.activity.output',{
@@ -90,7 +90,7 @@ app.config(function($stateProvider){
                     f.save(productList,item).then(function(){
                         $state.go('^');
                     });
-                }
+                };
             }
         })
 //                        currentProcesses:function(ExeProjectService,f,projects){

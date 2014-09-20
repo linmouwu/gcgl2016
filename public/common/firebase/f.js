@@ -34,6 +34,38 @@ firebase.factory("f",function($firebase){
                 }
             }).value();
         },
+        extendProperty:function (ids,refs,property) {
+            console.log('extendProperty');
+            console.log(ids);
+            console.log(refs);
+            console.log(property);
+            if(_.isUndefined(ids)|| _.isUndefined(refs)|| _.isUndefined(property)){
+                return [];
+            }
+            return _.chain(ids).map(function(id){
+                var ret=null;
+                _.each(refs,function(ref){
+                    console.log('ref');
+                    console.log(ref);
+                    console.log(property);
+                    console.log(id);
+                    if(ref[property]===id){
+                        console.log('equal');
+                        ret=angular.copy(ref);
+                    }
+                });
+                return ret;
+            }).filter(function(item){
+                console.log('item');
+                console.log(item);
+                if(item){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }).value();
+        },
         /**
          *
          * @param id "id1"

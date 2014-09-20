@@ -1,9 +1,9 @@
 /**
  * Created by Administrator on 2014/7/15.
  */
-var app=angular.module("gcgl2016.template",[
+var app2=angular.module("gcgl2016.template",[
 ]);
-app.config(function($stateProvider, $urlRouterProvider){
+app2.config(function($stateProvider, $urlRouterProvider){
     $stateProvider
         .state('template', {
             url: "/template",
@@ -57,8 +57,8 @@ app.config(function($stateProvider, $urlRouterProvider){
                             inherit: false,
                             notify: true
                         });
-                    })
-                }
+                    });
+                };
             }
         })
         .state('template.activity.feature', {
@@ -98,7 +98,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                     f.save(activityListRef,activity).then(function(){
                         $state.go("^",{},{reload:true});
                     });
-                }
+                };
             }
         })
         .state('template.activity.template', {
@@ -113,7 +113,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                     f.add(templateListRef,$scope.template).then(function(){
                         $state.go("^",{},{reload:true});
                     });
-                }
+                };
             }
         })
         .state('template.product', {
@@ -143,10 +143,28 @@ app.config(function($stateProvider, $urlRouterProvider){
                             inherit: false,
                             notify: true
                         });
-                    })
+                    });
                 };
                 $scope.choose=function(product){
                     $state.go("template.product.feature",{productId:product.$id});
+                };
+            }
+        })
+        .state('template.product.create', {
+            url: "/create",
+            templateUrl: "app/template/createProductTemplate.html",
+            resolve:{
+                types:function(EnumService){
+                    return EnumService.getProductTypes();
+                }
+            },
+            controller:function($scope,$state,f,types,templateListRef){
+                $scope.template={};
+                $scope.types= types;
+                $scope.add=function(){
+                    f.add(templateListRef,$scope.template).then(function(){
+                        $state.go("^",{},{reload:true});
+                    });
                 };
             }
         })
@@ -180,25 +198,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                     f.save(productListRef,product).then(function(){
                         $state.go("^",{},{reload:true});
                     });
-                }
-            }
-        })
-        .state('template.product.template', {
-            url: "/create",
-            templateUrl: "app/template/createProductTemplate.html",
-            resolve:{
-                types:function(EnumService){
-                    return EnumService.getProductTypes();
-                }
-            },
-            controller:function($scope,$state,f,types,templateListRef){
-                $scope.template={};
-                $scope.types= types;
-                $scope.add=function(){
-                    f.add(templateListRef,$scope.template).then(function(){
-                        $state.go("^",{},{reload:true});
-                    });
-                }
+                };
             }
         });
 });
