@@ -14,7 +14,7 @@ app.config(function($stateProvider){
             }
         })
         .state('main.project',{
-            url:"/project/:projectId",
+            url:"/:projectId",
             templateUrl:"app/exeProject/activityList.html",
             resolve:{
                 activityListRef:function($stateParams,ActivityService){
@@ -22,7 +22,6 @@ app.config(function($stateProvider){
                 }
             },
             controller:function($scope,$state,$stateParams,f,activityListRef){
-                console.log(activityListRef);
                 $scope.activityList= f.copy(activityListRef);
                 $scope.selected={};
                 $scope.select= function(item){
@@ -47,52 +46,55 @@ app.config(function($stateProvider){
                     return f.copy(activityListRef.$getRecord($stateParams.activityId));
                 },
                 activityWithProducts:function(f,activity,productListRef){
+//                    console.log("before extends");
+//                    console.log(activity);
                     activity.inputs= f.extendProperty(_.pluck(activity.inputs,'id'),productListRef,'id');
                     activity.outputs= f.extendProperty(_.pluck(activity.outputs,'id'),productListRef,'id');
+//                    console.log('after extends');
+//                    console.log(activity);
                     return activity;
                 }
             },
             controller:function($scope,activityWithProducts){
-                $scope.templates= activityWithProducts.exeTemplates;
                 $scope.activity= activityWithProducts;
             }
         })
-        .state('main.project.activity.input',{
-            url:"/:productId",
-            templateUrl:'app/exeProject/productTemplate.html',
-            resolve:{
-                product:function($stateParams,productList){
-                    return productList.$getRecord($stateParams.productId);
-                }
-            },
-            controller:function($scope,$state,f,product,productList){
-                $scope.url=product.url;
-                $scope.product=product;
-                $scope.save=function(item){
-                    f.save(productList,item).then(function(){
-                        $state.go('^');
-                    });
-                };
-            }
-        })
-        .state('main.project.activity.output',{
-            url:"/:productId",
-            templateUrl:'app/exeProject/productTemplate.html',
-            resolve:{
-                product:function($stateParams,productList){
-                    return productList.$getRecord($stateParams.productId);
-                }
-            },
-            controller:function($scope,$state,f,product,productList){
-                $scope.url=product.url;
-                $scope.product=product;
-                $scope.save=function(item){
-                    f.save(productList,item).then(function(){
-                        $state.go('^');
-                    });
-                };
-            }
-        })
+//        .state('main.project.activity.input',{
+//            url:"/:productId",
+//            templateUrl:'app/exeProject/productTemplate.html',
+//            resolve:{
+//                product:function($stateParams,productList){
+//                    return productList.$getRecord($stateParams.productId);
+//                }
+//            },
+//            controller:function($scope,$state,f,product,productList){
+//                $scope.url=product.url;
+//                $scope.product=product;
+//                $scope.save=function(item){
+//                    f.save(productList,item).then(function(){
+//                        $state.go('^');
+//                    });
+//                };
+//            }
+//        })
+//        .state('main.project.activity.output',{
+//            url:"/:productId",
+//            templateUrl:'app/exeProject/productTemplate.html',
+//            resolve:{
+//                product:function($stateParams,productList){
+//                    return productList.$getRecord($stateParams.productId);
+//                }
+//            },
+//            controller:function($scope,$state,f,product,productList){
+//                $scope.url=product.url;
+//                $scope.product=product;
+//                $scope.save=function(item){
+//                    f.save(productList,item).then(function(){
+//                        $state.go('^');
+//                    });
+//                };
+//            }
+//        })
 //                        currentProcesses:function(ExeProjectService,f,projects){
 ////                            console.log("ExeProjectService.getCurrentProjectId()");
 ////                            console.log(ExeProjectService.getCurrentProjectId());

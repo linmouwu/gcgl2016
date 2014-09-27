@@ -3,7 +3,7 @@
     <div class="col-lg-4">
         <p>Features</p>
         <ol>
-            <li  ng-repeat="template in templates">
+            <li  ng-repeat="template in activity.exeTemplates">
                 <button type="button" class="btn btn-default"
                         ui-sref="main.project.activity.{{template.url}}">{{template.name}}</button></li>
         </ol>
@@ -13,16 +13,16 @@
         <ol>
             <li ng-repeat="product in activity.inputs">
                 <button class="btn btn-default" type="button"
-                        ui-sref="main.project.activity.{{product.exeTemplate.url}}(product.$id)">{{product.name}}</button></li>
+                        ui-sref="main.project.activity.{{product.exeTemplate.url}}({productId:product.$id})">{{product.name}}  {{product.$id}}</button></li>
         </ol>
     </div>
     <div class="col-lg-4">
         <p>Outputs</p>
         <ol>
-            <li ng-repeat="product in activity.outputs">{{product.name}}</li>
+            <li ng-repeat="product in activity.outputs">
+                <button class="btn btn-default" type="button"
+                        ui-sref="main.project.activity.{{product.exeTemplate.url}}({productId:product.$id})">{{product.name}}  {{product.$id}}</button></li>
         </ol>
     </div>
 </div>
 <ui-view></ui-view>
-<pre>{{templates|json}}</pre>
-<pre>{{activity|json}}</pre>

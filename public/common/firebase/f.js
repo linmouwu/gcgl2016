@@ -35,29 +35,29 @@ firebase.factory("f",function($firebase){
             }).value();
         },
         extendProperty:function (ids,refs,property) {
-            console.log('extendProperty');
-            console.log(ids);
-            console.log(refs);
-            console.log(property);
+//            console.log('extendProperty');
+//            console.log(ids);
+//            console.log(refs);
+//            console.log(property);
             if(_.isUndefined(ids)|| _.isUndefined(refs)|| _.isUndefined(property)){
                 return [];
             }
             return _.chain(ids).map(function(id){
                 var ret=null;
                 _.each(refs,function(ref){
-                    console.log('ref');
-                    console.log(ref);
-                    console.log(property);
-                    console.log(id);
+//                    console.log('ref');
+//                    console.log(ref);
+//                    console.log(property);
+//                    console.log(id);
                     if(ref[property]===id){
-                        console.log('equal');
+//                        console.log('equal');
                         ret=angular.copy(ref);
                     }
                 });
                 return ret;
             }).filter(function(item){
-                console.log('item');
-                console.log(item);
+//                console.log('item');
+//                console.log(item);
                 if(item){
                     return true;
                 }
@@ -198,6 +198,44 @@ firebase.factory("f",function($firebase){
                 ret+=item[field]+", ";
             });
             return ret;
+        },
+        isNullOrUndefined:function(item){
+            if(_.isNull(item)|| _.isUndefined(item)){
+                return true;
+            }
+            else{
+                return false;
+            }
+        },
+        compareArray:function(oldArray,newArray,property){
+            var news=[];
+            var changes=[];
+            var dels=[];
+            if(!this.isNullOrUndefined(property)){
+                var oldValues=_.pluck(oldArray,property);
+                _.each(newArray,function(item){
+                    if(!_.contains(oldValues,item[property])){
+                        news.push(item);
+                    }
+                });
+                var newValues=_.pluck(newArray,property);
+                _.each(oldArray,function(item){
+                    if(!_.contains(newValues,item[property])){
+                        dels.push(item);
+                    }
+                });
+                //changes contain the oldArray and newArray
+                _.each(oldArray,function(oldItem){
+                    var flag=true;
+                    _.each(newArray,function(newItem){
+                        if(flag&&newItem[property]===oldItem[property]){
+                            changes.push({newItem:newItem,oldItem:oldItem});
+                            flag=false;
+                        }
+                    });
+                });
+                return {news:news,changes:changes,dels:dels};
+            }
         }
     };
     return firebaseService;

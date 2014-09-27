@@ -344,6 +344,28 @@ app.factory('ActivityService', function(f,$q) {
         getRefArrayExe:function(projectId){
             return f.ref("/project/"+projectId+"/exeActivity").$asArray().$loaded();
         },
+        save:function(refs,oldItem,newItem){
+            if(_.isUndefined(refs)||!refs.hasOwnProperty('$save')){
+                return;
+            }
+            var keys=[
+                'name',
+                'description',
+                'inputs',
+                'outputs',
+                'tags',
+                'features',
+                'fts'];
+            _.each(keys,function(key){
+                if(_.isUndefined(newItem[key])){
+                    oldItem[key]=null;
+                }
+                else{
+                    oldItem[key]=newItem[key];
+                }
+            });
+            return refs.$save(oldItem);
+        },
         listWithFeatureAndTagAndInputsAndOutputs:function(activityListRef,featureListRef,tagListRef,productList){
             return _.map(f.copy(activityListRef),function(activity){
                 activity.features= f.arrayToString(f.extend(activity.features,featureListRef),"name");
@@ -351,24 +373,6 @@ app.factory('ActivityService', function(f,$q) {
                 activity.inputs= f.arrayToString(f.extend(activity.inputs,productList),"name");
                 activity.outputs= f.arrayToString(f.extend(activity.outputs,productList),"name");
                 return activity;
-            });
-        },
-        getNewActivity:function(oldActivities,newActivities,property){
-            var oldIds= _.pluck(oldActivities,property);
-            return _.filter(newActivities,function(activity){
-                return !_.contains(oldIds,activity[property]);
-            });
-        },
-        getDelActivity:function(oldActivities,newActivities,property){
-            var newIds= _.pluck(newActivities,property);
-            return _.filter(oldActivities,function(activity){
-                return !_.contains(newIds,activity[property]);
-            });
-        },
-        getStayActivity:function(oldActivities,newActivities,property){
-            var newIds= _.pluck(newActivities,property);
-            return _.filter(oldActivities,function(activity){
-                return _.contains(newIds,activity[property]);
             });
         }
     };

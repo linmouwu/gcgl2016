@@ -21,7 +21,8 @@
     </div>
     <div zr-panel title="Define format of the product" col-lg="6" ng-switch on="product.type">
         <div ng-switch-when="simple">The product is exist outside the tool.</div>
-        <div zr-document ng-switch-when="treeDocument" data="product.treeDocument"></div>
+        <div zr-document ng-switch-when="treeDocument" data="product.data"></div>
+        <div zr-list ng-switch-when="document" data="product.data">json</div>
         <div ng-switch-when="json">json</div>
         <div ng-switch-default></div>
     </div>

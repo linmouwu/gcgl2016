@@ -24,47 +24,81 @@
                 <li ng-repeat="template in activity.exeTemplates">{{template.name}}</li>
             </ol>
         </div>
-        <div class="row bg-info" ng-repeat="activity in stayActivities">
-            <h3>Activity name: {{activity.name}} <span ng-show="relate(activity,'name')">({{relate(activity,'name')}})</span></h3>
-            <p>Activity description: {{activity.description}}<span ng-show="relate(activity,'description')">({{relate(activity,'description')}})</span></p>
-            <h4>Inputs:</h4>
-            <ol>
-                <li ng-repeat="product in getNew(activity,'inputs')" class="bg-success">
-                    Product name: {{product.name}}
-                </li>
-                <li ng-repeat="product in getStay(activity,'inputs')" class="bg-info">
-                    Product name: {{product.name}}
-                </li>
-                <li ng-repeat="product in getDel(activity,'inputs')" class="bg-danger">
-                    Product name: {{product.name}}
-                </li>
-            </ol>
-            <h4>Outputs:</h4>
-            <ol>
-                <li ng-repeat="product in getNew(activity,'outputs')" class="bg-success">
-                    Product name: {{product.name}}
-                </li>
-                <li ng-repeat="product in getStay(activity,'outputs')" class="bg-info">
-                    Product name: {{product.name}}
-                </li>
-                <li ng-repeat="product in getDel(activity,'outputs')" class="bg-danger">
-                    Product name: {{product.name}}
-                </li>
-            </ol>
-            <h4>Template:</h4>
-            <ol>
-                <li ng-repeat="product in getNew(activity,'exeTemplates')" class="bg-success">
-                    Template name: {{template.name}}
-                </li>
-                <li ng-repeat="product in getStay(activity,'exeTemplates')" class="bg-info">
-                    Template name: {{template.name}}
-                </li>
-                <li ng-repeat="product in getDel(activity,'exeTemplates')" class="bg-danger">
-                    Template name: {{template.name}}
-                </li>
-            </ol>
+        <div class="bg-info" ng-repeat="changes in stayActivities">
+            <table class="table">
+                <tr>
+                    <th>Activity name:</th>
+                    <td>{{changes.oldItem.name}}</td>
+                    <td>{{changes.newItem.name}}</td>
+                </tr>
+                <tr>
+                    <th>Activity description:</th>
+                    <td>{{changes.oldItem.description}}</td>
+                    <td>{{changes.newItem.description}}</td>
+                </tr>
+                <tr>
+                    <th><h4>Inputs:</h4></th>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr ng-repeat="product in changes.inputChanges.news" class="bg-success">
+                    <th>Product name:</th>
+                    <th></th>
+                    <th>{{product.name}}</th>
+                </tr>
+                <tr ng-repeat="c in changes.inputChanges.changes" class="bg-info">
+                    <th>Product name:</th>
+                    <th>{{c.oldItem.name}}</th>
+                    <th>{{c.newItem.name}}</th>
+                </tr>
+                <tr ng-repeat="product in changes.inputChanges.dels" class="bg-danger">
+                    <th>Product name:</th>
+                    <th>{{product.name}}</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th><h4>Outputs:</h4></th>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr ng-repeat="product in changes.outputChanges.news" class="bg-success">
+                    <th>Product name:</th>
+                    <th></th>
+                    <th>{{product.name}}</th>
+                </tr>
+                <tr ng-repeat="changes in changes.outputChanges.changes" class="bg-info">
+                    <th>Product name:</th>
+                    <th>{{changes.oldItem.name}}</th>
+                    <th>{{changes.newItem.name}}</th>
+                </tr>
+                <tr ng-repeat="product in changes.outputChanges.dels" class="bg-danger">
+                    <th>Product name:</th>
+                    <th>{{product.name}}</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th><h4>Template:</h4></th>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr ng-repeat="template in changes.templatesChanges.news" class="bg-success">
+                    <th>Template name:</th>
+                    <th></th>
+                    <th>{{template.name}}</th>
+                </tr>
+                <tr ng-repeat="changes in changes.templatesChanges.changes" class="bg-info">
+                    <th>Template name:</th>
+                    <th>{{changes.oldItem.name}}</th>
+                    <th>{{changes.newItem.name}}</th>
+                </tr>
+                <tr ng-repeat="template in changes.templatesChanges.dels" class="bg-danger">
+                    <th>Template name:</th>
+                    <th>{{template.name}}</th>
+                    <th></th>
+                </tr>
+            </table>
         </div>
-        <div class="row bg-danger" ng-repeat="activity in delActivities">
+        <div class="bg-danger" ng-repeat="activity in delActivities">
             <h3>Activity name: {{activity.name}}</h3>
             <p>Activity description: {{activity.description}}</p>
             <h4>Inputs:</h4>
@@ -92,14 +126,34 @@
             <p>Product description: {{product.description}}</p>
             <p>Product template: {{product.exeTemplate.name}}</p>
         </div>
-        <div class="row bg-info" ng-repeat="product in stayProducts">
-            <h3>Product name: {{product.name}}<span ng-show="relateProduct(product,'name')">({{relateProduct(product,'name')}})</span></h3>
-            <p>Product description: {{product.description}}<span ng-show="relateProduct(product,'description')">({{relateProduct(product,'description')}})</span></p>
-            <p>Product template: {{product.exeTemplate.name}}<span ng-show="relateTemplate(product,'name')">({{relateTemplate(product,'name')}})</span></p>
+        <div class="bg-info" ng-repeat="changes in stayProducts">
+            <table class="table">
+                <tr>
+                    <th>Product name</th>
+                    <th>{{changes.oldItem.name}}</th>
+                    <th>{{changes.newItem.name}}</th>
+                </tr>
+                <tr>
+                    <th>Product description</th>
+                    <th>{{changes.oldItem.description}}</th>
+                    <th>{{changes.newItem.description}}</th>
+                </tr>
+                <tr>
+                    <th>Product type</th>
+                    <th>{{changes.oldItem.type}}</th>
+                    <th>{{changes.newItem.type}}</th>
+                </tr>
+                <tr>
+                    <th>Product template</th>
+                    <th>{{changes.oldItem.exeTemplate.name}}</th>
+                    <th>{{changes.newItem.exeTemplate.name}}</th>
+                </tr>
+            </table>
         </div>
-        <div class="row bg-danger" ng-repeat="product in delProducts">
+        <div class="bg-danger" ng-repeat="product in delProducts">
             <h3>Product name: {{product.name}}</h3>
             <p>Product description: {{product.description}}</p>
+            <p>Product type: {{product.type}}</p>
             <p>Product template: {{product.exeTemplate.name}}</p>
         </div>
         <pre>{{exeProducts|json}}</pre>

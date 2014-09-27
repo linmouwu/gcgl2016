@@ -92,13 +92,17 @@ app.config(function($stateProvider, $urlRouterProvider){
                     _.each(activity.inputs,function(item){
                         item.id=item.$id;
                         item.exeTemplate= f.extendSingle(item.template,productTemplateListRef);
-                        item.exeTemplate.id=item.template;
+                        if(!f.isNullOrUndefined(item.exeTemplate)){
+                            item.exeTemplate.id=item.template;
+                        }
                     });
                     activity.outputs= f.extend(activity.outputs,productListRef);
                     _.each(activity.outputs,function(item){
                         item.id=item.$id;
                         item.exeTemplate= f.extendSingle(item.template,productTemplateListRef);
-                        item.exeTemplate.id=item.template;
+                        if(!f.isNullOrUndefined(item.exeTemplate)){
+                            item.exeTemplate.id=item.template;
+                        }
                     });
                     activity.exeTemplates= f.extend(_.pluck(activity.fts,'template'),activityTemplateListRef);
                     _.each(activity.exeTemplates,function(item){
@@ -111,54 +115,47 @@ app.config(function($stateProvider, $urlRouterProvider){
 //                _.each($scope.exeProducts,function(product){
 //                    product.exeTemplate= f.extendSingle(product.template,productTemplateListRef);
 //                });
-
-                $scope.newActivities=ActivityService.getNewActivity($scope.exeActivityListRef,$scope.exeActivities,"id");
-                $scope.stayActivities=ActivityService.getStayActivity($scope.exeActivityListRef,$scope.exeActivities,"id");
-                $scope.delActivities=ActivityService.getDelActivity($scope.exeActivityListRef,$scope.exeActivities,"id");
+                var result= f.compareArray($scope.exeActivityListRef,$scope.exeActivities,'id');
+                $scope.newActivities=result.news;
+                $scope.stayActivities=result.changes;
+                _.each($scope.stayActivities,function(changes){
+                    changes.inputChanges=getCompare(changes.oldItem,changes.newItem,"inputs")
+                    changes.outputChanges=getCompare(changes.oldItem,changes.newItem,"outputs")
+                    changes.templatesChanges=getCompare(changes.oldItem,changes.newItem,"exeTemplates")
+                });
+                $scope.delActivities=result.dels;
                 $scope.relate=function(activity,property){
-                    var dest=$scope.exeActivityListRef.$getRecord(activity.$id)[property];
-                    if(dest===activity[property]){
+                    var old=$scope.exeActivityListRef.$getRecord(activity.$id);
+                    if(old && old[property]===activity[property]){
+                        return old[property];
+                    }
+                    else{
                         return null;
                     }
-                    return dest;
                 };
                 $scope.relateProduct=function(product,property){
-                    var dest=$scope.exeProductListRef.$getRecord(product.$id)[property];
-                    if(dest===product[property]){
+                    var old=$scope.exeProductListRef.$getRecord(product.$id);
+                    if(old && old[property]===product[property]){
+                        return old[property];
+                    }
+                    else{
                         return null;
                     }
-                    return dest;
                 };
                 $scope.relateTemplate=function(product,property){
-                    var dest=$scope.exeProductListRef.$getRecord(product.$id).exeTemplate;
-                    if(dest.id===product.exeTemplate.id){
+                    var old=$scope.exeProductListRef.$getRecord(product.$id);
+                    if(old && old.exeTemplate.id===product.exeTemplate.id){
+                        return old.exeTemplate.id;
+                    }
+                    else{
                         return null;
                     }
-                    return dest.name;
                 };
-                $scope.getNew=function(activity,property){
-                    var dest=$scope.exeActivityListRef.$getRecord(activity.$id);
-                    var destProperty=dest[property];
-                    var oldIds= _.pluck(destProperty,'id');
-                    return _.filter(activity[property],function(product){
-                        return !_.contains(oldIds,product.id);
-                    });
-                };
-                $scope.getStay=function(activity,property){
-                    var dest=$scope.exeActivityListRef.$getRecord(activity.$id);
-                    var destProperty=dest[property];
-                    var oldIds= _.pluck(destProperty,'id');
-                    return _.filter(activity[property],function(product){
-                        return _.contains(oldIds,product.id);
-                    });
-                };
-                $scope.getDel=function(activity,property){
-                    var dest=$scope.exeActivityListRef.$getRecord(activity.$id);
-                    var destProperty=dest[property];
-                    var newIds= _.pluck(activity[property],'id');
-                    return _.filter(destProperty,function(product){
-                        return !_.contains(newIds,product.id);
-                    });
+                function getCompare(oldActivity,newActivity,property){
+                    var oldProperty=oldActivity[property];
+                    var newProperty=newActivity[property];
+                    var result= f.compareArray(oldProperty,newProperty,'id');
+                    return result;
                 };
 
 //                //products get
@@ -167,10 +164,10 @@ app.config(function($stateProvider, $urlRouterProvider){
                     return item.id;
                 });
 
-
-                $scope.newProducts=ProductService.getNewProduct($scope.exeProductListRef,$scope.exeProducts,"id");
-                $scope.stayProducts=ProductService.getStayProduct($scope.exeProductListRef,$scope.exeProducts,"id");
-                $scope.delProducts=ProductService.getDelProduct($scope.exeProductListRef,$scope.exeProducts,"id");
+                var result2=f.compareArray($scope.exeProductListRef,$scope.exeProducts,'id');
+                $scope.newProducts=result2.news;
+                $scope.stayProducts=result2.changes;
+                $scope.delProducts=result2.dels;
 
 
                 $scope.start=function(){
@@ -182,11 +179,11 @@ app.config(function($stateProvider, $urlRouterProvider){
                         f.add(exeActivityListRef,activity);
                     });
                     //alter
-                    _.each($scope.stayProducts,function(product){
-                        f.save(exeProductListRef,product);
+                    _.each($scope.stayProducts,function(changes){
+                        ProductService.save(exeProductListRef,changes.oldItem,changes.newItem);
                     });
-                    _.each($scope.stayActivities,function(activity){
-                        f.save(exeActivityListRef,activity);
+                    _.each($scope.stayActivities,function(changes){
+                        ActivityService.save(exeActivityListRef,changes.oldItem,changes.newItem);
                     });
                     //delete
                     _.each($scope.delProducts,function(product){
@@ -195,6 +192,27 @@ app.config(function($stateProvider, $urlRouterProvider){
                     _.each($scope.delActivities,function(activity){
                         f.remove(exeActivityListRef,activity);
                     });
+
+                    //activity.inputs and outputs to ids
+//                    _.each(exeActivityListRef,function(activity){
+//                        var inputs=[];
+//                        _.each(activity.inputs,function(product){
+//                            var exeProduct=ProductService.findByProperty(exeProductListRef,'id',product.id);
+//                            if(!f.isNullOrUndefined(exeProduct)){
+//                                inputs.push(exeProduct.$id);
+//                            }
+//                        });
+//                        var outputs=[];
+//                        _.each(activity.inputs,function(product){
+//                            var exeProduct=ProductService.findByProperty(exeProductListRef,'id',product.id);
+//                            if(!f.isNullOrUndefined(exeProduct)){
+//                                outputs.push(exeProduct.$id);
+//                            }
+//                        });
+//                        activity.inputs=inputs;
+//                        activity.outputs=outputs;
+//                        f.save(exeActivityListRef,activity);
+//                    });
                     $state.go("main");
                 };
 

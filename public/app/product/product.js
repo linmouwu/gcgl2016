@@ -84,36 +84,6 @@ app.config(function($stateProvider, $urlRouterProvider){
             }
         });
 });
-app.factory('ProductService', function(f,$q) {
-    //Public Method
-    var service = {
-        getRefArray:function(){
-            return f.ref('/product').$asArray().$loaded();
-        },
-        getRefArrayExe:function(projectId){
-            return f.ref('/project/'+projectId+'/exeProduct').$asArray().$loaded();
-        },
-        getNewProduct:function(oldProducts,newProducts,property){
-            var oldIds= _.pluck(oldProducts,property);
-            return _.filter(newProducts,function(product){
-                return !_.contains(oldIds,product[property]);
-            });
-        },
-        getDelProduct:function(oldProducts,newProducts,property){
-            var newIds= _.pluck(newProducts,property);
-            return _.filter(oldProducts,function(product){
-                return !_.contains(newIds,product[property]);
-            });
-        },
-        getStayProduct:function(oldProducts,newProducts,property){
-            var newIds= _.pluck(newProducts,property);
-            return _.filter(oldProducts,function(product){
-                return _.contains(newIds,product[property]);
-            });
-        }
-    };
-    return service;
-});
 app.directive('zrDocument',function(){
     return {
         templateUrl: 'app/product/document.tpls.html',
@@ -236,4 +206,127 @@ app.directive('zrDocument',function(){
             }
         }
     };
+});
+app.directive('zrList',function(){
+    return {
+        templateUrl: 'app/product/list.tpls.html',
+        scope:{
+            data:'='
+        },
+        controller: function ($scope) {
+            $scope.add = function(){
+                if($scope.data){
+                    $scope.data.push({});
+                }
+                else{
+                    $scope.data=[{}];
+                }
+            };
+            $scope.remove = function() {
+                $scope.data.pop();
+            };
+
+            $scope.toggle = function(scope) {
+                scope.toggle();
+            };
+            $scope.editNode = function(node) {
+                node.editing = true;
+            };
+            $scope.saveNode = function(node) {
+                node.editing = false;
+            };
+            $scope.moveLastToTheBegginig = function () {
+                var a = $scope.data.pop();
+                $scope.data.splice(0,0, a);
+            };
+
+            $scope.newSubItem = function(scope) {
+                var nodeData = scope.$modelValue;
+                nodeData.nodes.push({
+                    id: nodeData.id * 10 + nodeData.nodes.length,
+                    title: nodeData.title + '.' + (nodeData.nodes.length + 1),
+                    nodes: []
+                });
+            };
+            $scope.addNode = function(){
+                $scope.data.push({
+                    id:$scope.data.length+1,
+                    title:'node'+($scope.data.length+1),
+                    nodes:[]
+                });
+            };
+
+            var getRootNodesScope = function() {
+                return angular.element(document.getElementById("tree-root")).scope();
+            };
+
+            $scope.collapseAll = function() {
+                var scope = getRootNodesScope();
+                scope.collapseAll();
+            };
+
+            $scope.expandAll = function() {
+                var scope = getRootNodesScope();
+                scope.expandAll();
+            };
+        }
+    };
+});
+app.factory('ProductService', function(f,$q) {
+    //Public Method
+    var service = {
+        getRefArray:function(){
+            return f.ref('/product').$asArray().$loaded();
+        },
+        getRefArrayExe:function(projectId){
+            return f.ref('/project/'+projectId+'/exeProduct').$asArray().$loaded();
+        },
+        getNewProduct:function(oldProducts,newProducts,property){
+            var oldIds= _.pluck(oldProducts,property);
+            return _.filter(newProducts,function(product){
+                return !_.contains(oldIds,product[property]);
+            });
+        },
+        getDelProduct:function(oldProducts,newProducts,property){
+            var newIds= _.pluck(newProducts,property);
+            return _.filter(oldProducts,function(product){
+                return !_.contains(newIds,product[property]);
+            });
+        },
+        getStayProduct:function(oldProducts,newProducts,property){
+            var oldIds= _.pluck(oldProducts,property);
+            return _.filter(newProducts,function(product){
+                return _.contains(oldIds,product[property]);
+            });
+        },
+        save:function(refs,oldItem,newItem){
+            if(_.isUndefined(refs)||!refs.hasOwnProperty('$save')){
+                return;
+            }
+            var keys=[
+                'name',
+                'description',
+                'type',
+                'exeTemplate',
+                'data'];
+            _.each(keys,function(key){
+                if(_.isUndefined(newItem[key])){
+                    oldItem[key]=null;
+                }
+                else{
+                    oldItem[key]=newItem[key];
+                }
+            });
+            return refs.$save(oldItem);
+        },
+        findByProperty:function(refs,property,value){
+            _.each(refs,function(product){
+                if(product[property]===value){
+                    return angular.copy(product);
+                }
+            });
+            return null;
+        }
+    };
+    return service;
 });
