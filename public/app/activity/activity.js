@@ -65,9 +65,13 @@ app.config(function($stateProvider, $urlRouterProvider){
         .state('activity.create',{
             url:"/create",
             templateUrl:"app/activity/createActivity.html",
-            resolve:{},
-            controller:function($scope,$state,$modal,ActivityService,activityListRef,f){
+            resolve:{
+            },
+            controller:function($scope,$state,$modal,featureListRef,tagListRef,productListRef,activityListRef,f){
                 $scope.activity={};
+                $scope.featureListRef=featureListRef;
+                $scope.tagListRef=tagListRef;
+                $scope.productListRef=productListRef;
                 $scope.create=function(){
                     $scope.activity.features= f.toIds($scope.activity.features);
                     $scope.activity.fts= _.map($scope.activity.features,function(featureId){
@@ -80,50 +84,23 @@ app.config(function($stateProvider, $urlRouterProvider){
                         $state.go("^",{},{reload:true});
                     });
                 };
-                $scope.removeFeature=function(item){
-                    $scope.activity.features= _.filter($scope.activity.features,function(feature){
+                $scope.remove=function(item,name){
+                    $scope.activity[name]= _.filter($scope.activity[name],function(feature){
                         if(feature===item){
                             return false;
                         }
                         return true;
                     });
                 };
-                $scope.removeTag=function(item){
-                    $scope.activity.tags= _.filter($scope.activity.tags,function(tag){
-                        if(tag===item){
-                            return false;
-                        }
-                        return true;
-                    });
-                };
-                $scope.removeInput=function(item){
-                    $scope.activity.inputs= _.filter($scope.activity.inputs,function(input){
-                        if(input===item){
-                            return false;
-                        }
-                        return true;
-                    });
-                };
-                $scope.removeOutput=function(item){
-                    $scope.activity.outputs= _.filter($scope.activity.outputs,function(output){
-                        if(output===item){
-                            return false;
-                        }
-                        return true;
-                    });
-                };
-                $scope.addFeature = function () {
+                $scope.addItem = function (name,itemListRef) {
 
                     var modalInstance = $modal.open({
-                        templateUrl: 'app/activity/addFeature.tpls.html',
+                        templateUrl: 'app/activity/addItem.tpls.html',
                         resolve: {
-                            items:function(FeatureService){
-                                return f.copy(FeatureService.getRefArray());
-                            }
                         },
-                        controller:function ($scope, $modalInstance, items) {
+                        controller:function ($scope, $modalInstance) {
                             $scope.search="";
-                            $scope.items = items;
+                            $scope.items = itemListRef;
                             $scope.selected={};
 
                             $scope.ok = function () {
@@ -141,121 +118,10 @@ app.config(function($stateProvider, $urlRouterProvider){
                     });
 
                     modalInstance.result.then(function (selectedItem) {
-                        if(_.isUndefined($scope.activity.features)){
-                            $scope.activity.features=[];
+                        if(_.isUndefined($scope.activity[name])){
+                            $scope.activity[name]=[];
                         }
-                        $scope.activity.features.push(selectedItem);
-                    }, function () {
-                        console.log('Modal dismissed at: ' + new Date());
-                    });
-                };
-                $scope.addTag = function () {
-
-                    var modalInstance = $modal.open({
-                        templateUrl: 'app/activity/addTag.tpls.html',
-                        resolve: {
-                            items: function (TagService) {
-                                return f.copy(TagService.getRefArray());
-                            }
-                        },
-                        controller:function ($scope, $modalInstance, items) {
-                            $scope.search="";
-                            $scope.items = items;
-                            $scope.selected={};
-
-                            $scope.ok = function () {
-                                $modalInstance.close($scope.selected);
-                            };
-
-                            $scope.cancel = function () {
-                                $modalInstance.dismiss('cancel');
-                            };
-                            $scope.select=function(item){
-                                $scope.selected=item;
-                            };
-                        },
-                        size:'lg'
-                    });
-
-                    modalInstance.result.then(function (selectedItem) {
-                        if(_.isUndefined($scope.activity.tags)){
-                            $scope.activity.tags=[];
-                        }
-                        $scope.activity.tags.push(selectedItem);
-                    }, function () {
-                        console.log('Modal dismissed at: ' + new Date());
-                    });
-                };
-                $scope.addInput = function () {
-
-                    var modalInstance = $modal.open({
-                        templateUrl: 'app/activity/addInput.tpls.html',
-                        resolve: {
-                            items: function (ProductService) {
-                                return f.copy(ProductService.getRefArray());
-                            }
-                        },
-                        controller:function ($scope, $modalInstance, items) {
-                            $scope.search="";
-                            $scope.items = items;
-                            $scope.selected={};
-
-                            $scope.ok = function () {
-                                $modalInstance.close($scope.selected);
-                            };
-
-                            $scope.cancel = function () {
-                                $modalInstance.dismiss('cancel');
-                            };
-                            $scope.select=function(item){
-                                $scope.selected=item;
-                            };
-                        },
-                        size:'lg'
-                    });
-
-                    modalInstance.result.then(function (selectedItem) {
-                        if(_.isUndefined($scope.activity.inputs)){
-                            $scope.activity.inputs=[];
-                        }
-                        $scope.activity.inputs.push(selectedItem);
-                    }, function () {
-                        console.log('Modal dismissed at: ' + new Date());
-                    });
-                };
-                $scope.addOutput = function () {
-
-                    var modalInstance = $modal.open({
-                        templateUrl: 'app/activity/addOutput.tpls.html',
-                        resolve: {
-                            items: function (ProductService) {
-                                return f.copy(ProductService.getRefArray());
-                            }
-                        },
-                        controller:function ($scope, $modalInstance, items) {
-                            $scope.search="";
-                            $scope.items = items;
-                            $scope.selected={};
-
-                            $scope.ok = function () {
-                                $modalInstance.close($scope.selected);
-                            };
-
-                            $scope.cancel = function () {
-                                $modalInstance.dismiss('cancel');
-                            };
-                            $scope.select=function(item){
-                                $scope.selected=item;
-                            };
-                        },
-                        size:'lg'
-                    });
-
-                    modalInstance.result.then(function (selectedItem) {
-                        if(_.isUndefined($scope.activity.outputs)){
-                            $scope.activity.outputs=[];
-                        }
-                        $scope.activity.outputs.push(selectedItem);
+                        $scope.activity[name].push(selectedItem);
                     }, function () {
                         console.log('Modal dismissed at: ' + new Date());
                     });
@@ -267,70 +133,77 @@ app.config(function($stateProvider, $urlRouterProvider){
         })
         .state('activity.edit', {
             url: "/edit/:id",
-            views:{
-                'main@':{
-                    templateUrl: "app/activity/editActivity.html",
-                    resolve:{
-                        activity:function(ActivityService,$stateParams){
-                            return ActivityService.find($stateParams.id);
-                        }
-                    },
-                    controller:function($scope,$stateParams,$state,$modal,activity,ActivityService){
-                        $scope.activity=activity;
-                        $scope.save=function(){
-                            ActivityService.update($stateParams.id,$scope.activity);
-                            $state.go("^",{},{reload:true});
-                        };
-                        $scope.removeStep=function(step){
-                            $scope.activity.steps=_.without($scope.activity.steps,step);
-                        };
-                        $scope.addStep=function(){
-                            if(_.isUndefined($scope.activity.steps)){
-                                $scope.activity.steps=[{}];
-                            }
-                            else{
-                                $scope.activity.steps.push({});
-                            }
-                        };
-                        $scope.deleteInput=function(index){
-                            $scope.activity.inputs.splice(index,1);
-                        };
-                        $scope.deleteOutput=function(index){
-                            $scope.activity.outputs.splice(index,1);
-                        };
-                        $scope.addProduct=function(type){
-                            var modalInstance = $modal.open({
-                                templateUrl: 'app/activity/selectProduct.tpls.html',
-                                controller: function ($scope, $modalInstance, productList) {
-                                    $scope.productList=productList;
-                                    $scope.select=function(key,pro){
-                                        pro.id=key;
-                                        $modalInstance.close(pro);
-                                    };
-
-                                    $scope.cancel = function () {
-                                        $modalInstance.dismiss('cancel');
-                                    };
-                                },
-                                size: 'lg',
-                                resolve: {
-                                    productList:function(ProductService){
-                                        return ProductService.list();
-                                    }
-                                }
-                            });
-
-                            modalInstance.result.then(function (selectedItem) {
-                                if(_.isUndefined($scope.activity[type])){
-                                    $scope.activity[type]=[];
-                                }
-                                $scope.activity[type].push(selectedItem);
-                            }, function () {
-                                console.log('Modal dismissed at: ' + new Date());
-                            });
-                        };
-                    }
+            templateUrl: "app/activity/editActivity.html",
+            resolve:{
+                activity:function(activityListRef,$stateParams){
+                    return activityListRef.$getRecord($stateParams.id);
                 }
+            },
+            controller:function($scope,$state,$modal,ActivityService,featureListRef,tagListRef,activityListRef,productListRef,f,activity) {
+                $scope.activity = f.copy(activity);
+                $scope.featureListRef=featureListRef;
+                $scope.tagListRef=tagListRef;
+                $scope.productListRef=productListRef;
+                (function () {
+                    $scope.activity.features = f.extend($scope.activity.features, featureListRef);
+                    $scope.activity.tags = f.extend($scope.activity.tags, tagListRef);
+                    $scope.activity.inputs = f.extend($scope.activity.inputs, productListRef);
+                    $scope.activity.outputs = f.extend($scope.activity.outputs, productListRef);
+                }());
+                $scope.save=function(){
+                    $scope.activity.features= f.toIds($scope.activity.features);
+                    $scope.activity.fts= _.map($scope.activity.features,function(featureId){
+                        return {feature:featureId};
+                    });
+                    $scope.activity.tags= f.toIds($scope.activity.tags);
+                    $scope.activity.inputs= f.toIds($scope.activity.inputs);
+                    $scope.activity.outputs= f.toIds($scope.activity.outputs);
+                    ActivtyService.save(activityListRef,$scope.activity).then(function(){
+                        $state.go("^",{},{reload:true});
+                    });
+                };
+                $scope.remove=function(item,name){
+                    $scope.activity[name]= _.filter($scope.activity[name],function(feature){
+                        if(feature===item){
+                            return false;
+                        }
+                        return true;
+                    });
+                };
+                $scope.addItem = function (name,itemListRef) {
+
+                    var modalInstance = $modal.open({
+                        templateUrl: 'app/activity/addItem.tpls.html',
+                        resolve: {
+                        },
+                        controller:function ($scope, $modalInstance) {
+                            $scope.search="";
+                            $scope.items = itemListRef;
+                            $scope.selected={};
+
+                            $scope.ok = function () {
+                                $modalInstance.close($scope.selected);
+                            };
+
+                            $scope.cancel = function () {
+                                $modalInstance.dismiss('cancel');
+                            };
+                            $scope.select=function(item){
+                                $scope.selected=item;
+                            };
+                        },
+                        size:'lg'
+                    });
+
+                    modalInstance.result.then(function (selectedItem) {
+                        if(_.isUndefined($scope.activity[name])){
+                            $scope.activity[name]=[];
+                        }
+                        $scope.activity[name].push(selectedItem);
+                    }, function () {
+                        console.log('Modal dismissed at: ' + new Date());
+                    });
+                };
             }
         });
 });
@@ -355,7 +228,8 @@ app.factory('ActivityService', function(f,$q) {
                 'outputs',
                 'tags',
                 'features',
-                'fts'];
+                'fts',
+                'exeTemplates'];
             _.each(keys,function(key){
                 if(_.isUndefined(newItem[key])){
                     oldItem[key]=null;

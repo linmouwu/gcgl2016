@@ -28,7 +28,7 @@
                         <td>{{item.outputs}}</td>
                         <td zr-dropdown>
                             <li>
-                                <a class="btn" ui-sref="activity.edit({id:key})">
+                                <a class="btn" ui-sref="activity.edit({id:item.$id})">
                                     edit<span class="glyphicon glyphicon-pencil"></span>
                                 </a>
                             </li>
@@ -73,12 +73,12 @@
                         <th>Description</th>
                         <th>Opt</th>
                     </tr>
-                    <tr ng-repeat="(key,item) in featureList">
+                    <tr ng-repeat="item in featureList">
                         <td>{{item.name}}</td>
                         <td>{{item.description}}</td>
                         <td zr-dropdown>
                             <li>
-                                <a class="btn" ui-sref="activity.edit({id:key})">
+                                <a class="btn" ui-sref="activity.edit({id:item.$id})">
                                     edit<span class="glyphicon glyphicon-pencil"></span>
                                 </a>
                             </li>

@@ -1,0 +1,21 @@
+
+<div class="modal-header">
+    <h3 class="modal-title">Select feature</h3>
+</div>
+<div class="modal-body">
+    Search:<input type="text" ng-model="search">
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        <tr ng-repeat="item in items | array | filter:{'name':search}" ng-click="select(item)" ng-class="{success:selected===item}">
+            <td>{{item.name}}</td>
+            <td>{{item.description}}</td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

@@ -23,14 +23,14 @@
                             <td>{{feature.description}}</td>
                             <td zr-dropdown>
                                 <li>
-                                    <a ng-click="removeFeature(feature)">
+                                    <a ng-click="remove(feature,'features')">
                                         remove<span class="glyphicon glyphicon-remove"></span>
                                     </a>
                                 </li>
                             </td>
                         </tr>
                     </table>
-                    <button class="btn btn-primary" ng-click="addFeature()">Add Feature</button>
+                    <button class="btn btn-primary" ng-click="addItem('features',featureListRef)">Add Feature</button>
                 </div>
             </div>
             <div class="form-group">
@@ -46,14 +46,14 @@
                             <td>{{tag.description}}</td>
                             <td zr-dropdown>
                                 <li>
-                                    <a ng-click="removeTag(tag)">
+                                    <a ng-click="remove(tag,'tags')">
                                         remove<span class="glyphicon glyphicon-remove"></span>
                                     </a>
                                 </li>
                             </td>
                         </tr>
                     </table>
-                    <button class="btn btn-primary" ng-click="addTag()">Add Tag</button>
+                    <button class="btn btn-primary" ng-click="addItem('tags',tagListRef)">Add Tag</button>
                 </div>
             </div>
             <div class="form-group">
@@ -69,14 +69,14 @@
                             <td>{{input.description}}</td>
                             <td zr-dropdown>
                                 <li>
-                                    <a ng-click="removeInput(input)">
+                                    <a ng-click="remove(input,'inputs')">
                                         remove<span class="glyphicon glyphicon-remove"></span>
                                     </a>
                                 </li>
                             </td>
                         </tr>
                     </table>
-                    <button class="btn btn-primary" ng-click="addInput()">Add Input</button>
+                    <button class="btn btn-primary" ng-click="addItem('inputs',productListRef)">Add Input</button>
                 </div>
             </div>
             <div class="form-group">
@@ -92,14 +92,14 @@
                             <td>{{output.description}}</td>
                             <td zr-dropdown>
                                 <li>
-                                    <a ng-click="removeOutput(output)">
+                                    <a ng-click="remove(output,'outputs')">
                                         remove<span class="glyphicon glyphicon-remove"></span>
                                     </a>
                                 </li>
                             </td>
                         </tr>
                     </table>
-                    <button class="btn btn-primary" ng-click="addOutput()">Add Output</button>
+                    <button class="btn btn-primary" ng-click="addItem('outputs',productListRef)">Add Output</button>
                 </div>
             </div>
             <button class="btn btn-success" ng-click="create()">Create</button>

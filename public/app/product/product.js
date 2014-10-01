@@ -225,49 +225,27 @@ app.directive('zrList',function(){
             $scope.remove = function() {
                 $scope.data.pop();
             };
-
-            $scope.toggle = function(scope) {
-                scope.toggle();
+        }
+    };
+});
+app.directive('zrFile',function(){
+    return {
+        templateUrl: 'app/product/file.tpls.html',
+        scope:{
+            data:'='
+        },
+        controller: function ($scope,FileUploader) {
+            $scope.uploader=new FileUploader();
+            $scope.add = function(){
+                if($scope.data){
+                    $scope.data.push({});
+                }
+                else{
+                    $scope.data=[{}];
+                }
             };
-            $scope.editNode = function(node) {
-                node.editing = true;
-            };
-            $scope.saveNode = function(node) {
-                node.editing = false;
-            };
-            $scope.moveLastToTheBegginig = function () {
-                var a = $scope.data.pop();
-                $scope.data.splice(0,0, a);
-            };
-
-            $scope.newSubItem = function(scope) {
-                var nodeData = scope.$modelValue;
-                nodeData.nodes.push({
-                    id: nodeData.id * 10 + nodeData.nodes.length,
-                    title: nodeData.title + '.' + (nodeData.nodes.length + 1),
-                    nodes: []
-                });
-            };
-            $scope.addNode = function(){
-                $scope.data.push({
-                    id:$scope.data.length+1,
-                    title:'node'+($scope.data.length+1),
-                    nodes:[]
-                });
-            };
-
-            var getRootNodesScope = function() {
-                return angular.element(document.getElementById("tree-root")).scope();
-            };
-
-            $scope.collapseAll = function() {
-                var scope = getRootNodesScope();
-                scope.collapseAll();
-            };
-
-            $scope.expandAll = function() {
-                var scope = getRootNodesScope();
-                scope.expandAll();
+            $scope.remove = function() {
+                $scope.data.pop();
             };
         }
     };

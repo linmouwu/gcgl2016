@@ -1,6 +1,10 @@
-<ol>
-    <li ng-repeat="data in product.data">
-        <label>{{data.title}}</label>
-        <input type="text" ng-model="data.body"/>
-    </li>
-</ol>
+<div class="col-lg-6">
+    <div class='row' ng-repeat="data in product.data">
+        <label>{{$index+1}}. {{data.title}}</label>
+        <br/>
+        <textarea class="col-lg-12" rows="8" ng-model="data.body"/>
+    </div>
+    <div class="row">
+        <button class="btn btn-primary" ng-click="save(product.data)">Save</button>
+    </div>
+</div>

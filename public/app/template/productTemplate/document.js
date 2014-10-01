@@ -12,8 +12,18 @@ app.config(function($stateProvider) {
                     return productListRef.$getRecord($stateParams.productId);
                 }
             },
-            controller: function ($scope,product) {
-                $scope.product=product;
+            controller: function ($scope,$state,$stateParams,f,productListRef,product) {
+                $scope.product= f.copy(product);
+                $scope.save=function(newData){
+                    product.data=newData;
+                    f.save(productListRef,product).then(function(){
+                        $state.transitionTo($state.current, $stateParams, {
+                            reload: true,
+                            inherit: false,
+                            notify: true
+                        });
+                    });
+                }
             }
         });
 });
