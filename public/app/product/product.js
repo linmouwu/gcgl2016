@@ -235,17 +235,21 @@ app.directive('zrFile',function(){
             data:'='
         },
         controller: function ($scope,FileUploader) {
-            $scope.uploader=new FileUploader();
-            $scope.add = function(){
-                if($scope.data){
-                    $scope.data.push({});
-                }
-                else{
-                    $scope.data=[{}];
-                }
+            $scope.uploader=new FileUploader({
+                url: 'upload'
+            });
+            $scope.remove=function(item){
+                console.log(item);
+                item.remove();
             };
-            $scope.remove = function() {
-                $scope.data.pop();
+            $scope.uploader.onCompleteItem = function(fileItem, response, status, headers) {
+                console.info('onCompleteItem', fileItem, response, status, headers);
+                if(response&&response[0]){
+                    fileItem.originalFilename=response[0].originalFilename;
+                    fileItem.path=response[0].path;
+                }
+                console.log(response);
+
             };
         }
     };

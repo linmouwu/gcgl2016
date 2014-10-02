@@ -20,10 +20,27 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', routes);
 app.use('/users', users);
+var multiparty = require('multiparty');
+var util = require('util');
+var fs=require('fs');
+app.post('/upload', function(req, res){
+    // parse a file upload
+    var form = new multiparty.Form({
+        autoFiles:true,
+        uploadDir:"public/upload"
+    });
 
+    form.parse(req, function(err, fields, files) {
+        res.writeHead(200, {'content-type': 'application/json'});
+        //res.write('received upload:\n\n');
+//        res.end(util.inspect({fields: fields, files: files,file:files.file}));
+        res.end(JSON.stringify(files.file));
+    });
+
+    return;
+});
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
