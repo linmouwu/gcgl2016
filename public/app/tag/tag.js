@@ -22,6 +22,26 @@ app.config(function($stateProvider, $urlRouterProvider) {
             data: {
                 displayName: 'Create Tag'
             }
+        })
+        .state('activity.editTag', {
+            url: "/editTag/:id",
+            templateUrl: "app/tag/editTag.html",
+            resolve: {
+                tag:function(tagListRef,$stateParams){
+                    return tagListRef.$getRecord($stateParams.id);
+                }
+            },
+            controller: function ($scope,$state,f,tag,TagService,tagListRef) {
+                $scope.tag = f.copy(tag);
+                $scope.save=function(item){
+                    TagService.save(tagListRef,tag,item).then(function(){
+                        $state.go("activity",{},{reload:true});
+                    });
+                };
+            },
+            data: {
+                displayName: 'Create Tag'
+            }
         });
 });
 
@@ -30,6 +50,24 @@ app.factory('TagService', function(f,$q) {
     var service = {
         getRefArray:function(){
             return f.ref("/tag").$asArray().$loaded();
+        },
+        save:function(refs,oldItem,newItem){
+            if(_.isUndefined(refs)||!refs.hasOwnProperty('$save')){
+                return;
+            }
+            var keys=[
+                'name',
+                'description'
+            ];
+            _.each(keys,function(key){
+                if(_.isUndefined(newItem[key])){
+                    oldItem[key]=null;
+                }
+                else{
+                    oldItem[key]=newItem[key];
+                }
+            });
+            return refs.$save(oldItem);
         }
     };
     return service;

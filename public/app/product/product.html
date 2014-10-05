@@ -12,21 +12,17 @@
                     <th>Product Description</th>
                     <th>Opt</th>
                 </tr>
-                <tr ng-repeat="(key,pro) in productList">
+                <tr ng-repeat="pro in productList">
                     <td>{{pro.name}}</td>
                     <td>{{pro.type}}</td>
                     <td>{{pro.description}}</td>
-                    <td zr-dropdown>
-                        <li>
-                            <a class="btn" ui-sref="activity.edit({id:key})">
-                                edit<span class="glyphicon glyphicon-pencil"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="btn" ng-click="remove(pro)">
-                                remove<span class="glyphicon glyphicon-remove"></span>
-                            </a>
-                        </li>
+                    <td>
+                        <button type="button" class="btn btn-warning btn-xs" ui-sref="product.edit({id:pro.$id})">
+                            <span class="glyphicon glyphicon-edit"></span> Edit
+                        </button>
+                        <button type="button" class="btn btn-danger btn-xs" ng-click="remove(pro)">
+                            <span class="glyphicon glyphicon-trash"></span> Del
+                        </button>
                     </td>
                 </tr>
             </table>

@@ -1,18 +1,20 @@
 <div ui-view>
     <zr-header title="Welcome to the project's main page."></zr-header>
     <div class="row">
-        <div zr-panel="" title="Operation" col-lg="2">
-            <p><button type="button" class="btn btn-primary btn-block" ng-click="enterProcess(selected)">Enter</button></p>
-        </div>
-        <div zr-panel="" title="Activities Status" col-lg="10">
+        <div zr-panel="" title="Activities Status" col-lg="12">
             <table class="table">
                 <tr>
                     <th>
                         Name
                     </th>
+                    <th>Actions</th>
                 </tr>
-                <tr ng-repeat="activity in activityList" ng-click="select(activity)" ng-class="{success:selected===activity}">
+                <tr ng-repeat="activity in activityList" >
                     <td>{{activity.name}}</td>
+                    <td><button type="button" class="btn btn-success btn-xs" ng-click="enterProcess(activity)">
+                            <span class="glyphicon glyphicon-off"></span> Enter
+                        </button>
+                    </td>
                 </tr>
             </table>
         </div>

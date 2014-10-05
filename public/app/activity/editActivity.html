@@ -21,12 +21,10 @@
                         <tr ng-repeat="feature in activity.features">
                             <td>{{feature.name}}</td>
                             <td>{{feature.description}}</td>
-                            <td zr-dropdown>
-                                <li>
-                                    <a ng-click="remove(feature,'features')">
-                                        remove<span class="glyphicon glyphicon-remove"></span>
-                                    </a>
-                                </li>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-xs" ng-click="remove(feature,'features')">
+                                    <span class="glyphicon glyphicon-trash"></span> Del
+                                </button>
                             </td>
                         </tr>
                     </table>
@@ -44,12 +42,10 @@
                         <tr ng-repeat="tag in activity.tags">
                             <td>{{tag.name}}</td>
                             <td>{{tag.description}}</td>
-                            <td zr-dropdown>
-                                <li>
-                                    <a ng-click="remove(tag,'tags')">
-                                        remove<span class="glyphicon glyphicon-remove"></span>
-                                    </a>
-                                </li>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-xs" ng-click="remove(tag,'tags')">
+                                    <span class="glyphicon glyphicon-trash"></span> Del
+                                </button>
                             </td>
                         </tr>
                     </table>
@@ -67,12 +63,10 @@
                         <tr ng-repeat="input in activity.inputs">
                             <td>{{input.name}}</td>
                             <td>{{input.description}}</td>
-                            <td zr-dropdown>
-                                <li>
-                                    <a ng-click="remove(input,'inputs')">
-                                        remove<span class="glyphicon glyphicon-remove"></span>
-                                    </a>
-                                </li>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-xs" ng-click="remove(input,'inputs')">
+                                    <span class="glyphicon glyphicon-trash"></span> Del
+                                </button>
                             </td>
                         </tr>
                     </table>
@@ -90,12 +84,10 @@
                         <tr ng-repeat="output in activity.outputs">
                             <td>{{output.name}}</td>
                             <td>{{output.description}}</td>
-                            <td zr-dropdown>
-                                <li>
-                                    <a ng-click="remove(output,'outputs')">
-                                        remove<span class="glyphicon glyphicon-remove"></span>
-                                    </a>
-                                </li>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-xs" ng-click="remove(output,'outputs')">
+                                    <span class="glyphicon glyphicon-trash"></span> Del
+                                </button>
                             </td>
                         </tr>
                     </table>

@@ -17,7 +17,7 @@
                         <th>Tags</th>
                         <th>Inputs</th>
                         <th>Outputs</th>
-                        <th>Opt</th>
+                        <th>Actions</th>
                     </tr>
                     <tr ng-repeat="(key,item) in activityList">
                         <td>{{item.name}}</td>
@@ -26,17 +26,13 @@
                         <td>{{item.tags}}</td>
                         <td>{{item.inputs}}</td>
                         <td>{{item.outputs}}</td>
-                        <td zr-dropdown>
-                            <li>
-                                <a class="btn" ui-sref="activity.edit({id:item.$id})">
-                                    edit<span class="glyphicon glyphicon-pencil"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="btn" ng-click="removeActivity(item)">
-                                    remove<span class="glyphicon glyphicon-remove"></span>
-                                </a>
-                            </li>
+                        <td>
+                            <button type="button" class="btn btn-warning btn-xs" ui-sref="activity.edit({id:item.$id})">
+                                <span class="glyphicon glyphicon-edit"></span> Edit
+                            </button>
+                            <button type="button" class="btn btn-danger btn-xs" ng-click="removeActivity(item)">
+                                <span class="glyphicon glyphicon-trash"></span> Del
+                            </button>
                         </td>
                     </tr>
                 </table>
@@ -48,12 +44,12 @@
                         <th>Description</th>
                         <th>Opt</th>
                     </tr>
-                    <tr ng-repeat="(key,item) in tagList">
+                    <tr ng-repeat="item in tagList">
                         <td>{{item.name}}</td>
                         <td>{{item.description}}</td>
                         <td zr-dropdown>
                             <li>
-                                <a class="btn" ui-sref="activity.edit({id:key})">
+                                <a class="btn" ui-sref="activity.editTag({id:item.$id})">
                                     edit<span class="glyphicon glyphicon-pencil"></span>
                                 </a>
                             </li>

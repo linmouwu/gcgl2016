@@ -36,5 +36,28 @@
             </button>
         </td>
     </tr>
+    <tr ng-repeat="item in oldData">
+        <td><strong>{{ item.name }}</strong></td>
+        <td ng-show="uploader.isHTML5" nowrap></td>
+        <td ng-show="uploader.isHTML5">
+            <div class="progress" style="margin-bottom: 0;">
+                <div class="progress-bar" role="progressbar" ng-style="{ 'width':'100%' }"></div>
+            </div>
+        </td>
+        <td class="text-center">
+            <span><i class="glyphicon glyphicon-ok"></i></span>
+        </td>
+        <td nowrap>
+            <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="true">
+                <span class="glyphicon glyphicon-upload"></span> Upload
+            </button>
+            <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="true">
+                <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+            </button>
+            <button type="button" class="btn btn-danger btn-xs" ng-click="remove(item)">
+                <span class="glyphicon glyphicon-trash"></span> Remove
+            </button>
+        </td>
+    </tr>
     </tbody>
 </table>

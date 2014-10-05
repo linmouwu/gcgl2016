@@ -2,27 +2,31 @@
 
 <div class="row">
     <div zr-panel title="Input your product information" col-lg="6">
-        <div class="form-group">
-            <label>Product Name</label>
-            <input type="text" class="form-control" ng-model="product.name">
-        </div>
-        <div class="form-group">
-            <label>Product Type</label>
-            <select class="form-control" ng-model="product.type" ng-options="type as type for type in types">
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Product Description</label>
-            <textarea class="form-control" rows="3" ng-model="product.description"></textarea>
-        </div>
-
-        <button class="btn" ng-click="save()">Save</button>
+        <form>
+            <div class="form-group">
+                <label>Product Name</label>
+                <input type="text" class="form-control" ng-model="product.name">
+            </div>
+            <div class="form-group">
+                <label>Product Type</label>
+                <select class="form-control" ng-model="product.type" ng-options="type as type for type in types">
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Product Description</label>
+                <textarea class="form-control" rows="3" ng-model="product.description"></textarea>
+            </div>
+            <button class="btn btn-primary" ng-click="save(product)">Save</button>
+            <button class="btn btn-primary" ng-click="reset()">Reset</button>
+        </form>
     </div>
-
     <div zr-panel title="Define format of the product" col-lg="6" ng-switch on="product.type">
         <div ng-switch-when="simple">The product is exist outside the tool.</div>
-        <div zr-document ng-switch-when="document" data="product.document"></div>
-        <div ng-switch-when="json">json</div>
+        <div zr-document ng-switch-when="treeDocument" data="product.data"></div>
+        <div zr-list ng-switch-when="document" data="product.data">json</div>
+        <div ng-switch-when="json"><textarea class="col-lg-12" rows="10" ng-model="product.data"></textarea></div>
+        <div zr-file ng-switch-when="file" data="product.data"></div>
         <div ng-switch-default></div>
     </div>
 </div>
+<pre>{{product|json}}</pre>

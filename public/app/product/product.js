@@ -38,7 +38,14 @@ app.config(function($stateProvider, $urlRouterProvider){
             controller:function($scope,$state,f,ProductService,types,productListRef){
                 $scope.types=types;
                 $scope.product={type:"simple"};
+                $scope.$watch('product.type',
+                    function(newVal, oldVal) {
+                        $scope.product.data=null;
+                    });
                 $scope.create=function(){
+                    if($scope.product.type==='json'){
+                        $scope.product.data=JSON.parse($scope.product.data);
+                    }
                     f.add(productListRef,$scope.product).then(function() {
                         $state.go("^", {}, {reload: true});
                     });
@@ -47,39 +54,42 @@ app.config(function($stateProvider, $urlRouterProvider){
         })
         .state('product.edit', {
             url: "/product/edit/:id",
-            views:{
-                'main@':{
-                    templateUrl: "app/product/editProduct.html",
-                    resolve:{
-                        product:function(ProductService,$stateParams){
-                            return ProductService.find($stateParams.id);
-                        },
-                        types:function(EnumService){
-                            return EnumService.getProductTypes();
-                        }
-                    },
-                    controller:function($scope,$stateParams,$state,ProductService,product,types){
-                        $scope.types=types;
-                        $scope.product=product;
-                        $scope.newField={};
-                        $scope.save=function(){
-                           ProductService.update($stateParams.id,$scope.product);
-                            $state.go("^",{},{reload:true});
-
-                        };
-                        $scope.remove=function(field){
-                            $scope.product.fields= _.filter($scope.product.fields,function(obj){
-                                return field!=obj;
-                            });
-                        };
-                        $scope.addField=function(){
-                            if(_.isUndefined($scope.product.fields)){
-                                $scope.product.fields=[];
-                            }
-                            $scope.product.fields.push($scope.newField);
-                            $scope.newField={};
-                        };
+            templateUrl: "app/product/editProduct.html",
+            resolve:{
+                product:function(productListRef,$stateParams){
+                    return productListRef.$getRecord($stateParams.id);
+                },
+                types:function(EnumService){
+                    return EnumService.getProductTypes();
+                }
+            },
+            controller:function($scope,$stateParams,f,$state,ProductService,productListRef,product,types){
+                function init(){
+                    $scope.product= f.copy(product);
+                    if($scope.product.type==='json'){
+                        $scope.product.data=JSON.stringify($scope.product.data);
                     }
+                };
+                init();
+                $scope.types=types;
+                $scope.$watch('product.type',
+                    function(newVal, oldVal) {
+                        if(newVal===oldVal){
+                            return;
+                        }
+                        $scope.product.data=null;
+                    });
+                $scope.reset= function(){
+                    init();
+                };
+                $scope.save= function(item){
+                    if($scope.product.type==='json'){
+                        $scope.product.data=JSON.parse($scope.product.data);
+                    }
+                    ProductService.save(productListRef,product,item).then(function(){
+
+                        $state.go("^", {}, {reload: true});
+                    });
                 }
             }
         });
@@ -235,21 +245,37 @@ app.directive('zrFile',function(){
             data:'='
         },
         controller: function ($scope,FileUploader) {
+            if(!$scope.data){
+                $scope.data=[];
+            }
             $scope.uploader=new FileUploader({
                 url: 'upload'
             });
+            $scope.oldData=[];
+            $scope.$watch('data',
+                function(newVal, oldVal) {
+                    $scope.oldData= _.filter($scope.data,function(d){
+                        return !_.contains(_.pluck($scope.uploader.queue,'path'), d.path);
+                    });
+                });
             $scope.remove=function(item){
-                console.log(item);
-                item.remove();
+                $scope.data=_.filter($scope.data,function(d){
+                    if(d.path===item.path){
+                        return false;
+                    }
+                    return true;
+                });
+                if(item.remove){
+                    item.remove();
+                }
             };
             $scope.uploader.onCompleteItem = function(fileItem, response, status, headers) {
-                console.info('onCompleteItem', fileItem, response, status, headers);
+//                console.info('onCompleteItem', fileItem, response, status, headers);
                 if(response&&response[0]){
                     fileItem.originalFilename=response[0].originalFilename;
-                    fileItem.path=response[0].path;
+                    fileItem.path=response[0].path.replace("public\\","");
                 }
-                console.log(response);
-
+                $scope.data.push({path:fileItem.path,name:fileItem.originalFilename});
             };
         }
     };

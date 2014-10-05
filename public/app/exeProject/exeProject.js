@@ -23,14 +23,7 @@ app.config(function($stateProvider){
             },
             controller:function($scope,$state,$stateParams,f,activityListRef){
                 $scope.activityList= f.copy(activityListRef);
-                $scope.selected={};
-                $scope.select= function(item){
-                    $scope.selected=item;
-                };
                 $scope.enterProcess=function(item){
-                    if(_.isEmpty(item)){
-                        return;
-                    }
                     $state.go("main.project.activity",{activityId:item.$id});
                 };
             }
@@ -330,6 +323,10 @@ app.factory('ExeProjectService', function(f) {
                 return undefined;
             }
             return f.ref("/project/"+projectId+"/exeProducts").$asArray().$loaded();
+        },
+        saveProductData:function(refs,oldRef,newData){
+            oldRef.data=newData;
+            return refs.$save(oldRef);
         },
         getBaseUrl:function(){
             return baseUrl;

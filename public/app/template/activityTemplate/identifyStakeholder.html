@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="well">
+        <h1>The activity's name is {{activity.name}}</h1>
+        <h2 ng-show="activity.description">The activity is using for: {{activity.description}}</h2>
+    </div>
+    <div class="row">
+        <accordion close-others="oneAtATime">
+            <accordion-group heading="Get Stakeholders from Inputs">
+                <div class="row" ng-hide="jsonInputs.length===0">
+                    <select ng-options="input as input.name for input in jsonInputs" ng-model="input"></select>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3" ng-repeat="input in fileInputs" ng-hide="fileInputs.length===0">
+                        <div class="panel panel-primary" >
+                            <div class="panel-heading">
+                                {{input.name}}
+                            </div>
+                            <div class="panel-body">
+                                You can download the file.
+                                <ol>
+                                    <li ng-repeat="file in input.data"><a href="{{file.path}}" download="{{file.name}}">{{file.name}}</a></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </accordion-group>
+            <accordion-group heading="Define Responsibilities" is-open="status.isFirstOpen">
+                <table class="table">
+                    <tr>
+                        <th>Stakeholder's Name</th>
+                        <th>Responsibilities</th>
+                        <th>Actions</th>
+                    </tr>
+                    <tr ng-repeat="item in data">
+                        <td><input type="text" ng-model="item.stakeholderName"/></td>
+                        <td><input type="text" ng-model="item.responsibilities"/></td>
+                        <td>
+                            <button type="button" class="btn btn-danger btn-xs" ng-click="remove($index)">
+                                <span class="glyphicon glyphicon-trash"></span> Del
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+                <input type="text" ng-model="newStakeholderName"/>
+                <button type="button" class="btn btn-success btn-xs" ng-click="add(newStakeholderName)">
+                    <span class="glyphicon glyphicon-off"></span> Add a stakeholder
+                </button>
+            </accordion-group>
+            <accordion-group heading="Generate Outputs">
+
+                <div class="row" ng-hide="jsonOutputs.length===0">
+                    <div class="col-lg-12">
+                        <select ng-options="item as item.name for item in jsonOutputs" ng-model="status.output"></select>
+                        <select ng-options="property as property for (property,value) in status.output.data" ng-model="status.outputProperty"></select>
+                        <button type="button" class="btn btn-primary btn-xs" ng-click="export()" ng-disabled="status.outputProperty==''">
+                            <span class="glyphicon glyphicon-off"></span> Export
+                        </button>
+                        <pre>{{status.output.data[status.outputProperty]|json}}</pre>
+                        <pre>{{status.output|json}}</pre>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3" ng-repeat="item in fileOutputs" ng-hide="fileOutputs.length===0">
+                        <div class="panel panel-primary" >
+                            <div class="panel-heading">
+                                {{item.name}}
+                            </div>
+                            <div class="panel-body">
+                                You can download the file.
+                                <ol>
+                                    <li ng-repeat="file in item.data"><a href="{{file.path}}" download="{{file.name}}">{{file.name}}</a></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </accordion-group>
+        </accordion>
+    </div>
+</div>

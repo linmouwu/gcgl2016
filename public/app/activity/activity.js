@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2014/7/23.
  */
-var app=angular.module("gcgl2016.activity",['gcgl2016.firebase','ngGrid']);
+var app=angular.module("gcgl2016.activity",['gcgl2016.firebase']);
 
 app.config(function($stateProvider, $urlRouterProvider){
 
@@ -158,7 +158,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                     $scope.activity.tags= f.toIds($scope.activity.tags);
                     $scope.activity.inputs= f.toIds($scope.activity.inputs);
                     $scope.activity.outputs= f.toIds($scope.activity.outputs);
-                    ActivtyService.save(activityListRef,$scope.activity).then(function(){
+                    ActivityService.save(activityListRef,activityListRef.$getRecord($scope.activity.$id),$scope.activity).then(function(){
                         $state.go("^",{},{reload:true});
                     });
                 };
