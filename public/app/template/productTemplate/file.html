@@ -1,0 +1,33 @@
+<div class="well well-lg">
+    <h2>Product name : {{product.name}}</h2>
+    <h3>Product description : {{product.description}}</h3>
+    <h3>Product type : {{product.type}}</h3>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary" >
+            <div class="panel-heading">
+                The files
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <th>File name</th>
+                        <th>Actions</th>
+                    </tr>
+                    <tr ng-repeat="file in product.data">
+                        <td>{{file.name}}</td>
+                        <td>
+                            <a href="{{file.path}}" download="{{file.name}}">
+                                <button type="button" class="btn btn-primary btn-xs">
+                                    <span class="glyphicon glyphicon-save"></span> Download
+                                </button>
+                            </a>
+                            <input type="file" nv-file-select uploader="uploader"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

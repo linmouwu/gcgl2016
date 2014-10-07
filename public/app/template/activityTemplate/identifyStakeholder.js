@@ -21,6 +21,14 @@ app.config(function($stateProvider) {
                 $scope.fileInputs= _.filter(activityWithProducts.inputs,function(item){
                     return item.type=='file';
                 });
+                $scope.status.input={};
+                $scope.status.inputProperty=""
+                $scope.$watch('status.input',function(){
+                    $scope.status.inputProperty=""
+                });
+                $scope.import=function(){
+                    $scope.data=$scope.data.concat($scope.status.input.data[$scope.status.inputProperty]);
+                };
 
                 //var of output
                 $scope.jsonOutputs= _.filter(activityWithProducts.outputs,function(item){
@@ -40,39 +48,14 @@ app.config(function($stateProvider) {
                 };
 
 
-
-
-                $scope.propertyDetail=[];
-                $scope.input={};
-                $scope.$watch("input",function(newVal,oldVal){
-                    $scope.inputProperties
-                })
-                $scope.showInputProperties=function(input){
-                    $scope.input=input;
-                };
-                $scope.showPropertyDetail=function(which,property){
-                    $scope.propertyDetail=$scope[property];
-                };
-                $scope.importToData=function(property){
-                    $scope.data=$scope.data.concat($scope.input[property]);
-                };
                 //var of core
                 $scope.data=[];
                 $scope.remove=function(index){
                     $scope.data.splice(index,1);
                 };
-                $scope.add=function(name){
-                    $scope.data.push({stakeholderName:name});
-                    name="";
-                };
-                //var of output
-
-                $scope.output={};
-                $scope.showOutputProperties=function(output){
-                    $scope.output=output;
-                };
-                $scope.importToData=function(property){
-                    $scope.output[property]=$scope.data;
+                $scope.add=function(){
+                    $scope.data.push({stakeholderName:$scope.status.newStakeholderName});
+                    $scope.status.newStakeholderName="";
                 };
             }
         });
