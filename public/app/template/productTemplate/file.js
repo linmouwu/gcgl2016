@@ -13,7 +13,7 @@ app.config(function($stateProvider) {
                     return productListRef.$getRecord($stateParams.productId);
                 }
             },
-            controller: function ($scope,FileUploader,product) {
+            controller: function ($scope,FileUploader,productListRef,product) {
                 $scope.uploader=new FileUploader({
                     url: 'upload'
                 });
@@ -24,8 +24,16 @@ app.config(function($stateProvider) {
                         fileItem.originalFilename=response[0].originalFilename;
                         fileItem.path=response[0].path.replace("public\\","");
                     }
-                    $scope.data.push({path:fileItem.path,name:fileItem.originalFilename});
+                    $scope.product.data.push({path:fileItem.path,name:fileItem.originalFilename});
+                    productListRef.$save($scope.product);
                 };
+                $scope.uploader.onAfterAddingFile = function(fileItem, response, status, headers) {
+                    fileItem.upload();
+                };
+                $scope.removeFile=function(index){
+                    $scope.product.data.splice(index,1);
+                    productListRef.$save($scope.product);
+                }
 
             }
         });

@@ -40,7 +40,7 @@ app.config(function($stateProvider) {
                 $scope.status.output={};
                 $scope.status.outputProperty=""
                 $scope.$watch('status.output',function(){
-                    $scope.status.outputProperty=""
+                    $scope.status.outputProperty="";
                 });
                 $scope.export=function(){
                     $scope.status.output.data[$scope.status.outputProperty]=$scope.data;

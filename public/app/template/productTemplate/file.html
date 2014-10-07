@@ -23,10 +23,17 @@
                                     <span class="glyphicon glyphicon-save"></span> Download
                                 </button>
                             </a>
-                            <input type="file" nv-file-select uploader="uploader"/>
+                            <button type="button" class="btn btn-danger btn-xs" ng-click="removeFile($index)">
+                                <span class="glyphicon glyphicon-trash"></span> Del
+                            </button>
                         </td>
                     </tr>
                 </table>
+                <div class="panel panel-footer">
+                    <div>
+                        <input type="file" nv-file-select uploader="uploader" class="btn btn-default"/>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
