@@ -6,6 +6,16 @@ var app=angular.module("gcgl2016.tag",[]);
 app.config(function($stateProvider, $urlRouterProvider) {
 
     $stateProvider
+        .state('tag',{
+            url:"/tag",
+            templateUrl:"app/tag/tag.html",
+            resolve:{
+
+            },
+            controller:function(){
+
+            }
+        })
         .state('activity.createTag', {
             url: "/createTag",
             templateUrl: "app/tag/createTag.html",

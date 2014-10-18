@@ -1,0 +1,87 @@
+<div ui-view>
+    <zr-header title="Process Management"></zr-header>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Tag List <button class="btn btn-success">Add</button>
+                </div>
+                <div class="panel-body">
+                    Put the list in here.
+                </div>
+            </div>
+            <div zr-panel title="Activity List">
+                <table class="table">
+                    <tr>
+                        <th>Activity Name</th>
+                        <th>Description</th>
+                        <th>Features</th>
+                        <th>Tags</th>
+                        <th>Inputs</th>
+                        <th>Outputs</th>
+                        <th>Actions</th>
+                    </tr>
+                    <tr ng-repeat="(key,item) in activityList">
+                        <td>{{item.name}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{item.features}}</td>
+                        <td>{{item.tags}}</td>
+                        <td>{{item.inputs}}</td>
+                        <td>{{item.outputs}}</td>
+                        <td nowrap>
+                            <button type="button" class="btn btn-warning btn-xs" ui-sref="activity.edit({id:item.$id})">
+                                <span class="glyphicon glyphicon-edit"></span> Edit
+                            </button>
+                            <button type="button" class="btn btn-danger btn-xs" ng-click="removeActivity(item)">
+                                <span class="glyphicon glyphicon-trash"></span> Del
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div zr-panel title="Tag List">
+                <table class="table">
+                    <tr>
+                        <th>Tag Name</th>
+                        <th>Description</th>
+                        <th>Opt</th>
+                    </tr>
+                    <tr ng-repeat="item in tagList">
+                        <td>{{item.name}}</td>
+                        <td>{{item.description}}</td>
+                        <td nowrap>
+                            <button type="button" class="btn btn-warning btn-xs" ui-sref="activity.editTag({id:item.$id})">
+                                <span class="glyphicon glyphicon-edit"></span> Edit
+                            </button>
+                            <button type="button" class="btn btn-danger btn-xs" ng-click="removeTag(item)">
+                                <span class="glyphicon glyphicon-trash"></span> Del
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div zr-panel title="Feature List">
+                <table class="table">
+                    <tr>
+                        <th>Feature Name</th>
+                        <th>Description</th>
+                        <th>Opt</th>
+                    </tr>
+                    <tr ng-repeat="item in featureList">
+                        <td>{{item.name}}</td>
+                        <td>{{item.description}}</td>
+                        <td nowrap>
+                            <button type="button" class="btn btn-warning btn-xs" ui-sref="activity.edit({id:item.$id})">
+                                <span class="glyphicon glyphicon-edit"></span> Edit
+                            </button>
+                            <button type="button" class="btn btn-danger btn-xs" ng-click="removeFeature(item)">
+                                <span class="glyphicon glyphicon-trash"></span> Del
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
