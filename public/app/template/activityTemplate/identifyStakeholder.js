@@ -44,7 +44,7 @@ app.config(function($stateProvider) {
                 });
                 $scope.export=function(){
                     $scope.status.output.data[$scope.status.outputProperty]=$scope.data;
-                    ExeProjectService.saveProductData(productListRef,productListRef.$getRecord($scope.status.output.$id),$scope.status.output.data[$scope.status.outputProperty]);
+                    ExeProjectService.saveProductData(productListRef,productListRef.$getRecord($scope.status.output.$id),$scope.status.output.data);
                 };
 
 
