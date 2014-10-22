@@ -62,7 +62,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 };
             },
             data: {
-                displayName: 'Create Tag'
+                displayName: 'Edit Tag'
             }
         });
 });
