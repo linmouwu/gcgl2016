@@ -10,14 +10,26 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url:"/tag",
             templateUrl:"app/tag/tag.html",
             resolve:{
-
+                tagListRef:function(TagService){
+                    return TagService.getRefArray();
+                }
             },
-            controller:function(){
+            controller:function($scope,$state,$stateParams,f,tagListRef){
+                $scope.tagList=tagListRef;
+                $scope.remove=function(item){
+                    f.remove(tagListRef,item).then(function(){
+                        $state.transitionTo($state.current, $stateParams, {
+                            reload: true,
+                            inherit: false,
+                            notify: true
+                        });
+                    });
+                };
 
             }
         })
-        .state('activity.createTag', {
-            url: "/createTag",
+        .state('tag.create', {
+            url: "/create",
             templateUrl: "app/tag/createTag.html",
             resolve: {
             },
@@ -25,7 +37,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 $scope.tag = {};
                 $scope.create=function(){
                     f.add(tagListRef,$scope.tag).then(function(){
-                        $state.go("activity",{},{reload:true});
+                        $state.go("^",{},{reload:true});
                     });
                 };
             },
@@ -33,8 +45,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 displayName: 'Create Tag'
             }
         })
-        .state('activity.editTag', {
-            url: "/editTag/:id",
+        .state('tag.edit', {
+            url: "/edit/:id",
             templateUrl: "app/tag/editTag.html",
             resolve: {
                 tag:function(tagListRef,$stateParams){
@@ -45,7 +57,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 $scope.tag = f.copy(tag);
                 $scope.save=function(item){
                     TagService.save(tagListRef,tag,item).then(function(){
-                        $state.go("activity",{},{reload:true});
+                        $state.go("^",{},{reload:true});
                     });
                 };
             },

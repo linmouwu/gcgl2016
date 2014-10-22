@@ -12,15 +12,15 @@
                 <div panel-body>
                     <table class="table">
                         <tr>
-                        <th>Project Name</th>
-                        <th>Project Status</th>
-                        <th>Selected Activities</th>
-                        <th>Actions</th>
+                            <th>Project Name</th>
+                            <th>Project Status</th>
+                            <th>Selected Activities</th>
+                            <th>Actions</th>
                         </tr>
                         <tr ng-repeat="project in projectList">
-                        <td>{{project.name}}</td>
-                        <td>{{project.status}}</td>
-                        <td>{{project.activities.length}}</td>
+                            <td>{{project.name}}</td>
+                            <td>{{project.status}}</td>
+                            <td>{{project.activities.length}}</td>
                             <td>
                                 <button type="button" class="btn btn-success btn-xs" ng-click="start(project)">
                                     <span class="glyphicon glyphicon-off"></span> Start
