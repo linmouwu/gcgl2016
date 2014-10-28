@@ -64,6 +64,26 @@ app.config(function($stateProvider, $urlRouterProvider) {
             data: {
                 displayName: 'Edit Tag'
             }
+        })
+        .state('tag.filter', {
+            url: "/filter/:id",
+            templateUrl: "app/tag/filterTag.html",
+            resolve: {
+                activityListRef:function(ActivityService){
+                    return ActivityService.getRefArray();
+                }
+            },
+            controller: function ($scope,$stateParams,activityListRef,f) {
+//                $scope.tag = f.copy(tag);
+                $scope.activityListRef = f.copy(activityListRef);
+                $scope.activityFilter = _.filter($scope.activityListRef,function(item) {
+                    return _.contains(item.tags, $stateParams.id);
+                });
+//                $scope.activityListFilter = activityListWithFull;
+            },
+            data: {
+                displayName: 'Filter Tag'
+            }
         });
 });
 
