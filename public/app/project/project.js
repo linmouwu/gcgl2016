@@ -211,6 +211,9 @@ app.config(function($stateProvider, $urlRouterProvider){
                 activityListRef:function(ActivityService){
                     return ActivityService.getRefArray();
                 },
+                exeActivityListRef:function(ActivityService,project){
+                    return ActivityService.getRefArrayExe(project.$id);
+                },
                 tagListRef:function(TagService){
                     return TagService.getRefArray();
                 },
@@ -218,17 +221,16 @@ app.config(function($stateProvider, $urlRouterProvider){
                     return FeatureService.getRefArray();
                 }
             },
-            controller:function($scope,$state,f,project,activityListRef,tagListRef,featureListRef,projectListRef){
+            controller:function($scope,$state,f,project,activityListRef,exeActivityListRef,tagListRef,featureListRef,projectListRef){
                 $scope.project=project;
-                $scope.projectList=[];
-                $scope.activityList= f.copy(activityListRef);
+                $scope.exeActivityList= f.copy(exeActivityListRef);
                 $scope.tagList= f.copy(tagListRef);
-                $scope.featureList= f.copy(featureListRef);
-                _.each($scope.activityList,function(activity){
-                    if(_.contains($scope.project.activities,activity.$id)){
-                        activity.select=true;
-                    }
-                });
+//                $scope.featureList= f.copy(featureListRef);
+//                _.each($scope.activityList,function(activity){
+//                    if(_.contains($scope.project.activities,activity.$id)){
+//                        activity.select=true;
+//                    }
+//                });
                 $scope.selectTag=function(item){
                     item.select=true;
                     var tagId=item.$id;
@@ -243,24 +245,6 @@ app.config(function($stateProvider, $urlRouterProvider){
                     var tagId=item.$id;
                     _.each($scope.activityList,function(activity){
                         if(_.contains(activity.tags,tagId)){
-                            activity.select=false;
-                        }
-                    });
-                };
-                $scope.selectFeature=function(item){
-                    item.select=true;
-                    var featureId=item.$id;
-                    _.each($scope.activityList,function(activity){
-                        if(_.contains(activity.features,featureId)){
-                            activity.select=true;
-                        }
-                    });
-                };
-                $scope.unselectFeature=function(item){
-                    item.select=false;
-                    var featureId=item.$id;
-                    _.each($scope.activityList,function(activity){
-                        if(_.contains(activity.features,featureId)){
                             activity.select=false;
                         }
                     });

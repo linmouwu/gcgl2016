@@ -1,72 +1,79 @@
-<zr-header title="Process Selection"></zr-header>
-<div class="row">
-    <div zr-panel="" col-lg="6">
-        <div class="well">
-            <h1>
-                Project Name: {{project.name}}
-            </h1>
-            <p>
-                {{project.description}}
-            </p>
-        </div>
-        <div class="well">
-            <table class="table">
-                <tr>
-                    <th>Name</th>
-                    <th>Opt</th>
-                </tr>
-                <tr ng-repeat="item in activityList" ng-show="item.select">
-                    <td>{{item.name}}</td>
-                    <td><button class="btn btn-danger" ng-click="unselectActivity(item)">Unselect</button></td>
-                </tr>
-            </table>
-        </div>
-            <button class="btn btn-success btn-block" ng-click="save(project)">Save</button>
-    </div>
-    <div zr-panel="" col-lg="6">
-        <div zr-panel title="Select By Tag">
-            <table class="table">
-                <tr>
-                    <th>Name</th>
-                    <th>Opt</th>
-                </tr>
-                <tr ng-repeat="item in tagList">
-                    <td>{{item.name}}</td>
-                    <td>
-                        <button ng-hide="item.select" class="btn btn-success" ng-click="selectTag(item)">Select</button>
-                        <button ng-show="item.select" class="btn btn-success" ng-click="unselectTag(item)">Unselect</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div zr-panel title="Select By Feature">
+<zr-header title="Project : {{project.name}}"></zr-header>
+<tabset>
+    <tab heading="Select Activities">
 
-            <table class="table">
-                <tr>
-                    <th>Name</th>
-                    <th>Opt</th>
-                </tr>
-                <tr ng-repeat="item in featureList">
-                    <td>{{item.name}}</td>
-                    <td>
-                        <button ng-hide="item.select" class="btn btn-success" ng-click="selectFeature(item)">Select</button>
-                        <button ng-show="item.select" class="btn btn-success" ng-click="unselectFeature(item)">Unselect</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div zr-panel title="Select Activity">
+        <div class="row">
 
-            <table class="table">
-                <tr>
-                    <th>Name</th>
-                    <th>Opt</th>
-                </tr>
-                <tr ng-repeat="item in activityList" ng-hide="item.select">
-                    <td>{{item.name}}</td>
-                    <td><button class="btn btn-success" ng-click="selectActivity(item)">Select</button></td>
-                </tr>
-            </table>
+            <div zr-panel title="Selected Activity" col-lg="12">
+                <div class="row">
+                    <div class="col-lg-5">Activities in Project</div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-5">Activities in Asset</div>
+                </div>
+                <div class="row" ng-repeat="item in exeActivityList">
+                    <div class="col-lg-5"><pre>{{item}}</pre></div>
+                    <div class="col-lg-1">
+                        <button class="btn btn-primary">Update</button>
+                        <button class="btn btn-danger">Remove</button>
+                    </div>
+                    <div class="col-lg-5"><pre>{{item.activityId}}</pre></div>
+                </div>
+                    <!--<tr>-->
+                        <!--<th>Name</th>-->
+                        <!--<th>Tags</th>-->
+                        <!--<th>Action</th>-->
+                    <!--</tr>-->
+                    <!--<tr ng-repeat="item in activityList" ng-hide="item.select">-->
+                        <!--<td>{{item.name}}</td>-->
+                        <!--<td>{{item.tags}}</td>-->
+                        <!--<td>-->
+                            <!--<button class="btn btn-success" ng-click="selectActivity(item)" ng-hide="item.select">Select</button>-->
+                            <!--<button class="btn btn-danger" ng-click="unselectActivity(item)" ng-show="item.select">Unselect</button>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+            </div>
+            <div zr-panel="" col-lg="6">
+                <div class="well">
+                    <h1>
+                        Project Name: {{project.name}}
+                    </h1>
+                    <p>
+                        {{project.description}}
+                    </p>
+                </div>
+                <div class="well">
+                    <table class="table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Opt</th>
+                        </tr>
+                        <tr ng-repeat="item in activityList" ng-show="item.select">
+                            <td>{{item.name}}</td>
+                            <td><button class="btn btn-danger" ng-click="unselectActivity(item)">Unselect</button></td>
+                        </tr>
+                    </table>
+                </div>
+                <button class="btn btn-success btn-block" ng-click="save(project)">Save</button>
+            </div>
+            <div zr-panel="" col-lg="6">
+                <div zr-panel title="Select By Tag">
+                    <table class="table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Opt</th>
+                        </tr>
+                        <tr ng-repeat="item in tagList">
+                            <td>{{item.name}}</td>
+                            <td>
+                                <button ng-hide="item.select" class="btn btn-success" ng-click="selectTag(item)">Select</button>
+                                <button ng-show="item.select" class="btn btn-success" ng-click="unselectTag(item)">Unselect</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    </tab>
+    <tab heading="Select Features">Static content</tab>
+    <tab heading="Select Tool">Static content</tab>
+</tabset>
