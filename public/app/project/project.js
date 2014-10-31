@@ -211,8 +211,8 @@ app.config(function($stateProvider, $urlRouterProvider){
                 activityListRef:function(ActivityService){
                     return ActivityService.getRefArray();
                 },
-                exeActivityListRef:function(ActivityService,project){
-                    return ActivityService.getRefArrayExe(project.$id);
+                activityDataListRef:function(ActivityService,project){
+                    return ActivityService.getActivityDataRef(project.$id);
                 },
                 tagListRef:function(TagService){
                     return TagService.getRefArray();
@@ -221,10 +221,40 @@ app.config(function($stateProvider, $urlRouterProvider){
                     return FeatureService.getRefArray();
                 }
             },
-            controller:function($scope,$state,f,project,activityListRef,exeActivityListRef,tagListRef,featureListRef,projectListRef){
+            controller:function($scope,$state,f,project,activityListRef,activityDataListRef,tagListRef,featureListRef,projectListRef){
                 $scope.project=project;
-                $scope.exeActivityList= f.copy(exeActivityListRef);
-                $scope.tagList= f.copy(tagListRef);
+                $scope.activityList= f.copy(activityListRef);
+                $scope.activityDataList= [];
+                var selectedIds= _.pluck(activityDataListRef,"activityId");
+                _.each($scope.activityList,function(activity){
+                    if(_.contains(selectedIds,activity.$id)){
+                        activity.select=true;
+                        $scope.activityDataList.push(activity);
+                    }
+                });
+
+
+                $scope.selectActivity=function(item){
+                    $scope.activityDataList.push(item);
+                    item.select=true;
+                };
+                $scope.unselectActivity=function(item){
+                    $scope.activityDataList= _.without($scope.activityDataList,item);
+                    item.select=false;
+                };
+                $scope.saveActivity=function(){
+                    var activityDataActivityIds=_.pluck(activityDataListRef,"activityId");
+                    var activityIds= _.pluck($scope.activityDataList,"$id");
+                    var newIds= _.difference(activityIds,activityDataActivityIds);
+                    var delIds=_.difference(activityDataActivityIds,activityIds);
+                    _.each(delIds,function(id){
+                        f.removeById(activityDataListRef,id);
+                    });
+                    _.each(newIds,function(id){
+                        var item={activityId:id};
+                        f.add(activityDataListRef,item);
+                    });
+                };
 //                $scope.featureList= f.copy(featureListRef);
 //                _.each($scope.activityList,function(activity){
 //                    if(_.contains($scope.project.activities,activity.$id)){
@@ -248,12 +278,6 @@ app.config(function($stateProvider, $urlRouterProvider){
                             activity.select=false;
                         }
                     });
-                };
-                $scope.selectActivity=function(item){
-                    item.select=true;
-                };
-                $scope.unselectActivity=function(item){
-                    item.select=false;
                 };
 
 

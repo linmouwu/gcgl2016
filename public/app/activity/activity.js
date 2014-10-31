@@ -214,8 +214,8 @@ app.factory('ActivityService', function(f,$q) {
         getRefArray:function(){
             return f.ref("/activity").$asArray().$loaded();
         },
-        getRefArrayExe:function(projectId){
-            return f.ref("/project/"+projectId+"/exeActivity").$asArray().$loaded();
+        getActivityDataRef:function(projectId){
+            return f.ref("/project/"+projectId+"/activityData").$asArray().$loaded();
         },
         save:function(refs,oldItem,newItem){
             if(_.isUndefined(refs)||!refs.hasOwnProperty('$save')){
