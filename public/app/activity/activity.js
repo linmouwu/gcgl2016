@@ -59,7 +59,7 @@ app.config(function($stateProvider, $urlRouterProvider){
                 };
             },
             data: {
-                displayName: 'Process Management'
+                displayName: 'activity'
             }
         })
         .state('activity.create',{
