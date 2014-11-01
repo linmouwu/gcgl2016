@@ -24,6 +24,9 @@
                                 <button type="button" class="btn btn-danger btn-xs" ng-click="remove(tag)">
                                     <span class="glyphicon glyphicon-trash"></span> Del
                                 </button>
+                                <button type="button" class="btn btn-info btn-xs" ui-sref="tag.filter({id:tag.$id})">
+                                    <span class="glyphicon glyphicon-flag"></span> Filter
+                                </button>
                             </td>
                         </tr>
                     </table>
