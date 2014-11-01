@@ -312,18 +312,6 @@ app.factory('ExeProjectService', function(f) {
 
     //Public Method
     var exeProjectService = {
-        getActivityRefList:function(projectId){
-            if(_.isUndefined(projectId)){
-                return undefined;
-            }
-            return f.ref("/project/"+projectId+"/exeActivities").$asArray().$loaded();
-        },
-        getProductRefList:function(projectId){
-            if(_.isUndefined(projectId)){
-                return undefined;
-            }
-            return f.ref("/project/"+projectId+"/exeProducts").$asArray().$loaded();
-        },
         saveProductData:function(refs,oldRef,newData){
             oldRef.data=newData;
             return refs.$save(oldRef);

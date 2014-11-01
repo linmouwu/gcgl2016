@@ -211,6 +211,9 @@ app.config(function($stateProvider, $urlRouterProvider){
                 activityListRef:function(ActivityService){
                     return ActivityService.getRefArray();
                 },
+                activityDataListRef:function(ActivityService,project){
+                    return ActivityService.getActivityDataRef(project.$id);
+                },
                 tagListRef:function(TagService){
                     return TagService.getRefArray();
                 },
@@ -218,17 +221,46 @@ app.config(function($stateProvider, $urlRouterProvider){
                     return FeatureService.getRefArray();
                 }
             },
-            controller:function($scope,$state,f,project,activityListRef,tagListRef,featureListRef,projectListRef){
+            controller:function($scope,$state,f,project,activityListRef,activityDataListRef,tagListRef,featureListRef,projectListRef){
                 $scope.project=project;
-                $scope.projectList=[];
                 $scope.activityList= f.copy(activityListRef);
-                $scope.tagList= f.copy(tagListRef);
-                $scope.featureList= f.copy(featureListRef);
+                $scope.activityDataList= [];
+                var selectedIds= _.pluck(activityDataListRef,"activityId");
                 _.each($scope.activityList,function(activity){
-                    if(_.contains($scope.project.activities,activity.$id)){
+                    if(_.contains(selectedIds,activity.$id)){
                         activity.select=true;
+                        $scope.activityDataList.push(activity);
                     }
                 });
+
+
+                $scope.selectActivity=function(item){
+                    $scope.activityDataList.push(item);
+                    item.select=true;
+                };
+                $scope.unselectActivity=function(item){
+                    $scope.activityDataList= _.without($scope.activityDataList,item);
+                    item.select=false;
+                };
+                $scope.saveActivity=function(){
+                    var activityDataActivityIds=_.pluck(activityDataListRef,"activityId");
+                    var activityIds= _.pluck($scope.activityDataList,"$id");
+                    var newIds= _.difference(activityIds,activityDataActivityIds);
+                    var delIds=_.difference(activityDataActivityIds,activityIds);
+                    _.each(delIds,function(id){
+                        f.removeById(activityDataListRef,id);
+                    });
+                    _.each(newIds,function(id){
+                        var item={activityId:id};
+                        f.add(activityDataListRef,item);
+                    });
+                };
+//                $scope.featureList= f.copy(featureListRef);
+//                _.each($scope.activityList,function(activity){
+//                    if(_.contains($scope.project.activities,activity.$id)){
+//                        activity.select=true;
+//                    }
+//                });
                 $scope.selectTag=function(item){
                     item.select=true;
                     var tagId=item.$id;
@@ -246,30 +278,6 @@ app.config(function($stateProvider, $urlRouterProvider){
                             activity.select=false;
                         }
                     });
-                };
-                $scope.selectFeature=function(item){
-                    item.select=true;
-                    var featureId=item.$id;
-                    _.each($scope.activityList,function(activity){
-                        if(_.contains(activity.features,featureId)){
-                            activity.select=true;
-                        }
-                    });
-                };
-                $scope.unselectFeature=function(item){
-                    item.select=false;
-                    var featureId=item.$id;
-                    _.each($scope.activityList,function(activity){
-                        if(_.contains(activity.features,featureId)){
-                            activity.select=false;
-                        }
-                    });
-                };
-                $scope.selectActivity=function(item){
-                    item.select=true;
-                };
-                $scope.unselectActivity=function(item){
-                    item.select=false;
                 };
 
 

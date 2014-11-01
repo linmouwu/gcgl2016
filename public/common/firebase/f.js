@@ -177,6 +177,12 @@ firebase.factory("f",function($firebase){
             }
             return ref.$remove(ref.$getRecord(item.$id));
         },
+        removeById:function(ref,id){
+            if(_.isUndefined(ref)|| _.isUndefined(id)||!ref.hasOwnProperty('$remove')){
+                return;
+            }
+            return ref.$remove(ref.$getRecord(id));
+        },
         list: function(refLoad){
             return refLoad.promise.then(function(data){
                 return firebaseService.copyList(data);
