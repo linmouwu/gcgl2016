@@ -111,30 +111,24 @@ app.config(function($stateProvider, $urlRouterProvider){
                 productListRef:function(ProductService){
                     return ProductService.getRefArray();
                 },
-                templateListRef:function(TemplateService){
-                    return TemplateService.getRefArray("product");
-                },
-                productListWithTemplate:function(f,productListRef,templateListRef){
-                    return _.map(f.copy(productListRef),function(product){
-                        product.template= f.extendSingle(product.template,templateListRef);
-                        return product;
-                    });
+                productToolListRef:function(ToolService){
+                    return ToolService.getRefArray("product");
                 }
             },
-            controller:function($scope,$state,$stateParams,f,productListRef,productListWithTemplate,templateListRef){
-                $scope.productList=productListWithTemplate;
-                $scope.templateList=templateListRef;
+            controller:function($scope,$state,$stateParams,f,productListRef,productToolListRef){
+                $scope.productList= f.copy(productListRef);
+                _.each($scope.productList,function(product){
+                    product.tool=productToolListRef.$getRecord(product.tool);
+                });
+                $scope.productToolList= f.copy(productToolListRef);
                 $scope.remove=function(template){
-                    f.remove(templateListRef,template).then(function(){
+                    f.remove(productToolListRef,template).then(function(){
                         $state.transitionTo($state.current, $stateParams, {
                             reload: true,
                             inherit: false,
                             notify: true
                         });
                     });
-                };
-                $scope.choose=function(product){
-                    $state.go("template.product.feature",{productId:product.$id});
                 };
             }
         })
@@ -146,43 +140,33 @@ app.config(function($stateProvider, $urlRouterProvider){
                     return EnumService.getProductTypes();
                 }
             },
-            controller:function($scope,$state,f,types,templateListRef){
-                $scope.template={};
+            controller:function($scope,$state,f,types,productToolListRef){
+                $scope.tool={};
                 $scope.types= types;
-                $scope.add=function(){
-                    f.add(templateListRef,$scope.template).then(function(){
+                $scope.add=function(item){
+                    f.add(productToolListRef,item).then(function(){
                         $state.go("^",{},{reload:true});
                     });
                 };
             }
         })
-        .state('tool.product.feature', {
+        .state('tool.product.select', {
             url: "/:productId",
-            templateUrl: "app/template/chooseProductTemplate.html",
+            templateUrl: "app/tool/selectProductTool.html",
             resolve:{
                 product:function($stateParams,productListRef){
                     return productListRef.$getRecord($stateParams.productId);
-                },
-                templateListFiltered:function(f,product,templateListRef){
-                    return _.filter(f.copy(templateListRef),function(template){
-                        if(template.type===product.type){
-                            return true;
-                        }
-                        if(!template.type){
-                            return true;
-                        }
-                        return false;
-                    });
                 }
             },
-            controller:function($scope,$state,f,productListRef,product,templateListFiltered){
-                $scope.selected={};
+            controller:function($scope,$state,f,productListRef,product,productToolListRef){
+                $scope.productToolList= _.filter(productToolListRef,function(tool){
+                    console.log(tool.type);
+                    console.log(product.type);
+                    return _.isEmpty(tool.type)||tool.type===product.type;
+                });
+
                 $scope.select=function(item){
-                    $scope.selected=item;
-                };
-                $scope.templateList=templateListFiltered;
-                $scope.choose=function(item){
-                    product.template= $scope.selected.$id;
+                    product.tool= item.$id;
                     f.save(productListRef,product).then(function(){
                         $state.go("^",{},{reload:true});
                     });
