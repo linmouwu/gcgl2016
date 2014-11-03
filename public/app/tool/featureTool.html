@@ -1,0 +1,38 @@
+<div ui-view>
+    <zr-header title="Tool for feature"></zr-header>
+    <div class="row">
+        <div zr-panel="" title="Feature List" col-lg="6">
+            <table class="table">
+                <tr>
+                    <th>Feature Name</th>
+                    <th>Tool Name</th>
+                    <th>Action</th>
+                </tr>
+                <tr ng-repeat="item in featureList">
+                    <td>{{item.name}}</td>
+                    <td>{{item.tool.name}}</td>
+                    <td>
+                        <button class="btn btn-primary" ui-sref="tool.feature.select({featureId:item.$id})">Select Tool</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div zr-panel title="Tool List" col-lg="6">
+            <table class="table">
+                <tr>
+                    <th>Tool Name</th>
+                    <th>Belong Feature</th>
+                    <th>Description</th>
+                    <th>Delete</th>
+                </tr>
+                <tr ng-repeat="item in featureToolList">
+                    <td>{{item.name}}</td>
+                    <td>{{item.feature.name}}</td>
+                    <td>{{item.description}}</td>
+                    <td><button class="btn btn-danger" ng-click="remove(item)">Del</button></td>
+                </tr>
+            </table>
+            <button class="btn btn-success" ui-sref="tool.feature.create">Add</button>
+        </div>
+    </div>
+</div>
