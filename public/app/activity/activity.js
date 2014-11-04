@@ -224,12 +224,12 @@ app.factory('ActivityService', function(f,$q) {
             var keys=[
                 'name',
                 'description',
+                'tailor',
                 'inputs',
                 'outputs',
                 'tags',
-                'features',
-                'fts',
-                'exeTemplates'];
+                'features'
+            ];
             _.each(keys,function(key){
                 if(_.isUndefined(newItem[key])){
                     oldItem[key]=null;

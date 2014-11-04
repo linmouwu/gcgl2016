@@ -13,6 +13,7 @@
                         <tr>
                             <th>Activity Name</th>
                             <th>Description</th>
+                            <th>Tailoring Criteria</th>
                             <th>Features</th>
                             <th>Tags</th>
                             <th>Inputs</th>
@@ -22,6 +23,7 @@
                         <tr ng-repeat="(key,item) in activityList">
                             <td>{{item.name}}</td>
                             <td>{{item.description}}</td>
+                            <td>{{item.tailor}}</td>
                             <td>{{item.features}}</td>
                             <td>{{item.tags}}</td>
                             <td>{{item.inputs}}</td>

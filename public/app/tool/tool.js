@@ -19,29 +19,9 @@ app.config(function($stateProvider, $urlRouterProvider){
                 featureListRef:function(FeatureService){
                     return FeatureService.getRefArray();
                 },
-//                activityListRef:function(ActivityService){
-//                    return ActivityService.getRefArray();
-//                },
                 featureToolListRef:function(ToolService){
                     return ToolService.getRefArray("feature");
                 }
-//                activityWithFeatureAndTemplate:function(activityListRef,featureToolListRef,templateListRef,f){
-//                    return _.map(f.copy(activityListRef),function(activity){
-//                        _.each(activity.fts,function(ft){
-//                            ft.feature= f.extendSingle(ft.feature,featureListRef);
-//                            ft.template= f.extendSingle(ft.template,templateListRef);
-//                        });
-//                        return activity;
-//                    });
-//                },
-//                templateWithFeature:function(TemplateService,f,templateListRef,featureListRef){
-//                    return _.map(f.copy(templateListRef),function(template){
-//                        console.log(template);
-//                        template.feature=f.extendSingle(template.feature,featureListRef);
-//                        console.log(template);
-//                        return template;
-//                    });
-//                }
             },
             controller:function($scope,$state,$stateParams,f,featureListRef,featureToolListRef){
                 $scope.featureList= f.copy(featureListRef);
@@ -52,20 +32,41 @@ app.config(function($stateProvider, $urlRouterProvider){
                 _.each($scope.featureToolList,function(tool){
                     tool.feature=featureListRef.$getRecord(tool.feature);
                 });
-//                $scope.activityList= activityWithFeatureAndTemplate;
-//                $scope.templateList=templateWithFeature;
-//                $scope.choose=function(activity,feature){
-//                    $state.go("template.activity.feature",{activityId:activity.$id,featureId:feature.$id});
-//                };
-//                $scope.remove=function(template){
-//                    f.remove(templateListRef,template).then(function(){
-//                        $state.transitionTo($state.current, $stateParams, {
-//                            reload: true,
-//                            inherit: false,
-//                            notify: true
-//                        });
-//                    });
-//                };
+                $scope.remove=function(item){
+                    f.remove(featureToolListRef,item).then(function(){
+                        $state.transitionTo($state.current, $stateParams, {
+                            reload: true,
+                            inherit: false,
+                            notify: true
+                        });
+                    });
+                }
+            }
+        })
+        .state('tool.feature.create', {
+            url: "/create",
+            templateUrl: "app/tool/createFeatureTool.html",
+            resolve:{
+            },
+            controller:function($scope,$state,f,featureToolListRef,featureListRef){
+                $scope.tool={};
+                $scope.featureList= f.copy(featureListRef);
+                $scope.addInput=function(item){
+                    if(_.isUndefined(item.inputs)){
+                        item.inputs=[];
+                    }
+                    item.inputs.push({});
+                };
+                $scope.removeInput=function(item){
+                    $scope.tool.inputs=$scope.tool.inputs.filter(function(input){
+                        return input===item;
+                    });
+                };
+                $scope.add=function(item){
+                    f.add(featureToolListRef,item).then(function(){
+                        $state.go("^",{},{reload:true});
+                    });
+                };
             }
         })
         .state('tool.feature.select', {
@@ -84,21 +85,6 @@ app.config(function($stateProvider, $urlRouterProvider){
                 $scope.select=function(item){
                     feature.tool=item.$id;
                     f.save(featureListRef,feature).then(function(){
-                        $state.go("^",{},{reload:true});
-                    });
-                };
-            }
-        })
-        .state('tool.feature.create', {
-            url: "/create",
-            templateUrl: "app/tool/createFeatureTool.html",
-            resolve:{
-            },
-            controller:function($scope,$state,f,featureToolListRef,featureListRef){
-                $scope.tool={};
-                $scope.featureList= f.copy(featureListRef);
-                $scope.add=function(item){
-                    f.add(featureToolListRef,item).then(function(){
                         $state.go("^",{},{reload:true});
                     });
                 };

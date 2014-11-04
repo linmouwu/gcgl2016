@@ -1,4 +1,4 @@
-<zr-header title="Create Activity Template"></zr-header>
+<zr-header title="Create Feature Tool"></zr-header>
 <div class="row">
     <div zr-panel title="Input template information" col-lg="6">
         <div zr-help="">
@@ -26,6 +26,29 @@
                 <select name="feature" class="form-control" ng-model="tool.feature" ng-options="feature.$id as feature.name for feature in featureList">
                     <option value="">----</option>
                 </select>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">Inputs<button class="btn btn-success" ng-click="addInput(tool)">Add</button></div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <th>Input Type</th>
+                            <th>Input Property</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr ng-repeat="item in tool.inputs">
+                            <td>
+                                <select ng-model="item.type" ng-options="type as type for type in types">
+                                    <option value="">----</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" ng-model="item.property"/>
+                            </td>
+                            <td><button class="btn btn-danger" ng-click="removeInput(item)">Remove</button></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
             <div class="form-group">
                 <label>Description</label>
