@@ -8,33 +8,37 @@
                     Activity List
                     <button class="btn btn-success" ui-sref="activity.create">Create Activity</button>
                 </div>
-                <table class="table">
-                    <tr>
-                        <th>Activity Name</th>
-                        <th>Description</th>
-                        <th>Features</th>
-                        <th>Tags</th>
-                        <th>Inputs</th>
-                        <th>Outputs</th>
-                        <th>Actions</th>
-                    </tr>
-                    <tr ng-repeat="(key,item) in activityList">
-                        <td>{{item.name}}</td>
-                        <td>{{item.description}}</td>
-                        <td>{{item.features}}</td>
-                        <td>{{item.tags}}</td>
-                        <td>{{item.inputs}}</td>
-                        <td>{{item.outputs}}</td>
-                        <td nowrap>
-                            <button type="button" class="btn btn-warning btn-xs" ui-sref="activity.edit({id:item.$id})">
-                                <span class="glyphicon glyphicon-edit"></span> Edit
-                            </button>
-                            <button type="button" class="btn btn-danger btn-xs" ng-click="removeActivity(item)">
-                                <span class="glyphicon glyphicon-trash"></span> Del
-                            </button>
-                        </td>
-                    </tr>
-                </table>
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <th>Activity Name</th>
+                            <th>Description</th>
+                            <th>Tailoring Criteria</th>
+                            <th>Features</th>
+                            <th>Tags</th>
+                            <th>Inputs</th>
+                            <th>Outputs</th>
+                            <th>Actions</th>
+                        </tr>
+                        <tr ng-repeat="(key,item) in activityList">
+                            <td>{{item.name}}</td>
+                            <td>{{item.description}}</td>
+                            <td>{{item.tailor}}</td>
+                            <td>{{item.features}}</td>
+                            <td>{{item.tags}}</td>
+                            <td>{{item.inputs}}</td>
+                            <td>{{item.outputs}}</td>
+                            <td nowrap>
+                                <button type="button" class="btn btn-warning btn-xs" ui-sref="activity.edit({id:item.$id})">
+                                    <span class="glyphicon glyphicon-edit"></span> Edit
+                                </button>
+                                <button type="button" class="btn btn-danger btn-xs" ng-click="removeActivity(item)">
+                                    <span class="glyphicon glyphicon-trash"></span> Del
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

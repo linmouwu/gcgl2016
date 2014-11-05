@@ -214,6 +214,12 @@ app.config(function($stateProvider, $urlRouterProvider){
                 activityDataListRef:function(ActivityService,project){
                     return ActivityService.getActivityDataRef(project.$id);
                 },
+                productListRef:function(ProductService){
+                    return ProductService.getRefArray();
+                },
+                productDataListRef:function(ProductService,project){
+                    return ProductService.getProductDataRef(project.$id);
+                },
                 tagListRef:function(TagService){
                     return TagService.getRefArray();
                 },
@@ -221,18 +227,36 @@ app.config(function($stateProvider, $urlRouterProvider){
                     return FeatureService.getRefArray();
                 }
             },
-            controller:function($scope,$state,f,project,activityListRef,activityDataListRef,tagListRef,featureListRef,projectListRef){
+            controller:function($scope,$state,f,project,activityListRef,activityDataListRef,productListRef,productDataListRef,tagListRef,featureListRef,projectListRef){
                 $scope.project=project;
                 $scope.activityList= f.copy(activityListRef);
                 $scope.activityDataList= [];
+                $scope.productList=[];
+                //prepare activities
                 var selectedIds= _.pluck(activityDataListRef,"activityId");
+                var productIds=[];
                 _.each($scope.activityList,function(activity){
                     if(_.contains(selectedIds,activity.$id)){
+                        productIds=productIds.concat(activity.inputs,activity.outputs);
                         activity.select=true;
                         $scope.activityDataList.push(activity);
                     }
                 });
-
+                //prepare products
+                productIds= _.uniq(_.compact(productIds));
+                var productList= f.extend(productIds,productListRef);
+                var productDataProductIds= _.pluck(productDataListRef,"productId");
+                _.each(productList,function(product){
+                    if(_.contains(productDataProductIds,product.$id)){
+                        $scope.productList.push(product);
+                    }
+                    else{
+                        var tmp={};
+                        tmp.productId=product.$id;
+                        f.add(productDataListRef,tmp);
+                        $scope.productList.push(product);
+                    }
+                });
 
                 $scope.selectActivity=function(item){
                     $scope.activityDataList.push(item);

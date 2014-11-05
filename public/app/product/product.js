@@ -289,6 +289,9 @@ app.factory('ProductService', function(f,$q) {
         getRefArrayExe:function(projectId){
             return f.ref('/project/'+projectId+'/exeProduct').$asArray().$loaded();
         },
+        getProductDataRef:function(projectId){
+            return f.ref('/project/'+projectId+'/productData').$asArray().$loaded();
+        },
         getNewProduct:function(oldProducts,newProducts,property){
             var oldIds= _.pluck(oldProducts,property);
             return _.filter(newProducts,function(product){

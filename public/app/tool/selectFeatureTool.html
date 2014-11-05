@@ -1,0 +1,16 @@
+<zr-header title="Select Feature Tool"></zr-header>
+<div class="row">
+    <div zr-panel title="Select the tool" col-lg="6">
+        <table class="table">
+            <tr>
+                <th>Tool Name</th>
+                <th>Tool Description</th>
+            </tr>
+            <tr ng-repeat="item in featureToolList">
+                <td>{{item.name}}</td>
+                <td>{{item.description}}</td>
+                <td><button class="btn btn-primary" ng-click="select(item)">Select</button></td>
+            </tr>
+        </table>
+    </div>
+</div>

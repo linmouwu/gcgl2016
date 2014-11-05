@@ -8,27 +8,29 @@
                     Product List
                     <button class="btn btn-success" ui-sref="product.create">Create product</button>
                 </div>
-                <table class="table">
-                    <tr>
-                        <th>Product Name</th>
-                        <th>Product Type</th>
-                        <th>Product Description</th>
-                        <th>Opt</th>
-                    </tr>
-                    <tr ng-repeat="pro in productList">
-                        <td>{{pro.name}}</td>
-                        <td>{{pro.type}}</td>
-                        <td>{{pro.description}}</td>
-                        <td>
-                            <button type="button" class="btn btn-warning btn-xs" ui-sref="product.edit({id:pro.$id})">
-                                <span class="glyphicon glyphicon-edit"></span> Edit
-                            </button>
-                            <button type="button" class="btn btn-danger btn-xs" ng-click="remove(pro)">
-                                <span class="glyphicon glyphicon-trash"></span> Del
-                            </button>
-                        </td>
-                    </tr>
-                </table>
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Product Type</th>
+                            <th>Product Description</th>
+                            <th>Opt</th>
+                        </tr>
+                        <tr ng-repeat="pro in productList">
+                            <td>{{pro.name}}</td>
+                            <td>{{pro.type}}</td>
+                            <td>{{pro.description}}</td>
+                            <td>
+                                <button type="button" class="btn btn-warning btn-xs" ui-sref="product.edit({id:pro.$id})">
+                                    <span class="glyphicon glyphicon-edit"></span> Edit
+                                </button>
+                                <button type="button" class="btn btn-danger btn-xs" ng-click="remove(pro)">
+                                    <span class="glyphicon glyphicon-trash"></span> Del
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

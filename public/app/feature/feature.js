@@ -79,7 +79,8 @@ app.factory('FeatureService', function(f,$q) {
             }
             var keys=[
                 'name',
-                'description'
+                'description',
+                'tool'
             ];
             _.each(keys,function(key){
                 if(_.isUndefined(newItem[key])){

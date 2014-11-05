@@ -1,0 +1,60 @@
+<zr-header title="Create Feature Tool"></zr-header>
+<div class="row">
+    <div zr-panel title="Input template information" col-lg="6">
+        <div zr-help="">
+            If you want to upload a tool. Put the toll in the app/tool/featureTool  dir.
+            Include the js file in index.html.
+            And then add the html path to the tool's Url.
+        </div>
+        <form name="form" novalidate>
+            <div class="form-group">
+                <label>Tool Name</label>
+                <input type="text" name="name" class="form-control" ng-model="tool.name" required/>
+                <div class="error" ng-show="form.name.$dirty && form.name.$invalid">
+                    <small class="bg-danger">This field is required!</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Tool Url</label>
+                <input type="text" name="url" class="form-control" ng-model="tool.url" required/>
+                <div class="error" ng-show="form.url.$dirty && form.url.$invalid">
+                    <small class="bg-danger">This field is required!</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Feature</label>
+                <select name="feature" class="form-control" ng-model="tool.feature" ng-options="feature.$id as feature.name for feature in featureList">
+                    <option value="">----</option>
+                </select>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">Inputs<button class="btn btn-success" ng-click="addInput(tool)">Add</button></div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <th>Input Type</th>
+                            <th>Input Property</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr ng-repeat="item in tool.inputs">
+                            <td>
+                                <select ng-model="item.type" ng-options="type as type for type in types">
+                                    <option value="">----</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" ng-model="item.property"/>
+                            </td>
+                            <td><button class="btn btn-danger" ng-click="removeInput(item)">Remove</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea rows="10" class="form-control" ng-model="tool.description"/>
+            </div>
+        </form>
+        <button class="btn btn-success" ng-click="add(tool)" ng-disabled="form.$invalid">Add Tool</button>
+    </div>
+</div>
